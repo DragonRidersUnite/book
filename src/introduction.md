@@ -68,7 +68,7 @@ Start by making small games that you can finish in a couple of days. Make a lot 
 
 What's shipping? Isn't that when you want Mulder and Scully to kiss? No! Get your head out of the gutter you alien-loving freak. (I want to believe! 🛸) Shipping is when you 1. finish your game and 2. release it for people to play it.
 
-So here's your mindset, really, boiled down: make a small game and ship it, then make another small game and ship it. Before long, you'll be building a visual novel where Mulder and Scully kiss and swimming in money!
+So here's your mindset, really, boiled down: make a small game and ship it for free, then make another small game and ship it for free. Before long, you'll be building a visual novel where Mulder and Scully kiss and be swimming in a pool of cryptocoins! But seriously, what that mindset will do is help you grow as a developer, build an audience, and get your shipping muscle primed and ready for making a better game with each one.
 
 ## What You'll Be Making
 
