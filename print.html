@@ -170,18 +170,24 @@
 <p>[website mock reasons + my thoughts]</p>
 <h2 id="what-youll-be-making"><a class="header" href="#what-youll-be-making">What You'll Be Making</a></h2>
 <p>TODO: playable demo link</p>
+<h2 id="mindset"><a class="header" href="#mindset">Mindset</a></h2>
+<ul>
+<li>Be curious: it's the best way to learn!</li>
+<li>Be patient: learning is difficult, but stick with it</li>
+<li>Be kind: to yourself and others</li>
+</ul>
 <h2 id="get-started"><a class="header" href="#get-started">Get Started</a></h2>
 <p>All right, are you ready to make a game? Let's get started!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="hello-dragon"><a class="header" href="#hello-dragon">Hello, Dragon!</a></h1>
 <p>We'll start by rendering an image and some simple text on the screen. But first, we need to get our computer and DragonRuby Game Toolkit ready for developing.</p>
 <h2 id="first-steps"><a class="header" href="#first-steps">First Steps</a></h2>
 <ol>
-<li><strong>Download a code editor:</strong> Since you'll be coding your game, you need a special text editor to let you write the code without any extra formatting that text editors like Microsoft Word add. <a href="https://code.visualstudio.com/">Visual Studio Code</a> is a great free editor. Downloa and install it.</li>
+<li><strong>Download a code editor:</strong> Since you'll be coding your game, you need a special text editor to let you write the code without any extra formatting that text editors like Microsoft Word add. <a href="https://code.visualstudio.com/">Visual Studio Code</a> is a great free editor. Download and install it. (Or use your own favorite editor.)</li>
 <li><strong>Get DragonRuby GTK:</strong> You need to get a copy of DragonRuby GTK so you can use the engine. <a href="https://dragonruby.itch.io/dragonruby-gtk/purchase">Buy it on Itch and download the zip file for your operating system.</a></li>
 <li><strong>Extract the DRGTK engine zip</strong>: In your computer's file explorer, extract the engine zip file.</li>
 </ol>
 <p>You're ready to work on your game. Let's get to it!</p>
-<p>PROTIP: don't delete the zip file! You can unzip it again for when you start working on your next game. It's helpful to keep it around.</p>
+<p><strong>ProTip:</strong> don't delete the zip file! You can unzip it again for when you start working on your next game. It's helpful to keep it around.</p>
 <h2 id="whats-in-the-engine-zip"><a class="header" href="#whats-in-the-engine-zip">What's in the Engine Zip</a></h2>
 <p>When you download DragonRuby Game Toolkit, it contains everything you need to build your game. There's no external dependencies to install or monkey with. You just use the provided files and start making your game.</p>
 <p>Let's go over the key files in the archive you just extracted:</p>
@@ -201,7 +207,7 @@
 <li><code>fonts/</code> — where fonts go, duh!</li>
 <li><code>metadata/</code> — configuration files for your game, we'll do more here later</li>
 <li><code>sounds/</code> — where music and sound effects go</li>
-<li><code>sprites/</code> — where images go that will be rendered in the game</li>
+<li><code>sprites/</code> — where images go that will be rendered in the game; there are already some simple ones to work with by default</li>
 </ul>
 </li>
 </ul>
@@ -233,7 +239,18 @@ end
 <p>Here's what that code does, line by line:</p>
 <pre><code class="language-ruby">def tick args
 </code></pre>
-<p>This <code>def</code>ines method called <code>tick</code> and passes in an argument called <code>args</code>. Methods are reusable pieces of code that you can call to do something over and over again. Methods are a foundational building block of code that allow for code reuse. <code>args</code> is a bunch of data that gets passed into <code>tick</code> whenver it is called. We'll learn more about <code>args</code> soon.</p>
+<p>This <code>def</code>ines method called <code>tick</code> and passes in an argument called <code>args</code>. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block of code that allow for code reuse.</p>
+<p>Let's say you wanted to give a friend a cookie 🍪, you'd define a method called <code>give_cookie</code> and pass in the <code>friend</code> as a parameter.</p>
+<pre><code class="language-ruby">def give_cookie(friend)
+  friend.eat(:cookie)
+end
+</code></pre>
+<p>You'd then call that method like:</p>
+<pre><code class="language-ruby">francis = Friend.new
+give_cookie(francis)
+</code></pre>
+<p>Wait, how'd we get talking about cookies and friends? Okay, back to the code above.</p>
+<p><code>args</code> is a bunch of data that gets passed into <code>tick</code> whenver it is called. We'll learn more about <code>args</code> soon.</p>
 <p>The next three lines handle outputting text to the screen:</p>
 <pre><code class="language-ruby">args.outputs.labels  &lt;&lt; [640, 500, 'Hello World!', 5, 1]
 args.outputs.labels  &lt;&lt; [640, 460, 'Go to docs/docs.html and read it!', 5, 1]
@@ -244,29 +261,89 @@ args.outputs.labels  &lt;&lt; [640, 420, 'Join the Discord! https://discord.drag
 <p><code>args</code> has a method called <code>outputs</code> that represents the data that gets rendered in the screen. You access it with <code>args.outputs</code>. Neato! <code>labels</code> is method on the <code>outputs</code>, see how the <code>.</code> chains things together?</p>
 <p>The <code>&lt;&lt;</code> is called the shovel operator. It lets you push data into a collection. <code>labels</code> is the collection we're shoveling data into because we want to render some text.</p>
 <p>And then finally the code within the brackets <code>[]</code> is an array of data that represents what we want to display on the screen. It may not be clear exactly what it's doing yet, but it'll become more clear over time.</p>
-<p>[array illustration]</p>
+<p>[TODO: array illustration]</p>
 <p>You can see some code in quotes, those are strings. And they're what's being displayed by the game. In order to show the text, though, we need to tell the engine where to place it on the screen. That's what the first two elements of the array do: they specify the x and y position in of the text in the game. Then there's the text we want to render. That's followed by the size. Then finally the alignment (centered in this case).</p>
 <p>Here's it broken down:</p>
 <pre><code class="language-ruby">#  x,   y,           text, size, alignment
 [640, 500, 'Hello World!',    5,         1]
 </code></pre>
-<p>Don't worry about memorizing what the positional elements of the array mean. This is just a quick way to render text. We'll start using a more friendly approach soon enough.</p>
-<p>Gosh enough of this rambling, let's adjust some code. Change the text from &quot;Hello World!&quot; to be &quot;Hello Dragon!&quot; and save the file.</p>
+<p>Don't worry about memorizing what the positional elements of the array mean. This is just a quick way to render text. We'll start using a more friendly approach soon enough. The sample game does this three times, thus rendering three difference pieces of text. The <code>y</code> coordinate is different for each, stacking them on top of each other vertically instead of overlapping one another.</p>
+<p>Gosh enough of this rambling, let's adjust some code. Change the text from <code>&quot;Hello World!&quot;</code> to be <code>&quot;Hello Dragon!&quot;</code> and save the file.</p>
+<p><img src="./img/hello-dragon.webp" alt="screenshot of the Hello Dragon! for DragonRuby GTK" /></p>
 <p>Did you see that? The game reloaded your code and changed the text to be &quot;Hello Dragon!&quot; That was quick, wasn't it? That's one of the best parts of DRGTK—live reloading of your game code in the engine. This allows you to make changes to your game quickly, reducing the time between the cycles of writing your code and testing it.</p>
+<pre><code class="language-ruby">args.outputs.sprites &lt;&lt; [576, 280, 128, 101, 'dragonruby.png']
+</code></pre>
+<p><code>args.outputs.sprites</code> is like labels, but it's instead a collection for sprites. It renders the <code>&quot;dragonruby.png&quot;</code> image at x: 576, y: 280, just like label text, but it also sets the size of the image to display. That's what the <code>128</code> and <code>101</code> represent in the array. Here's a break down of those elements:</p>
+<pre><code class="language-ruby">#  x,   y,   w,   h,            image
+[576, 280, 128, 101, 'dragonruby.png']
+</code></pre>
+<p>Just like with labels, don't worry about memorizing the order here. There are friendlier ways to display them that we'll get to shortly.</p>
+<p>But it's an easy enough bit of code for putting an image on the screen.</p>
+<p>Finally, the last line:</p>
+<pre><code class="language-ruby">end
+</code></pre>
+<p>signifies that the definition of the <code>tick</code> method is over. Any code after that isn't part of the <code>tick</code> method. That's it for what we get out of the box.</p>
 <h2 id="screen-coordinates-explained"><a class="header" href="#screen-coordinates-explained">Screen Coordinates Explained</a></h2>
-<p>[coordinates]</p>
-<ul>
-<li>pixels</li>
-<li>x,y drawing</li>
-<li>difference from other engines</li>
-</ul>
-<h2 id="game-loop-explained"><a class="header" href="#game-loop-explained">Game Loop Explained</a></h2>
-<p>[drawing of the game loop and why it matters]</p>
-<p>The <code>tick</code> method is called 60 times every second.</p>
+<p>Let's take a detour down Screen Coordinates Road. The <code>x</code> and <code>y</code> position are coordinates on the two-dimensional plane of the game window. Remember geometry? I barely do. But this is important, so don't doze off on me yet, we're only in the first chapter still!</p>
+<p>[TODO: coordinates illustration]</p>
+<p>DRGTK games are made up of a window that's 1280x720 pixels large. That's 1280 pixels wide and 720 pixels tall. The rectange of the game screen is 921600 pixels, that's two those numbers multiplied. Each of those pixels has a coordinate on the plane. It makes it easy to refer to a specific pixel by using its <code>x</code> and <code>y</code> position.</p>
+<p>DRGTK starts 0, 0 in the lower left. So 1280, 720 would be the upper right. <strong>Note:</strong> this varies from most game engines and libraries and tools, but it's intentional to make it easier to think about gravity and the geometric 2D plane that is taught in mathematics.</p>
+<p>It's important to keep coordinates in mind, as we'll be using them a lot when making our game. A major aspect of games is moving things on the screen, which we do by changing their coordinates on the plane.</p>
 <h2 id="our-own-hello"><a class="header" href="#our-own-hello">Our Own Hello</a></h2>
-<p>[delete the code]
-[hand-write it, don't copy it illustration]
-[define a method]</p>
+<p>Back to making the game. Okay, yeah, you changed a string and it changed what was rendered. That's neat. But let's bump it up a notch.</p>
+<p>I want you to delete the code in <code>mygame/app/main.rb</code>. Select it all and delete it. Yup, I know, the blank canvas is a challenge. But you need to start writing the code yourself in order to learn and build the muscle memory. So go ahead and type out each line below into your <code>main.rb</code>.</p>
+<p>[TODO: hand-write it, don't copy it illustration]</p>
+<pre><code class="language-ruby">def tick args
+  args.outputs.labels &lt;&lt; [120, 120, &quot;Hello Dragon!&quot;]
+end
+</code></pre>
+<p>You know what that does, right? Well you saw it automatically reload in your game, so of course you do!</p>
+<p>Let's greet our friend Oboe too.</p>
+<pre><code class="language-ruby">def tick args
+  args.outputs.labels &lt;&lt; [120, 120, &quot;Hello Dragon!&quot;]
+  args.outputs.labels &lt;&lt; [120, 100, &quot;Hello Oboe!&quot;]
+end
+</code></pre>
+<p>Wow, so many friends we're saying hello to! The thing is... that code is a bit... duplicative. Let's write our own method to clean that up:</p>
+<pre><code class="language-ruby">def greet friend
+  &quot;Hello #{friend}!&quot;
+end
+
+def tick args
+  args.outputs.labels &lt;&lt; [120, 120, greet(&quot;Dragon&quot;)]
+  args.outputs.labels &lt;&lt; [120, 100, greet(&quot;Oboe&quot;)]
+end
+</code></pre>
+<p>The new code refactors (changes the implementation of the code without changing the behavior) the original so that we can easily change the greeting in one place instead of many. This is a bit of a trivial example, but it shows how we can write our own methods in DRGTK to make our code better. Reusing code is foundational for the rest of this book.</p>
+<p>The <code>&quot;Hello #{friend}!&quot;</code> code does what's called string interpolation. It takes whatever <code>friend</code> is, hopefully a name as a string, and inserts it. It's pretty similar to this code: <code>&quot;Hello &quot; + friend + &quot;!&quot;</code>, but quite a bit friendlier to use. The <code>#{}</code> tells Ruby to run any Ruby code within those curly braces.</p>
+<p>Methods in Ruby return a value. Return values can then be used by the caller for whatever purposes are needed. In the example above, the return value is the string we build. Ruby returns the last line of the method definition automatically. But you can explicitly return early with <code>return</code>, which can be useful if you want to end the execution of a method early.</p>
+<p>Go ahead and change the <code>#greet</code> method to:</p>
+<pre><code class="language-ruby">def greet friend
+  &quot;Hello #{friend}!&quot;
+  1
+end
+</code></pre>
+<p>Whoa! What happened to our greetings? Well, we changed our code and it now always returns <code>1</code>, which isn't what we want. It's just an example to illustrate how that works. Go ahead and undo that change.</p>
+<p>Let's do one final thing in our hand-crafted, artisinal version of rendering text and images. Let's display a sprite. In <code>mygame/sprites/misc/</code> there's a file named <code>dragon-0.png</code>. It's a pixel art dragon made by Nick Culbertson that's free to use. Pretty neat!</p>
+<pre><code class="language-ruby">def greet friend
+  &quot;Hello #{friend}!&quot;
+end
+
+def tick args
+  args.outputs.labels &lt;&lt; [120, 120, greet(&quot;Dragon&quot;)]
+  args.outputs.labels &lt;&lt; [120, 100, greet(&quot;Oboe&quot;)]
+  # Here's our new line
+  args.outputs.sprites &lt;&lt; [120, 280, 100, 80, 'sprites/misc/dragon-0.png']
+end
+</code></pre>
+<p><img src="./img/hello-dragon-own.webp" alt="screenshot of the Hello Dragon! with pixel dragon displayed" /></p>
+<p>That's some pretty fine code for the first chapter. We've got text and an image displaying. We learned about methods too. Don't worry if it's not all making total and complete sense. You'll understand more with time. Remember, be patient.</p>
+<h2 id="game-loop-explained"><a class="header" href="#game-loop-explained">Game Loop Explained</a></h2>
+<p>There's a lot of magic happening where we can just write <code>def tick</code> and magically have a game. What's happening here is that DragonRuby Game Toolkit takes the code in <code>mygame/app/main.rb</code>, find the tick method, and then runs a loop that calls it 60 times every second until the program closes. This loop is referred to as the Game Loop.</p>
+<p>When programming games, any number of things are happening at one time. Enemies are moving, images are being displayed, math is being calculated, input is being handled. The loop runs over and over again, accounting for any changes in the state of the game. This is similar to how screens on devices work—they refresh so many times a second, so fast that it's barely perceptible to the human eye.</p>
+<p>Within the game loop, we'll keep track of everything that's happening, update state, and render text and images. It's important to begin to think about things in a loop, as it influences timing and code structure.</p>
+<p>[TODO: drawing of the game loop and why it matters]</p>
+<p>The game loop will begin to feel more natural over time, but for now, remember this: <strong>DRGTK runs the <code>tick</code> method 60 times every second</strong>.</p>
 
                     </main>
 
