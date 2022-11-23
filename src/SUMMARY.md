@@ -26,6 +26,6 @@
 - [Ship Your Game]()
 - [What Next]()
 
-# Extra Credits
+-----------
 
-- [Ruby Primer]()
+[Ruby Primer]()
