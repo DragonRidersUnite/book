@@ -23,6 +23,8 @@ Making games is a total blast. It's challenging but rewarding. They're the sum t
 
 [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game) (DRGTK) is a cross-platform game engine for building 2D games. It lets you write games in Ruby, a wonderfully expressive and approachable language. It allows game developers to quickly iterate on their games and ship them to any modern platform.
 
+DRGTK is not a no-code engine. You'll write the code that your game runs. This may seem scary at first, but it's a lot of fun and really powerful. Making games is also a great way to learn how to code! Don't know Ruby? That's okay, this book will teach you what you need to know.
+
 ### But it isn't free!
 
 [on why that's a good thing and financial assistance and sustainability]
@@ -31,12 +33,12 @@ Making games is a total blast. It's challenging but rewarding. They're the sum t
 
 There are more game engines, frameworks, and libraries than I can count on my hands and toes. So why should you use DragonRuby? 
 
+[website mock reasons + my thoughts]
+
 ## What You'll Be Making
 
 TODO: playable demo link
 
 ## Get Started
 
-- Get DragonRuby GTK
-- Download a code editor (VS Code)
-- Get started!
+All right, are you ready to make a game? Let's get started!
