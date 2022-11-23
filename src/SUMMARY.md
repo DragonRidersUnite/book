@@ -2,13 +2,12 @@
 
 [Introduction](./introduction.md)
 
-- [Hello, Dragon!](./01-hello-dragon.md)
-- [Drawing Shapes]()
-- [Ruby Primer]()
-- [Drawing Sprites]()
-- [Handling Input]()
-- [Moving the Player]()
+---
+
+- [Hello Dragon!](./01-hello-dragon.md)
+- [Player Movement](./02-player-movement.md)
 - [Firing Bullets]()
+- [Drawing Shapes]()
 - [Animations]()
 - [Enemies]()
 - [Refactor Break!]()
@@ -23,5 +22,10 @@
   - [Music]()
   - [Screenshake]()
   - [Menus]()
+  - [Metadata]()
 - [Ship Your Game]()
 - [What Next]()
+
+# Extra Credits
+
+- [Ruby Primer]()

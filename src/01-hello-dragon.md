@@ -1,4 +1,4 @@
-# Hello, Dragon!
+# Hello Dragon!
 
 We'll start by rendering an image and some simple text on the screen. But first, we need to get our computer and DragonRuby Game Toolkit ready for developing.
 

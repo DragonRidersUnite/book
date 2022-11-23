@@ -4,7 +4,7 @@
 
 🚧 _Building Games with DragonRuby_ is a work in progress. 🚧
 
-This book is aimed at new game developers who are interested in learning to code and build games. If you've written code before, especially Ruby, then you'll have a bit of a headstart. But the concepts in this book are beginner friendly. Whether you're new to game dev or just DragonRuby Toolkit, you'll have made a finished game by the end of this.
+This book is aimed at new game developers who are interested in learning to code and build games. If you've written code before, especially Ruby, then you'll have a bit of a headstart. But the concepts in this book are beginner friendly. Whether you're new to game dev or just DragonRuby Game Toolkit, you'll have made a finished game by the end of this.
 
 You need no prior experience with programming or game making to follow this book.
 
@@ -70,7 +70,7 @@ What's shipping? Isn't that when you want Mulder and Scully to kiss? No! Get you
 
 So here's your mindset, really, boiled down: make a small game and ship it for free, then make another small game and ship it for free. Before long, you'll be building a visual novel where Mulder and Scully kiss and be swimming in a pool of cryptocoins! But seriously, what that mindset will do is help you grow as a developer, build an audience, and get your shipping muscle primed and ready for making a better game with each one.
 
-## What You'll Be Making
+## What We'll Be Making
 
 Throughout the book, we'll be building a simple shoot-'em-up where you pilot a dragon. You'll learn all of the foundation aspects of making a game:
 
@@ -84,6 +84,18 @@ Throughout the book, we'll be building a simple shoot-'em-up where you pilot a d
 - Shipping it!
 
 TODO: playable demo link
+
+## Hold the Gosh Dang Phone
+
+"Who the heck are _you_?" you might be shouting at your screen. Little ole me? I'm just the voice of the dragon that lives within all beings! No, no, I kid. I'm Brett! I'm a programmer who enjoys making games and sharing what I've learned along the way.
+
+![pixel avatar of Brett](./img/brett.png)
+
+That's-a-me! If I was a bunch of pixels I guess.
+
+I love Ruby. I've been writing it for over 12 years, and it's such a joy. I also love games. Particularly 2D games. So here we are. ❤️💎 + 🎮 = 📕 How's that for an equation?!
+
+I don't know, you want me to be serious about why you should listen to me? Oh you skipped this section, okay fine. Wow, did you drop that banana peel there? You trying to take me out already? This early in the book? Well, I'll see you in the next chapter! We'll see who gets the last laugh.
 
 ## Get Started
 
