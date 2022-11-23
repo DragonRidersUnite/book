@@ -15,7 +15,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-                <link rel="icon" href="favicon.svg">
                         <link rel="shortcut icon" href="favicon.png">
                 <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
@@ -145,8 +144,9 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p><img src="./img/cover.webp" alt="cover of Building Games with DragonRuby, with the subtitle 'A comprehensive guide to shipping cross-platform games with ease' by Brett Chalupa and the Dragon Rider Community." /></p>
 <p>🚧 <em>Building Games with DragonRuby</em> is a work in progress. 🚧</p>
-<p>This book is aimed at new game developers who are interested in learning to code and build games. If you've written code before, especially Ruby, then you'll have a bit of a headstart. But the concepts in this book are beginner friendly.</p>
+<p>This book is aimed at new game developers who are interested in learning to code and build games. If you've written code before, especially Ruby, then you'll have a bit of a headstart. But the concepts in this book are beginner friendly. Whether you're new to game dev or just DragonRuby Toolkit, you'll have made a finished game by the end of this.</p>
 <p>You need no prior experience with programming or game making to follow this book.</p>
 <h2 id="why-learn-how-to-make-games"><a class="header" href="#why-learn-how-to-make-games">Why Learn How to Make Games</a></h2>
 <p>Making games is a total blast. It's challenging but rewarding. They're the sum total of so many creative mediums, <em>plus</em> their interactive. You'll learn so many different skills by making games:</p>
@@ -155,27 +155,57 @@
 <li>Rendering images</li>
 <li>Responding to input</li>
 <li>Game design</li>
+<li>Interactive design</li>
 <li>Working with image files</li>
 <li>Editing audio files</li>
 <li>Distributing the game software to users</li>
-<li>Getting feedback from your game</li>
+<li>Getting feedback from your game and iterating</li>
 </ul>
 <h2 id="about-dragonruby-game-toolkit"><a class="header" href="#about-dragonruby-game-toolkit">About DragonRuby Game Toolkit</a></h2>
 <p><a href="https://dragonruby.org/toolkit/game">DragonRuby Game Toolkit</a> (DRGTK) is a cross-platform game engine for building 2D games. It lets you write games in Ruby, a wonderfully expressive and approachable language. It allows game developers to quickly iterate on their games and ship them to any modern platform.</p>
-<p>DRGTK is not a no-code engine. You'll write the code that your game runs. This may seem scary at first, but it's a lot of fun and really powerful. Making games is also a great way to learn how to code! Don't know Ruby? That's okay, this book will teach you what you need to know.</p>
+<p>DRGTK is <strong>not</strong> a no-code engine. You'll write the code that your game runs. This may seem scary at first, but it's a lot of fun and really powerful. Making games is also a great way to learn how to code! Don't know Ruby? That's okay, this book will teach you what you need to know.</p>
 <h3 id="but-it-isnt-free"><a class="header" href="#but-it-isnt-free">But it isn't free!</a></h3>
-<p>[on why that's a good thing and financial assistance and sustainability]</p>
+<p>DRGTK costs money, yes. And there are plenty of free game engines out there. But the DRGTK team is committed to sustainably working on the engine and making it the best it can be, which means they need to get paid for their work. Support small teams by buying their software, it shows you're interested and it helps them keep doing what they love.</p>
+<p>You're investing in the engine and ecosystem, quite literally, by buying DRGTK. I want to see it succeed, so I bought a license. I want to see it succeed so badly I've written this book to try to help <em>you</em> make games with it. </p>
+<p>Plus, if you're a student or in need of financial assistance, the DragonRuby team offers free licenses. <a href="https://dragonruby.org/toolkit/game">Get in touch with the team to get a free license.</a></p>
 <h2 id="why-dragonruby-toolkit"><a class="header" href="#why-dragonruby-toolkit">Why DragonRuby Toolkit</a></h2>
-<p>There are more game engines, frameworks, and libraries than I can count on my hands and toes. So why should you use DragonRuby? </p>
-<p>[website mock reasons + my thoughts]</p>
-<h2 id="what-youll-be-making"><a class="header" href="#what-youll-be-making">What You'll Be Making</a></h2>
-<p>TODO: playable demo link</p>
+<p>There are more game engines, frameworks, and libraries than I can count on my hands and toes. So why should you use DragonRuby?</p>
+<p>That's a legit question. Here are my reasons why:</p>
+<ul>
+<li>It's focused on 2D games, so there's no competing interests in how the tooling works. It means what you need to know is pretty simple and easy to remember.</li>
+<li>It allows building games for all modern platforms, from desktop computers to the web to mobile devices to consoles. It's truly cross-platform and <em>just works</em>, which is amazing.</li>
+<li>It's fast a heck, which is important for making quality games.</li>
+<li>It makes use of Ruby, which is a wonderfully productive programming language.</li>
+<li>It doesn't force you to use a specific editor or tooling.</li>
+<li>It's lightweight to run the engine, which is great. Everything runs fast.</li>
+<li>It has live-reload and no compile times, which means when you change your game code, it automatically refreshes in the running engine. This is honestly so amazing, that you wouldn't know it unless you've used other game engines that require you to start a new build with each change.</li>
+</ul>
+<p>I'm going to be honest, DRGTK might not be for you. If you want to make 3D games, look elsewhere. Although, if you're new to game development, I wouldn't recommend starting with a 3D game. If you're absolutely not willing to try coding, look elsewhere.</p>
+<p>But for everyone else, I think DRGTK will knock your socks off (or at least shift them down a little).</p>
 <h2 id="mindset"><a class="header" href="#mindset">Mindset</a></h2>
+<p>When learning something new, especially something that's challenging, it's important to have the right mindset.</p>
 <ul>
 <li>Be curious: it's the best way to learn!</li>
 <li>Be patient: learning is difficult, but stick with it</li>
 <li>Be kind: to yourself and others</li>
 </ul>
+<p>When we learn how to play a new instrument, we learn the basics by covering simplistic pieces of music. Similarly, we're going to &quot;cover&quot; simpler game mechanics to get you started. Before long, you'll grasp the basics and be able to move onto more complex games and mechanics.</p>
+<p>Start by making small games that you can finish in a couple of days. Make a lot of small games to learn quickly. Don't get too wrapped up in your dream idea or making something that gets on Steam. Definitely don't try to make an MMORPG. Instead, focus on <strong>shipping</strong> your small games.</p>
+<p>What's shipping? Isn't that when you want Mulder and Scully to kiss? No! Get your head out of the gutter you alien-loving freak. (I want to believe! 🛸) Shipping is when you 1. finish your game and 2. release it for people to play it.</p>
+<p>So here's your mindset, really, boiled down: make a small game and ship it, then make another small game and ship it. Before long, you'll be building a visual novel where Mulder and Scully kiss and swimming in money!</p>
+<h2 id="what-youll-be-making"><a class="header" href="#what-youll-be-making">What You'll Be Making</a></h2>
+<p>Throughout the book, we'll be building a simple shoot-'em-up where you pilot a dragon. You'll learn all of the foundation aspects of making a game:</p>
+<ul>
+<li>The game loop</li>
+<li>Rendering text</li>
+<li>Rendering sprites and animating them</li>
+<li>Handling input</li>
+<li>Enemies and AI</li>
+<li>Playing sound effects and music</li>
+<li>Polishing your game</li>
+<li>Shipping it!</li>
+</ul>
+<p>TODO: playable demo link</p>
 <h2 id="get-started"><a class="header" href="#get-started">Get Started</a></h2>
 <p>All right, are you ready to make a game? Let's get started!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="hello-dragon"><a class="header" href="#hello-dragon">Hello, Dragon!</a></h1>
