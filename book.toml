@@ -1,6 +1,11 @@
 [book]
-authors = ["Brett Chalupa"]
+authors = ["Brett Chalupa", "Dragon Rider Community"]
 language = "en"
 multilingual = false
 src = "src"
 title = "Building Games with DragonRuby"
+description = "A comprehensive guide to shipping cross-platform 2D games with ease using DragonRuby Game Toolkit."
+
+[output.html]
+git-repository-url = "https://github.com/DragonRidersUnite/book"
+edit-url-template = "https://github.com/DragonRidersUnite/book/edit/main/{path}"
