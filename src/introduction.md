@@ -39,6 +39,12 @@ There are more game engines, frameworks, and libraries than I can count on my ha
 
 TODO: playable demo link
 
+## Mindset
+
+- Be curious: it's the best way to learn!
+- Be patient: learning is difficult, but stick with it
+- Be kind: to yourself and others
+
 ## Get Started
 
 All right, are you ready to make a game? Let's get started!
