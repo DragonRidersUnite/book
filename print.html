@@ -152,7 +152,7 @@
 <p>This book is aimed at new game developers who are interested in learning to code and build games. If you've written code before, especially Ruby, then you'll have a bit of a headstart. But the concepts in this book are beginner friendly. Whether you're new to game dev or just DragonRuby Game Toolkit, you'll have made a finished game by the end of this.</p>
 <p>You need no prior experience with programming or game making to follow this book.</p>
 <h2 id="why-learn-how-to-make-games"><a class="header" href="#why-learn-how-to-make-games">Why Learn How to Make Games</a></h2>
-<p>Making games is a total blast. It's challenging but rewarding. They're the sum total of so many creative mediums, <em>plus</em> their interactive. You'll learn so many different skills by making games:</p>
+<p>Making games is a total blast. It's challenging but rewarding. They're the sum total of so many creative mediums, <em>plus</em> they're interactive. You'll learn so many different skills by making games:</p>
 <ul>
 <li>Programming and logic</li>
 <li>Rendering images</li>
@@ -169,7 +169,7 @@
 <p>DRGTK is <strong>not</strong> a no-code engine. You'll write the code that your game runs. This may seem scary at first, but it's a lot of fun and really powerful. Making games is also a great way to learn how to code! Don't know Ruby? That's okay, this book will teach you what you need to know.</p>
 <h3 id="but-it-isnt-free"><a class="header" href="#but-it-isnt-free">But it isn't free!</a></h3>
 <p>DRGTK costs money, yes. And there are plenty of free game engines out there. But the DRGTK team is committed to sustainably working on the engine and making it the best it can be, which means they need to get paid for their work. Support small teams by buying their software, it shows you're interested and it helps them keep doing what they love.</p>
-<p>You're investing in the engine and ecosystem, quite literally, by buying DRGTK. I want to see it succeed, so I bought a license. I want to see it succeed so badly I've written this book to try to help <em>you</em> make games with it. </p>
+<p>You're investing in the engine and ecosystem, quite literally, by buying DRGTK. I want to see it succeed, so I bought a license. I want to see it succeed so badly I've written this book to try to help <em>you</em> make games with it.</p>
 <p>Plus, if you're a student or in need of financial assistance, the DragonRuby team offers free licenses. <a href="https://dragonruby.org/toolkit/game">Get in touch with the team to get a free license.</a></p>
 <h2 id="why-dragonruby-toolkit"><a class="header" href="#why-dragonruby-toolkit">Why DragonRuby Toolkit</a></h2>
 <p>There are more game engines, frameworks, and libraries than I can count on my hands and toes. So why should you use DragonRuby?</p>
@@ -280,7 +280,7 @@ end
 <p>Here's what that code does, line by line:</p>
 <pre><code class="language-ruby">def tick args
 </code></pre>
-<p>This <code>def</code>ines method called <code>tick</code> and passes in an argument called <code>args</code>. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block of code that allow for code reuse.</p>
+<p>This <code>def</code>ines a method called <code>tick</code> and passes in an argument called <code>args</code>. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block of code that allow for code reuse.</p>
 <p>Let's say you wanted to give a friend a cookie 🍪, you'd define a method called <code>give_cookie</code> and pass in the <code>friend</code> as a parameter.</p>
 <pre><code class="language-ruby">def give_cookie(friend)
   friend.eat(:cookie)
@@ -299,7 +299,7 @@ args.outputs.labels  &lt;&lt; [640, 420, 'Join the Discord! https://discord.drag
 </code></pre>
 <p>Your eyes might be melting a little bit. But don't worry, wipe that melted bit of eye away and focus! It's actually pretty intuitive once you get the hang of it.</p>
 <p>Remember <code>args</code> from above? That parameter that's passed into <code>tick</code>? Well, you can call methods on it! This allows you to interact with the game engine.</p>
-<p><code>args</code> has a method called <code>outputs</code> that represents the data that gets rendered in the screen. You access it with <code>args.outputs</code>. Neato! <code>labels</code> is method on the <code>outputs</code>, see how the <code>.</code> chains things together?</p>
+<p><code>args</code> has a method called <code>outputs</code> that represents the data that gets rendered in the screen. You access it with <code>args.outputs</code>. Neato! <code>labels</code> is a method on <code>outputs</code>, see how the <code>.</code> chains things together?</p>
 <p>The <code>&lt;&lt;</code> is called the shovel operator. It lets you push data into a collection. <code>labels</code> is the collection we're shoveling data into because we want to render some text.</p>
 <p>And then finally the code within the brackets <code>[]</code> is an array of data that represents what we want to display on the screen. It may not be clear exactly what it's doing yet, but it'll become more clear over time.</p>
 <p>[TODO: array illustration]</p>
@@ -327,7 +327,7 @@ args.outputs.labels  &lt;&lt; [640, 420, 'Join the Discord! https://discord.drag
 <h2 id="screen-coordinates-explained"><a class="header" href="#screen-coordinates-explained">Screen Coordinates Explained</a></h2>
 <p>Let's take a detour down Screen Coordinates Road. The <code>x</code> and <code>y</code> position are coordinates on the two-dimensional plane of the game window. Remember geometry? I barely do. But this is important, so don't doze off on me yet, we're only in the first chapter still!</p>
 <p>[TODO: coordinates illustration]</p>
-<p>DRGTK games are made up of a window that's 1280x720 pixels large. That's 1280 pixels wide and 720 pixels tall. The rectange of the game screen is 921600 pixels, that's two those numbers multiplied. Each of those pixels has a coordinate on the plane. It makes it easy to refer to a specific pixel by using its <code>x</code> and <code>y</code> position.</p>
+<p>DRGTK games are made up of a window that's 1280x720 pixels large. That's 1280 pixels wide and 720 pixels tall. The rectangle of the game screen is 921600 pixels, that's those two numbers multiplied. Each of those pixels has a coordinate on the plane. It makes it easy to refer to a specific pixel by using its <code>x</code> and <code>y</code> position.</p>
 <p>DRGTK starts 0, 0 in the lower left. So 1280, 720 would be the upper right. <strong>Note:</strong> this varies from most game engines and libraries and tools, but it's intentional to make it easier to think about gravity and the geometric 2D plane that is taught in mathematics.</p>
 <p>It's important to keep coordinates in mind, as we'll be using them a lot when making our game. A major aspect of games is moving things on the screen, which we do by changing their coordinates on the plane.</p>
 <h2 id="our-own-hello"><a class="header" href="#our-own-hello">Our Own Hello</a></h2>
@@ -419,7 +419,7 @@ end
 <p><code>||=</code> in English is &quot;or equals&quot;. That code above, <code>args.state.player_x ||= 120</code> would be read as: assign the property <code>player_x</code> on <code>args.state</code> the numeric value of 120 unless it's alreay assigned a value.</p>
 <p>Remember how tick is running once every 60 seconds? We don't want to always set <code>args.state.player_x</code> to <code>120</code>. We just want to set it to that initially and then we'll update that value when we press keys on our keyboard or buttons on our gamepad. We haven't done that yet, but that's what's next.</p>
 <p>Wow! That was a lot of explaination for two measly lines of code. But I'm telling ya', they're two really important lines of code when it comes to game programming.</p>
-<p>Them, finally, we change the <code>x</code> and <code>y</code> value for the dragon sprite to be the value stored in <code>args.state</code> so that we can actually make use of that value instead of our hard-coded position before.</p>
+<p>Then, finally, we change the <code>x</code> and <code>y</code> value for the dragon sprite to be the value stored in <code>args.state</code> so that we can actually make use of that value instead of our hard-coded position before.</p>
 <h2 id="checking-for-input"><a class="header" href="#checking-for-input">Checking for Input</a></h2>
 <p>In <code>tick</code> we'll check to see if a given input is pressed. If it is, we'll change the sprite's x and y position accordingly.</p>
 <p>Our ole buddy <code>args</code> has a little something known as <code>args.inputs</code>. This lets us check... inputs! Isn't programming nice? Most of the time the words used in programming make sense. But some of the time, they really don't, and it's a gosh dang nightmare. But let's commit right here, right now to trying to name things in a way that's useful. Okay, you're committed. When you name a method <code>def thingy</code>, you'll remember this. And your ears will ring a little bit and your eyes will get just a little dry and you'll remember that you broke this commitment.</p>
@@ -459,7 +459,7 @@ elsif args.inputs.down
 end
 </code></pre>
 <p>Then we check for vertical movement. We add to <code>player_y</code> to move up, decrease it to move down.</p>
-<p>What if we wanted wanted our dragon to move faster though? We could change those four instances of <code>10</code> to be <code>12</code> and see how that feels, sure. But that's annoying to update it all over. Let's make use of a variable! We'll call it <code>speed</code>:</p>
+<p>What if we wanted our dragon to move faster though? We could change those four instances of <code>10</code> to be <code>12</code> and see how that feels, sure. But that's annoying to update it all over. Let's make use of a variable! We'll call it <code>speed</code>:</p>
 <pre><code class="language-ruby">def tick args
   args.state.player_x ||= 120
   args.state.player_y ||= 280
