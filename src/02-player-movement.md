@@ -197,7 +197,9 @@ if args.state.player_x < 0
 end
 ```
 
-We check the right side of the screen: if the current player's x position plus their width is greater than `args.grid.w`, then we set the x position to the width of the screen (`args.grid.w`) minus the width of the sprite. It's so important that this happens after checking for input. You don't want to change `args.state.player_x` after this check, otherwise the boundary won't be enforced. Order matters with the code we write within `tick`.
+We check the right side of the screen: if the current player's x position plus their width is greater than `args.grid.w`, then we set the x position to the width of the screen (`args.grid.w`) minus the width of the sprite. For example, if we move the sprite so it has the x position of 1284, 4 pixels past the right edge of the screen, we override that change and set it to 1280 minus the player's width.
+
+It's so important that this happens after checking for input. You don't want to change `args.state.player_x` after this check, otherwise the boundary won't be enforced. Order matters with the code we write within `tick`.
 
 `args.grid.w` is the width of the screen. It's always 1280, but we don't want to have that magic number in our code. So we use `args.grid.w`.
 
