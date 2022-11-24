@@ -62,3 +62,153 @@ Them, finally, we change the `x` and `y` value for the dragon sprite to be the v
 In `tick` we'll check to see if a given input is pressed. If it is, we'll change the sprite's x and y position accordingly.
 
 Our ole buddy `args` has a little something known as `args.inputs`. This lets us check... inputs! Isn't programming nice? Most of the time the words used in programming make sense. But some of the time, they really don't, and it's a gosh dang nightmare. But let's commit right here, right now to trying to name things in a way that's useful. Okay, you're committed. When you name a method `def thingy`, you'll remember this. And your ears will ring a little bit and your eyes will get just a little dry and you'll remember that you broke this commitment.
+
+Let's make use of `args.inputs`:
+
+``` ruby
+def tick args
+  args.state.player_x ||= 120
+  args.state.player_y ||= 280
+
+  if args.inputs.left
+    args.state.player_x -= 10
+  elsif args.inputs.right
+    args.state.player_x += 10
+  end
+
+  if args.inputs.up
+    args.state.player_y += 10
+  elsif args.inputs.down
+    args.state.player_y -= 10
+  end
+
+  args.outputs.sprites << [args.state.player_x, args.state.player_y, 100, 80, 'sprites/misc/dragon-0.png']
+end
+```
+
+You can now control the dragon with WASD, the arrow keys, or your controller. Pretty neat! It's almost fun. All it took was 10 lines of code. Let's break them down.
+
+``` ruby
+if args.inputs.left
+  args.state.player_x -= 10
+elsif args.inputs.right
+  args.state.player_x += 10
+end
+```
+
+This section checks for horizontal movement. If the left input is pressed, reduce the player's x position by 10 pixels. `-=` means, subtract the value on the right from the value on the left. It's the same as `args.state.player_x = args.state.player_x - 10`, but it's much more concise. We increase `player_x` to move right, decrease it to move left.
+
+`if` and `elsif` are conditional checks. The code only runs if the value is true (more specifically, truthy, but let's not worry about that yet).
+
+``` ruby
+if args.inputs.up
+  args.state.player_y += 10
+elsif args.inputs.down
+  args.state.player_y -= 10
+end
+```
+Then we check for vertical movement. We add to `player_y` to move up, decrease it to move down.
+
+What if we wanted wanted our dragon to move faster though? We could change those four instances of `10` to be `12` and see how that feels, sure. But that's annoying to update it all over. Let's make use of a variable! We'll call it `speed`:
+
+``` ruby
+def tick args
+  args.state.player_x ||= 120
+  args.state.player_y ||= 280
+  speed = 10
+
+  if args.inputs.left
+    args.state.player_x -= speed
+  elsif args.inputs.right
+    args.state.player_x += speed
+  end
+
+  if args.inputs.up
+    args.state.player_y += speed
+  elsif args.inputs.down
+    args.state.player_y -= speed
+  end
+
+  args.outputs.sprites << [args.state.player_x, args.state.player_y, 100, 80, 'sprites/misc/dragon-0.png']
+end
+```
+
+Whoa! We just refactored that code. It's easier to change (ETC) now, which is a sign we're improving things.
+
+## Boundaries
+
+You can move your dragon completely off the screen, lost in the great unknown! This isn't ideal. Let's make it so our little buddy can't leave the bounds of the screen.
+
+[TODO: drawing about boundaries]
+
+``` ruby
+def tick args
+  args.state.player_x ||= 120
+  args.state.player_y ||= 280
+  speed = 12
+  player_w = 100
+  player_h = 80
+
+  if args.inputs.left
+    args.state.player_x -= speed
+  elsif args.inputs.right
+    args.state.player_x += speed
+  end
+
+  if args.inputs.up
+    args.state.player_y += speed
+  elsif args.inputs.down
+    args.state.player_y -= speed
+  end
+
+  if args.state.player_x +  player_w > args.grid.w
+    args.state.player_x = args.grid.w - player_w
+  end
+
+  if args.state.player_x < 0
+    args.state.player_x = 0
+  end
+
+  if args.state.player_y + player_h > args.grid.h
+    args.state.player_y = args.grid.h - player_h
+  end
+
+  if args.state.player_y < 0
+    args.state.player_y = 0
+  end
+
+  args.outputs.sprites << [args.state.player_x, args.state.player_y, player_w, player_h, 'sprites/misc/dragon-0.png']
+end
+```
+
+Our dragon won't leave the screen. Woot woot! We've got some serious code here! Look at that logic. Here's what changed:
+
+We moved the width and height of the player into variables so that they're easier to reference and reuse. Boom. We need those to do some math on the boundaries too. There's a general programming idea out there known as Don't Repeat Yourself (DRY). As soon as you have a piece of code, especially a number, that represents a value and is used multiple times, put it in a variable. This makes its intent clear as to what it represents and makes it easier to change. Win-win.
+
+Here's the good stuff. We check the boundary for the x axis:
+
+``` ruby
+if args.state.player_x +  player_w > args.grid.w
+  args.state.player_x = args.grid.w - player_w
+end
+
+if args.state.player_x < 0
+  args.state.player_x = 0
+end
+```
+
+We check the right side of the screen: if the current player's x position plus their width is greater than `args.grid.w`, then we set the x position to the width of the screen (`args.grid.w`) minus the width of the sprite. It's so important that this happens after checking for input. You don't want to change `args.state.player_x` after this check, otherwise the boundary won't be enforced. Order matters with the code we write within `tick`.
+
+`args.grid.w` is the width of the screen. It's always 1280, but we don't want to have that magic number in our code. So we use `args.grid.w`.
+
+Next we check the left side of the screen: if the player's x is less than 0, then we set it to zero. That's a bit similar to the right side, just simpler.
+
+Then we do the same thing for the top and bottom of the screen by checking the y position.
+
+## Extra Credit
+
+- When you move the dragon horizontally and vertically at the same time, the dragon moves twice as fast. How could you make it so the dragon moves at a uniform speed still when that happens?
+
+## What's Next
+
+In the next chapter we'll make our dragon spit fireballs when we press a key or button. Watch out!

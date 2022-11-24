@@ -10,6 +10,7 @@
 - [Drawing Shapes]()
 - [Animations]()
 - [Enemies]()
+- [Hitboxes]()
 - [Refactor Break!]()
 - [Life & Death]()
 - [Basic AI]()
