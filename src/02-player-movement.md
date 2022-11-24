@@ -55,7 +55,7 @@ Remember how tick is running once every 60 seconds? We don't want to always set 
 
 Wow! That was a lot of explaination for two measly lines of code. But I'm telling ya', they're two really important lines of code when it comes to game programming.
 
-Them, finally, we change the `x` and `y` value for the dragon sprite to be the value stored in `args.state` so that we can actually make use of that value instead of our hard-coded position before.
+Then, finally, we change the `x` and `y` value for the dragon sprite to be the value stored in `args.state` so that we can actually make use of that value instead of our hard-coded position before.
 
 ## Checking for Input
 
@@ -109,7 +109,7 @@ end
 ```
 Then we check for vertical movement. We add to `player_y` to move up, decrease it to move down.
 
-What if we wanted wanted our dragon to move faster though? We could change those four instances of `10` to be `12` and see how that feels, sure. But that's annoying to update it all over. Let's make use of a variable! We'll call it `speed`:
+What if we wanted our dragon to move faster though? We could change those four instances of `10` to be `12` and see how that feels, sure. But that's annoying to update it all over. Let's make use of a variable! We'll call it `speed`:
 
 ``` ruby
 def tick args
