@@ -97,6 +97,10 @@ I love Ruby. I've been writing it for over 12 years, and it's such a joy. I also
 
 I don't know, you want me to be serious about why you should listen to me? Oh you skipped this section, okay fine. Wow, did you drop that banana peel there? You trying to take me out already? This early in the book? Well, I'll see you in the next chapter! We'll see who gets the last laugh.
 
+## Contribute
+
+This book is open source. That means anyone can view the code that builds it and contribute toward making better. Did you find something that doesn't work, a typo, or lacks clarity? [Submit an issue or contribute on GitHub.](https://github.com/DragonRidersUnite/book) It's easy and you can do it right from your browser. Thanks in advance!
+
 ## Get Started
 
 All right, are you ready to make a game? Let's get started!
