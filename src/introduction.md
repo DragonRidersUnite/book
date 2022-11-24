@@ -2,7 +2,7 @@
 
 ![cover of Building Games with DragonRuby, with the subtitle 'A comprehensive guide to shipping cross-platform games with ease' by Brett Chalupa and the Dragon Rider Community.](./img/cover.webp)
 
-🚧 _Building Games with DragonRuby_ is a work in progress. 🚧
+🚧 _Building Games with DragonRuby_ is a work in progress. Expect typos, issues, and incompleteness. 🚧
 
 This book is aimed at new game developers who are interested in learning to code and build games. If you've written code before, especially Ruby, then you'll have a bit of a headstart. But the concepts in this book are beginner friendly. Whether you're new to game dev or just DragonRuby Game Toolkit, you'll have made a finished game by the end of this.
 
