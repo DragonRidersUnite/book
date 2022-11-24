@@ -391,15 +391,36 @@ end
 end
 </code></pre>
 <p>That displays our player dragon and nothing else. Excellent. Let's get this dragon moving!</p>
-<p>In <code>tick</code> we'll check to see if a given input is pressed. If it is, we'll change the sprite's x and y position accordingly.</p>
-<p>Our ole buddy <code>args</code> has a little something known as <code>args.inputs</code>. This lets us check... inputs! Isn't programming nice? Most of the time the words used in programming make sense. But some of the time, they really don't, and it's a gosh dang nightmare. But let's commit right here, right now to trying to name things in a way that's useful. Okay, you're committed. When you name a method <code>def thingy</code>, you'll remember this. And your ears will ring a little bit and your eyes will get just a little dry and you'll remember that you broke this commitment.</p>
-<p>In order to handle moving the player, we need to keep track of their position across the game loops. This lets us know where the player was last <code>tick</code>, check if they should move, and then update their position accordingly.</p>
+<p>In order to handle moving the player, we need to keep track of the position across the game loops. This lets us know where the player was last <code>tick</code>, check if they should move, and then update the position accordingly.</p>
+<p>Update your <code>mygame/app/main.rb</code> to be this:</p>
 <pre><code class="language-ruby">def tick args
   args.state.player_x ||= 120
   args.state.player_y ||= 280
   args.outputs.sprites &lt;&lt; [args.state.player_x, args.state.player_y, 100, 80, 'sprites/misc/dragon-0.png']
 end
 </code></pre>
+<p>There are a couple of new things here:</p>
+<ul>
+<li><code>args.state</code></li>
+<li><code>||=</code></li>
+</ul>
+<p>Let's start with <code>args.state</code>. It's basically a blob that can be anything you want it to be, a bit like Kirby. Feed it <code>player_x</code> and it keeps track of it. Whatever you feed the <code>args.state</code>, it'll be accessible in future ticks. Keeping track of game state across ticks is important! It's part of the game loop. If we don't know where the player last was, how can we calculate where they should move to? We need to keep track of it in someplace. <code>args.state</code> is a fine place to start.</p>
+<p>You can define anything on <code>args.state</code>, so it's up to you to use useful names. You could make <code>args.state.bleh</code> and set it to your favorite color, <code>args.state.bleh = &quot;blue&quot;</code> or your age, <code>args.state.age = 30</code>. Much like Kirby, <code>args.state</code> doesn't care what you feed it. It's just hungry for your data.</p>
+<p>In this case, we're feeding it <code>||= 120</code>. What the heck is <code>||=</code>? Well... Maybe we need to start with <code>=</code>. You might read that as &quot;equals&quot; but it's actually the assignment operator. It means: set the thing on the left to the value on the right. It's a core programming concept. It's useful for assigning data to properties that we want to keep track of.</p>
+<pre><code class="language-ruby">name = &quot;Francis&quot;
+</code></pre>
+<p>That code assigns the string Francis to the variable name. Then we can use <code>name</code> to refer to that value. It may not seem useful quite yet, but it will soon enough.</p>
+<p>You could then use that variable like this:</p>
+<pre><code class="language-ruby">puts name
+</code></pre>
+<p>That calls a the <code>puts</code> method and passes our argument <code>name</code> to it. It prints whatever the value is out to the console. If you put that in your game code and press <kbd>~<kbd> to open the console, you'll see it print <code>&quot;Francis&quot;</code> a bunch.</p>
+<p><code>||=</code> in English is &quot;or equals&quot;. That code above, <code>args.state.player_x ||= 120</code> would be read as: assign the property <code>player_x</code> on <code>args.state</code> the numeric value of 120 unless it's alreay assigned a value.</p>
+<p>Remember how tick is running once every 60 seconds? We don't want to always set <code>args.state.player_x</code> to <code>120</code>. We just want to set it to that initially and then we'll update that value when we press keys on our keyboard or buttons on our gamepad. We haven't done that yet, but that's what's next.</p>
+<p>Wow! That was a lot of explaination for two measly lines of code. But I'm telling ya', they're two really important lines of code when it comes to game programming.</p>
+<p>Them, finally, we change the <code>x</code> and <code>y</code> value for the dragon sprite to be the value stored in <code>args.state</code> so that we can actually make use of that value instead of our hard-coded position before.</p>
+<h2 id="checking-for-input"><a class="header" href="#checking-for-input">Checking for Input</a></h2>
+<p>In <code>tick</code> we'll check to see if a given input is pressed. If it is, we'll change the sprite's x and y position accordingly.</p>
+<p>Our ole buddy <code>args</code> has a little something known as <code>args.inputs</code>. This lets us check... inputs! Isn't programming nice? Most of the time the words used in programming make sense. But some of the time, they really don't, and it's a gosh dang nightmare. But let's commit right here, right now to trying to name things in a way that's useful. Okay, you're committed. When you name a method <code>def thingy</code>, you'll remember this. And your ears will ring a little bit and your eyes will get just a little dry and you'll remember that you broke this commitment.</p>
 
                     </main>
 
