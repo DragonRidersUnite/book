@@ -76,7 +76,7 @@ Here's what that code does, line by line:
 def tick args
 ```
 
-This `def`ines method called `tick` and passes in an argument called `args`. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block of code that allow for code reuse.
+This `def`ines a method called `tick` and passes in an argument called `args`. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block of code that allow for code reuse.
 
 Let's say you wanted to give a friend a cookie 🍪, you'd define a method called `give_cookie` and pass in the `friend` as a parameter.
 
@@ -109,7 +109,7 @@ Your eyes might be melting a little bit. But don't worry, wipe that melted bit o
 
 Remember `args` from above? That parameter that's passed into `tick`? Well, you can call methods on it! This allows you to interact with the game engine.
 
-`args` has a method called `outputs` that represents the data that gets rendered in the screen. You access it with `args.outputs`. Neato! `labels` is method on the `outputs`, see how the `.` chains things together?
+`args` has a method called `outputs` that represents the data that gets rendered in the screen. You access it with `args.outputs`. Neato! `labels` is a method on `outputs`, see how the `.` chains things together?
 
 The `<<` is called the shovel operator. It lets you push data into a collection. `labels` is the collection we're shoveling data into because we want to render some text.
 
@@ -164,7 +164,7 @@ Let's take a detour down Screen Coordinates Road. The `x` and `y` position are c
 
 [TODO: coordinates illustration]
 
-DRGTK games are made up of a window that's 1280x720 pixels large. That's 1280 pixels wide and 720 pixels tall. The rectange of the game screen is 921600 pixels, that's two those numbers multiplied. Each of those pixels has a coordinate on the plane. It makes it easy to refer to a specific pixel by using its `x` and `y` position.
+DRGTK games are made up of a window that's 1280x720 pixels large. That's 1280 pixels wide and 720 pixels tall. The rectangle of the game screen is 921600 pixels, that's those two numbers multiplied. Each of those pixels has a coordinate on the plane. It makes it easy to refer to a specific pixel by using its `x` and `y` position.
 
 DRGTK starts 0, 0 in the lower left. So 1280, 720 would be the upper right. **Note:** this varies from most game engines and libraries and tools, but it's intentional to make it easier to think about gravity and the geometric 2D plane that is taught in mathematics.
 

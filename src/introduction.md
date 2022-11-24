@@ -10,7 +10,7 @@ You need no prior experience with programming or game making to follow this book
 
 ## Why Learn How to Make Games
 
-Making games is a total blast. It's challenging but rewarding. They're the sum total of so many creative mediums, _plus_ their interactive. You'll learn so many different skills by making games:
+Making games is a total blast. It's challenging but rewarding. They're the sum total of so many creative mediums, _plus_ they're interactive. You'll learn so many different skills by making games:
 
 - Programming and logic
 - Rendering images
@@ -32,7 +32,7 @@ DRGTK is **not** a no-code engine. You'll write the code that your game runs. Th
 
 DRGTK costs money, yes. And there are plenty of free game engines out there. But the DRGTK team is committed to sustainably working on the engine and making it the best it can be, which means they need to get paid for their work. Support small teams by buying their software, it shows you're interested and it helps them keep doing what they love.
 
-You're investing in the engine and ecosystem, quite literally, by buying DRGTK. I want to see it succeed, so I bought a license. I want to see it succeed so badly I've written this book to try to help _you_ make games with it. 
+You're investing in the engine and ecosystem, quite literally, by buying DRGTK. I want to see it succeed, so I bought a license. I want to see it succeed so badly I've written this book to try to help _you_ make games with it.
 
 Plus, if you're a student or in need of financial assistance, the DragonRuby team offers free licenses. [Get in touch with the team to get a free license.](https://dragonruby.org/toolkit/game)
 
