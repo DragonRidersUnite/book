@@ -531,7 +531,8 @@ if args.state.player_x &lt; 0
   args.state.player_x = 0
 end
 </code></pre>
-<p>We check the right side of the screen: if the current player's x position plus their width is greater than <code>args.grid.w</code>, then we set the x position to the width of the screen (<code>args.grid.w</code>) minus the width of the sprite. It's so important that this happens after checking for input. You don't want to change <code>args.state.player_x</code> after this check, otherwise the boundary won't be enforced. Order matters with the code we write within <code>tick</code>.</p>
+<p>We check the right side of the screen: if the current player's x position plus their width is greater than <code>args.grid.w</code>, then we set the x position to the width of the screen (<code>args.grid.w</code>) minus the width of the sprite. For example, if we move the sprite so it has the x position of 1284, 4 pixels past the right edge of the screen, we override that change and set it to 1280 minus the player's width.</p>
+<p>It's so important that this happens after checking for input. You don't want to change <code>args.state.player_x</code> after this check, otherwise the boundary won't be enforced. Order matters with the code we write within <code>tick</code>.</p>
 <p><code>args.grid.w</code> is the width of the screen. It's always 1280, but we don't want to have that magic number in our code. So we use <code>args.grid.w</code>.</p>
 <p>Next we check the left side of the screen: if the player's x is less than 0, then we set it to zero. That's a bit similar to the right side, just simpler.</p>
 <p>Then we do the same thing for the top and bottom of the screen by checking the y position.</p>
