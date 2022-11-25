@@ -415,7 +415,7 @@ end
 <p>You could then use that variable like this:</p>
 <pre><code class="language-ruby">puts name
 </code></pre>
-<p>That calls a the <code>puts</code> method and passes our argument <code>name</code> to it. It prints whatever the value is out to the console. If you put that in your game code and press <kbd>~<kbd> to open the console, you'll see it print <code>&quot;Francis&quot;</code> a bunch.</p>
+<p>That calls a the <code>puts</code> method and passes our argument <code>name</code> to it. It prints whatever the value is out to the console. If you put that in your game code and press <kbd>~</kbd> to open the console, you'll see it print <code>&quot;Francis&quot;</code> a bunch.</p>
 <p><code>||=</code> in English is &quot;or equals&quot;. That code above, <code>args.state.player_x ||= 120</code> would be read as: assign the property <code>player_x</code> on <code>args.state</code> the numeric value of 120 unless it's alreay assigned a value.</p>
 <p>Remember how tick is running once every 60 seconds? We don't want to always set <code>args.state.player_x</code> to <code>120</code>. We just want to set it to that initially and then we'll update that value when we press keys on our keyboard or buttons on our gamepad. We haven't done that yet, but that's what's next.</p>
 <p>Wow! That was a lot of explaination for two measly lines of code. But I'm telling ya', they're two really important lines of code when it comes to game programming.</p>
