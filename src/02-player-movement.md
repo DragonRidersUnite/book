@@ -47,7 +47,7 @@ You could then use that variable like this:
 puts name
 ```
 
-That calls a the `puts` method and passes our argument `name` to it. It prints whatever the value is out to the console. If you put that in your game code and press <kbd>~<kbd> to open the console, you'll see it print `"Francis"` a bunch.
+That calls a the `puts` method and passes our argument `name` to it. It prints whatever the value is out to the console. If you put that in your game code and press <kbd>~</kbd> to open the console, you'll see it print `"Francis"` a bunch.
 
 `||=` in English is "or equals". That code above, `args.state.player_x ||= 120` would be read as: assign the property `player_x` on `args.state` the numeric value of 120 unless it's alreay assigned a value.
 
