@@ -6,6 +6,8 @@ Imagine this scenario: you work on your game for three months. It's amazing. It'
 
 You'd just have to start over, from scratch. That is if you aren't too bummed out about losing the entire game. Crow theft--it's the number one reason to back up your game's source code.
 
+## Back Up Your Game
+
 You could use a cloud service like Dropbox to back it up to the ✨cloud✨. That's better than nothing. Then when you get a new computer because, you know, the crows stole your other one, you'll be good to go. Your game will be backed up. Heck, Dropbox does it automatically. That's pretty nifty.
 
 ## Using Git
@@ -17,8 +19,6 @@ The basics of Git are beyond the scope of this book, but there are some helpful 
 - [Git's Documentation](https://git-scm.com/doc)
 - [GitHub's Git Guide](https://github.com/git-guides)
 - [GUI apps for working with Git](https://git-scm.com/downloads/guis)
-
-[TODO: drawing of version control changes]
 
 Using version control at first may seem a bit tedious, but it's immensely valuable. Not only can you document why you made a change to help your future self and others, but you can safely experiment without fear of really messing things up. Because you're tracking the changes to your game's source, if you go down a rabbithole that doesn't work out, you can easily undo it. Let's explore some examples of commits and scenarios where it's helpful.
 
@@ -67,7 +67,7 @@ The flow of development is:
 4. Test the adjustments
 5. Create a commit
 
-[TODO: drawing of the flow of work--code a feature, commit; fix a bug, commit; etc.]
+Start the flow again!
 
 ## Source Code Hosts
 
@@ -96,7 +96,14 @@ The DragonRuby Game Toolkit is not open source software, which means that you ca
 
 I recommended checking the entire folder of the engine and your game into source control in the previous section. But if you want to open source your game, I'd do it a little differently. And it helps to know this from the start of your project, but it's okay if you do it later down the line.
 
-[TODO: figure out how to go about suggesting this]
+If you want to open source you game, follow these steps:
+
+1. Unzip the engine
+2. Change into the `mygame` directory
+3. Initialize your Git repository there with `git init`
+4. Don't track the engine parent folder
+
+The downside to this approach is that you need to ensure you keep your specific engine version parent directory available. You could use version control to sync that and then use Git to publish it online as open source code.
 
 ## Summary
 
