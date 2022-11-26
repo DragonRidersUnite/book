@@ -6,7 +6,7 @@
 
 - [Hello Dragon!](./01-hello-dragon.md)
 - [Player Movement](./02-player-movement.md)
-- [Firing Bullets]()
+- [Spit Fire](./03-spit-fire.md)
 - [Drawing Shapes]()
 - [Animations]()
 - [Enemies]()
@@ -31,3 +31,4 @@
 
 [Ruby Primer]()
 [Source Control](./source-control.md)
+[Game Dev Resources](./game-dev-resources.md)
