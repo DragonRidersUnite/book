@@ -239,6 +239,37 @@ def tick args
   args.state.player.tick args
 end
 </code></pre>
+<p>We've once again changed the code without changing the behavior of the game. This iterative approach to game development and programming is <em>so</em> important. It gives you permission to do something quickly to experiment and then take time to make things better. With this refactor, we've made the code easier to manage and reason about.</p>
+<p>The <code>class Player</code> line defines what's known as a class. Many programming languages have classes, and they usually represnet nouns (things) that have properties and can take some actions. Classes have instances, which is one given case of it. You know how there are birds out there in the world? Bird is the concept of the animal--it's a classification (class). But if there was a bird sitting on your head, thats an instance of given bird. And the bird sitting on the powerline across the road watching your every move is another instance of a bird. If we wanted to represent birds in our game, we could define a class:</p>
+<pre><code class="language-ruby">class Bird
+  def evil?
+    true
+  end
+end
+</code></pre>
+<p>That lets you create new birds with <code>Bird.new</code> and then check if they are evil (which they always are). For example:</p>
+<pre><code class="language-ruby">bird1 = Bird.new
+bird1.evil? # =&gt; true
+bird2 = Bird.new
+bird2.evil? # =&gt; true
+</code></pre>
+<p>You can have multiple instances of a class. But for our <code>Player</code> dragon, we'll just have one.</p>
+<p>The <code>def initialize</code> line defines a method that's called whenever we create a new instance of <code>Player</code>. This is known as the constructor, and it's always called <code>initialize</code> in Ruby. Here you can set variables and write code that gets run once upon creation. The <code>@</code> in front of our variables makes them instance variables--variables that are available within the methods of a class instance (as the name implies). Setting these variables once and referencing them throughout the Player cleans up the code quite a bit.</p>
+<p>The <code>tick</code> method that's newly defined does what our global <code>tick</code> method did before, but it contains only what's needed to be managed for the player. As we make our game more complex, encapsulating the code will make it easier to think about and change.</p>
+<p>In the global <code>tick</code> method, we create a new player in the <code>args.state.player</code> if there isn't one already. And then every frame we update our player instance.</p>
+<pre><code class="language-ruby">def tick args
+  args.state.player ||= Player.new
+  args.state.player.tick args
+end
+</code></pre>
+<p>We'll be introducing more classes soon enough, so it's great to have one established without actually changing the functionality of the game.</p>
+<h2 id="fire-on-input"><a class="header" href="#fire-on-input">Fire on Input</a></h2>
+<p>[ displaying a label ]</p>
+<h2 id="moving-fireballs"><a class="header" href="#moving-fireballs">Moving Fireballs</a></h2>
+<h2 id="placeholder-square"><a class="header" href="#placeholder-square">Placeholder Square</a></h2>
+<h2 id="tracking-fireballs"><a class="header" href="#tracking-fireballs">Tracking Fireballs</a></h2>
+<h2 id="displaying-a-sprite"><a class="header" href="#displaying-a-sprite">Displaying a Sprite</a></h2>
+<h2 id="cleaning-up"><a class="header" href="#cleaning-up">Cleaning Up</a></h2>
 
                     </main>
 
