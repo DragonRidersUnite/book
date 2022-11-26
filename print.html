@@ -525,13 +525,13 @@ end
 <p>Our dragon won't leave the screen. Woot woot! We've got some serious code here! Look at that logic. Here's what changed:</p>
 <p>We moved the width and height of the player into variables so that they're easier to reference and reuse. Boom. We need those to do some math on the boundaries too. There's a general programming idea out there known as Don't Repeat Yourself (DRY). As soon as you have a piece of code, especially a number, that represents a value and is used multiple times, put it in a variable. This makes its intent clear as to what it represents and makes it easier to change. Win-win.</p>
 <p>Here's the good stuff. We check the boundary for the x axis:</p>
-<pre><code class="language-ruby">if args.state.player_x +  player_w &gt; args.grid.w
-  args.state.player_x = args.grid.w - player_w
-end
+<pre><code class="language-ruby">  if args.state.player_x +  player_w &gt; args.grid.w
+    args.state.player_x = args.grid.w - player_w
+  end
 
-if args.state.player_x &lt; 0
-  args.state.player_x = 0
-end
+  if args.state.player_x &lt; 0
+    args.state.player_x = 0
+  end
 </code></pre>
 <p>We check the right side of the screen: if the current player's x position plus their width is greater than <code>args.grid.w</code>, then we set the x position to the width of the screen (<code>args.grid.w</code>) minus the width of the sprite. For example, if we move the sprite so it has the x position of 1284, 4 pixels past the right edge of the screen, we override that change and set it to 1280 minus the player's width.</p>
 <p>It's so important that this happens after checking for input. You don't want to change <code>args.state.player_x</code> after this check, otherwise the boundary won't be enforced. Order matters with the code we write within <code>tick</code>.</p>
@@ -546,6 +546,95 @@ end
 <p>In the next chapter we'll make our dragon spit fireballs when we press a key or button. Watch out!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="spit-fire"><a class="header" href="#spit-fire">Spit Fire</a></h1>
 <p>Our next mission is to make our dragon spit fire because that's just what they do. We'll piece this whole thing into a game with a narrative and intentional design soon enough. But let's keep focusing on simple mechanics and code for right now.</p>
+<h2 id="player-refactor"><a class="header" href="#player-refactor">Player Refactor</a></h2>
+<p>In the code from the last chapter, there's a lot of code related to the player, from handling their input to moving them, to displaying the sprite. See how we have so much state with the <code>player_</code> prefix? That's a sign we can probably refactor the code to make it a bit easier to manage.</p>
+<pre><code class="language-ruby">def tick args
+  args.state.player_x ||= 120
+  args.state.player_y ||= 280
+  speed = 12
+  player_w = 100
+  player_h = 80
+
+  if args.inputs.left
+    args.state.player_x -= speed
+  elsif args.inputs.right
+    args.state.player_x += speed
+  end
+
+  if args.inputs.up
+    args.state.player_y += speed
+  elsif args.inputs.down
+    args.state.player_y -= speed
+  end
+
+  if args.state.player_x +  player_w &gt; args.grid.w
+    args.state.player_x = args.grid.w - player_w
+  end
+
+  if args.state.player_x &lt; 0
+    args.state.player_x = 0
+  end
+
+  if args.state.player_y + player_h &gt; args.grid.h
+    args.state.player_y = args.grid.h - player_h
+  end
+
+  if args.state.player_y &lt; 0
+    args.state.player_y = 0
+  end
+
+  args.outputs.sprites &lt;&lt; [args.state.player_x, args.state.player_y, player_w, player_h, 'sprites/misc/dragon-0.png']
+end
+</code></pre>
+<p>Let's change our <code>app/main.rb</code> to now be this instead:</p>
+<pre><code class="language-ruby"># TODO: test this works
+class Player
+  def initialize
+    @x = 120
+    @y = 280
+    @speed = 12
+    @w = 100
+    @h = 80
+  end
+
+  def tick args
+    if args.inputs.left
+      @x -= @speed
+    elsif args.inputs.right
+      @x += @speed
+    end
+
+    if args.inputs.up
+      @y += @speed
+    elsif args.inputs.down
+      @y -= @speed
+    end
+
+    if @x + @w &gt; args.grid.w
+      @x = args.grid.w - @w
+    end
+
+    if @x &lt; 0
+      @x = 0
+    end
+
+    if @y + @h &gt; args.grid.h
+      @y = args.grid.h - @h
+    end
+
+    if @y &lt; 0
+      @y = 0
+    end
+
+    args.outputs.sprites &lt;&lt; [@x, @y, @w, @h, 'sprites/misc/dragon-0.png']
+  end
+end
+
+def tick args
+  args.state.player ||= Player.new
+  args.state.player.tick args
+end
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="source-control"><a class="header" href="#source-control">Source Control</a></h1>
 <p>When working on any piece of software, whether it's a video game or an app to track how dogs you pet in a given day, it's extremely important to keep track of the changes to your code and keep it backed up in a secure location.</p>
 <p>Imagine this scenario: you work on your game for three months. It's amazing. It's your X-Files Dating Sim. You've painstakingly drawn all of the characters, written the scenario, coded up all the interactions. Then one day your computer gets stolen by a giant crow! I don't trust those crows, I never have. Suddenly your game is gone, poof. All that hard work just sitting on a hard-drive barely being protected by the shell of your laptop from the aggressive pecks of the entire local union of crows.</p>

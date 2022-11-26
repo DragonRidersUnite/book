@@ -150,6 +150,95 @@
                     <main>
                         <h1 id="spit-fire"><a class="header" href="#spit-fire">Spit Fire</a></h1>
 <p>Our next mission is to make our dragon spit fire because that's just what they do. We'll piece this whole thing into a game with a narrative and intentional design soon enough. But let's keep focusing on simple mechanics and code for right now.</p>
+<h2 id="player-refactor"><a class="header" href="#player-refactor">Player Refactor</a></h2>
+<p>In the code from the last chapter, there's a lot of code related to the player, from handling their input to moving them, to displaying the sprite. See how we have so much state with the <code>player_</code> prefix? That's a sign we can probably refactor the code to make it a bit easier to manage.</p>
+<pre><code class="language-ruby">def tick args
+  args.state.player_x ||= 120
+  args.state.player_y ||= 280
+  speed = 12
+  player_w = 100
+  player_h = 80
+
+  if args.inputs.left
+    args.state.player_x -= speed
+  elsif args.inputs.right
+    args.state.player_x += speed
+  end
+
+  if args.inputs.up
+    args.state.player_y += speed
+  elsif args.inputs.down
+    args.state.player_y -= speed
+  end
+
+  if args.state.player_x +  player_w &gt; args.grid.w
+    args.state.player_x = args.grid.w - player_w
+  end
+
+  if args.state.player_x &lt; 0
+    args.state.player_x = 0
+  end
+
+  if args.state.player_y + player_h &gt; args.grid.h
+    args.state.player_y = args.grid.h - player_h
+  end
+
+  if args.state.player_y &lt; 0
+    args.state.player_y = 0
+  end
+
+  args.outputs.sprites &lt;&lt; [args.state.player_x, args.state.player_y, player_w, player_h, 'sprites/misc/dragon-0.png']
+end
+</code></pre>
+<p>Let's change our <code>app/main.rb</code> to now be this instead:</p>
+<pre><code class="language-ruby"># TODO: test this works
+class Player
+  def initialize
+    @x = 120
+    @y = 280
+    @speed = 12
+    @w = 100
+    @h = 80
+  end
+
+  def tick args
+    if args.inputs.left
+      @x -= @speed
+    elsif args.inputs.right
+      @x += @speed
+    end
+
+    if args.inputs.up
+      @y += @speed
+    elsif args.inputs.down
+      @y -= @speed
+    end
+
+    if @x + @w &gt; args.grid.w
+      @x = args.grid.w - @w
+    end
+
+    if @x &lt; 0
+      @x = 0
+    end
+
+    if @y + @h &gt; args.grid.h
+      @y = args.grid.h - @h
+    end
+
+    if @y &lt; 0
+      @y = 0
+    end
+
+    args.outputs.sprites &lt;&lt; [@x, @y, @w, @h, 'sprites/misc/dragon-0.png']
+  end
+end
+
+def tick args
+  args.state.player ||= Player.new
+  args.state.player.tick args
+end
+</code></pre>
 
                     </main>
 

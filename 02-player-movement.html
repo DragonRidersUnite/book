@@ -288,13 +288,13 @@ end
 <p>Our dragon won't leave the screen. Woot woot! We've got some serious code here! Look at that logic. Here's what changed:</p>
 <p>We moved the width and height of the player into variables so that they're easier to reference and reuse. Boom. We need those to do some math on the boundaries too. There's a general programming idea out there known as Don't Repeat Yourself (DRY). As soon as you have a piece of code, especially a number, that represents a value and is used multiple times, put it in a variable. This makes its intent clear as to what it represents and makes it easier to change. Win-win.</p>
 <p>Here's the good stuff. We check the boundary for the x axis:</p>
-<pre><code class="language-ruby">if args.state.player_x +  player_w &gt; args.grid.w
-  args.state.player_x = args.grid.w - player_w
-end
+<pre><code class="language-ruby">  if args.state.player_x +  player_w &gt; args.grid.w
+    args.state.player_x = args.grid.w - player_w
+  end
 
-if args.state.player_x &lt; 0
-  args.state.player_x = 0
-end
+  if args.state.player_x &lt; 0
+    args.state.player_x = 0
+  end
 </code></pre>
 <p>We check the right side of the screen: if the current player's x position plus their width is greater than <code>args.grid.w</code>, then we set the x position to the width of the screen (<code>args.grid.w</code>) minus the width of the sprite. For example, if we move the sprite so it has the x position of 1284, 4 pixels past the right edge of the screen, we override that change and set it to 1280 minus the player's width.</p>
 <p>It's so important that this happens after checking for input. You don't want to change <code>args.state.player_x</code> after this check, otherwise the boundary won't be enforced. Order matters with the code we write within <code>tick</code>.</p>
