@@ -142,43 +142,7 @@ You can move your dragon completely off the screen, lost in the great unknown! T
 [TODO: drawing about boundaries]
 
 ``` ruby
-def tick args
-  args.state.player_x ||= 120
-  args.state.player_y ||= 280
-  speed = 12
-  player_w = 100
-  player_h = 80
-
-  if args.inputs.left
-    args.state.player_x -= speed
-  elsif args.inputs.right
-    args.state.player_x += speed
-  end
-
-  if args.inputs.up
-    args.state.player_y += speed
-  elsif args.inputs.down
-    args.state.player_y -= speed
-  end
-
-  if args.state.player_x +  player_w > args.grid.w
-    args.state.player_x = args.grid.w - player_w
-  end
-
-  if args.state.player_x < 0
-    args.state.player_x = 0
-  end
-
-  if args.state.player_y + player_h > args.grid.h
-    args.state.player_y = args.grid.h - player_h
-  end
-
-  if args.state.player_y < 0
-    args.state.player_y = 0
-  end
-
-  args.outputs.sprites << [args.state.player_x, args.state.player_y, player_w, player_h, 'sprites/misc/dragon-0.png']
-end
+{{#include code/chapter_02_movement_and_boundaries.rb}}
 ```
 
 Our dragon won't leave the screen. Woot woot! We've got some serious code here! Look at that logic. Here's what changed:
@@ -188,13 +152,7 @@ We moved the width and height of the player into variables so that they're easie
 Here's the good stuff. We check the boundary for the x axis:
 
 ``` ruby
-if args.state.player_x +  player_w > args.grid.w
-  args.state.player_x = args.grid.w - player_w
-end
-
-if args.state.player_x < 0
-  args.state.player_x = 0
-end
+{{#include code/chapter_02_movement_and_boundaries.rb:20:26}}
 ```
 
 We check the right side of the screen: if the current player's x position plus their width is greater than `args.grid.w`, then we set the x position to the width of the screen (`args.grid.w`) minus the width of the sprite. For example, if we move the sprite so it has the x position of 1284, 4 pixels past the right edge of the screen, we override that change and set it to 1280 minus the player's width.
