@@ -109,7 +109,9 @@ So naturally, for my final project in that high school computer science class I 
 
 In order to make that game, I followed a free online tutorial that laid out the foundations of making a game with Java. There was no way I would have figured out on my own how to make a game at that point without help from a free online tutorial. I had _so_ much fun making that final project that I went to college to study game programming and do programming for my career. I took what I learned in that tutorial, expanded the functionality, and made it my own (with copyright sprites, but still!).
 
-This book is freely accessible so that someone who loves games and wants to try making them can do so. You'll learn the foundations of game programming and making games, as well as some more advanced topics. If this book can help even just one person start and finish a game, it's worth every minute I've spent on it. We'll make a game not too dissimilar from _Zaku Space Battle_. Once you finish it, take what you've learned and make it your own!
+This book is freely accessible so that someone who loves games and wants to try making them can do so. Free programming resources have truly shaped my life and career. I wouldn't have the job and life I had now without them. So I want to give back and try to help other aspiring developers. That's why this book is free.
+
+You'll learn the foundations of game programming and making games, as well as some more advanced topics. If this book can help even just one person start and finish a game, it's worth every minute I've spent on it. We'll make a game not too dissimilar from _Zaku Space Battle_. Once you finish it, take what you've learned and make it your own!
 
 ## Contribute
 
