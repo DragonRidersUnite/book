@@ -25,10 +25,12 @@
   - [Menus]()
   - [Metadata]()
 - [Ship Your Game]()
+- [Make It Your Own]()
 - [What Next]()
 
 -----------
 
 [Ruby Primer]()
 [Source Control](./source-control.md)
+[Beyond the Code]()
 [Game Dev Resources](./game-dev-resources.md)
