@@ -171,6 +171,7 @@
 <p>DRGTK costs money, yes. And there are plenty of free game engines out there. But the DRGTK team is committed to sustainably working on the engine and making it the best it can be, which means they need to get paid for their work. Support small teams by buying their software, it shows you're interested and it helps them keep doing what they love.</p>
 <p>You're investing in the engine and ecosystem, quite literally, by buying DRGTK. I want to see it succeed, so I bought a license. I want to see it succeed so badly I've written this book to try to help <em>you</em> make games with it.</p>
 <p>Plus, if you're a student or in need of financial assistance, the DragonRuby team offers free licenses. <a href="https://dragonruby.org/toolkit/game">Get in touch with the team to get a free license.</a></p>
+<p>There's also <a href="fiddle.dragonruby.org">a free, interactive environment</a> you can use to sample DragonRuby GTK. Give it a try and see what you think!</p>
 <h2 id="why-dragonruby-toolkit"><a class="header" href="#why-dragonruby-toolkit">Why DragonRuby Toolkit</a></h2>
 <p>There are more game engines, frameworks, and libraries than I can count on my hands and toes. So why should you use DragonRuby?</p>
 <p>That's a legit question. Here are my reasons why:</p>
@@ -553,9 +554,19 @@ end
 <h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
 <p>In the next chapter we'll make our dragon spit fireballs when we press a key or button. Watch out!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="spit-fire"><a class="header" href="#spit-fire">Spit Fire</a></h1>
-<p>Our next mission is to make our dragon spit fire because that's just what they do. We'll piece this whole thing into a game with a narrative and intentional design soon enough. But let's keep focusing on simple mechanics and code for right now.</p>
+<p>Our next mission is to make our dragon spit fire because that's just what they do. We'll piece this whole thing into a game with win and lose states, a narrative, and intentional design soon enough. But let's keep focusing on simple mechanics and the code for right now.</p>
 <h2 id="fire-on-input"><a class="header" href="#fire-on-input">Fire on Input</a></h2>
-<p>[ displaying a label ]</p>
+<p>In the last chapter, we used <code>args.inputs</code> to check for player input from the four main directions. If those inputs were being pressed, then we moved the dragon. Now let's check to see if the <kbd>Z</kbd> key is pressed to know when to have our dragon spit a fire ball.</p>
+<p>To check if a key was pressed, we can use <code>args.inputs.keyboard.key_down</code> and then whatever key we want to check. So in our case, we'll check <code>args.inputs.keyboard.key_down.z</code>. In our <code>#tick</code> method, right above where we render the dragon sprite, let's check for that input:</p>
+<pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z
+    puts &quot;Z key pressed&quot;
+  end
+
+  args.outputs.sprites &lt;&lt; [args.state.player_x, args.state.player_y, player_w, player_h, 'sprites/misc/dragon-0.png']
+</code></pre>
+<p>Using <code>puts</code> is a really helpful way to check that our game works as we expect it to. In this case, every tick where the Z key is pressed down, it prints the string &quot;Z key pressed&quot; to the console (open it iwth <kbd>~</kbd>, remember?). Run your game and press the Z key a bunch and then open your console.</p>
+<img alt="screenshot of DragonRuby console showing Z key pressed 6 times" src="./img/c03-console-puts.png" style="max-width: 420px">
+<h2 id="expanded-control-support"><a class="header" href="#expanded-control-support">Expanded Control Support</a></h2>
 <h2 id="moving-fireballs"><a class="header" href="#moving-fireballs">Moving Fireballs</a></h2>
 <h2 id="placeholder-square"><a class="header" href="#placeholder-square">Placeholder Square</a></h2>
 <h2 id="tracking-fireballs"><a class="header" href="#tracking-fireballs">Tracking Fireballs</a></h2>
