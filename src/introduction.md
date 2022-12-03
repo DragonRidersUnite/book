@@ -36,6 +36,8 @@ You're investing in the engine and ecosystem, quite literally, by buying DRGTK. 
 
 Plus, if you're a student or in need of financial assistance, the DragonRuby team offers free licenses. [Get in touch with the team to get a free license.](https://dragonruby.org/toolkit/game)
 
+There's also [a free, interactive environment](fiddle.dragonruby.org) you can use to sample DragonRuby GTK. Give it a try and see what you think!
+
 ## Why DragonRuby Toolkit
 
 There are more game engines, frameworks, and libraries than I can count on my hands and toes. So why should you use DragonRuby?
