@@ -186,7 +186,7 @@
 <p>Launch the <code>dragonruby</code> file.</p>
 <p>If you're on MacOS, right-click the file and select &quot;Open&quot;. You'll need to ensure software from unverified sources can be installed.</p>
 <p>Here's what gets displayed:</p>
-<p><img src="./img/hello-world.webp" alt="screenshot of the Hello World! for DragonRuby GTK" /></p>
+<p><img src="./img/hello-world.jpg" alt="screenshot of the Hello World! for DragonRuby GTK" /></p>
 <p>This isn't a game... yet! But it is doing three key things:</p>
 <ol>
 <li>Launching an app window</li>
@@ -239,7 +239,7 @@ args.outputs.labels  &lt;&lt; [640, 420, 'Join the Discord! https://discord.drag
 </code></pre>
 <p>Don't worry about memorizing what the positional elements of the array mean. This is just a quick way to render text. We'll start using a more friendly approach soon enough. The sample game does this three times, thus rendering three difference pieces of text. The <code>y</code> coordinate is different for each, stacking them on top of each other vertically instead of overlapping one another.</p>
 <p>Gosh enough of this rambling, let's adjust some code. Change the text from <code>&quot;Hello World!&quot;</code> to be <code>&quot;Hello Dragon!&quot;</code> and save the file.</p>
-<p><img src="./img/hello-dragon.webp" alt="screenshot of the Hello Dragon! for DragonRuby GTK" /></p>
+<p><img src="./img/hello-dragon.jpg" alt="screenshot of the Hello Dragon! for DragonRuby GTK" /></p>
 <p>Did you see that? The game reloaded your code and changed the text to be &quot;Hello Dragon!&quot; That was quick, wasn't it? That's one of the best parts of DRGTK—live reloading of your game code in the engine. This allows you to make changes to your game quickly, reducing the time between the cycles of writing your code and testing it.</p>
 <pre><code class="language-ruby">args.outputs.sprites &lt;&lt; [576, 280, 128, 101, 'dragonruby.png']
 </code></pre>
@@ -306,7 +306,7 @@ def tick args
   args.outputs.sprites &lt;&lt; [120, 280, 100, 80, 'sprites/misc/dragon-0.png']
 end
 </code></pre>
-<p><img src="./img/hello-dragon-own.webp" alt="screenshot of the Hello Dragon! with pixel dragon displayed" /></p>
+<p><img src="./img/hello-dragon-own.jpg" alt="screenshot of the Hello Dragon! with pixel dragon displayed" /></p>
 <p>That's some pretty fine code for the first chapter. We've got text and an image displaying. We learned about methods too. Don't worry if it's not all making total and complete sense. You'll understand more with time. Remember, be patient.</p>
 <h2 id="game-loop-explained"><a class="header" href="#game-loop-explained">Game Loop Explained</a></h2>
 <p>There's a lot of magic happening where we can just write <code>def tick</code> and magically have a game. What's happening here is that DragonRuby Game Toolkit takes the code in <code>mygame/app/main.rb</code>, find the tick method, and then runs a loop that calls it 60 times every second until the program closes. This loop is referred to as the Game Loop.</p>
