@@ -1,6 +1,6 @@
 # Introduction
 
-![cover of Building Games with DragonRuby, with the subtitle 'A comprehensive guide to shipping cross-platform games with ease' by Brett Chalupa and the Dragon Rider Community.](./img/cover.webp)
+![cover of Building Games with DragonRuby, with the subtitle 'A comprehensive guide to shipping cross-platform games with ease' by Brett Chalupa and the Dragon Rider Community.](./img/cover.jpg)
 
 🚧 _Building Games with DragonRuby_ is a work in progress. Expect typos, issues, and incompleteness. 🚧
 

@@ -41,7 +41,7 @@ If you're on MacOS, right-click the file and select "Open". You'll need to ensur
 
 Here's what gets displayed:
 
-![screenshot of the Hello World! for DragonRuby GTK](./img/hello-world.webp)
+![screenshot of the Hello World! for DragonRuby GTK](./img/hello-world.jpg)
 
 This isn't a game... yet! But it is doing three key things:
 
@@ -130,7 +130,7 @@ Don't worry about memorizing what the positional elements of the array mean. Thi
 
 Gosh enough of this rambling, let's adjust some code. Change the text from `"Hello World!"` to be `"Hello Dragon!"` and save the file.
 
-![screenshot of the Hello Dragon! for DragonRuby GTK](./img/hello-dragon.webp)
+![screenshot of the Hello Dragon! for DragonRuby GTK](./img/hello-dragon.jpg)
 
 Did you see that? The game reloaded your code and changed the text to be "Hello Dragon!" That was quick, wasn't it? That's one of the best parts of DRGTK—live reloading of your game code in the engine. This allows you to make changes to your game quickly, reducing the time between the cycles of writing your code and testing it.
 
@@ -240,7 +240,7 @@ def tick args
 end
 ```
 
-![screenshot of the Hello Dragon! with pixel dragon displayed](./img/hello-dragon-own.webp)
+![screenshot of the Hello Dragon! with pixel dragon displayed](./img/hello-dragon-own.jpg)
 
 That's some pretty fine code for the first chapter. We've got text and an image displaying. We learned about methods too. Don't worry if it's not all making total and complete sense. You'll understand more with time. Remember, be patient.
 
