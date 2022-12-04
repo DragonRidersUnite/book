@@ -10,15 +10,14 @@
 - [Target Practice]()
 - [Moving Targets]()
 - [Win State]()
-- [Fastest Score Tracking]()
+- [Time Tracking]()
 - [Save & Load Data]()
 - [Sound Effects]()
 - [Music]()
 - [Animations]()
 - [Scenes]()
-- [Boss Fight]()
-- [Make It Your Own]()
 - [Ship Your Game]()
+- [Make It Your Own]()
 - [What Next]()
 
 -----------
