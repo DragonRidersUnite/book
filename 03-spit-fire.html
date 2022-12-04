@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html" class="active"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Target Practice</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Moving Targets</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Win State</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Fastest Score Tracking</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Save &amp; Load Data</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Sound Effects</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Music</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Animations</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">13.</strong> Boss Fight</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">14.</strong> Make It Your Own</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">15.</strong> Ship Your Game</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">16.</strong> What Next</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Ruby Primer</div></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li><li class="chapter-item expanded affix "><div>Beyond the Code</div></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html" class="active"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Target Practice</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Moving Targets</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Win State</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Time Tracking</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Save &amp; Load Data</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Sound Effects</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Music</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Animations</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">13.</strong> Ship Your Game</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">14.</strong> Make It Your Own</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">15.</strong> What Next</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Ruby Primer</div></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li><li class="chapter-item expanded affix "><div>Beyond the Code</div></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -181,11 +181,136 @@
 <p>You can combine <code>||</code> on one line (<code>if monday || tuesday || wednesday</code>), but it can be helpful to break long lines to make our code easier to read.</p>
 <p>Outputting info to the console isn't that helpful for the player, but can you begin to imagine how we'll use that check to instead display a fireball.</p>
 <h2 id="displaying-fireballs"><a class="header" href="#displaying-fireballs">Displaying Fireballs</a></h2>
+<p>We want to display a fireball on the screen when the action key is pressed. We've got most of the code, all we need to do is change <code>puts</code> to instead display the fireball.</p>
+<p>At the top of <code>#tick</code> (<code>#whatever</code> is Ruby shorthand for &quot;the whatever method&quot;), assign an empty array to <code>args.state.fireballs</code> if nothing has been assigned yet. This will let us keep track of fireballs across the game loop to do all sorts of things with them (display them, move them, collide them with other objects):</p>
+<pre><code class="language-ruby">def tick args
+  args.state.player_x ||= 120
+  args.state.player_y ||= 280
+  args.state.fireballs ||= []
+</code></pre>
+<p>Then where we check for the action input, push a fireball into the <code>arg.state.fireballs</code> array based on the current player's x and y position:</p>
+<pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z ||
+      args.inputs.keyboard.key_down.j ||
+      args.inputs.controller_one.key_down.a
+    args.state.fireballs &lt;&lt; [args.state.player_x, args.state.player_y, 'fireball']
+  end
+
+  args.outputs.labels  &lt;&lt; args.state.fireballs
+
+</code></pre>
+<p>Then all we have to do is render our fireballs by pushing them into the <code>args.outputs.labels</code> collection. DragonRuby is smart enough to know that if we push an array into any <code>args.outputs</code> collection it'll flatten it and display them correctly. Thanks, DragonRuby!</p>
+<p>Play your game and see what happens! Fireballs everywhere. Wait! You're not impressed by those fireballs? I'd be pretty frightened if the word fireball was flying at me.</p>
+<p><img src="./img/c03-fireball-display.jpg" alt="screenshot of the game showing the word 'fireball' throughout with the dragon flying around" /></p>
+<p>Wait, where are you going? Why are you muttering &quot;I didn't sign up to read no stinkin' book where you output the word fireball on the screen, I'm here for the real flame, the good stuff...&quot;</p>
 <h2 id="moving-fireballs"><a class="header" href="#moving-fireballs">Moving Fireballs</a></h2>
+<p>Guess what? We're sticking with ole &quot;fireball&quot; for now! It's silly and fun and I haven't found a good fireball sprite to use. We'll get there, we'll get there. But let's first make the fireballs move across the screen.</p>
+<p>When we moved our player dragon, we took the x and y position and added or substracted values in each <code>#tick</code> based upon if any directional input was pressed. Our fireballs will move regardless of any button pressed once they're extruded from our ole dragon's mouth. Because our game is simple and the dragon only faces to the right, all of the fireballs will move to the right. How do we go about that on our X-Y axis? We just increase the <code>x</code> position of the fireball each tick. Let's do that and see what happens:</p>
+<pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z ||
+      args.inputs.keyboard.key_down.j ||
+      args.inputs.controller_one.key_down.a
+    args.state.fireballs &lt;&lt; [args.state.player_x, args.state.player_y, 'fireball']
+  end
+
+  args.state.fireballs.each do |fireball|
+    fireball[0] += speed + 2
+  end
+
+  args.outputs.labels  &lt;&lt; args.state.fireballs
+</code></pre>
+<p>Right between where we add a new fireball to <code>args.state.fireballs</code> and we display them using <code>args.outputs.labels</code>, our new code does this:</p>
+<ol>
+<li>Loop through the array of <code>args.state.fireballs</code></li>
+<li>For each fireball, update the array value at the <code>0</code> index, which is the x position of the fireball, to be the dragon's speed plus 2 (because we want the fireball to move faster than the dragon).</li>
+</ol>
+<p>Move your dragon around, spit some fire, and bask in the glory of a word moving so smoothly across the screen that it almost looks like a... fireball!</p>
+<p>Try changing around <code>speed + 2</code> to make the fireballs move faster or slower and see how that feels. Adjusting speed values can really change the vibe of your game and is important in tuning it to feel just right.</p>
+<p>There's a lot of important concepts in those three newly added lines of code. In Ruby, when there's an array of data, we can loop through <strong>each</strong> item and modify their properties. Games are composed of huge collections of things: enemies, fireballs, menu options, player inventory. Arrays (and just collections in general) aren't anything to be afraid of, and soon enough, you'll be thinking about your games in them.</p>
+<p>Looping through an array of data in each <code>#tick</code> and then doing <em>something</em> is the stuff games are made of! Here are some ways this can be applied in all sorts of games: enemy behavior, checking for collision, animating. As our game (and any game you make) gets more complex, looping through collections of data becomes more and more common.</p>
+<p>[TODO: illustration of game loop and then a little loop inside where we loop through collections]</p>
 <h2 id="switching-to-hashes"><a class="header" href="#switching-to-hashes">Switching to Hashes</a></h2>
+<p>So far throughout the book we've been using arrays to represent the entities in our game, whether it be the player's dragon sprite or our fireball text that gets displayed. Remember <code>[args.state.player_x, args.state.player_y, 'fireball']</code>? Arrays are wonderful and important, but they aren't so great for representing structured data because it's difficult to remember what each piece of data in the array's positions represents. Remembering that <code>fireball[2]</code> is the text value and not the y value is tricky. Luckily, DragonRuby has a more verbose and clear data structure we can use for managing our data. It's called a hash! Much like arrays, hashes are extremely useful.</p>
+<p>Let's look at what the text example above would be like as a hash:</p>
+<pre><code class="language-ruby">{
+  x: args.state.player_x,
+  y: args.state.player_y,
+  text: &quot;fireball&quot;,
+}
+</code></pre>
+<p>Hashes are expressed through curly braces <code>{}</code> and contain <code>key: value</code> separated by commas. The values of a hash can be anything, from numbers to strings to whatever your heart desires. Let's say we wanted to build our own hash to represent a dragon and put it in the <code>dragon</code> variable:</p>
+<pre><code class="language-ruby">dragon = {
+  name: &quot;Francis&quot;,
+  size: &quot;medium&quot;,
+  age: 541,
+}
+</code></pre>
+<p>Values of a hash are then accessed by their keys, so you <code>dragon.name</code> returns the string <code>&quot;Francis&quot;</code>, <code>dragon.size</code> returns the string <code>&quot;medium&quot;</code>, and <code>dragon.age</code> returns the number <code>541</code>. This is much more clear than having to remember the position of these values within an array.</p>
+<p>In general, differentiate between arrays and hashes like this: <strong>hashes are used represent one piece of data with multiple properties</strong> and <strong>arrays are used to collect data (often times hashes) to keep track of and manipulate them</strong>.</p>
+<p>Below is our entire game translated to use hashes instead of arrays for our rendering:</p>
+<pre><code class="language-ruby">def tick args
+  args.state.player ||= {
+    x: 120,
+    y: 280,
+    w: 100,
+    h: 80,
+    speed: 12,
+    path: 'sprites/misc/dragon-0.png',
+  }
+  args.state.fireballs ||= []
+
+  if args.inputs.left
+    args.state.player.x -= args.state.player.speed
+  elsif args.inputs.right
+    args.state.player.x += args.state.player.speed
+  end
+
+  if args.inputs.up
+    args.state.player.y += args.state.player.speed
+  elsif args.inputs.down
+    args.state.player.y -= args.state.player.speed
+  end
+
+  if args.state.player.x +  args.state.player.w &gt; args.grid.w
+    args.state.player.x = args.grid.w - args.state.player.w
+  end
+
+  if args.state.player.x &lt; 0
+    args.state.player.x = 0
+  end
+
+  if args.state.player.y + args.state.player.h &gt; args.grid.h
+    args.state.player.y = args.grid.h - args.state.player.h
+  end
+
+  if args.state.player.y &lt; 0
+    args.state.player.y = 0
+  end
+
+  if args.inputs.keyboard.key_down.z ||
+      args.inputs.keyboard.key_down.j ||
+      args.inputs.controller_one.key_down.a
+    args.state.fireballs &lt;&lt; {
+      x: args.state.player.x,
+      y: args.state.player.y,
+      text: 'fireball',
+    }
+  end
+
+  args.state.fireballs.each do |fireball|
+    fireball.x += args.state.player.speed + 2
+  end
+
+  args.outputs.labels  &lt;&lt; args.state.fireballs
+  args.outputs.sprites &lt;&lt; args.state.player
+end
+</code></pre>
+<p>It may not seem like much has changed, but there are two key changes that make this worthwhile:</p>
+<ol>
+<li><code>fireball.x += args.state.player.speed + 2</code> — it is much clearer when we move the fireball that we're adding to its <code>x</code> position AND using the player's speed</li>
+<li><code>args.outputs.sprites &lt;&lt; args.state.player</code> — because we're keeping track of our player in <code>args.state.player</code> and it has the data DragonRuby needs to render it, we can just push it into <code>args.outputs.sprites</code> and not construct the array that we used to use</li>
+</ol>
 <h2 id="displaying-a-sprite"><a class="header" href="#displaying-a-sprite">Displaying a Sprite</a></h2>
-<h2 id="cleaning-up"><a class="header" href="#cleaning-up">Cleaning Up</a></h2>
-<p>[when they go off screen]</p>
+<p>With that refactor done, let's display a sprite for our fireball and call it a chapter.</p>
+<p>TODO: this chapter</p>
 
                     </main>
 
