@@ -81,6 +81,8 @@ Right between where we add a new fireball to `args.state.fireballs` and we displ
 
 Move your dragon around, spit some fire, and bask in the glory of a word moving so smoothly across the screen that it almost looks like a... fireball!
 
+Try changing around `speed + 2` to make the fireballs move faster or slower and see how that feels. Adjusting speed values can really change the vibe of your game and is important in tuning it to feel just right.
+
 There's a lot of important concepts in those three newly added lines of code. In Ruby, when there's an array of data, we can loop through **each** item and modify their properties. Games are composed of huge collections of things: enemies, fireballs, menu options, player inventory. Arrays (and just collections in general) aren't anything to be afraid of, and soon enough, you'll be thinking about your games in them.
 
 Looping through an array of data in each `#tick` and then doing _something_ is the stuff games are made of! Here are some ways this can be applied in all sorts of games: enemy behavior, checking for collision, animating. As our game (and any game you make) gets more complex, looping through collections of data becomes more and more common.
@@ -89,8 +91,45 @@ Looping through an array of data in each `#tick` and then doing _something_ is t
 
 ## Switching to Hashes
 
+So far throughout the book we've been using arrays to represent the entities in our game, whether it be the player's dragon sprite or our fireball text that gets displayed. Remember `[args.state.player_x, args.state.player_y, 'fireball']`? Arrays are wonderful and important, but they aren't so great for representing structured data because it's difficult to remember what each piece of data in the array's positions represents. Remembering that `fireball[2]` is the text value and not the y value is tricky. Luckily, DragonRuby has a more verbose and clear data structure we can use for managing our data. It's called a hash! Much like arrays, hashes are extremely useful.
+
+Let's look at what the text example above would be like as a hash:
+
+``` ruby
+{
+  x: args.state.player_x,
+  y: args.state.player_y,
+  text: "fireball",
+}
+```
+
+Hashes are expressed through curly braces `{}` and contain `key: value` separated by commas. The values of a hash can be anything, from numbers to strings to whatever your heart desires. Let's say we wanted to build our own hash to represent a dragon and put it in the `dragon` variable:
+
+``` ruby
+dragon = {
+  name: "Francis",
+  size: "medium",
+  age: 541,
+}
+```
+
+Values of a hash are then accessed by their keys, so you `dragon.name` returns the string `"Francis"`, `dragon.size` returns the string `"medium"`, and `dragon.age` returns the number `541`. This is much more clear than having to remember the position of these values within an array.
+
+In general, differentiate between arrays and hashes like this: **hashes are used represent one piece of data with multiple properties** and **arrays are used to collect data (often times hashes) to keep track of and manipulate them**.
+
+Below is our entire game translated to use hashes instead of arrays for our rendering:
+
+``` ruby
+{{#include code/chapter_03/05_switching_to_hashes/app/main.rb}}
+```
+
+It may not seem like much has changed, but there are two key changes that make this worthwhile:
+
+1. `fireball.x += args.state.player.speed + 2` — it is much clearer when we move the fireball that we're adding to its `x` position AND using the player's speed
+2. `args.outputs.sprites << args.state.player` — because we're keeping track of our player in `args.state.player` and it has the data DragonRuby needs to render it, we can just push it into `args.outputs.sprites` and not construct the array that we used to use
+
 ## Displaying a Sprite
 
-## Cleaning Up
+With that refactor done, let's display a sprite for our fireball and call it a chapter.
 
-[when they go off screen]
+TODO: this chapter
