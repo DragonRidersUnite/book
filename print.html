@@ -567,7 +567,7 @@ end
   args.outputs.sprites &lt;&lt; [args.state.player_x, args.state.player_y, player_w, player_h, 'sprites/misc/dragon-0.png']
 </code></pre>
 <p>Using <code>puts</code> is a really helpful way to check that our game works as we expect it to. In this case, every tick where the Z key is pressed down, it prints the string &quot;Z key pressed&quot; to the console (open it iwth <kbd>~</kbd>, remember?). Run your game and press the Z key a bunch and then open your console.</p>
-<img alt="screenshot of DragonRuby console showing Z key pressed 6 times" src="./img/c03-console-puts.jpg" style="max-width: 420px">
+<img alt="screenshot of DragonRuby console showing Z key pressed 6 times" src="./img/c03-console-puts.jpg" style="max-width: 420px; width: 100%;">
 <h2 id="expanded-control-support"><a class="header" href="#expanded-control-support">Expanded Control Support</a></h2>
 <p>When making a game, it's important to support a variety of input configurations to make the game as accessible as possible. Sure, the keyboard arrow keys and the Z key are sensible defaults. But what if our player wants to use a gamepad controller? Or what if they would prefer to use WASD for movement? From the start of coding player input, let's support as many different inputs as reasonably possible.</p>
 <p>In our case, we'll support three configurations:</p>
