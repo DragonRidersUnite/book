@@ -255,3 +255,7 @@ Within the game loop, we'll keep track of everything that's happening, update st
 [TODO: drawing of the game loop and why it matters]
 
 The game loop will begin to feel more natural over time, but for now, remember this: **DRGTK runs the `tick` method 60 times every second**.
+
+## What's Next
+
+Let's get the player dragon moving around on the screen when we press certain keys. Player input is foundational to making games and a great next step.

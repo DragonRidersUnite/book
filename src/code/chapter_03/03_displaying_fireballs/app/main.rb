@@ -41,7 +41,7 @@ def tick args
     args.state.fireballs << [args.state.player_x, args.state.player_y, 'fireball']
   end
 
-  args.outputs.labels  << args.state.fireballs
+  args.outputs.labels << args.state.fireballs
 
   args.outputs.sprites << [args.state.player_x, args.state.player_y, player_w, player_h, 'sprites/misc/dragon-0.png']
 end

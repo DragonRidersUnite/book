@@ -132,4 +132,22 @@ It may not seem like much has changed, but there are two key changes that make t
 
 With that refactor done, let's display a sprite for our fireball and call it a chapter.
 
-TODO: this chapter
+Download the fireball sprite below and put it in `mygame/sprites/fireball.png`:
+
+![fireball sprite](./code/chapter_03/06_sprite/sprites/fireball.png)
+
+We'll change the hash we push into `args.state.fireballs` to be a sprite and adjust how we render that collection. Nothing too major. Here's the changes near the bottom of `#tick` that you'll need to make:
+
+``` ruby
+{{#include code/chapter_03/06_sprite/app/main.rb:40:56}}
+```
+
+We adjust the starting place of the fireball sprite to look like it comes out of the dragon's mouth. The sprite is 32 pixels wide by 32 pixes tall, so we set that.
+
+Now that the fireball is a sprite and not a text label, we can push both the player and the array of fireballs into `args.outputs.sprites` in one go. This is more efficient for DragonRuby than doing it separately.
+
+![dragon sprite shooting 4 fireballs flying across the screen](./img/c03-fireball-sprite.jpg)
+
+## What's Next
+
+We're so close to having a game, so close! We just need something to spit fireballs at, right? We'll display some floating targets that get destroyed on when a fireball hits them.
