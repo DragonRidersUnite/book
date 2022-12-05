@@ -195,7 +195,7 @@
     args.state.fireballs &lt;&lt; [args.state.player_x, args.state.player_y, 'fireball']
   end
 
-  args.outputs.labels  &lt;&lt; args.state.fireballs
+  args.outputs.labels &lt;&lt; args.state.fireballs
 
 </code></pre>
 <p>Then all we have to do is render our fireballs by pushing them into the <code>args.outputs.labels</code> collection. DragonRuby is smart enough to know that if we push an array into any <code>args.outputs</code> collection it'll flatten it and display them correctly. Thanks, DragonRuby!</p>
@@ -215,7 +215,7 @@
     fireball[0] += speed + 2
   end
 
-  args.outputs.labels  &lt;&lt; args.state.fireballs
+  args.outputs.labels &lt;&lt; args.state.fireballs
 </code></pre>
 <p>Right between where we add a new fireball to <code>args.state.fireballs</code> and we display them using <code>args.outputs.labels</code>, our new code does this:</p>
 <ol>
@@ -299,7 +299,7 @@
     fireball.x += args.state.player.speed + 2
   end
 
-  args.outputs.labels  &lt;&lt; args.state.fireballs
+  args.outputs.labels &lt;&lt; args.state.fireballs
   args.outputs.sprites &lt;&lt; args.state.player
 end
 </code></pre>
@@ -310,7 +310,32 @@ end
 </ol>
 <h2 id="displaying-a-sprite"><a class="header" href="#displaying-a-sprite">Displaying a Sprite</a></h2>
 <p>With that refactor done, let's display a sprite for our fireball and call it a chapter.</p>
-<p>TODO: this chapter</p>
+<p>Download the fireball sprite below and put it in <code>mygame/sprites/fireball.png</code>:</p>
+<p><img src="./code/chapter_03/06_sprite/sprites/fireball.png" alt="fireball sprite" /></p>
+<p>We'll change the hash we push into <code>args.state.fireballs</code> to be a sprite and adjust how we render that collection. Nothing too major. Here's the changes near the bottom of <code>#tick</code> that you'll need to make:</p>
+<pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z ||
+      args.inputs.keyboard.key_down.j ||
+      args.inputs.controller_one.key_down.a
+    args.state.fireballs &lt;&lt; {
+      x: args.state.player.x + args.state.player.w - 12,
+      y: args.state.player.y + 10,
+      w: 32,
+      h: 32,
+      path: 'sprites/fireball.png',
+    }
+  end
+
+  args.state.fireballs.each do |fireball|
+    fireball.x += args.state.player.speed + 2
+  end
+
+  args.outputs.sprites &lt;&lt; [args.state.player, args.state.fireballs]
+</code></pre>
+<p>We adjust the starting place of the fireball sprite to look like it comes out of the dragon's mouth. The sprite is 32 pixels wide by 32 pixes tall, so we set that.</p>
+<p>Now that the fireball is a sprite and not a text label, we can push both the player and the array of fireballs into <code>args.outputs.sprites</code> in one go. This is more efficient for DragonRuby than doing it separately.</p>
+<p><img src="./img/c03-fireball-sprite.jpg" alt="dragon sprite shooting 4 fireballs flying across the screen" /></p>
+<h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
+<p>We're so close to having a game, so close! We just need something to spit fireballs at, right? We'll display some floating targets that get destroyed on when a fireball hits them.</p>
 
                     </main>
 

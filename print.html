@@ -394,6 +394,8 @@ end
 <p>Within the game loop, we'll keep track of everything that's happening, update state, and render text and images. It's important to begin to think about things in a loop, as it influences timing and code structure.</p>
 <p>[TODO: drawing of the game loop and why it matters]</p>
 <p>The game loop will begin to feel more natural over time, but for now, remember this: <strong>DRGTK runs the <code>tick</code> method 60 times every second</strong>.</p>
+<h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
+<p>Let's get the player dragon moving around on the screen when we press certain keys. Player input is foundational to making games and a great next step.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="player-movement"><a class="header" href="#player-movement">Player Movement</a></h1>
 <p>In the last chapter, we got a dragon sprite showing up on the screen and some text. Let's build upon that by making it so we can control the dragon with our keyboard and a gamepad. Because guess what? That dragon is now the main character of this game we're building. 🐉 Buckle up, it's dragon riding time.</p>
 <p>Simplify <code>mygame/app/main.rb</code> to be just this for now:</p>
@@ -551,7 +553,7 @@ end
 <ul>
 <li>When you move the dragon horizontally and vertically at the same time, the dragon moves twice as fast. How could you make it so the dragon moves at a uniform speed still when that happens?</li>
 </ul>
-<h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
+<h2 id="whats-next-1"><a class="header" href="#whats-next-1">What's Next</a></h2>
 <p>In the next chapter we'll make our dragon spit fireballs when we press a key or button. Watch out!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="spit-fire"><a class="header" href="#spit-fire">Spit Fire</a></h1>
 <p>Our next mission is to make our dragon spit fire because that's just what they do. We'll piece this whole thing into a game with win and lose states, a narrative, and intentional design soon enough. But let's keep focusing on simple mechanics and the code for right now.</p>
@@ -600,7 +602,7 @@ end
     args.state.fireballs &lt;&lt; [args.state.player_x, args.state.player_y, 'fireball']
   end
 
-  args.outputs.labels  &lt;&lt; args.state.fireballs
+  args.outputs.labels &lt;&lt; args.state.fireballs
 
 </code></pre>
 <p>Then all we have to do is render our fireballs by pushing them into the <code>args.outputs.labels</code> collection. DragonRuby is smart enough to know that if we push an array into any <code>args.outputs</code> collection it'll flatten it and display them correctly. Thanks, DragonRuby!</p>
@@ -620,7 +622,7 @@ end
     fireball[0] += speed + 2
   end
 
-  args.outputs.labels  &lt;&lt; args.state.fireballs
+  args.outputs.labels &lt;&lt; args.state.fireballs
 </code></pre>
 <p>Right between where we add a new fireball to <code>args.state.fireballs</code> and we display them using <code>args.outputs.labels</code>, our new code does this:</p>
 <ol>
@@ -704,7 +706,7 @@ end
     fireball.x += args.state.player.speed + 2
   end
 
-  args.outputs.labels  &lt;&lt; args.state.fireballs
+  args.outputs.labels &lt;&lt; args.state.fireballs
   args.outputs.sprites &lt;&lt; args.state.player
 end
 </code></pre>
@@ -715,7 +717,32 @@ end
 </ol>
 <h2 id="displaying-a-sprite"><a class="header" href="#displaying-a-sprite">Displaying a Sprite</a></h2>
 <p>With that refactor done, let's display a sprite for our fireball and call it a chapter.</p>
-<p>TODO: this chapter</p>
+<p>Download the fireball sprite below and put it in <code>mygame/sprites/fireball.png</code>:</p>
+<p><img src="./code/chapter_03/06_sprite/sprites/fireball.png" alt="fireball sprite" /></p>
+<p>We'll change the hash we push into <code>args.state.fireballs</code> to be a sprite and adjust how we render that collection. Nothing too major. Here's the changes near the bottom of <code>#tick</code> that you'll need to make:</p>
+<pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z ||
+      args.inputs.keyboard.key_down.j ||
+      args.inputs.controller_one.key_down.a
+    args.state.fireballs &lt;&lt; {
+      x: args.state.player.x + args.state.player.w - 12,
+      y: args.state.player.y + 10,
+      w: 32,
+      h: 32,
+      path: 'sprites/fireball.png',
+    }
+  end
+
+  args.state.fireballs.each do |fireball|
+    fireball.x += args.state.player.speed + 2
+  end
+
+  args.outputs.sprites &lt;&lt; [args.state.player, args.state.fireballs]
+</code></pre>
+<p>We adjust the starting place of the fireball sprite to look like it comes out of the dragon's mouth. The sprite is 32 pixels wide by 32 pixes tall, so we set that.</p>
+<p>Now that the fireball is a sprite and not a text label, we can push both the player and the array of fireballs into <code>args.outputs.sprites</code> in one go. This is more efficient for DragonRuby than doing it separately.</p>
+<p><img src="./img/c03-fireball-sprite.jpg" alt="dragon sprite shooting 4 fireballs flying across the screen" /></p>
+<h2 id="whats-next-2"><a class="header" href="#whats-next-2">What's Next</a></h2>
+<p>We're so close to having a game, so close! We just need something to spit fireballs at, right? We'll display some floating targets that get destroyed on when a fireball hits them.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="source-control"><a class="header" href="#source-control">Source Control</a></h1>
 <p>When working on any piece of software, whether it's a video game or an app to track how dogs you pet in a given day, it's extremely important to keep track of the changes to your code and keep it backed up in a secure location.</p>
 <p>Imagine this scenario: you work on your game for three months. It's amazing. It's your X-Files Dating Sim. You've painstakingly drawn all of the characters, written the scenario, coded up all the interactions. Then one day your computer gets stolen by a giant crow! I don't trust those crows, I never have. Suddenly your game is gone, poof. All that hard work just sitting on a hard-drive barely being protected by the shell of your laptop from the aggressive pecks of the entire local union of crows.</p>
