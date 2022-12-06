@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Time Attack</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> High-Score</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Sound</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Ship Your Game</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> What Next</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Ruby Primer</div></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li><li class="chapter-item expanded affix "><div>Beyond the Code</div></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> High-Score</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Sound</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Background</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship Your Game</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">13.</strong> What Next</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Ruby Primer</div></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li><li class="chapter-item expanded affix "><div>Beyond the Code</div></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -1002,11 +1002,96 @@ end
 </code></pre>
 <p>When looping through <code>args.state.fireballs</code>, we check to see if the x position of the fireball in the loop is greater than the width of the screen. If it is, then we delete the fireball, just like we do below on collision with a target. Then we call <code>next</code>, which tells the loop we're in to move on to the next fireball in the array and not the rest of the code in this iteration of the loop. Since we've removed the fireball from the game, we don't want to check it for collision.</p>
 <p>Play your game and see that now as the fireballs fly off the screen, the total number of fireballs decreases. They no longer exist forever, flying off across the sky for all eternity, eating up our CPU cycles.</p>
+<p>Feel free to remove the <code>args.outputs.debug</code> lines if you don't want to see them since they've served their purpose and are less useful now.</p>
 <h2 id="summary-1"><a class="header" href="#summary-1">Summary</a></h2>
 <p>There will be many opportunities when working on your games to optimize your code so that it performs better. This was just a taste of what that process can be like. As you get better and better at making games, you'll improve at making them more performant.</p>
 <p>Don't obsesses over performance too much yet though. Focus on making your game fun to play.</p>
 <h2 id="whats-next-4"><a class="header" href="#whats-next-4">What's Next</a></h2>
 <p>Now that we've cleaned up a small mess we've been making, let's get back to taking our game to the finish line by adding a timer to our game to see how many targets we can hit in 30 seconds.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="time-attack"><a class="header" href="#time-attack">Time Attack</a></h1>
+<p>We've <em>almost</em> got a game. But we need some way for the game to end. A lot of game loops end with the player's character dying, where they respawn or start over again. Other game loops end when the player reaches the end of a level.</p>
+<p>For our simple game, let's add a 30 second timer that counts down. The objective of our game will be to see how many targets can the player hit in that time window. Let's call our game <strong>Target Practice</strong>. Every dragon needs some practice before they head out into battle, right?</p>
+<p>Adding a timer to our game introduces a few new concepts we'll build out in this chapter:</p>
+<ol>
+<li>Keeping track of time and displaying it</li>
+<li>Stopping our game when the timer runs out</li>
+<li>Displaying a Game Over screen with the score</li>
+<li>Allowing the player to restart the game and play again</li>
+</ol>
+<h2 id="getting-it-working"><a class="header" href="#getting-it-working">Getting It Working</a></h2>
+<p>We'll start by introducing <code>args.state.timer</code> that will be used to keep track of how much time remains.</p>
+<pre><code class="language-ruby">  args.state.score ||= 0
+  args.state.timer ||= 30 * 60
+
+  args.state.timer -= 1
+</code></pre>
+<p>We lazily set it to <code>30 * 60</code>. We want the game to last thirty seconds and our <code>#tick</code> method runs sixty times every second, so we multiple them together to get the total number of ticks our timer will run for. We'll then subtract one from <code>args.state.timer</code> every <code>#tick</code> so that it decreases as we play our game.</p>
+<p>Right below decreasing our <code>args.state.timer</code> by one, we check to see if the timer is less than zero. If it is, that means game over.</p>
+<pre><code class="language-ruby">  args.state.timer -= 1
+
+  if args.state.timer &lt; 0
+    labels = []
+    labels &lt;&lt; {
+      x: 40,
+      y: args.grid.h - 40,
+      text: &quot;Game Over!&quot;,
+      size_enum: 10,
+    }
+    labels &lt;&lt; {
+      x: 40,
+      y: args.grid.h - 90,
+      text: &quot;Score: #{args.state.score}&quot;,
+      size_enum: 4,
+    }
+    labels &lt;&lt; {
+      x: 40,
+      y: args.grid.h - 132,
+      text: &quot;Fire to restart&quot;,
+      size_enum: 2,
+    }
+    args.outputs.labels &lt;&lt; labels
+
+    if args.inputs.keyboard.key_down.z ||
+        args.inputs.keyboard.key_down.j ||
+        args.inputs.controller_one.key_down.a
+      $gtk.reset
+    end
+
+    return
+  end
+</code></pre>
+<p>If it is game over, then we let the player know, display their final score, and tell them how to play again (by pressing the fire button). We make an array of labels which we then push into <code>args.outputs.labels</code> to efficiently render them all.</p>
+<p>If any of our fire keys are pressed, the game is reset with <code>$gtk.reset</code> and the player can play again.</p>
+<p>The <code>return</code> line is <em>really</em> important. It says, return out of the <code>#tick</code> method so that none of the code below runs. We don't want to have the dragon be moveable or for targets to spawn when it's game over. So we eject early and only display the game over screen details.</p>
+<p><img src="./img/c06-game-over.jpg" alt="game over screen showing a score of 11 with text saying 'Fire to restart'" /></p>
+<p>Way at the bottom of <code>#tick</code>, let's display a label with the time remaining:</p>
+<pre><code class="language-ruby">  labels = []
+  labels &lt;&lt; {
+    x: 40,
+    y: args.grid.h - 40,
+    text: &quot;Score: #{args.state.score}&quot;,
+    size_enum: 4,
+  }
+  labels &lt;&lt; {
+    x: args.grid.w - 40,
+    y: args.grid.h - 40,
+    text: &quot;Time Left: #{(args.state.timer / 60).round}&quot;,
+    size_enum: 2,
+    alignment_enum: 2,
+  }
+  args.outputs.labels &lt;&lt; labels
+</code></pre>
+<p>We use the same pattern of creating a <code>labels</code> array, pushing in the player's score and the time remaining. In order to get the time remaining, we divide it by 60 and round. We do the opposite of what we did when we set the total time in ticks.</p>
+<p>The <code>alignment_enum</code> let's us specify that we want the text to be right aligned instead of the default left alignment. This let's us nicely position our timer in the upper right corner of the game.</p>
+<p><img src="./img/c06-timer.jpg" alt="gameplay with Time Left reading 10 seconds" /></p>
+<p>[section summary]</p>
+<h2 id="restart-grace-period"><a class="header" href="#restart-grace-period">Restart Grace Period</a></h2>
+<h2 id="refactor"><a class="header" href="#refactor">Refactor</a></h2>
+<ul>
+<li>fire input</li>
+<li>game over method</li>
+<li>FPS constant</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="source-control"><a class="header" href="#source-control">Source Control</a></h1>
 <p>When working on any piece of software, whether it's a video game or an app to track how dogs you pet in a given day, it's extremely important to keep track of the changes to your code and keep it backed up in a secure location.</p>
 <p>Imagine this scenario: you work on your game for three months. It's amazing. It's your X-Files Dating Sim. You've painstakingly drawn all of the characters, written the scenario, coded up all the interactions. Then one day your computer gets stolen by a giant crow! I don't trust those crows, I never have. Suddenly your game is gone, poof. All that hard work just sitting on a hard-drive barely being protected by the shell of your laptop from the aggressive pecks of the entire local union of crows.</p>
