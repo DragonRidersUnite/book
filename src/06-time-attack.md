@@ -58,7 +58,7 @@ If you happen to press the fire button right when the timer runs out, you may re
 
 Beause we keep subtracting from `args.state.timer`, we can check to see if the current value is less than -30. If it is, then we'll accept input to restart the game.
 
-`&&` (double ampersand, often read as "and-and") means that both sides of the express must be true for the code within the conditional to happen. In our new restart check, we combine AND and OR by saying: if the game timer is less than -30 AND any of our fire keys are down, then we reset the game. When you group together expressions in parentheses, `(monday? || tuesday?)`, it evaluates them as one express against the other checks. We care about the timer being below a certain amount AND any of the inputs beingpressed.
+`&&` (double ampersand, often read as "and-and") means that both sides of the expression must be true for the code within the conditional to happen. In our new restart check, we combine AND and OR by saying: if the game timer is less than -30 AND any of our fire keys are down, then we reset the game. When you group together expressions in parentheses, `(monday? || tuesday?)`, it evaluates them as one express against the other checks. We care about the timer being below a certain amount AND any of the inputs beingpressed.
 
 Combining logic in this way for flow control is very common when making games. `&&` and `||` are pretty common operators in most programming languages.
 

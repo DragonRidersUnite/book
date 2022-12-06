@@ -44,7 +44,7 @@ Outputting info to the console isn't that helpful for the player, but can you be
 
 We want to display a fireball on the screen when the action key is pressed. We've got most of the code, all we need to do is change `puts` to instead display the fireball.
 
-At the top of `#tick` (`#whatever` is Ruby shorthand for "the whatever method"), assign an empty array to `args.state.fireballs` if nothing has been assigned yet. This will let us keep track of fireballs across the game loop to do all sorts of things with them (display them, move them, collide them with other objects):
+At the top of `#tick` (`#name` is Ruby shorthand for "the name method"), assign an empty array to `args.state.fireballs` if nothing has been assigned yet. This will let us keep track of fireballs across the game loop to do all sorts of things with them (display them, move them, collide them with other objects):
 
 ``` ruby
 {{#include code/chapter_03/03_displaying_fireballs/app/main.rb:1:4}}
@@ -103,7 +103,7 @@ Let's look at what the text example above would be like as a hash:
 }
 ```
 
-Hashes are expressed through curly braces `{}` and contain `key: value` separated by commas. The values of a hash can be anything, from numbers to strings to whatever your heart desires. Let's say we wanted to build our own hash to represent a dragon and put it in the `dragon` variable:
+Hashes are expressed through curly braces `{}` and contain `key: value` pairs separated by commas. The values of a hash can be anything, from numbers to strings to whatever your heart desires. Let's say we wanted to build our own hash to represent a dragon and put it in the `dragon` variable:
 
 ``` ruby
 dragon = {
@@ -114,6 +114,8 @@ dragon = {
 ```
 
 Values of a hash are then accessed by their keys, so you `dragon.name` returns the string `"Francis"`, `dragon.size` returns the string `"medium"`, and `dragon.age` returns the number `541`. This is much more clear than having to remember the position of these values within an array.
+
+Quick note: if you see a hash with key-value pairs that look like this: `{ :name => "Francis" }`, don't fret! That's just an older style in Ruby known as the hash rocket and can be used for hashes with keys that aren't just symbols.
 
 In general, differentiate between arrays and hashes like this: **hashes are used represent one piece of data with multiple properties** and **arrays are used to collect data (often times hashes) to keep track of and manipulate them**.
 
@@ -150,4 +152,4 @@ Now that the fireball is a sprite and not a text label, we can push both the pla
 
 ## What's Next
 
-We're so close to having a game, so close! We just need something to spit fireballs at, right? We'll display some floating targets that get destroyed on when a fireball hits them.
+We're so close to having a game, so close! We just need something to spit fireballs at, right? In the next chapter, we'll display some floating targets that get destroyed when a fireball hits one.
