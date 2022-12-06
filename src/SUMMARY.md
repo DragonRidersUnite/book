@@ -10,7 +10,7 @@
 - [Target Practice](./04-target-practice.md)
 - [Fireball Clean Up](./05-fireball-clean-up.md)
 - [Time Attack](./06-time-attack.md)
-- [High-Score]()
+- [High-Score](./07-high-score.md)
 - [Sound]()
 - [Animation]()
 - [Background]()
