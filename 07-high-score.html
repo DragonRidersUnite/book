@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Game Dev Resources - Building Games with DragonRuby</title>
+        <title>High-Score - Building Games with DragonRuby</title>
                 
 
         <!-- Custom HTML head -->
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><a href="07-high-score.html"><strong aria-hidden="true">7.</strong> High-Score</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Sound</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Background</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship It!</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">13.</strong> What Next</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="outro.html">Outro</a></li><li class="chapter-item expanded affix "><a href="ruby-primer.html">Ruby Primer</a></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li><li class="chapter-item expanded affix "><div>Beyond the Code</div></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html" class="active">Game Dev Resources</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><a href="07-high-score.html" class="active"><strong aria-hidden="true">7.</strong> High-Score</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Sound</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Background</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship It!</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">13.</strong> What Next</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="outro.html">Outro</a></li><li class="chapter-item expanded affix "><a href="ruby-primer.html">Ruby Primer</a></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li><li class="chapter-item expanded affix "><div>Beyond the Code</div></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -119,7 +119,7 @@
                                                                         <a href="https://github.com/DragonRidersUnite/book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                                                                        <a href="https://github.com/DragonRidersUnite/book/edit/main/src/game-dev-resources.md" title="Suggest an edit" aria-label="Suggest an edit">
+                                                                        <a href="https://github.com/DragonRidersUnite/book/edit/main/src/07-high-score.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                         
@@ -148,40 +148,73 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="game-dev-resources"><a class="header" href="#game-dev-resources">Game Dev Resources</a></h1>
-<p>While this book covers the technical aspects of programming games with Ruby, there is a lot more to making games than just coding. This bonus chapter includes resources and information to help you make your games your own.</p>
-<h2 id="tools"><a class="header" href="#tools">Tools</a></h2>
-<h3 id="audio"><a class="header" href="#audio">Audio</a></h3>
+                        <h1 id="high-score"><a class="header" href="#high-score">High-Score</a></h1>
+<p>Saving and loading game data is a key piece of functionality when it comes to making games. We may want to keep track of all sorts of important data across play sessions. For <em>Target Practice</em>, let's keep it simple and keep track of the high-score each time a new one is set.</p>
+<h2 id="load--save-data"><a class="header" href="#load--save-data">Load &amp; Save Data</a></h2>
+<p>When the game is over, let's display whether or not a new high-score was achieved. If it is higher than the previous, we'll save that new high-score. Otherwise, we'll display the high-score and encourage the player to try to beat it.</p>
+<p>This will require two parts to working with save data:</p>
 <ul>
-<li>Sfxr</li>
-<li>Audacity</li>
-<li>1BitDragon</li>
+<li>Saving the score when a new high-score is achieved</li>
+<li>Loading the previous high-score to compare the player's score to</li>
 </ul>
-<h3 id="graphics"><a class="header" href="#graphics">Graphics</a></h3>
+<p>DragonRuby GTK gives us two handy methods to do so:</p>
 <ul>
-<li>Aseprite</li>
+<li><code>args.gtk.write_file(&quot;high-score.txt&quot;)</code></li>
+<li><code>args.gtk.read_file(&quot;high-score.txt&quot;)</code></li>
 </ul>
-<h2 id="game-design"><a class="header" href="#game-design">Game Design</a></h2>
+<p>Save data, especially for our game, can be as simple as a text file on the computer. While this may allow for save tampering, that's not something we're too worried about for our game. The foundations of writing our data to a file and loading it apply no matter how complex our game data persistent needs get.</p>
+<p>We'll be working exclusively in <code>#game_over_tick</code>:</p>
+<pre><code class="language-ruby">HIGH_SCORE_FILE = &quot;high-score.txt&quot;
+def game_over_tick(args)
+  args.state.high_score ||= args.gtk.read_file(HIGH_SCORE_FILE).to_i
+
+  if !args.state.saved_high_score &amp;&amp; args.state.score &gt; args.state.high_score
+    args.gtk.write_file(HIGH_SCORE_FILE, args.state.score.to_s)
+    args.state.saved_high_score = true
+  end
+</code></pre>
+<p>We read the value from the <code>HIGH_SCORE_FILE</code>, which is <code>high-score.txt</code>. If the file doesn't exist, it'll be <code>0</code> because we call <code>#to_i</code> on the file reading process.</p>
+<p>Then, if we haven't saved the high-score yet and the player's score is greater than the high-score, we save it in the file and set a value in <code>args.state.saved_high_score</code> so that we don't save it every single time <code>#game_over_tick</code> gets called each frame of the game.</p>
+<pre><code class="language-ruby">  if args.state.score &gt; args.state.high_score
+    labels &lt;&lt; {
+      x: 260,
+      y: args.grid.h - 90,
+      text: &quot;New high-score!&quot;,
+      size_enum: 3,
+    }
+  else
+    labels &lt;&lt; {
+      x: 260,
+      y: args.grid.h - 90,
+      text: &quot;Score to beat: #{args.state.high_score}&quot;,
+      size_enum: 3,
+    }
+  end
+</code></pre>
+<p>When we're constructing our <code>labels</code> to render, we add a condition that checks if we've got a new high-score. If we do, then we let the player know. Otherwise we display the current high-score for them to chase after.</p>
+<p><img src="./img/c07-low-score.jpg" alt="game over screen showing a score of 1 and a high-score of 4" /></p>
+<p><img src="./img/c07-high-score.jpg" alt="game over screen showing a new high-score of 30" /></p>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>We load and save data relating to how our player has done. While saving one value is likely to be a bit too trivial for most games, the core concepts are pretty similar. You'll write your data to a file, you read that file, and then you do whatever you need to with it.</p>
+<h2 id="extra-credit"><a class="header" href="#extra-credit">Extra Credit</a></h2>
 <ul>
-<li>Juice video</li>
-<li>jw game feel vid</li>
+<li>How would you save the date and time the high-score was achieved at?</li>
+<li>Displaying one high-score is neat. But what if it showed the last 5 scores in addition to the highest score?</li>
 </ul>
-<h2 id="books"><a class="header" href="#books">Books</a></h2>
-<ul>
-<li>How To Make a Game By Yourself</li>
-<li>From Dream to Delivery</li>
-<li>Spelunky book</li>
-</ul>
-<h2 id="youtube-videos"><a class="header" href="#youtube-videos">YouTube Videos</a></h2>
+<h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
+<p>Let's add some music and sound effects to our game. Even just a simple track with a couple sound effects will make a <em>significant</em> difference.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="source-control.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="06-time-attack.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
+                                                    <a rel="next" href="outro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -189,10 +222,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="source-control.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="06-time-attack.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
+                                    <a rel="next" href="outro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                             </nav>
 
         </div>
