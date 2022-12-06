@@ -20,7 +20,7 @@
 
 -----------
 
-[Ruby Primer]()
+[Ruby Primer](./ruby-primer.md)
 [Source Control](./source-control.md)
 [Beyond the Code]()
 [Game Dev Resources](./game-dev-resources.md)
