@@ -8,7 +8,7 @@
 - [Player Movement](./02-player-movement.md)
 - [Spit Fire](./03-spit-fire.md)
 - [Target Practice](./04-target-practice.md)
-- [Fireball Clean Up]()
+- [Fireball Clean Up](./05-fireball-clean-up.md)
 - [Win State]()
 - [Time Tracking]()
 - [Moving Targets]()
