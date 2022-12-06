@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Target Practice</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Moving Targets</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Win State</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Time Tracking</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Save &amp; Load Data</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Sound Effects</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Music</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Animations</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">13.</strong> Ship Your Game</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">14.</strong> Make It Your Own</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">15.</strong> What Next</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Ruby Primer</div></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li><li class="chapter-item expanded affix "><div>Beyond the Code</div></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Fireball Clean Up</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Win State</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Time Tracking</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Moving Targets</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Save &amp; Load Data</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Sound Effects</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Music</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Animations</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">13.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">14.</strong> Ship Your Game</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">15.</strong> Make It Your Own</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">16.</strong> What Next</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Ruby Primer</div></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li><li class="chapter-item expanded affix "><div>Beyond the Code</div></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -743,6 +743,217 @@ end
 <p><img src="./img/c03-fireball-sprite.jpg" alt="dragon sprite shooting 4 fireballs flying across the screen" /></p>
 <h2 id="whats-next-2"><a class="header" href="#whats-next-2">What's Next</a></h2>
 <p>We're so close to having a game, so close! We just need something to spit fireballs at, right? We'll display some floating targets that get destroyed on when a fireball hits them.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="target-practice"><a class="header" href="#target-practice">Target Practice</a></h1>
+<p>For a dragon to gain accuracy in the fine art of breathing fire, they need to practice, right? Let's build out a feature where targets randomly spawn for our fireballs to collide with. We'll keep track of how many targets we've hit and use that as the main scoring component of our game.</p>
+<h2 id="displaying-targets"><a class="header" href="#displaying-targets">Displaying Targets</a></h2>
+<p>First, let's download the target sprite and put it in <code>mygame/sprites/target.png</code>:</p>
+<p><img src="./code/chapter_04/01_display_targets/sprites/target.png" alt="target sprite" /></p>
+<p>We'll keep track of the targets in an array, just like fireballs, so that we can more easily manage them throughout our game loop. Instead of initializing our targets as an empty array, let's start by displaying three of them:</p>
+<pre><code class="language-ruby">  args.state.fireballs ||= []
+  args.state.targets ||= [
+    {
+      x: 800,
+      y: 120,
+      w: 64,
+      h: 64,
+      path: 'sprites/target.png',
+    },
+    {
+      x: 920,
+      y: 600,
+      w: 64,
+      h: 64,
+      path: 'sprites/target.png',
+    },
+    {
+      x: 1020,
+      y: 320,
+      w: 64,
+      h: 64,
+      path: 'sprites/target.png',
+    },
+  ]
+</code></pre>
+<p>We need to render our target sprites too, so include those in the array we push into <code>args.outputs.sprites</code>:</p>
+<pre><code class="language-ruby">  args.outputs.sprites &lt;&lt; [args.state.player, args.state.fireballs, args.state.targets]
+</code></pre>
+<p>Similar to how we represent the player and fireball sprites, the targets have an and x and y coordinate for position, a width and height, and an image file to represent the sprite. We create three items in our <code>args.state.targets</code> array, which then displays three different targets.</p>
+<p><img src="./img/c04-display-targets.jpg" alt="dragon sprite with three targets rendered to the right" /></p>
+<p>Try changing the <code>x</code> and <code>y</code> positions of our three targets. Weird. They don't change their position...</p>
+<p>If you quit your game and relaunch <code>dragonruby</code>, they will though. Why is that?</p>
+<p>Well, when DragonRuby loads our game code, if any value is set in <code>args.state</code> via <code>||=</code>, it won't reassign the new value because that value is already set. <code>args.state.targets</code> already has three targets in it, so when our code is reloaded, it doesn't know to discard our old targets.</p>
+<p>Let's instruct DragonRuby to reset our state when the game runs by adding the special <code>$gtk.reset</code> after the <code>end</code> of <code>#tick</code>:</p>
+<pre><code class="language-ruby">  args.outputs.sprites &lt;&lt; [args.state.player, args.state.fireballs, args.state.targets]
+end
+
+$gtk.reset
+</code></pre>
+<p>Now if we change the coordinates of our target, the game reloads our code and they change their position. This is a really awesome aspect of DragonRuby. We can easily adjust and modify the running game without having the rebuild it.</p>
+<h2 id="our-first-method"><a class="header" href="#our-first-method">Our First Method</a></h2>
+<p>There's something that's a bit of a bummer about our target array code. We duplicate a lot of values by having to specify the width, height, and image path. It'd be a bit annoying to have to change it in all those places even though we want them to be the same. Let's introduce our first method. While <code>#tick</code> is called automatically by DragonRuby, we can define our own methods that we call in our game to help organize our code. Methods are great for encapsulating a specific action. In our case, let's define a method that creates a target at a given x and y position.</p>
+<pre><code class="language-ruby">def spawn_target x, y
+  {
+    x: x,
+    y: y,
+    w: 64,
+    h: 64,
+    path: 'sprites/target.png',
+  }
+end
+
+def tick args
+  args.state.player ||= {
+    x: 120,
+    y: 280,
+    w: 100,
+    h: 80,
+    speed: 12,
+    path: 'sprites/misc/dragon-0.png',
+  }
+  args.state.fireballs ||= []
+  args.state.targets ||= [
+    spawn_target(800, 120),
+    spawn_target(920, 600),
+    spawn_target(1020, 320),
+  ]
+</code></pre>
+<p>Within <code>main.rb</code> we can define methods that are able to be called in <code>#tick</code>. Our new <code>spawn_target</code> method takes two parameters, the x and the y position, and then uses those parameters to return a hash representing the new target. In Ruby, method parameters are separated by commas. We pass parameters into methods that we want to have access to within that code. Because the width, height, and image don't change for a given target, those values stay the same and aren't passed in as parameters.</p>
+<p>Then when we lazily assign <code>args.state.targets ||=</code>, we call the method three times, passing in the coordinates we want the target to spawn at.</p>
+<p><code>#spawn_target</code> is a simple method, but we'll begin to see how we can expand upon the methods we write to make our code easy to understand while it gets more complex.</p>
+<h2 id="collision-detection"><a class="header" href="#collision-detection">Collision Detection</a></h2>
+<p>The fireballs our dragon spits just fly behind our targets and off the screen into infinity. Let's make it so that if a fireball hits a target, <em>something</em> happens. Eventually we'll want to play a sound, remove the target, and even play an animation. But humble beginnings, humble beginnings.</p>
+<p>Collision detection is when one object overlaps with another object in our game. Because we're manufacturing the space the game exists in, there's no physics like we have in real life. We need to simulate that by checking to see if two objects are attempting to exist in the same point and react accordingly.</p>
+<p>Our fireball sprite is a 32x32 square, so we want to check in every single game loop whether or not the points of the fireball's square overlapping with any of the points of the targets. If they are overlapping, then we do that <em>something</em>.</p>
+<p>TODO: graphic of overlapping rects/squares explained</p>
+<p>We could employ trigonometry to determine if a given point in one shape overlaps with another, but DragonRuby gives us a helpful method to handle this for us: <code>args.geometry.intersect_rect? rect_1, rect_2</code></p>
+<p>It may seem odd that we're checking the intersection of two rectangles when our target is a circle and our fireball is almost a circle. Most 2D games use rectangles for their collision detection for the simplicity of it. Our images are already rectangles, and it's close enough for our purposes.</p>
+<p>Here's the written out logic behind the collision detection we'll implement:</p>
+<ul>
+<li>In each <code>#tick</code>, keep our code for looping through and moving each fireball</li>
+<li>After we move a fireball, loop through each target and check if the fireball is overlapping any of them</li>
+<li>If they do overlap, output a message to the console</li>
+</ul>
+<pre><code class="language-ruby">  args.state.fireballs.each do |fireball|
+    fireball.x += args.state.player.speed + 2
+
+    args.state.targets.each do |target|
+      if args.geometry.intersect_rect?(target, fireball)
+        puts &quot;fireball hit target!&quot;
+      end
+    end
+  end
+</code></pre>
+<p>Play the game and hit the some targets. Nothing visually happens (yet), but if you check the console (<kbd>~</kbd>), you'll see that <code>&quot;fireball hit target&quot;</code> was output multiple times.</p>
+<p>With a loop and a method we've implemented collision detection. That wasn't too bad, was it?</p>
+<h2 id="remove-targets-on-collision"><a class="header" href="#remove-targets-on-collision">Remove Targets On Collision</a></h2>
+<p>But... It's not very helpful to output a message to the console when a target is hit. Let's instead remove the target so that it is no longer displayed. We'll need to delete the hit target from the array of targets so that it's no longer checked against.</p>
+<p>Ruby makes that pretty easy. All you do is call the <code>#delete</code> method on an array and pass in the item you want to delete. If you have an array of numbers and call delete, it removes the item from the array:</p>
+<pre><code class="language-ruby">nums = [3, 4, 5]
+nums.delete(3)
+nums # =&gt; [4, 5]
+</code></pre>
+<p>It works just like you think it would. So in our collision detection code where we call <code>puts</code>, we'll instead just delete the target <em>and</em> the fireball so they both get removed from their respective collections.</p>
+<pre><code class="language-ruby">  args.state.fireballs.each do |fireball|
+    fireball.x += args.state.player.speed + 2
+
+    args.state.targets.each do |target|
+      if args.geometry.intersect_rect?(target, fireball)
+        args.state.targets.delete(target)
+        args.state.fireballs.delete(fireball)
+      end
+    end
+  end
+</code></pre>
+<p>Since the target and fireball that collided are no longer being tracked in <code>args.state</code>, they don't get rendered on the screen and are, for all intents and purposes, gone!</p>
+<p>This almost feels like a game. That's a great feeling. We're getting close to <em>fun</em>.</p>
+<h2 id="spawn-new-targets"><a class="header" href="#spawn-new-targets">Spawn New Targets</a></h2>
+<p>Shooting three targets and having them disappear doesn't make for much fun though. After the three targets are hit, it's just your dragon floating in the sky with not much else to do. We're back to chapter 3! Ugh, chapter 3 was so boring! I can't believe we ever even made anything that boring before. (But remember how cool it was when we got the fireballs working? That was cool! It's funny how games evolve and what it used to be seems so basic compared to where we're at now.)</p>
+<p>Remember back in the day, way back when, like a few sections ago, when we introduced <code>#spawn_target</code>? It was helpful then, but now it's going to be even more helpful. We'll call it every time we destroy a target so that a new one spawns. We'll be able to play target practice forever!</p>
+<p>But calling <code>spawn_target</code> with the same x and y over and over isn't a lot of fun. So let's make a few related changes where we'll do the following:</p>
+<ol>
+<li>Determine a random x and y position on the screen to spawn the target</li>
+<li>Remove the x and y for our initial three targets so they get a random position</li>
+<li>Spawn a new target in a random position when we hit one</li>
+</ol>
+<h3 id="spawn-at-a-random-location"><a class="header" href="#spawn-at-a-random-location">Spawn at a random location</a></h3>
+<pre><code class="language-ruby">def spawn_target(args)
+  size = 64
+  {
+    x: rand(args.grid.w * 0.4) + args.grid.w * 0.6,
+    y: rand(args.grid.h - size * 2) + size,
+    w: size,
+    h: size,
+    path: 'sprites/target.png',
+  }
+end
+</code></pre>
+<p><code>#spawn_target</code> looks a little different now. We no longer pass in the coordinates as arguments because we'll randomly generate the position. We instead pass in <code>args</code> from DragonRuby's <code>#tick</code> so that we can get the width and height of the screen to use to determine boundaries.</p>
+<p>We create a <code>size</code> variable to store the width and height of the sprite to use in our formulas for spawning the target. We don't want to have to type 64 over and over because it loses its meaning and gets difficult to change.</p>
+<p>Then we apply some math. Don't let math scare you away from programming! We'll keep it simple and the toolbox you need is relatively small. Plus, the math will help make our game even better. Games make math fun.</p>
+<p><code>rand</code> is a method that we get from DragonRuby that's available everywhere. <code>rand</code> without any paramter generates a random number between 0 and 1. That's not really useful for us right now, so we can instead pass in a parameter that sets the upper boundary of the random number. <code>rand(100)</code> generates a random number between 0 up to 100 (not including 100).</p>
+<p>So for the x position of the target, we generate a number random number that's up to two-fifths the size of width of the game and then we add three-fifths of the width to that number so that the targets spawn on the far right side of the screen. We don't want to spawn targets too close to the player, otherwise it'd be too easy.</p>
+<p>For the y position, we generate a random y position based on the height of the game, but we subtract twice the size of the target sprite and then add one of its sizes back to the random number to give the spawn area a gutter. This prevents the target from spawning partially off the screen, which would make it impossible to hit.</p>
+<h3 id="change-initial-three-targets"><a class="header" href="#change-initial-three-targets">Change initial three targets</a></h3>
+<pre><code class="language-ruby">  args.state.targets ||= [
+    spawn_target(args), spawn_target(args), spawn_target(args)
+  ]
+</code></pre>
+<p>Instead of passing in the x and y position, we just call <code>#spawn_target</code> with DragonRuby's <code>args</code> so that we have access to the grid in our method. This gives us three randomly located targets.</p>
+<h3 id="spawn-a-new-target-when-one-is-hit"><a class="header" href="#spawn-a-new-target-when-one-is-hit">Spawn a new target when one is hit</a></h3>
+<pre><code class="language-ruby">  args.state.fireballs.each do |fireball|
+    fireball.x += args.state.player.speed + 2
+
+    args.state.targets.each do |target|
+      if args.geometry.intersect_rect?(target, fireball)
+        args.state.targets.delete(target)
+        args.state.fireballs.delete(fireball)
+        args.state.targets &lt;&lt; spawn_target(args)
+      end
+    end
+  end
+</code></pre>
+<p>We loop through the fireballs and move each one, just as before. And then we check to see if it intersects with any of the targets. If they do intersect, we delete both the fireball and the target.</p>
+<p>The one new line is where we push a new target into <code>args.state.targets</code> from <code>#spawn_target</code>. That'll make a new target appear in a random location whenever we hit another.</p>
+<p>Play the game a bit and see how feels. Is there anything that can be adjusted or improved? What if you adjust the formula for <code>#spawn_target</code>? How does that feel with targets spawning close or further away?</p>
+<h2 id="score-tracking"><a class="header" href="#score-tracking">Score Tracking</a></h2>
+<p>Let's keep track of how many targets we've destroyed before we call it a chapter.</p>
+<p>The approach for this is pretty simple. We'll store a number in <code>args.state.score</code> and increase it each time we hit a target. Then we'll display that number on the screen as a label.</p>
+<p>Near the top of <code>#tick</code>, lazily initialize <code>args.state.score</code> to <code>0</code>.</p>
+<pre><code class="language-ruby">  args.state.fireballs ||= []
+  args.state.targets ||= [
+    spawn_target(args), spawn_target(args), spawn_target(args)
+  ]
+  args.state.score ||= 0
+
+  if args.inputs.left
+</code></pre>
+<p>In our collision detection loop, when we delete the target and fireball, add <code>1</code> to our score:</p>
+<pre><code class="language-ruby">        args.state.targets.delete(target)
+        args.state.fireballs.delete(fireball)
+        args.state.score += 1
+        args.state.targets &lt;&lt; spawn_target(args)
+</code></pre>
+<p>Finally, display our score as a label in the upper-left area of the screen:</p>
+<pre><code class="language-ruby">  args.outputs.sprites &lt;&lt; [args.state.player, args.state.fireballs, args.state.targets]
+  args.outputs.labels &lt;&lt; {
+    x: 40,
+    y: args.grid.h - 40,
+    text: &quot;Score: #{args.state.score}&quot;,
+    size_enum: 4
+  }
+</code></pre>
+<p>This approach to displaying a label is different than previous chapters. Instead of using an array to represent the properties of the label, we're now using a hash like we do for sprites (for similar reasons: it's easier to remember and more clear). Setting <code>x</code>, <code>y</code>, and <code>text</code> should be familiar by this point. But <code>size_enum</code> is new. It's a way to specify how large the text is. It takes whatever value we set and adds that much to the default text size. Increase it from <code>4</code> to <code>40</code> or <code>-3</code> and see what you lik ebest.</p>
+<p><img src="./img/c04-score.jpg" alt="dragon spitting fireballs at three targets on the right side of the screen with the text 'Score: 34' displayed" /></p>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>What a chapter! We displayed targets, handled collision detection, spawned our targets randomly, and added score tracking. We've come a long way in this chapter. And added a lot of core concepts that are found in most games. Review the code to make sure you understand it.</p>
+<h2 id="extra-credit-1"><a class="header" href="#extra-credit-1">Extra Credit</a></h2>
+<ul>
+<li>There's a chance that our randomly generated targets can spawn on top of each other. How can you make it so that doesn't happen?</li>
+<li>How could you change the collision detection to check if two circles overlap instead of rectangles?</li>
+<li>We added gutters for the y position of our targets in <code>#spawn_target</code> for the top and bottom of the game screen, but how would you add a gutter for the x position so they don't spawn partially off the screen on the right side?</li>
+</ul>
+<h2 id="whats-next-3"><a class="header" href="#whats-next-3">What's Next</a></h2>
+<p>We'll take a brief side quest where we ask some big existential questions and clean up our fireballs that have flown off the screen before we turn this project we've been working on into a game that we can play and finish.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="source-control"><a class="header" href="#source-control">Source Control</a></h1>
 <p>When working on any piece of software, whether it's a video game or an app to track how dogs you pet in a given day, it's extremely important to keep track of the changes to your code and keep it backed up in a secure location.</p>
 <p>Imagine this scenario: you work on your game for three months. It's amazing. It's your X-Files Dating Sim. You've painstakingly drawn all of the characters, written the scenario, coded up all the interactions. Then one day your computer gets stolen by a giant crow! I don't trust those crows, I never have. Suddenly your game is gone, poof. All that hard work just sitting on a hard-drive barely being protected by the shell of your laptop from the aggressive pecks of the entire local union of crows.</p>
@@ -823,7 +1034,7 @@ Date:   Wed Nov 23 23:04:46 2022 -0500
 <li>Don't track the engine parent folder</li>
 </ol>
 <p>The downside to this approach is that you need to ensure you keep your specific engine version parent directory available. You could use version control to sync that and then use Git to publish it online as open source code.</p>
-<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<h2 id="summary-1"><a class="header" href="#summary-1">Summary</a></h2>
 <ul>
 <li>Back up your games! You never know when you might lose your computer.</li>
 <li>Source control, like Git, let's you make changes with confidence.</li>
