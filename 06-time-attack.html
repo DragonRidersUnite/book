@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html" class="active"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> High-Score</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Sound</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Background</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship Your Game</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">13.</strong> What Next</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Ruby Primer</div></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li><li class="chapter-item expanded affix "><div>Beyond the Code</div></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html" class="active"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> High-Score</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Sound</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Background</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship It!</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">13.</strong> What Next</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Ruby Primer</div></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li><li class="chapter-item expanded affix "><div>Beyond the Code</div></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -224,14 +224,183 @@
 <p>We use the same pattern of creating a <code>labels</code> array, pushing in the player's score and the time remaining. In order to get the time remaining, we divide it by 60 and round. We do the opposite of what we did when we set the total time in ticks.</p>
 <p>The <code>alignment_enum</code> let's us specify that we want the text to be right aligned instead of the default left alignment. This let's us nicely position our timer in the upper right corner of the game.</p>
 <p><img src="./img/c06-timer.jpg" alt="gameplay with Time Left reading 10 seconds" /></p>
-<p>[section summary]</p>
+<p>We've got ourselves a game that we can start, finish, and replay. Isn't that pretty awesome?</p>
 <h2 id="restart-grace-period"><a class="header" href="#restart-grace-period">Restart Grace Period</a></h2>
+<p>If you happen to press the fire button right when the timer runs out, you may restart your game without even seeing the game over screen. Let's add a little grace period between when the game is over and when we start accepting input to restart. 30 frames should be plenty and it won't even be noticeable to the player.</p>
+<pre><code class="language-ruby">    if args.state.timer &lt; -30 &amp;&amp;
+        (args.inputs.keyboard.key_down.z ||
+        args.inputs.keyboard.key_down.j ||
+        args.inputs.controller_one.key_down.a)
+      $gtk.reset
+    end
+</code></pre>
+<p>Beause we keep subtracting from <code>args.state.timer</code>, we can check to see if the current value is less than -30. If it is, then we'll accept input to restart the game.</p>
+<p><code>&amp;&amp;</code> (double ampersand, often read as &quot;and-and&quot;) means that both sides of the express must be true for the code within the conditional to happen. In our new restart check, we combine AND and OR by saying: if the game timer is less than -30 AND any of our fire keys are down, then we reset the game. When you group together expressions in parentheses, <code>(monday? || tuesday?)</code>, it evaluates them as one express against the other checks. We care about the timer being below a certain amount AND any of the inputs beingpressed.</p>
+<p>Combining logic in this way for flow control is very common when making games. <code>&amp;&amp;</code> and <code>||</code> are pretty common operators in most programming languages.</p>
 <h2 id="refactor"><a class="header" href="#refactor">Refactor</a></h2>
+<p>Our main <code>#tick</code> method is getting a bit long in the tooth, being over 100 lines long. We've also duplicated two things: frames per second with the <code>60</code> value and checking for fire input. This is a good opportunity to refactor our code once again to make it easier to work with. Let's break up <code>#tick</code> into a series of smaller methods that we call from within it. Encapsulating our logic into smaller pieces makes it easier to work on those smaller pieces without concerning ourselves with the rest of the code.</p>
+<p>How small should you make your methods? That's up to you. Use your best judgement and do what feels right. Code can change and grow quite organically. Once something feels too big or complex or is duplicated, improve it. Don't over-engineer your game right from the start, otherwise you'll be off in the weeds and not actually making your game fun. On the other hand, if you just neglect your code, you'll make it more difficult to change, thus slowing down the development process. There's a fine line between over-engineering and creating a mess.</p>
+<p>Here's the entire game broken down into some smaller methods to make it easier to work with moving forward:</p>
+<pre><code class="language-ruby">FPS = 60
+
+def spawn_target(args)
+  size = 64
+  {
+    x: rand(args.grid.w * 0.4) + args.grid.w * 0.6,
+    y: rand(args.grid.h - size * 2) + size,
+    w: size,
+    h: size,
+    path: 'sprites/target.png',
+  }
+end
+
+def fire_input?(args)
+  args.inputs.keyboard.key_down.z ||
+    args.inputs.keyboard.key_down.j ||
+    args.inputs.controller_one.key_down.a
+end
+
+def handle_player_movement(args)
+  if args.inputs.left
+    args.state.player.x -= args.state.player.speed
+  elsif args.inputs.right
+    args.state.player.x += args.state.player.speed
+  end
+
+  if args.inputs.up
+    args.state.player.y += args.state.player.speed
+  elsif args.inputs.down
+    args.state.player.y -= args.state.player.speed
+  end
+
+  if args.state.player.x +  args.state.player.w &gt; args.grid.w
+    args.state.player.x = args.grid.w - args.state.player.w
+  end
+
+  if args.state.player.x &lt; 0
+    args.state.player.x = 0
+  end
+
+  if args.state.player.y + args.state.player.h &gt; args.grid.h
+    args.state.player.y = args.grid.h - args.state.player.h
+  end
+
+  if args.state.player.y &lt; 0
+    args.state.player.y = 0
+  end
+end
+
+def game_over_tick(args)
+  labels = []
+  labels &lt;&lt; {
+    x: 40,
+    y: args.grid.h - 40,
+    text: &quot;Game Over!&quot;,
+    size_enum: 10,
+  }
+  labels &lt;&lt; {
+    x: 40,
+    y: args.grid.h - 90,
+    text: &quot;Score: #{args.state.score}&quot;,
+    size_enum: 4,
+  }
+  labels &lt;&lt; {
+    x: 40,
+    y: args.grid.h - 132,
+    text: &quot;Fire to restart&quot;,
+    size_enum: 2,
+  }
+  args.outputs.labels &lt;&lt; labels
+
+  if args.state.timer &lt; -30 &amp;&amp; fire_input?(args)
+    $gtk.reset
+  end
+end
+
+def tick args
+  args.state.player ||= {
+    x: 120,
+    y: 280,
+    w: 100,
+    h: 80,
+    speed: 12,
+    path: 'sprites/misc/dragon-0.png',
+  }
+  args.state.fireballs ||= []
+  args.state.targets ||= [
+    spawn_target(args), spawn_target(args), spawn_target(args)
+  ]
+  args.state.score ||= 0
+  args.state.timer ||= 30 * FPS
+
+  args.state.timer -= 1
+
+  if args.state.timer &lt; 0
+    game_over_tick(args)
+    return
+  end
+
+  handle_player_movement(args)
+
+  if fire_input?(args)
+    args.state.fireballs &lt;&lt; {
+      x: args.state.player.x + args.state.player.w - 12,
+      y: args.state.player.y + 10,
+      w: 32,
+      h: 32,
+      path: 'sprites/fireball.png',
+    }
+  end
+
+  args.state.fireballs.each do |fireball|
+    fireball.x += args.state.player.speed + 2
+
+    if fireball.x &gt; args.grid.w
+      args.state.fireballs.delete(fireball)
+      next
+    end
+
+    args.state.targets.each do |target|
+      if args.geometry.intersect_rect?(target, fireball)
+        args.state.targets.delete(target)
+        args.state.fireballs.delete(fireball)
+        args.state.score += 1
+        args.state.targets &lt;&lt; spawn_target(args)
+      end
+    end
+  end
+
+  args.outputs.sprites &lt;&lt; [args.state.player, args.state.fireballs, args.state.targets]
+
+  labels = []
+  labels &lt;&lt; {
+    x: 40,
+    y: args.grid.h - 40,
+    text: &quot;Score: #{args.state.score}&quot;,
+    size_enum: 4,
+  }
+  labels &lt;&lt; {
+    x: args.grid.w - 40,
+    y: args.grid.h - 40,
+    text: &quot;Time Left: #{(args.state.timer / FPS).round}&quot;,
+    size_enum: 2,
+    alignment_enum: 2,
+  }
+  args.outputs.labels &lt;&lt; labels
+end
+
+$gtk.reset
+</code></pre>
+<p>Because so much has changed and shifted around, I'll just walkthrough the main changes:</p>
 <ul>
-<li>fire input</li>
-<li>game over method</li>
-<li>FPS constant</li>
+<li><code>FPS</code> is a constant, which is a special value in Ruby that doesn't change. We assign it to <code>60</code> because our game runs at sixty (f)rames (p)er (s)econd. That value won't change, but it's more helpful in our math code to see <code>FPS</code> rather than <code>60</code> because we now know what that value represents.</li>
+<li><code>#fire_input?</code> checks to see if any of our keys are down for firing a fireball. By using our method, we can easily adjust it without having to change it for both restarting the game and the dragon spitting the fireball.</li>
+<li><code>#handle_player_movement</code> does just what it describes. That code has a lot of checks but we haven't changed much, so let's put it in a method to get it out of the way.</li>
+<li><code>#game_over_tick</code> is our own special method for when it's game over that gets called from our main <code>#tick</code>. It makes it easier to refer to and change what happens when our game is over.</li>
 </ul>
+<p>I hear you over there screaming, &quot;You expect me to rewrite the entire game line-by-line?!?! I quit!&quot; It's okay to copy and paste what's provided above into your game. If you've made some adjustments, make them again. This refactored code is going to be the foundation for the rest of the book.</p>
+<h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
+<p>We've got a working game, but it's a bit... boring. Let's polish our game up by adding high-score tracking, sounds, animations, and more. We've got a working core of a fun game, and now it's time to make it a great experience.</p>
 
                     </main>
 
