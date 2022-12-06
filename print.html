@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> High-Score</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Sound</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Background</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship It!</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">13.</strong> What Next</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Ruby Primer</div></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li><li class="chapter-item expanded affix "><div>Beyond the Code</div></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> High-Score</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Sound</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Background</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship It!</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">13.</strong> What Next</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="ruby-primer.html">Ruby Primer</a></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li><li class="chapter-item expanded affix "><div>Beyond the Code</div></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -1262,6 +1262,82 @@ $gtk.reset
 <p>I hear you over there screaming, &quot;You expect me to rewrite the entire game line-by-line?!?! I quit!&quot; It's okay to copy and paste what's provided above into your game. If you've made some adjustments, make them again. This refactored code is going to be the foundation for the rest of the book.</p>
 <h2 id="whats-next-5"><a class="header" href="#whats-next-5">What's Next</a></h2>
 <p>We've got a working game, but it's a bit... boring. Let's polish our game up by adding high-score tracking, sounds, animations, and more. We've got a working core of a fun game, and now it's time to make it a great experience.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ruby-primer"><a class="header" href="#ruby-primer">Ruby Primer</a></h1>
+<p>New to Ruby? Here's a brief walkthrough of the common language features and syntax as a quick reference.</p>
+<h2 id="core-types"><a class="header" href="#core-types">Core Types</a></h2>
+<p>When working with Ruby, we've got some core data types to work with.</p>
+<p>Strings, numbers, arrays, hashes, and booleans.</p>
+<pre><code class="language-ruby">greeting = &quot;Hello, my name is Francis the Dragon.&quot;
+age = 583
+favorite_foods = [&quot;apples&quot;, &quot;cookies&quot;]
+address = {
+  line1: &quot;123 Sky Way&quot;,
+  line2: &quot;Apt 2&quot;,
+  state: &quot;New Dragon&quot;,
+  zip: &quot;12345&quot;,
+}
+hungry = true
+</code></pre>
+<h2 id="string-interpolation"><a class="header" href="#string-interpolation">String Interpolation</a></h2>
+<p>Insert a value into a string using <code>#{}</code>:</p>
+<pre><code class="language-ruby">&quot;My favorite foods are: #{favorite_foods.join}&quot;
+</code></pre>
+<h2 id="print-to-the-console"><a class="header" href="#print-to-the-console">Print to the Console</a></h2>
+<p>This will write to stdout and the DragonRuby console:</p>
+<pre><code class="language-ruby">puts &quot;anything&quot;
+</code></pre>
+<h2 id="loops"><a class="header" href="#loops">Loops</a></h2>
+<p>If you have an array, a hash, or any object that collects data, you can loop through their values with <code>#each</code>.</p>
+<pre><code class="language-ruby">favorite_foods.each do |food|
+  puts(food)
+end
+
+address.each do |key, value|
+  puts(&quot;#{key}: #{value}&quot;)
+end
+</code></pre>
+<h2 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h2>
+<pre><code class="language-ruby">if monday? || tuesday?
+  puts &quot;not fun days&quot;
+elsif wednesday? || thursday?
+  puts &quot;fine day&quot;
+else
+  puts &quot;great days&quot;
+end
+</code></pre>
+<p><code>&amp;&amp;</code> - AND</p>
+<p><code>||</code> - OR</p>
+<h2 id="methods--return-values"><a class="header" href="#methods--return-values">Methods &amp; Return Values</a></h2>
+<p>Define a method:</p>
+<pre><code class="language-ruby">def add(num1, num2)
+  num1 + num2
+end
+</code></pre>
+<p>Ruby implicitly returns the last expression in method and by default returns <code>nil</code> if there's no expression.</p>
+<p>You can explicitly return a value with <code>return</code>:</p>
+<pre><code class="language-ruby">def add(num1, num2)
+  return num1 + num2
+end
+</code></pre>
+<p>Explicit returns are mostly used when you want to exit a method early.</p>
+<h2 id="blocks"><a class="header" href="#blocks">Blocks</a></h2>
+<p>Blocks are chunks of Ruby code that yield to the caller. At first you'll use blocks when calling specific methods, like <code>#each</code>, but it can be useful to write your own blocks as well.</p>
+<p><a href="https://www.youtube.com/watch?v=1YjSP-cEzMo">📺 Ruby Blocks Explained</a></p>
+<h2 id="nil"><a class="header" href="#nil">nil</a></h2>
+<p><code>nil</code> in Ruby is known as <code>null</code> in other languages. It's the absence of a value.</p>
+<h2 id="exceptions"><a class="header" href="#exceptions">Exceptions</a></h2>
+<p>When something goes wrong in Ruby, an exception is thrown. You can rescue from exceptions using the <code>rescue</code> keyword:</p>
+<pre><code class="language-ruby">begin
+  # do_some_things
+rescue SomeError =&gt; e
+  puts e
+end
+</code></pre>
+<h2 id="resources"><a class="header" href="#resources">Resources</a></h2>
+<ul>
+<li><a href="https://www.ruby-lang.org/en/documentation/quickstart/">Ruby in Twenty Minutes</a></li>
+<li><a href="https://poignant.guide/">why's (poignant) guide to Ruby</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="source-control"><a class="header" href="#source-control">Source Control</a></h1>
 <p>When working on any piece of software, whether it's a video game or an app to track how dogs you pet in a given day, it's extremely important to keep track of the changes to your code and keep it backed up in a secure location.</p>
 <p>Imagine this scenario: you work on your game for three months. It's amazing. It's your X-Files Dating Sim. You've painstakingly drawn all of the characters, written the scenario, coded up all the interactions. Then one day your computer gets stolen by a giant crow! I don't trust those crows, I never have. Suddenly your game is gone, poof. All that hard work just sitting on a hard-drive barely being protected by the shell of your laptop from the aggressive pecks of the entire local union of crows.</p>
