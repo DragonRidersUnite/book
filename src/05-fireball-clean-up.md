@@ -44,6 +44,8 @@ When looping through `args.state.fireballs`, we check to see if the x position o
 
 Play your game and see that now as the fireballs fly off the screen, the total number of fireballs decreases. They no longer exist forever, flying off across the sky for all eternity, eating up our CPU cycles.
 
+Feel free to remove the `args.outputs.debug` lines if you don't want to see them since they've served their purpose and are less useful now.
+
 ## Summary
 
 There will be many opportunities when working on your games to optimize your code so that it performs better. This was just a taste of what that process can be like. As you get better and better at making games, you'll improve at making them more performant.
