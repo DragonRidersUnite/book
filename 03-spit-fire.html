@@ -182,7 +182,7 @@
 <p>Outputting info to the console isn't that helpful for the player, but can you begin to imagine how we'll use that check to instead display a fireball.</p>
 <h2 id="displaying-fireballs"><a class="header" href="#displaying-fireballs">Displaying Fireballs</a></h2>
 <p>We want to display a fireball on the screen when the action key is pressed. We've got most of the code, all we need to do is change <code>puts</code> to instead display the fireball.</p>
-<p>At the top of <code>#tick</code> (<code>#whatever</code> is Ruby shorthand for &quot;the whatever method&quot;), assign an empty array to <code>args.state.fireballs</code> if nothing has been assigned yet. This will let us keep track of fireballs across the game loop to do all sorts of things with them (display them, move them, collide them with other objects):</p>
+<p>At the top of <code>#tick</code> (<code>#name</code> is Ruby shorthand for &quot;the name method&quot;), assign an empty array to <code>args.state.fireballs</code> if nothing has been assigned yet. This will let us keep track of fireballs across the game loop to do all sorts of things with them (display them, move them, collide them with other objects):</p>
 <pre><code class="language-ruby">def tick args
   args.state.player_x ||= 120
   args.state.player_y ||= 280
@@ -236,7 +236,7 @@
   text: &quot;fireball&quot;,
 }
 </code></pre>
-<p>Hashes are expressed through curly braces <code>{}</code> and contain <code>key: value</code> separated by commas. The values of a hash can be anything, from numbers to strings to whatever your heart desires. Let's say we wanted to build our own hash to represent a dragon and put it in the <code>dragon</code> variable:</p>
+<p>Hashes are expressed through curly braces <code>{}</code> and contain <code>key: value</code> pairs separated by commas. The values of a hash can be anything, from numbers to strings to whatever your heart desires. Let's say we wanted to build our own hash to represent a dragon and put it in the <code>dragon</code> variable:</p>
 <pre><code class="language-ruby">dragon = {
   name: &quot;Francis&quot;,
   size: &quot;medium&quot;,
@@ -244,6 +244,7 @@
 }
 </code></pre>
 <p>Values of a hash are then accessed by their keys, so you <code>dragon.name</code> returns the string <code>&quot;Francis&quot;</code>, <code>dragon.size</code> returns the string <code>&quot;medium&quot;</code>, and <code>dragon.age</code> returns the number <code>541</code>. This is much more clear than having to remember the position of these values within an array.</p>
+<p>Quick note: if you see a hash with key-value pairs that look like this: <code>{ :name =&gt; &quot;Francis&quot; }</code>, don't fret! That's just an older style in Ruby known as the hash rocket and can be used for hashes with keys that aren't just symbols.</p>
 <p>In general, differentiate between arrays and hashes like this: <strong>hashes are used represent one piece of data with multiple properties</strong> and <strong>arrays are used to collect data (often times hashes) to keep track of and manipulate them</strong>.</p>
 <p>Below is our entire game translated to use hashes instead of arrays for our rendering:</p>
 <pre><code class="language-ruby">def tick args
@@ -335,7 +336,7 @@ end
 <p>Now that the fireball is a sprite and not a text label, we can push both the player and the array of fireballs into <code>args.outputs.sprites</code> in one go. This is more efficient for DragonRuby than doing it separately.</p>
 <p><img src="./img/c03-fireball-sprite.jpg" alt="dragon sprite shooting 4 fireballs flying across the screen" /></p>
 <h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
-<p>We're so close to having a game, so close! We just need something to spit fireballs at, right? We'll display some floating targets that get destroyed on when a fireball hits them.</p>
+<p>We're so close to having a game, so close! We just need something to spit fireballs at, right? In the next chapter, we'll display some floating targets that get destroyed when a fireball hits one.</p>
 
                     </main>
 
