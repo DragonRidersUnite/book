@@ -22,6 +22,7 @@
 
 [Outro](./outro.md)
 [Ruby Primer](./ruby-primer.md)
-[Source Control](./source-control.md)
-[Beyond the Code]()
+[Beyond the Code](./beyond-the-code.md)
+[DragonRuby Resources]()
 [Game Dev Resources](./game-dev-resources.md)
+[Source Control](./source-control.md)
