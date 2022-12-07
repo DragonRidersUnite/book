@@ -1,6 +1,6 @@
 # Source Control
 
-When working on any piece of software, whether it's a video game or an app to track how dogs you pet in a given day, it's extremely important to keep track of the changes to your code and keep it backed up in a secure location.
+When working on any piece of software, whether it's a video game or an app to track how many dogs you pet in a given day, it's extremely important to keep track of the changes to your code and keep it backed up in a secure location.
 
 Imagine this scenario: you work on your game for three months. It's amazing. It's your X-Files Dating Sim. You've painstakingly drawn all of the characters, written the scenario, coded up all the interactions. Then one day your computer gets stolen by a giant crow! I don't trust those crows, I never have. Suddenly your game is gone, poof. All that hard work just sitting on a hard-drive barely being protected by the shell of your laptop from the aggressive pecks of the entire local union of crows.
 
