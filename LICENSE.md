@@ -46,5 +46,5 @@ Examples of what you can do with the book under this license as long as it maint
 What you can't do:
 
 - Sell it
-- Remove the attribute
+- Remove the attribution
 - Share under a different license
