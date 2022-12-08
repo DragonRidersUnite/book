@@ -4,6 +4,8 @@
 
 An open source book that walks you through how to build games with [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game).
 
+[Support the creation and expansion of this book.](https://buymeacoffee.com/brettchalupa)
+
 ## Developing
 
 The book is authored and published with [mdBook](https://rust-lang.github.io/mdBook/guide/installation.html). Follow the installation instructions to get the `mdbook` binary installed.

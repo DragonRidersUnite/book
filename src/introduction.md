@@ -115,6 +115,8 @@ This book is freely accessible so that someone who loves games and wants to try 
 
 You'll learn the foundations of game programming and making games, as well as some more advanced topics. If this book can help even just one person start and finish a game, it's worth every minute I've spent on it. We'll make a game not too dissimilar from _Zaku Space Battle_. Once you finish it, take what you've learned and make it your own!
 
+If you want to, you can [send me a tip](https://buymeacoffee.com/brettchalupa) as a way of saying thank you. It's much appreciated.
+
 ## Contribute
 
 This book is open source. That means anyone can view the code that builds it and contribute toward making better. Did you find something that doesn't work, a typo, or lacks clarity? [Submit an issue or contribute on GitHub.](https://github.com/DragonRidersUnite/book) It's easy, and you can do it right from your browser. Thanks in advance!
