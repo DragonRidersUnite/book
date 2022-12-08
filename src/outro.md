@@ -26,7 +26,7 @@ If you really want to say thanks, [buy me a coffee](https://www.buymeacoffee.com
 
 Writing a book about making games is challenging to scope properly because games are so complex. We built a pretty simple game that covered a lot of the core concepts of making games, but there are _so_ many directions a sequel could head in.
 
-A second edition of the book could deep dive into making a shmup with enemy waves and bosses. Or we could build an entirely different game, like a platformer or a dungeon crawler.
+A second edition of the book could deep dive into making a shmup with enemy waves and bosses. Or we could build an entirely different game, like a platformer or a dungeon crawler. I'd also love to write about more advanced programming topics like encapsulating behavior with classes and sharing behavior with modules. It'd be great to over adapting a game for iOS and Android too.
 
 But I _need_ to be sure people want a follow up book where we build a more complex game using DragonRuby Game Toolkit. Let me know if you'd like to see a sequel in [Discord](https://discord.dragonruby.org).
 

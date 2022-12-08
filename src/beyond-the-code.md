@@ -22,7 +22,13 @@ Release your games for free for a while. Don’t put the pressure on yourself of
 
 ## Don't Worry About Being Original
 
-When you’re making your small, free games, don’t worry about being original. That may sound like blasphemy, but the best way to learn is to copy mechanics and systems from your favorite games to learn. You’ll inevitably infuse your own sensibilities into them and make something unique. When we learn an instrument, we play covers of our favorite songs and that’s encouraged. What would it be like to “cover” your favorite game? Originality will come with time when the ideas are flowing and don’t agree with how other games do something. 
+When you’re making your small, free games, don’t worry about being original. That may sound like blasphemy, but the best way to learn is to copy mechanics and systems from your favorite games to learn. You’ll inevitably infuse your own sensibilities into them and make something unique. When we learn an instrument, we play covers of our favorite songs and that’s encouraged. What would it be like to “cover” your favorite game? Originality will come with time when the ideas are flowing and don’t agree with how other games do something.
+
+## Do Game Jams
+
+Game jams are constrainted events where people make games within a certain timeframe, sometimes with specific rules. They're a great way to start and finish a game in a short period of time. You can experiment and take risks and connect with the community of your fellow participants. I can't recommend them enough. Try to do at least one jam a year (or more if your heart desires).
+
+[Itch has a directory of jams](https://itch.io/jams) and [Ludum Dare is a long-running jam with many participants](https://ludumdare.com/).
 
 ## Share Your Work
 
