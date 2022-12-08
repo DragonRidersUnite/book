@@ -150,6 +150,8 @@ Just like with labels, don't worry about memorizing the order here. There are fr
 
 But it's an easy enough bit of code for putting an image on the screen.
 
+Dragon sprite created by [Nick Culbertson](https://twitter.com/MobyPixel).
+
 Finally, the last line:
 
 ``` ruby

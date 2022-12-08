@@ -43,5 +43,6 @@ In particular, in alphabetical order, thank you to:
 - Akzidenz for feedback and support
 - Amir for encouraging me to write this book & making DragonRuby
 - Levi for nitpicking
+- [Nick Culbertson](https://twitter.com/MobyPixel) for the dragon sprite included with DRGTK
 - Owen for corrections
 - Pineapple for Discord feedback
