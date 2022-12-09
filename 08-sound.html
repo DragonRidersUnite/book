@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Sound - Building Games with DragonRuby</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="A comprehensive guide to shipping cross-platform 2D games with ease using DragonRuby Game Toolkit.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><a href="07-high-score.html"><strong aria-hidden="true">7.</strong> High-Score</a></li><li class="chapter-item expanded "><a href="08-sound.html" class="active"><strong aria-hidden="true">8.</strong> Sound</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Backgrounds</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship It!</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="outro.html">Outro</a></li><li class="chapter-item expanded affix "><a href="ruby-primer.html">Ruby Primer</a></li><li class="chapter-item expanded affix "><a href="beyond-the-code.html">Beyond the Code</a></li><li class="chapter-item expanded affix "><a href="dragonruby-resources.html">DragonRuby Resources</a></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Building Games with DragonRuby</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/DragonRidersUnite/book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                                        <a href="https://github.com/DragonRidersUnite/book/edit/main/src/08-sound.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="sound"><a class="header" href="#sound">Sound</a></h1>
+<p>One of the quickest ways to make any game you're building go from feeling flat to having some oomph is to add sound. Whenever any button is pressed, play a sound effect. Play music in the background. If your game has multiple moods, change the music based on the level or part of your game.</p>
+<p>For <em>Target Practice</em>, we'll have three unique sound effects:</p>
+<ol>
+<li>When the fireball is spit by the dragon</li>
+<li>When the fireball hits a target</li>
+<li>When the game ends</li>
+</ol>
+<p>We'll also add in a music track that plays in the background.</p>
+<p>Download the following files and put them in the <code>mygame/sounds/</code> folder:</p>
+<ul>
+<li><a href="./code/chapter_08/01_sound/sounds/fireball.wav">fireball.wav</a></li>
+<li><a href="./code/chapter_08/01_sound/sounds/target.wav">target.wav</a></li>
+<li><a href="./code/chapter_08/01_sound/sounds/game-over.wav">game-over.wav</a></li>
+<li><a href="./code/chapter_08/01_sound/sounds/flight.ogg">flight.ogg</a></li>
+</ul>
+<p>A note on audio file formats: in DragonRuby, sound effects are generally WAV (<code>.wav</code>) files. WAV files are uncompressed, meaning they can be quite large in size, but are high-quality. Because sound effects are so short, the file size is less of a concern. Music files are OGG (<code>.ogg</code>), an open-source format for audio that works across all of the platforms you game can run on. OGG files are compressed, thus smaller in size than WAV files, making them good for music tracks.</p>
+<h2 id="playing-sounds-in-dragonruby-game-toolkit"><a class="header" href="#playing-sounds-in-dragonruby-game-toolkit">Playing Sounds in DragonRuby Game Toolkit</a></h2>
+<p>DragonRuby GTK gives us a really simple way to play a sound in our game. You push a string of the path of the sound into <code>args.outputs.sounds</code> and it plays once:</p>
+<pre><code class="language-ruby">args.outputs.sounds &lt;&lt; &quot;sounds/fireball.wav&quot;
+</code></pre>
+<p>Easy enough!</p>
+<p>Playing music is a little more complex, but still pretty simple. You set a value on the <code>args.audio</code> hash that lets you manage the audio track across the game loop. You can check the current progress, whether or not it's paused, and more. That looks like:</p>
+<pre><code class="language-ruby">if args.state.tick_count == 1
+  args.audio[:music] = { input: &quot;sounds/flight.ogg&quot;, looping: true }
+end
+</code></pre>
+<p>That says when we're on the first tick, play the <code>flight.ogg</code> music track on repeat. We only want to run that code once because we don't want to start it over and over each <code>#tick</code>. The <code>:music</code> key can be any value we want. If you have multiple music tracks in your game, you can use a different key to manage the various tracks.</p>
+<h2 id="add-music--sound-effects-to-our-game"><a class="header" href="#add-music--sound-effects-to-our-game">Add Music &amp; Sound Effects To Our Game</a></h2>
+<p>Let's add the sound effects and music track to the game.</p>
+<p>Let's kick things off by starting the music track on the first tick at the top of <code>#tick</code>:</p>
+<pre><code class="language-ruby">def tick args
+  if args.state.tick_count == 1
+    args.audio[:music] = { input: &quot;sounds/flight.ogg&quot;, looping: true }
+  end
+</code></pre>
+<p>If you've got the files in the right place and start your game, you'll hear the music play.</p>
+<p>Above our check for whether or not the game is over, when the timer is 0, let's play <code>game-over.ogg</code> and pause the music:</p>
+<pre><code class="language-ruby">  args.state.timer -= 1
+
+  if args.state.timer == 0
+    args.audio[:music].paused = true
+    args.outputs.sounds &lt;&lt; &quot;sounds/game-over.wav&quot;
+  end
+
+  if args.state.timer &lt; 0
+    game_over_tick(args)
+    return
+  end
+</code></pre>
+<p>Right above when we add a new fireball to <code>args.state.fireballs</code>, play <code>fireball.wav</code>:</p>
+<pre><code class="language-ruby">  if fire_input?(args)
+    args.outputs.sounds &lt;&lt; &quot;sounds/fireball.wav&quot;
+    args.state.fireballs &lt;&lt; {
+      x: args.state.player.x + args.state.player.w - 12,
+      y: args.state.player.y + 10,
+      w: 32,
+      h: 32,
+      path: 'sprites/fireball.png',
+    }
+  end
+</code></pre>
+<p>And, finally, when a fireball hits a target, let's play <code>target.wav</code>:</p>
+<pre><code class="language-ruby">    args.state.targets.each do |target|
+      if args.geometry.intersect_rect?(target, fireball)
+        args.outputs.sounds &lt;&lt; &quot;sounds/target.wav&quot;
+        args.state.targets.delete(target)
+        args.state.fireballs.delete(fireball)
+        args.state.score += 1
+        args.state.targets &lt;&lt; spawn_target(args)
+      end
+    end
+  end
+</code></pre>
+<p>Now we've got music and sound effects in our game. Isn't it wild how the game feels more fun and polished?</p>
+<h2 id="make-your-own-music--sound-effects"><a class="header" href="#make-your-own-music--sound-effects">Make Your Own Music &amp; Sound Effects</a></h2>
+<p>I use <a href="https://sfxr.me/">jsfxr</a> to create sound effects for games. It's simple and free with a lot of settings to tweak. You can quickly download a WAV file that you can drop into your game. Try making your own sound effects and replacing the ones I've provided. You often won't know if a sound effect sounds <em>right</em> until you drop it in your game. So experiment and see what works best.</p>
+<p>As for making your own music, there are lots of options out there. I use <a href="https://1bitdragon.com/">1BitDragon</a>, a limited (in a good way) tool for making music. <a href="https://lmms.io/">LMMS</a> is a freel, well-loved tool. Garageband on MacOS would get you pretty far too!</p>
+<p>There are many ways to convert the sounds you make to various formats, from command-line tools like ffmpeg to desktop apps. <a href="https://convertio.co/">Convertio</a> is a free online service, among many, that you can use as well.</p>
+<p>Making music and sound effects for games is a huge topic that's beyond the scope of this book, but hopefully these tools can help you get started.</p>
+<p>If you do change the sounds in your game, you'll need to restart it to get DragonRuby GTK to refresh them.</p>
+<h2 id="extra-credit"><a class="header" href="#extra-credit">Extra Credit</a></h2>
+<ul>
+<li>Replace the provided sound effects with ones you made</li>
+<li>Make your own music and drop it in</li>
+<li>It can be a little bit annoying to hear the music over and over while you're making your game, so how would you make it so you can mute the music while working on it? <a href="https://www.dragonriders.community/recipes/music">This resource can help you out.</a></li>
+</ul>
+<h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
+<p>In the next chapter we'll continue to polish our game to prepare it for release by making the background blue and displaying clouds that float by.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="07-high-score.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="outro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="07-high-score.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="outro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>

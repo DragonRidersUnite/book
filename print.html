@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><a href="07-high-score.html"><strong aria-hidden="true">7.</strong> High-Score</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Sound</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Backgrounds</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship It!</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="outro.html">Outro</a></li><li class="chapter-item expanded affix "><a href="ruby-primer.html">Ruby Primer</a></li><li class="chapter-item expanded affix "><a href="beyond-the-code.html">Beyond the Code</a></li><li class="chapter-item expanded affix "><a href="dragonruby-resources.html">DragonRuby Resources</a></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><a href="07-high-score.html"><strong aria-hidden="true">7.</strong> High-Score</a></li><li class="chapter-item expanded "><a href="08-sound.html"><strong aria-hidden="true">8.</strong> Sound</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Backgrounds</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship It!</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="outro.html">Outro</a></li><li class="chapter-item expanded affix "><a href="ruby-primer.html">Ruby Primer</a></li><li class="chapter-item expanded affix "><a href="beyond-the-code.html">Beyond the Code</a></li><li class="chapter-item expanded affix "><a href="dragonruby-resources.html">DragonRuby Resources</a></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -1320,6 +1320,95 @@ def game_over_tick(args)
 </ul>
 <h2 id="whats-next-6"><a class="header" href="#whats-next-6">What's Next</a></h2>
 <p>Let's add some music and sound effects to our game. Even just a simple track with a couple sound effects will make a <em>significant</em> difference.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sound"><a class="header" href="#sound">Sound</a></h1>
+<p>One of the quickest ways to make any game you're building go from feeling flat to having some oomph is to add sound. Whenever any button is pressed, play a sound effect. Play music in the background. If your game has multiple moods, change the music based on the level or part of your game.</p>
+<p>For <em>Target Practice</em>, we'll have three unique sound effects:</p>
+<ol>
+<li>When the fireball is spit by the dragon</li>
+<li>When the fireball hits a target</li>
+<li>When the game ends</li>
+</ol>
+<p>We'll also add in a music track that plays in the background.</p>
+<p>Download the following files and put them in the <code>mygame/sounds/</code> folder:</p>
+<ul>
+<li><a href="./code/chapter_08/01_sound/sounds/fireball.wav">fireball.wav</a></li>
+<li><a href="./code/chapter_08/01_sound/sounds/target.wav">target.wav</a></li>
+<li><a href="./code/chapter_08/01_sound/sounds/game-over.wav">game-over.wav</a></li>
+<li><a href="./code/chapter_08/01_sound/sounds/flight.ogg">flight.ogg</a></li>
+</ul>
+<p>A note on audio file formats: in DragonRuby, sound effects are generally WAV (<code>.wav</code>) files. WAV files are uncompressed, meaning they can be quite large in size, but are high-quality. Because sound effects are so short, the file size is less of a concern. Music files are OGG (<code>.ogg</code>), an open-source format for audio that works across all of the platforms you game can run on. OGG files are compressed, thus smaller in size than WAV files, making them good for music tracks.</p>
+<h2 id="playing-sounds-in-dragonruby-game-toolkit"><a class="header" href="#playing-sounds-in-dragonruby-game-toolkit">Playing Sounds in DragonRuby Game Toolkit</a></h2>
+<p>DragonRuby GTK gives us a really simple way to play a sound in our game. You push a string of the path of the sound into <code>args.outputs.sounds</code> and it plays once:</p>
+<pre><code class="language-ruby">args.outputs.sounds &lt;&lt; &quot;sounds/fireball.wav&quot;
+</code></pre>
+<p>Easy enough!</p>
+<p>Playing music is a little more complex, but still pretty simple. You set a value on the <code>args.audio</code> hash that lets you manage the audio track across the game loop. You can check the current progress, whether or not it's paused, and more. That looks like:</p>
+<pre><code class="language-ruby">if args.state.tick_count == 1
+  args.audio[:music] = { input: &quot;sounds/flight.ogg&quot;, looping: true }
+end
+</code></pre>
+<p>That says when we're on the first tick, play the <code>flight.ogg</code> music track on repeat. We only want to run that code once because we don't want to start it over and over each <code>#tick</code>. The <code>:music</code> key can be any value we want. If you have multiple music tracks in your game, you can use a different key to manage the various tracks.</p>
+<h2 id="add-music--sound-effects-to-our-game"><a class="header" href="#add-music--sound-effects-to-our-game">Add Music &amp; Sound Effects To Our Game</a></h2>
+<p>Let's add the sound effects and music track to the game.</p>
+<p>Let's kick things off by starting the music track on the first tick at the top of <code>#tick</code>:</p>
+<pre><code class="language-ruby">def tick args
+  if args.state.tick_count == 1
+    args.audio[:music] = { input: &quot;sounds/flight.ogg&quot;, looping: true }
+  end
+</code></pre>
+<p>If you've got the files in the right place and start your game, you'll hear the music play.</p>
+<p>Above our check for whether or not the game is over, when the timer is 0, let's play <code>game-over.ogg</code> and pause the music:</p>
+<pre><code class="language-ruby">  args.state.timer -= 1
+
+  if args.state.timer == 0
+    args.audio[:music].paused = true
+    args.outputs.sounds &lt;&lt; &quot;sounds/game-over.wav&quot;
+  end
+
+  if args.state.timer &lt; 0
+    game_over_tick(args)
+    return
+  end
+</code></pre>
+<p>Right above when we add a new fireball to <code>args.state.fireballs</code>, play <code>fireball.wav</code>:</p>
+<pre><code class="language-ruby">  if fire_input?(args)
+    args.outputs.sounds &lt;&lt; &quot;sounds/fireball.wav&quot;
+    args.state.fireballs &lt;&lt; {
+      x: args.state.player.x + args.state.player.w - 12,
+      y: args.state.player.y + 10,
+      w: 32,
+      h: 32,
+      path: 'sprites/fireball.png',
+    }
+  end
+</code></pre>
+<p>And, finally, when a fireball hits a target, let's play <code>target.wav</code>:</p>
+<pre><code class="language-ruby">    args.state.targets.each do |target|
+      if args.geometry.intersect_rect?(target, fireball)
+        args.outputs.sounds &lt;&lt; &quot;sounds/target.wav&quot;
+        args.state.targets.delete(target)
+        args.state.fireballs.delete(fireball)
+        args.state.score += 1
+        args.state.targets &lt;&lt; spawn_target(args)
+      end
+    end
+  end
+</code></pre>
+<p>Now we've got music and sound effects in our game. Isn't it wild how the game feels more fun and polished?</p>
+<h2 id="make-your-own-music--sound-effects"><a class="header" href="#make-your-own-music--sound-effects">Make Your Own Music &amp; Sound Effects</a></h2>
+<p>I use <a href="https://sfxr.me/">jsfxr</a> to create sound effects for games. It's simple and free with a lot of settings to tweak. You can quickly download a WAV file that you can drop into your game. Try making your own sound effects and replacing the ones I've provided. You often won't know if a sound effect sounds <em>right</em> until you drop it in your game. So experiment and see what works best.</p>
+<p>As for making your own music, there are lots of options out there. I use <a href="https://1bitdragon.com/">1BitDragon</a>, a limited (in a good way) tool for making music. <a href="https://lmms.io/">LMMS</a> is a freel, well-loved tool. Garageband on MacOS would get you pretty far too!</p>
+<p>There are many ways to convert the sounds you make to various formats, from command-line tools like ffmpeg to desktop apps. <a href="https://convertio.co/">Convertio</a> is a free online service, among many, that you can use as well.</p>
+<p>Making music and sound effects for games is a huge topic that's beyond the scope of this book, but hopefully these tools can help you get started.</p>
+<p>If you do change the sounds in your game, you'll need to restart it to get DragonRuby GTK to refresh them.</p>
+<h2 id="extra-credit-3"><a class="header" href="#extra-credit-3">Extra Credit</a></h2>
+<ul>
+<li>Replace the provided sound effects with ones you made</li>
+<li>Make your own music and drop it in</li>
+<li>It can be a little bit annoying to hear the music over and over while you're making your game, so how would you make it so you can mute the music while working on it? <a href="https://www.dragonriders.community/recipes/music">This resource can help you out.</a></li>
+</ul>
+<h2 id="whats-next-7"><a class="header" href="#whats-next-7">What's Next</a></h2>
+<p>In the next chapter we'll continue to polish our game to prepare it for release by making the background blue and displaying clouds that float by.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="outro"><a class="header" href="#outro">Outro</a></h1>
 <p>Thank you so much for reading and going through <em>Building Games with DragonRuby</em>. I hope you continue to use DragonRuby Game Toolkit and make awesome games. <a href="https://discord.dragonruby.org">Jump in the Discord</a>, and share what you've made. The community would love to see it and will happily answer any questions you have.</p>
 <h2 id="make-target-practice-your-own"><a class="header" href="#make-target-practice-your-own">Make <em>Target Practice</em> Your Own</a></h2>
@@ -1341,7 +1430,7 @@ def game_over_tick(args)
 <p>Writing a book about making games is challenging to scope properly because games are so complex. We built a pretty simple game that covered a lot of the core concepts of making games, but there are <em>so</em> many directions a sequel could head in.</p>
 <p>A second edition of the book could deep dive into making a shmup with enemy waves and bosses. Or we could build an entirely different game, like a platformer or a dungeon crawler. I'd also love to write about more advanced programming topics like encapsulating behavior with classes and sharing behavior with modules. It'd be great to over adapting a game for iOS and Android too.</p>
 <p>But I <em>need</em> to be sure people want a follow up book where we build a more complex game using DragonRuby Game Toolkit. Let me know if you'd like to see a sequel in <a href="https://discord.dragonruby.org">Discord</a>.</p>
-<h2 id="extra-credit-3"><a class="header" href="#extra-credit-3">Extra Credit</a></h2>
+<h2 id="extra-credit-4"><a class="header" href="#extra-credit-4">Extra Credit</a></h2>
 <p>You'll find bonus chapters after this outro. They're one-off deep dives into specific topics, from the mindset that's required to make games to how to back up your game's source code. Check them out and see what you can learn!</p>
 <h2 id="gratitude"><a class="header" href="#gratitude">Gratitude</a></h2>
 <p>A big thank you to the DragonRuby community. This book would not have been possible without their support and guidance. </p>
