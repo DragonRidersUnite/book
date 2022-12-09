@@ -11,7 +11,7 @@
 - [Fireball Clean Up](./05-fireball-clean-up.md)
 - [Time Attack](./06-time-attack.md)
 - [High-Score](./07-high-score.md)
-- [Sound]()
+- [Sound](./08-sound.md)
 - [Backgrounds]()
 - [Animation]()
 - [Scenes]()
