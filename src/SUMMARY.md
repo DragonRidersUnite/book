@@ -13,7 +13,7 @@
 - [High-Score](./07-high-score.md)
 - [Sound](./08-sound.md)
 - [Background](./09-background.md)
-- [Animation]()
+- [Animation](./10-animation.md)
 - [Scenes]()
 - [Ship It!]()
 

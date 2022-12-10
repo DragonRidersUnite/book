@@ -27,3 +27,5 @@ Now we've got our dragon flying over a blue sky. That looks quite a bit better.
 - Draw some more rectangles under the score and timer to make them easier to read.
 
 ## What's Next
+
+We've got one more piece of polish to implement—animation! Let's make our dragon flap their wings because they're flying in the sky.
