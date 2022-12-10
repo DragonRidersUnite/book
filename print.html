@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><a href="07-high-score.html"><strong aria-hidden="true">7.</strong> High-Score</a></li><li class="chapter-item expanded "><a href="08-sound.html"><strong aria-hidden="true">8.</strong> Sound</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Backgrounds</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship It!</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="outro.html">Outro</a></li><li class="chapter-item expanded affix "><a href="ruby-primer.html">Ruby Primer</a></li><li class="chapter-item expanded affix "><a href="beyond-the-code.html">Beyond the Code</a></li><li class="chapter-item expanded affix "><a href="dragonruby-resources.html">DragonRuby Resources</a></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><a href="07-high-score.html"><strong aria-hidden="true">7.</strong> High-Score</a></li><li class="chapter-item expanded "><a href="08-sound.html"><strong aria-hidden="true">8.</strong> Sound</a></li><li class="chapter-item expanded "><a href="09-background.html"><strong aria-hidden="true">9.</strong> Background</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Animation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship It!</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="outro.html">Outro</a></li><li class="chapter-item expanded affix "><a href="ruby-primer.html">Ruby Primer</a></li><li class="chapter-item expanded affix "><a href="beyond-the-code.html">Beyond the Code</a></li><li class="chapter-item expanded affix "><a href="dragonruby-resources.html">DragonRuby Resources</a></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -1409,6 +1409,37 @@ end
 </ul>
 <h2 id="whats-next-7"><a class="header" href="#whats-next-7">What's Next</a></h2>
 <p>In the next chapter we'll continue to polish our game to prepare it for release by making the background blue and displaying clouds that float by.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="background"><a class="header" href="#background">Background</a></h1>
+<p>We're eight chapters in and haven't even touched upon a simple and useful piece of functionality that DragonRuby GTK gives us: drawing rectangles! Rectangles are great for backgrounds, text boxes and more. Layer some sprites on top, and you can get pretty fancy.</p>
+<h2 id="blue-sky"><a class="header" href="#blue-sky">Blue Sky</a></h2>
+<p>Up until now, our dragon has been flying around in a gray sky. Let's make the sky blue to start.</p>
+<p>DragonRuby provides <code>args.outputs.solids</code> to easy display filled rectangles.</p>
+<p>At the top of <code>#tick</code>, below where we start the music, create a solid rectangle that's the size of the screen and placed at 0, 0:</p>
+<pre><code class="language-ruby">def tick args
+  if args.state.tick_count == 1
+    args.audio[:music] = { input: &quot;sounds/flight.ogg&quot;, looping: true }
+  end
+
+  args.outputs.solids &lt;&lt; {
+    x: 0,
+    y: 0,
+    w: args.grid.w,
+    h: args.grid.h,
+    r: 92,
+    g: 120,
+    b: 230,
+  }
+</code></pre>
+<p>We're familiar with a lot of the shape hash keys for the position and size, but <code>r</code>, <code>g</code>, and <code>b</code> are new. They specify the values for the red, green, and blue color values for the rectangle we're drawing. Their values can be set to anything between 0 and 255, inclusive. Adjust the values to see a different color displayed. The higher the value for a given color, the more it'll be part of the mix. So our color has a blue of 230, meaning blue comes through more than the others. You can also specify <code>a</code>, the alpha value, between 0 and 100, inclusive, to get transparency in our shape.</p>
+<p>Now we've got our dragon flying over a blue sky. That looks quite a bit better.</p>
+<p><img src="./img/c09-blue-sky.jpg" alt="game with dragon and three targets and blue background" /></p>
+<h2 id="extra-credit-4"><a class="header" href="#extra-credit-4">Extra Credit</a></h2>
+<ul>
+<li>Make (or find) some cloud sprites and render those in the sky. Put them in the <code>args.outputs.sprites</code> <em>before</em> the other sprites to have them render behind.</li>
+<li>Move the clouds, randomly placing at a different position and with a different size when they go off the screen.</li>
+<li>Draw some more rectangles under the score and timer to make them easier to read.</li>
+</ul>
+<h2 id="whats-next-8"><a class="header" href="#whats-next-8">What's Next</a></h2>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="outro"><a class="header" href="#outro">Outro</a></h1>
 <p>Thank you so much for reading and going through <em>Building Games with DragonRuby</em>. I hope you continue to use DragonRuby Game Toolkit and make awesome games. <a href="https://discord.dragonruby.org">Jump in the Discord</a>, and share what you've made. The community would love to see it and will happily answer any questions you have.</p>
 <h2 id="make-target-practice-your-own"><a class="header" href="#make-target-practice-your-own">Make <em>Target Practice</em> Your Own</a></h2>
@@ -1430,7 +1461,7 @@ end
 <p>Writing a book about making games is challenging to scope properly because games are so complex. We built a pretty simple game that covered a lot of the core concepts of making games, but there are <em>so</em> many directions a sequel could head in.</p>
 <p>A second edition of the book could deep dive into making a shmup with enemy waves and bosses. Or we could build an entirely different game, like a platformer or a dungeon crawler. I'd also love to write about more advanced programming topics like encapsulating behavior with classes and sharing behavior with modules. It'd be great to over adapting a game for iOS and Android too.</p>
 <p>But I <em>need</em> to be sure people want a follow up book where we build a more complex game using DragonRuby Game Toolkit. Let me know if you'd like to see a sequel in <a href="https://discord.dragonruby.org">Discord</a>.</p>
-<h2 id="extra-credit-4"><a class="header" href="#extra-credit-4">Extra Credit</a></h2>
+<h2 id="extra-credit-5"><a class="header" href="#extra-credit-5">Extra Credit</a></h2>
 <p>You'll find bonus chapters after this outro. They're one-off deep dives into specific topics, from the mindset that's required to make games to how to back up your game's source code. Check them out and see what you can learn!</p>
 <h2 id="gratitude"><a class="header" href="#gratitude">Gratitude</a></h2>
 <p>A big thank you to the DragonRuby community. This book would not have been possible without their support and guidance. </p>
