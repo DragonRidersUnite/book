@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Background - Building Games with DragonRuby</title>
+        <title>Animation - Building Games with DragonRuby</title>
                 
 
         <!-- Custom HTML head -->
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><a href="07-high-score.html"><strong aria-hidden="true">7.</strong> High-Score</a></li><li class="chapter-item expanded "><a href="08-sound.html"><strong aria-hidden="true">8.</strong> Sound</a></li><li class="chapter-item expanded "><a href="09-background.html" class="active"><strong aria-hidden="true">9.</strong> Background</a></li><li class="chapter-item expanded "><a href="10-animation.html"><strong aria-hidden="true">10.</strong> Animation</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship It!</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="outro.html">Outro</a></li><li class="chapter-item expanded affix "><a href="ruby-primer.html">Ruby Primer</a></li><li class="chapter-item expanded affix "><a href="beyond-the-code.html">Beyond the Code</a></li><li class="chapter-item expanded affix "><a href="dragonruby-resources.html">DragonRuby Resources</a></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><a href="07-high-score.html"><strong aria-hidden="true">7.</strong> High-Score</a></li><li class="chapter-item expanded "><a href="08-sound.html"><strong aria-hidden="true">8.</strong> Sound</a></li><li class="chapter-item expanded "><a href="09-background.html"><strong aria-hidden="true">9.</strong> Background</a></li><li class="chapter-item expanded "><a href="10-animation.html" class="active"><strong aria-hidden="true">10.</strong> Animation</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Scenes</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">12.</strong> Ship It!</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="outro.html">Outro</a></li><li class="chapter-item expanded affix "><a href="ruby-primer.html">Ruby Primer</a></li><li class="chapter-item expanded affix "><a href="beyond-the-code.html">Beyond the Code</a></li><li class="chapter-item expanded affix "><a href="dragonruby-resources.html">DragonRuby Resources</a></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -119,7 +119,7 @@
                                                                         <a href="https://github.com/DragonRidersUnite/book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                                                                        <a href="https://github.com/DragonRidersUnite/book/edit/main/src/09-background.md" title="Suggest an edit" aria-label="Suggest an edit">
+                                                                        <a href="https://github.com/DragonRidersUnite/book/edit/main/src/10-animation.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                         
@@ -148,48 +148,44 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="background"><a class="header" href="#background">Background</a></h1>
-<p>We're eight chapters in and haven't even touched upon a simple and useful piece of functionality that DragonRuby GTK gives us: drawing rectangles! Rectangles are great for backgrounds, text boxes and more. Layer some sprites on top, and you can get pretty fancy.</p>
-<h2 id="blue-sky"><a class="header" href="#blue-sky">Blue Sky</a></h2>
-<p>Up until now, our dragon has been flying around in a gray sky. Let's make the sky blue to start.</p>
-<p>DragonRuby provides <code>args.outputs.solids</code> to easy display filled rectangles.</p>
-<p>At the top of <code>#tick</code>, below where we start the music, create a solid rectangle that's the size of the screen and placed at 0, 0:</p>
-<pre><code class="language-ruby">def tick args
-  if args.state.tick_count == 1
-    args.audio[:music] = { input: &quot;sounds/flight.ogg&quot;, looping: true }
-  end
-
-  args.outputs.solids &lt;&lt; {
-    x: 0,
-    y: 0,
-    w: args.grid.w,
-    h: args.grid.h,
-    r: 92,
-    g: 120,
-    b: 230,
+                        <h1 id="animation"><a class="header" href="#animation">Animation</a></h1>
+<p>While the polish we've implemented in our game is making it feel a lot better to play, it feels a bit lifeless. There's a key piece missing that we haven't covered yet. It's animation! Whether it's Sonic tapping his foot when he hasn't moved in a while or his feet moving as he runs, animating our sprites gives our game personality. It makes the game feel alive.</p>
+<p>Have you ever made a flip animation in the bottom corner of a notebook? You draw each frame and then flip through the pages quickly to see it animate. That concept of drawing the frames and each frame subtly changing what's drawn to convey motion is core to 2D animation, whether it's a game, an animated GIF, or a classic Disney film.</p>
+<p>In this chapter we'll make our dragon flap its wings because it's flying through the air.</p>
+<h2 id="animating-our-dragon"><a class="header" href="#animating-our-dragon">Animating Our Dragon</a></h2>
+<p>In <code>mygame/sprites/misc/</code> there are more dragon images than just <code>dragon-0.png</code>. There are 5 additional frames of the dragon flapping their wings. Perfect! That's just what we need.</p>
+<p>The core of how this will work is that each dragon frame will be displayed for some period of time and then we'll switch to the next frame after that time has passed.</p>
+<pre><code class="language-ruby">  args.state.player ||= {
+    x: 120,
+    y: 280,
+    w: 100,
+    h: 80,
+    speed: 12,
   }
+
+  player_sprite_index = 0.frame_index(count: 6, hold_for: 8, repeat: true)
+  args.state.player.path = &quot;sprites/misc/dragon-#{player_sprite_index}.png&quot;
 </code></pre>
-<p>We're familiar with a lot of the shape hash keys for the position and size, but <code>r</code>, <code>g</code>, and <code>b</code> are new. They specify the values for the red, green, and blue color values for the rectangle we're drawing. Their values can be set to anything between 0 and 255, inclusive. Adjust the values to see a different color displayed. The higher the value for a given color, the more it'll be part of the mix. So our color has a blue of 230, meaning blue comes through more than the others. You can also specify <code>a</code>, the alpha value, between 0 and 100, inclusive, to get transparency in our shape.</p>
-<p>Now we've got our dragon flying over a blue sky. That looks quite a bit better.</p>
-<p><img src="./img/c09-blue-sky.jpg" alt="game with dragon and three targets and blue background" /></p>
+<p>Where we lazily set <code>args.state.player</code>, we no longer specify the <code>path</code> to the sprite. We'll set that as part of animating the player right below.</p>
+<p><code>#frame_index</code> is a method DragonRuby GTK gives us on integers to keep track of what frame to use when animating. <code>0</code> is when we want to start the animation, which we want to start at the beginning. We have 6 frames total, and we want to display each of them for 8 ticks, repeating forever! Change the <code>hold_for</code> value and see how it affects the animation speed and feel of the game. Pick a rate that feels good for you or just stick with 8.</p>
+<p>Then we take the <code>player_sprite_index</code> and use that when specifying the <code>path</code> of our player sprite by interpolating it into the path to our sprite. Our dragon sprites are named <code>dragon-0.png</code>, <code>dragon-1.png</code>, and so on. So we take what <code>#frame_index</code> gives us and inject it into the path to the image to make that value dynamic.</p>
+<p>In Ruby, when you have a string that uses double quotes, <code>&quot;hi there&quot;</code>, you can inject Ruby code inside of it using <code>#{}</code>. This is really useful. For example: <code>&quot;2 + 2 = #{2 + 2}&quot;</code>, that evaluates the mathematical expression and converts the answer (<code>4</code>) to a string and displays it.</p>
+<h2 id="a-note-on-spritesheets"><a class="header" href="#a-note-on-spritesheets">A Note on Spritesheets</a></h2>
 <h2 id="extra-credit"><a class="header" href="#extra-credit">Extra Credit</a></h2>
 <ul>
-<li>Make (or find) some cloud sprites and render those in the sky. Put them in the <code>args.outputs.sprites</code> <em>before</em> the other sprites to have them render behind.</li>
-<li>Move the clouds, randomly placing at a different position and with a different size when they go off the screen.</li>
-<li>Draw some more rectangles under the score and timer to make them easier to read.</li>
+<li>How would you increase the animation speed when the dragon is moving to simulate faster flapping of their wings?</li>
 </ul>
 <h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
-<p>We've got one more piece of polish to implement—animation! Let's make our dragon flap their wings because they're flying in the sky.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="08-sound.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="09-background.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="10-animation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="outro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -199,11 +195,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="08-sound.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="09-background.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="10-animation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="outro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>
