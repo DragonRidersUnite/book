@@ -12,7 +12,7 @@
 - [Time Attack](./06-time-attack.md)
 - [High-Score](./07-high-score.md)
 - [Sound](./08-sound.md)
-- [Backgrounds]()
+- [Background](./09-background.md)
 - [Animation]()
 - [Scenes]()
 - [Ship It!]()
