@@ -82,23 +82,30 @@ With a loop and a method we've implemented collision detection. That wasn't too 
 
 ## Remove Targets On Collision
 
-But... It's not very helpful to output a message to the console when a target is hit. Let's instead remove the target so that it is no longer displayed. We'll need to delete the hit target from the array of targets so that it's no longer checked against.
+But... It's not very helpful to output a message to the console when a target is hit. Let's instead remove the target so that it is no longer displayed. We'll need to remove the hit target from the array of targets so that it's no longer checked against.
 
-Ruby makes that pretty easy. All you do is call the `#delete` method on an array and pass in the item you want to delete. If you have an array of numbers and call delete, it removes the item from the array:
+We'll go about this in the following way:
+
+- If a target should be removed, then we'll mark it as `dead`
+- After we've checked all of our targets, we'll `reject!` the dead ones from `args.state.targets`
+
+Ruby makes that pretty easy. All you do is call the `#reject!` method on an array and pass in the logic for when an item should be removed. If you have an array of numbers and call reject and the check is true, it removes the item from the array:
 
 ``` ruby
 nums = [3, 4, 5]
-nums.delete(3)
-nums # => [4, 5]
+nums.reject! { |n| n.even? }
+nums # => [3, 5]
 ```
 
-It works just like you think it would. So in our collision detection code where we call `puts`, we'll instead just delete the target _and_ the fireball so they both get removed from their respective collections.
+In the code above, `n` is the argument passed into the block, which represents a given number in the array. Reject loops through each element in the array, checking each one.
+
+So in our collision detection code where we call `puts`, we'll instead mark the target and fireball as dead _and_ then reject the dead ones from their collections:
 
 ``` ruby
-{{#include code/chapter_04/04_remove_targets/app/main.rb:67:76}}
+{{#include code/chapter_04/04_remove_targets/app/main.rb:67:79}}
 ```
 
-Since the target and fireball that collided are no longer being tracked in `args.state`, they don't get rendered on the screen and are, for all intents and purposes, gone!
+Since the target and fireball that collided are no longer being tracked in `args.state`, they don't get rendered on the screen and are, for all intents and purposes, gone! We then `#reject!` each fireball and target that are `dead`.
 
 This almost feels like a game. That's a great feeling. We're getting close to _fun_.
 
@@ -147,7 +154,7 @@ Instead of passing in the x and y position, we just call `#spawn_target` with Dr
 {{#include code/chapter_04/05_spawn_new_targets/app/main.rb:66:76}}
 ```
 
-We loop through the fireballs and move each one, just as before. And then we check to see if it intersects with any of the targets. If they do intersect, we delete both the fireball and the target.
+We loop through the fireballs and move each one, just as before. And then we check to see if it intersects with any of the targets. If they do intersect, we mark both the fireball and the target as being hit.
 
 The one new line is where we push a new target into `args.state.targets` from `#spawn_target`. That'll make a new target appear in a random location whenever we hit another.
 
@@ -165,7 +172,7 @@ Near the top of `#tick`, lazily initialize `args.state.score` to `0`.
 {{#include code/chapter_04/06_score_tracking/app/main.rb:21:27}}
 ```
 
-In our collision detection loop, when we delete the target and fireball, add `1` to our score:
+In our collision detection loop, when we hit the target and fireball, add `1` to our score:
 
 ``` ruby
 {{#include code/chapter_04/06_score_tracking/app/main.rb:72:75}}
@@ -174,7 +181,7 @@ In our collision detection loop, when we delete the target and fireball, add `1`
 Finally, display our score as a label in the upper-left area of the screen:
 
 ``` ruby
-{{#include code/chapter_04/06_score_tracking/app/main.rb:80:86}}
+{{#include code/chapter_04/06_score_tracking/app/main.rb:83:89}}
 ```
 
 This approach to displaying a label is different than previous chapters. Instead of using an array to represent the properties of the label, we're now using a hash like we do for sprites (for similar reasons: it's easier to remember and more clear). Setting `x`, `y`, and `text` should be familiar by this point. But `size_enum` is new. It's a way to specify how large the text is. It takes whatever value we set and adds that much to the default text size. Increase it from `4` to `40` or `-3` and see what you like best.

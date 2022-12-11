@@ -19,7 +19,7 @@ Let's introduce a `#gameplay_tick` method that will contain the logic for our ga
 Not much of the code changes, but we do shuffle things around a bit. None of the methods above `#game_over_tick` change, so they're excluded:
 
 ``` ruby
-{{#include code/chapter_11/01_refactor/app/main.rb:50:201}}
+{{#include code/chapter_11/01_refactor/app/main.rb:50:204}}
 ```
 
 `#game_over_tick` is the same except for the addition of:
@@ -53,7 +53,7 @@ When player's launch our game, they get dropped right into the gameplay. This ca
 In our game code, let's introduce `#title_tick` that takes `args` as its only parameter, just like our other `*_tick` methods for our scenes. In `#title_tick`, we'll render some labels and look for input to start our game. If the fireball input is pressed, we'll play a sound effect, change the scene, and return early so we can move on to the next scene.
 
 ``` ruby
-{{#include code/chapter_11/02_title/app/main.rb:193:229}}
+{{#include code/chapter_11/02_title/app/main.rb:196:232}}
 ```
 
 Replace `YOU` with your name since you made it. It's important to take credit for your work.
@@ -61,7 +61,7 @@ Replace `YOU` with your name since you made it. It's important to take credit fo
 Then in `#tick` lazily initialize `args.state.scene` to now be `"title"`:
 
 ``` ruby
-{{#include code/chapter_11/02_title/app/main.rb:231:239}}
+{{#include code/chapter_11/02_title/app/main.rb:234:242}}
 ```
 
 Now when you start the game, the title scene will be displayed:

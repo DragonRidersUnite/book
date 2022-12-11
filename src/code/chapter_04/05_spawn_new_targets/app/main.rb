@@ -68,12 +68,15 @@ def tick args
 
     args.state.targets.each do |target|
       if args.geometry.intersect_rect?(target, fireball)
-        args.state.targets.delete(target)
-        args.state.fireballs.delete(fireball)
+        target.dead = true
+        fireball.dead = true
         args.state.targets << spawn_target(args)
       end
     end
   end
+
+  args.state.targets.reject! { |t| t.dead }
+  args.state.fireballs.reject! { |f| f.dead }
 
   args.outputs.sprites << [args.state.player, args.state.fireballs, args.state.targets]
 end

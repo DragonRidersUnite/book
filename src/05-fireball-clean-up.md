@@ -19,7 +19,7 @@ DragonRuby gives us `args.outputs.debug`, which allows us to display shapes, lab
 Add these lines to the bottom of `#tick` after pushing our score text into `args.outputs.labels`:
 
 ``` ruby
-{{#include code/chapter_05/01_tracking_offscreen/app/main.rb:88:97}}
+{{#include code/chapter_05/01_tracking_offscreen/app/main.rb:91:100}}
 ```
 
 It displays two pieces of text in our game (but remember, only in debug mode). The total number of fireballs our game is keeping track of and the x position of the first fireball. The ampersand in front of `args.state.fireballs.first&.x` says: if there's a first fireball, try to get its x property, otherwise don't throw an error. If we haven't hit the fire button, there's no first fireball in our array to get the `x` value of.
@@ -34,13 +34,13 @@ It's not very efficient to keep track of and update the position of fireballs th
 
 When making games, you need to be cognizant of performance. There are usually some straightforward fixes that can make a big difference.
 
-In the case of our game, let's remove fireballs from our `args.state.fireballs` array when they fly off the screen. This will reduce the amount of processing load our game needs to handle.
+In the case of our game, let's reject fireballs from our `args.state.fireballs` array when they fly off the screen. This will reduce the amount of processing load our game needs to handle.
 
 ``` ruby
-{{#include code/chapter_05/02_optimizing/app/main.rb:67:83}}
+{{#include code/chapter_05/02_optimizing/app/main.rb:67:86}}
 ```
 
-When looping through `args.state.fireballs`, we check to see if the x position of the fireball in the loop is greater than the width of the screen. If it is, then we delete the fireball, just like we do below on collision with a target. Then we call `next`, which tells the loop we're in to move on to the next fireball in the array and not the rest of the code in this iteration of the loop. Since we've removed the fireball from the game, we don't want to check it for collision.
+When looping through `args.state.fireballs`, we check to see if the x position of the fireball in the loop is greater than the width of the screen. If it is, then we mark the fireball as `dead`, just like we do below on collision with a target. Then we call `next`, which tells the loop we're in to move on to the next fireball in the array and not the rest of the code in this iteration of the loop. Since we've removed the fireball from the game, we don't want to check it for collision.
 
 Play your game and see that now as the fireballs fly off the screen, the total number of fireballs decreases. They no longer exist forever, flying off across the sky for all eternity, eating up our CPU cycles.
 

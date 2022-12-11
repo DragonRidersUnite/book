@@ -37,7 +37,7 @@ The `return` line is _really_ important. It says, return out of the `#tick` meth
 Way at the bottom of `#tick`, let's display a label with the time remaining:
 
 ``` ruby
-{{#include code/chapter_06/01_time_attack/app/main.rb:121:135}}
+{{#include code/chapter_06/01_time_attack/app/main.rb:124:138}}
 ```
 
 We use the same pattern of creating a `labels` array, pushing in the player's score and the time remaining. In order to get the time remaining, we divide it by 60 and round. We do the opposite of what we did when we set the total time in ticks.
