@@ -4,6 +4,8 @@
 
 An open source book that walks you through how to build games with [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game).
 
+[Play the game you'll be building, right in the browser.](https://dragonridersunite.itch.io/dragonruby-book)
+
 [Support the creation and expansion of this book.](https://buymeacoffee.com/brettchalupa)
 
 ## Developing
