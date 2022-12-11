@@ -1,0 +1,20 @@
+- 000000 Starting publish for game in directory '.'
+! 000000 Failed to load game metadata
+! 000000 
+! 000000 
+! 000000 We're having a problem with your game's metadata.
+! 000000 Please make sure that ./metadata/game_metadata.txt exists
+! 000000  and looks something like this:
+! 000000 
+! 000000 devid=myname
+! 000000 devtitle=My Name
+! 000000 gameid=mygame
+! 000000 gametitle=My Game
+! 000000 version=0.1
+! 000000 icon=metadata/icon.png
+! 000000 
+! 000000 
+! 000000 
+! 000000 Packaging failed!
+! 000000 
+* 000000 Logging shutting down
