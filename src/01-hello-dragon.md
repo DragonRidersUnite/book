@@ -115,7 +115,7 @@ The `<<` is called the shovel operator. It lets you push data into a collection.
 
 And then finally the code within the brackets `[]` is an array of data that represents what we want to display on the screen. It may not be clear exactly what it's doing yet, but it'll become more clear over time.
 
-[TODO: array illustration]
+I think of an array like a stack of CDs. The CDs are in a specific order, but you don't know what a given CD is unless you pull it out at a point in the stack and look at it. In programming, you put data into an array to collect that data and keep track of it.
 
 You can see some code in quotes, those are strings. And they're what's being displayed by the game. In order to show the text, though, we need to tell the engine where to place it on the screen. That's what the first two elements of the array do: they specify the x and y position in of the text in the game. Then there's the text we want to render. That's followed by the size. Then finally the alignment (centered in this case).
 
@@ -164,7 +164,7 @@ signifies that the definition of the `tick` method is over. Any code after that 
 
 Let's take a detour down Screen Coordinates Road. The `x` and `y` position are coordinates on the two-dimensional plane of the game window. Remember geometry? I barely do. But this is important, so don't doze off on me yet, we're only in the first chapter still!
 
-[TODO: coordinates illustration]
+![diagram showing x, y axis with 0, 0 being in the bottom left and 1280, 720 being in the upper right](./img/c01-coords.png)
 
 DRGTK games are made up of a window that's 1280x720 pixels large. That's 1280 pixels wide and 720 pixels tall. The rectangle of the game screen is 921600 pixels, that's those two numbers multiplied. Each of those pixels has a coordinate on the plane. It makes it easy to refer to a specific pixel by using its `x` and `y` position.
 
@@ -177,8 +177,6 @@ It's important to keep coordinates in mind, as we'll be using them a lot when ma
 Back to making the game. Okay, yeah, you changed a string and it changed what was rendered. That's neat. But let's bump it up a notch.
 
 I want you to delete the code in `mygame/app/main.rb`. Select it all and delete it. Yup, I know, the blank canvas is a challenge. But you need to start writing the code yourself in order to learn and build the muscle memory. So go ahead and type out each line below into your `main.rb`.
-
-[TODO: hand-write it, don't copy it illustration]
 
 ``` ruby
 def tick args
@@ -254,9 +252,11 @@ When programming games, any number of things are happening at one time. Enemies 
 
 Within the game loop, we'll keep track of everything that's happening, update state, and render text and images. It's important to begin to think about things in a loop, as it influences timing and code structure.
 
-[TODO: drawing of the game loop and why it matters]
+![diagram showing game loop running 60x per second handling updating the world and rendering](./img/c01-gameloop.png)
 
 The game loop will begin to feel more natural over time, but for now, remember this: **DRGTK runs the `tick` method 60 times every second**.
+
+If you're familiar with games, you may know about frames per second (FPS). That's how many frames are rendered in a given second. 60 FPS is known for its smoothness and is often a target of many games. In DragonRuby GTK, the 60 ticks per second can be thought of as the same as your game running 60 frames per second (FPS).
 
 ## What's Next
 
