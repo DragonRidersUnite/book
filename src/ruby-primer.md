@@ -114,4 +114,4 @@ end
 ## Resources
 
 - [Ruby in Twenty Minutes](https://www.ruby-lang.org/en/documentation/quickstart/)
-- [why's (poignant) guide to Ruby](https://poignant.guide/)
+- [Ruby is for Fun](https://rubyisforfun.com/)
