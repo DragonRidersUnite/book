@@ -1742,7 +1742,7 @@ end
 <p>We'll release <em>Target Practice</em> on <a href="https://itch.io/">itch.io</a>, an open marketplace for distributing your game. You can share your games for free on itch or sell them. The html version will even be able to be played in the browser. So go ahead and sign up for an itch account.</p>
 <h2 id="prep-for-release"><a class="header" href="#prep-for-release">Prep for Release</a></h2>
 <p>While the code of our game is done (<a href="https://github.com/DragonRidersUnite/book/tree/main/src/code/chapter_12/01_release">view the finished source</a>), we need to specify some info about the game, like its title and our information.</p>
-<p>First, delete <code>mygame/high-score.txt</code>. We don't want our high-score from building the game to get released with the game we build to share.</p>
+<p>First, delete <code>mygame/high-score.txt</code>. We don't want our high-score from building the game to get released with the game we build to share. You'll need to make sure you do this every time before building your game. How could you turn the build and publishing process into a script that automatically does this for you?</p>
 <p>In <code>mygame/metadata/</code> you find a file called <code>game_metadata.txt</code>. Open that up and specify the following values:</p>
 <pre><code class="language-ruby">devid=youritchusername
 devtitle=Your Name
