@@ -168,6 +168,7 @@ Then we do the same thing for the top and bottom of the screen by checking the y
 ## Extra Credit
 
 - When you move the dragon horizontally and vertically at the same time, the dragon moves twice as fast. How could you make it so the dragon moves at a uniform speed still when that happens?
+- Ruby has an in-built method which ensures that a numeric value is between some bounds, find it and replace our bounds checking code with it.
 
 ## What's Next
 
