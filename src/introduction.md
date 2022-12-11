@@ -74,18 +74,19 @@ So here's your mindset, really, boiled down: make a small game and ship it for f
 
 ## What We'll Be Making
 
+![screenshot of the finished game of what you'll be making](./img/c09-blue-sky.jpg)
+
 Throughout the book, we'll be building a simple shoot-'em-up where you pilot a dragon. You'll learn all of the foundation aspects of making a game:
 
 - The game loop
 - Rendering text
 - Rendering sprites and animating them
 - Handling input
-- Enemies and AI
 - Playing sound effects and music
 - Polishing your game
 - Shipping it!
 
-TODO: playable demo link
+[🎮 Play the game right in your browser!](https://dragonridersunite.itch.io/dragonruby-book) (You can even download it for your OS.)
 
 ## Hold the Gosh Dang Phone
 
