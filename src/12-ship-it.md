@@ -54,7 +54,7 @@ Fill out the details for your game. Be sure to write a description, add screensh
 
 <img alt="itch upload screenshot with button to upload files" src="./img/c12-itch-upload.jpg" style="max-width: 380px; width: 100%;" />
 
-Tap "Upload files" and select the zips of the game for all of the platforms you want to upload it for. For `targetpractice-html5.zip`, check the "This file will be played in the browser" box, as itch will use that to determine what to make playable. For the other platforms, choose the proper OS for each file.
+Tap "Upload files" and select the zips of the game for all of the platforms you want to upload it for. For `targetpractice-html5.zip`, check the "This file will be played in the browser" box, as itch will use that to determine what to make playable. For the other platforms, choose the proper OS for each file. Be sure to set the web embed size to 1280 pixels wide and 720 pixels tall so it renders at the proper size.
 
 If you make changes to your game, you can upload new versions to itch automatically by running `./dragonruby-publish mygame` without having to upload them through the web browser.
 
