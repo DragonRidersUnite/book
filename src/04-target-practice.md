@@ -127,7 +127,7 @@ We create a `size` variable to store the width and height of the sprite to use i
 
 Then we apply some math. Don't let math scare you away from programming! We'll keep it simple and the toolbox you need is relatively small. Plus, the math will help make our game even better. Games make math fun.
 
-`rand` is a method that we get from DragonRuby that's available everywhere. `rand` without any parameter generates a random number between 0 and 1. That's not really useful for us right now, so we can instead pass in a parameter that sets the upper boundary of the random number. `rand(100)` generates a random number between 0 up to 100 (not including 100).
+`rand` is a method that we get from DragonRuby that's available everywhere. `rand` without any parameter generates a random real number between 0 and 1. That's not really useful for us right now, so we can instead pass in a parameter that sets the upper boundary of the random number. `rand(100)` generates a random integer between 0 up to 100 (not including 100).
 
 So for the x position of the target, we generate a number random number that's up to two-fifths the size of width of the game and then we add three-fifths of the width to that number so that the targets spawn on the far right side of the screen. We don't want to spawn targets too close to the player, otherwise it'd be too easy.
 
