@@ -593,7 +593,7 @@ end
 <p>Outputting info to the console isn't that helpful for the player, but can you begin to imagine how we'll use that check to instead display a fireball.</p>
 <h2 id="displaying-fireballs"><a class="header" href="#displaying-fireballs">Displaying Fireballs</a></h2>
 <p>We want to display a fireball on the screen when the action key is pressed. We've got most of the code, all we need to do is change <code>puts</code> to instead display the fireball.</p>
-<p>At the top of <code>#tick</code> (<code>#name</code> is Ruby shorthand for &quot;the name method&quot;), assign an empty array to <code>args.state.fireballs</code> if nothing has been assigned yet. This will let us keep track of fireballs across the game loop to do all sorts of things with them (display them, move them, collide them with other objects):</p>
+<p>At the top of <code>#tick</code> (<code>#name</code> is Ruby shorthand for &quot;the <code>name</code> method&quot;), assign an empty array to <code>args.state.fireballs</code> if nothing has been assigned yet. This will let us keep track of fireballs across the game loop to do all sorts of things with them (display them, move them, collide them with other objects):</p>
 <pre><code class="language-ruby">def tick args
   args.state.player_x ||= 120
   args.state.player_y ||= 280
