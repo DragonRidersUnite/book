@@ -30,7 +30,7 @@ If it is game over, then we let the player know, display their final score, and 
 
 If any of our fire keys are pressed, the game is reset with `$gtk.reset` and the player can play again.
 
-The `return` line is _really_ important. It says, return out of the `#tick` method so that none of the code below runs. We don't want to have the dragon be moveable or for targets to spawn when it's game over. So we eject early and only display the game over screen details.
+The `return` line is _really_ important. It says, return out of the `#tick` method so that none of the code below runs. We don't want to have the dragon be movable or for targets to spawn when it's game over. So we eject early and only display the game over screen details.
 
 ![game over screen showing a score of 11 with text saying 'Fire to restart'](./img/c06-game-over.jpg)
 
@@ -56,9 +56,9 @@ If you happen to press the fire button right when the timer runs out, you may re
 {{#include code/chapter_06/02_restart_grace_period/app/main.rb:52:57}}
 ```
 
-Beause we keep subtracting from `args.state.timer`, we can check to see if the current value is less than -30. If it is, then we'll accept input to restart the game.
+Because we keep subtracting from `args.state.timer`, we can check to see if the current value is less than -30. If it is, then we'll accept input to restart the game.
 
-`&&` (double ampersand, often read as "and-and") means that both sides of the expression must be true for the code within the conditional to happen. In our new restart check, we combine AND and OR by saying: if the game timer is less than -30 AND any of our fire keys are down, then we reset the game. When you group together expressions in parentheses, `(monday? || tuesday?)`, it evaluates them as one express against the other checks. We care about the timer being below a certain amount AND any of the inputs beingpressed.
+`&&` (double ampersand, often read as "and-and") means that both sides of the expression must be true for the code within the conditional to happen. In our new restart check, we combine AND and OR by saying: if the game timer is less than -30 AND any of our fire keys are down, then we reset the game. When you group together expressions in parentheses, `(monday? || tuesday?)`, it evaluates them as one express against the other checks. We care about the timer being below a certain amount AND any of the inputs being pressed.
 
 Combining logic in this way for flow control is very common when making games. `&&` and `||` are pretty common operators in most programming languages.
 
@@ -66,7 +66,7 @@ Combining logic in this way for flow control is very common when making games. `
 
 Our main `#tick` method is getting a bit long in the tooth, being over 100 lines long. We've also duplicated two things: frames per second with the `60` value and checking for fire input. This is a good opportunity to refactor our code once again to make it easier to work with. Let's break up `#tick` into a series of smaller methods that we call from within it. Encapsulating our logic into smaller pieces makes it easier to work on those smaller pieces without concerning ourselves with the rest of the code.
 
-How small should you make your methods? That's up to you. Use your best judgement and do what feels right. Code can change and grow quite organically. Once something feels too big or complex or is duplicated, improve it. Don't over-engineer your game right from the start, otherwise you'll be off in the weeds and not actually making your game fun. On the other hand, if you just neglect your code, you'll make it more difficult to change, thus slowing down the development process. There's a fine line between over-engineering and creating a mess.
+How small should you make your methods? That's up to you. Use your best judgment and do what feels right. Code can change and grow quite organically. Once something feels too big or complex or is duplicated, improve it. Don't over-engineer your game right from the start, otherwise you'll be off in the weeds and not actually making your game fun. On the other hand, if you just neglect your code, you'll make it more difficult to change, thus slowing down the development process. There's a fine line between over-engineering and creating a mess.
 
 Here's the entire game broken down into some smaller methods to make it easier to work with moving forward:
 
@@ -74,7 +74,7 @@ Here's the entire game broken down into some smaller methods to make it easier t
 {{#include code/chapter_06/03_refactor/app/main.rb}}
 ```
 
-Because so much has changed and shifted around, I'll just walkthrough the main changes:
+Because so much has changed and shifted around, I'll just walk through the main changes:
 
 - `FPS` is a constant, which is a special value in Ruby that doesn't change. We assign it to `60` because our game runs at sixty (f)rames (p)er (s)econd. That value won't change, but it's more helpful in our math code to see `FPS` rather than `60` because we now know what that value represents.
 - `#fire_input?` checks to see if any of our keys are down for firing a fireball. By using our method, we can easily adjust it without having to change it for both restarting the game and the dragon spitting the fireball.

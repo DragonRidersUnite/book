@@ -49,11 +49,11 @@ puts name
 
 That calls a the `puts` method and passes our argument `name` to it. It prints whatever the value is out to the console. If you put that in your game code and press <kbd>~</kbd> to open the console, you'll see it print `"Francis"` a bunch.
 
-`||=` in English is "or equals". That code above, `args.state.player_x ||= 120` would be read as: assign the property `player_x` on `args.state` the numeric value of 120 unless it's alreay assigned a value.
+`||=` in English is "or equals". That code above, `args.state.player_x ||= 120` would be read as: assign the property `player_x` on `args.state` the numeric value of 120 unless it's already assigned a value.
 
 Remember how tick is running once every 60 seconds? We don't want to always set `args.state.player_x` to `120`. We just want to set it to that initially and then we'll update that value when we press keys on our keyboard or buttons on our gamepad. We haven't done that yet, but that's what's next.
 
-Wow! That was a lot of explaination for two measly lines of code. But I'm telling ya', they're two really important lines of code when it comes to game programming.
+Wow! That was a lot of explanation for two measly lines of code. But I'm telling ya', they're two really important lines of code when it comes to game programming.
 
 Then, finally, we change the `x` and `y` value for the dragon sprite to be the value stored in `args.state` so that we can actually make use of that value instead of our hard-coded position before.
 

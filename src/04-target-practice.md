@@ -127,7 +127,7 @@ We create a `size` variable to store the width and height of the sprite to use i
 
 Then we apply some math. Don't let math scare you away from programming! We'll keep it simple and the toolbox you need is relatively small. Plus, the math will help make our game even better. Games make math fun.
 
-`rand` is a method that we get from DragonRuby that's available everywhere. `rand` without any paramter generates a random number between 0 and 1. That's not really useful for us right now, so we can instead pass in a parameter that sets the upper boundary of the random number. `rand(100)` generates a random number between 0 up to 100 (not including 100).
+`rand` is a method that we get from DragonRuby that's available everywhere. `rand` without any parameter generates a random number between 0 and 1. That's not really useful for us right now, so we can instead pass in a parameter that sets the upper boundary of the random number. `rand(100)` generates a random number between 0 up to 100 (not including 100).
 
 So for the x position of the target, we generate a number random number that's up to two-fifths the size of width of the game and then we add three-fifths of the width to that number so that the targets spawn on the far right side of the screen. We don't want to spawn targets too close to the player, otherwise it'd be too easy.
 
@@ -177,7 +177,7 @@ Finally, display our score as a label in the upper-left area of the screen:
 {{#include code/chapter_04/06_score_tracking/app/main.rb:80:86}}
 ```
 
-This approach to displaying a label is different than previous chapters. Instead of using an array to represent the properties of the label, we're now using a hash like we do for sprites (for similar reasons: it's easier to remember and more clear). Setting `x`, `y`, and `text` should be familiar by this point. But `size_enum` is new. It's a way to specify how large the text is. It takes whatever value we set and adds that much to the default text size. Increase it from `4` to `40` or `-3` and see what you lik ebest.
+This approach to displaying a label is different than previous chapters. Instead of using an array to represent the properties of the label, we're now using a hash like we do for sprites (for similar reasons: it's easier to remember and more clear). Setting `x`, `y`, and `text` should be familiar by this point. But `size_enum` is new. It's a way to specify how large the text is. It takes whatever value we set and adds that much to the default text size. Increase it from `4` to `40` or `-3` and see what you like best.
 
 ![dragon spitting fireballs at three targets on the right side of the screen with the text 'Score: 34' displayed](./img/c04-score.jpg)
 

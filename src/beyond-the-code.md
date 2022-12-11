@@ -10,7 +10,7 @@ When you’re just starting out in any creative endeavor, set your sights on sma
 
 ## What Can You Cut?
 
-When you have an idea for a game, ask yourself what you can cut from it while still maintaining the core essence of it. Don’t dwell on adding a bunch of complex systems. Focus on the fun and how you can subtract to bring that forward. Arcade games do a great job of making short, replayable, minimal experiences.
+When you have an idea for a game, ask yourself what you can cut from it while still maintaining the core essence of it. Don’t dwell on adding a bunch of complex systems. Focus on the fun and how you can subtract to bring that forward. Arcade games do a great job of making short, repayable, minimal experiences.
 
 ## Finish Your Games
 
@@ -26,7 +26,7 @@ When you’re making your small, free games, don’t worry about being original.
 
 ## Do Game Jams
 
-Game jams are constrainted events where people make games within a certain timeframe, sometimes with specific rules. They're a great way to start and finish a game in a short period of time. You can experiment and take risks and connect with the community of your fellow participants. I can't recommend them enough. Try to do at least one jam a year (or more if your heart desires).
+Game jams are constrained events where people make games within a certain time frame, sometimes with specific rules. They're a great way to start and finish a game in a short period of time. You can experiment and take risks and connect with the community of your fellow participants. I can't recommend them enough. Try to do at least one jam a year (or more if your heart desires).
 
 [Itch has a directory of jams](https://itch.io/jams) and [Ludum Dare is a long-running jam with many participants](https://ludumdare.com/).
 

@@ -20,7 +20,7 @@ The basics of Git are beyond the scope of this book, but there are some helpful 
 - [GitHub's Git Guide](https://github.com/git-guides)
 - [GUI apps for working with Git](https://git-scm.com/downloads/guis)
 
-Using version control at first may seem a bit tedious, but it's immensely valuable. Not only can you document why you made a change to help your future self and others, but you can safely experiment without fear of really messing things up. Because you're tracking the changes to your game's source, if you go down a rabbithole that doesn't work out, you can easily undo it. Let's explore some examples of commits and scenarios where it's helpful.
+Using version control at first may seem a bit tedious, but it's immensely valuable. Not only can you document why you made a change to help your future self and others, but you can safely experiment without fear of really messing things up. Because you're tracking the changes to your game's source, if you go down a rabbit hole that doesn't work out, you can easily undo it. Let's explore some examples of commits and scenarios where it's helpful.
 
 Any time you add a feature, create a commit. This lets you see your game evolve over time. Let's say you added player input with the gamepad. Boom, make a commit! Let's say you improved the enemy AI, commit that. Keep your commits small. Don't make hundreds of lines of unrelated changes and make a big commit that just say "changed some stuff". You're trying to help yourself but creating a useful log of your game. Here's a look at commits from a little project of mine:
 

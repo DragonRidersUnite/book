@@ -76,7 +76,7 @@ Now we've got music and sound effects in our game. Isn't it wild how the game fe
 
 I use [jsfxr](https://sfxr.me/) to create sound effects for games. It's simple and free with a lot of settings to tweak. You can quickly download a WAV file that you can drop into your game. Try making your own sound effects and replacing the ones I've provided. You often won't know if a sound effect sounds _right_ until you drop it in your game. So experiment and see what works best.
 
-As for making your own music, there are lots of options out there. I use [1BitDragon](https://1bitdragon.com/), a limited (in a good way) tool for making music. [LMMS](https://lmms.io/) is a freel, well-loved tool. Garageband on MacOS would get you pretty far too!
+As for making your own music, there are lots of options out there. I use [1BitDragon](https://1bitdragon.com/), a limited (in a good way) tool for making music. [LMMS](https://lmms.io/) is a free, well-loved tool. Garageband on MacOS would get you pretty far too!
 
 There are many ways to convert the sounds you make to various formats, from command-line tools like ffmpeg to desktop apps. [Convertio](https://convertio.co/) is a free online service, among many, that you can use as well.
 

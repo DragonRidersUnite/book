@@ -95,7 +95,7 @@ give_cookie(francis)
 
 Wait, how'd we get talking about cookies and friends? Okay, back to the code above.
 
-`args` is a bunch of data that gets passed into `tick` whenver it is called. We'll learn more about `args` soon.
+`args` is a bunch of data that gets passed into `tick` whenever it is called. We'll learn more about `args` soon.
 
 The next three lines handle outputting text to the screen:
 
@@ -227,7 +227,7 @@ end
 
 Whoa! What happened to our greetings? Well, we changed our code and it now always returns `1`, which isn't what we want. It's just an example to illustrate how that works. Go ahead and undo that change.
 
-Let's do one final thing in our hand-crafted, artisinal version of rendering text and images. Let's display a sprite. In `mygame/sprites/misc/` there's a file named `dragon-0.png`. It's a pixel art dragon made by Nick Culbertson that's free to use. Pretty neat!
+Let's do one final thing in our hand-crafted, artisanal version of rendering text and images. Let's display a sprite. In `mygame/sprites/misc/` there's a file named `dragon-0.png`. It's a pixel art dragon made by Nick Culbertson that's free to use. Pretty neat!
 
 ``` ruby
 def greet friend

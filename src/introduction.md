@@ -4,7 +4,7 @@
 
 🚧 _Building Games with DragonRuby_ is almost done. Expect a few typos, issues, and incompleteness while it gets settled into v1.0. 🚧
 
-This book is aimed at new game developers who are interested in learning to code and build games. If you've written code before, especially Ruby, then you'll have a bit of a headstart. But the concepts in this book are beginner friendly. Whether you're new to game dev or just DragonRuby Game Toolkit, you'll have made a finished game by the end of this.
+This book is aimed at new game developers who are interested in learning to code and build games. If you've written code before, especially Ruby, then you'll have a bit of a head start. But the concepts in this book are beginner friendly. Whether you're new to game dev or just DragonRuby Game Toolkit, you'll have made a finished game by the end of this.
 
 You need no prior experience with programming or game making to follow this book.
 

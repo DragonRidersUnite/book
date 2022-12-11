@@ -12,7 +12,7 @@ To check if a key was pressed, we can use `args.inputs.keyboard.key_down` and th
 {{#include code/chapter_03/01_input/app/main.rb:36:40}}
 ```
 
-Using `puts` is a really helpful way to check that our game works as we expect it to. In this case, every tick where the Z key is pressed down, it prints the string "Z key pressed" to the console (open it iwth <kbd>~</kbd>, remember?). Run your game and press the Z key a bunch and then open your console.
+Using `puts` is a really helpful way to check that our game works as we expect it to. In this case, every tick where the Z key is pressed down, it prints the string "Z key pressed" to the console (open it with <kbd>~</kbd>, remember?). Run your game and press the Z key a bunch and then open your console.
 
 <img alt="screenshot of DragonRuby console showing Z key pressed 6 times" src="./img/c03-console-puts.jpg" style="max-width: 420px; width: 100%;">
 
@@ -26,7 +26,7 @@ In our case, we'll support three configurations:
 - WASD and J
 - Gamepad
 
-DragonRuby GTK is a big help in this department. Our code earily that checks `args.inputs.up` (down/left/right) already checks for the arrow keys, WASD, and gamepad input. Slick! We don't have to change anything there. But let's go ahead and update our logic check for firing the fireball to check all of the possible inputs.
+DragonRuby GTK is a big help in this department. Our code eerily that checks `args.inputs.up` (down/left/right) already checks for the arrow keys, WASD, and gamepad input. Slick! We don't have to change anything there. But let's go ahead and update our logic check for firing the fireball to check all of the possible inputs.
 
 ``` ruby
 {{#include code/chapter_03/02_input_expanded/app/main.rb:36:40}}
@@ -68,7 +68,7 @@ Wait, where are you going? Why are you muttering "I didn't sign up to read no st
 
 Guess what? We're sticking with ole "fireball" for now! It's silly and fun and I haven't found a good fireball sprite to use. We'll get there, we'll get there. But let's first make the fireballs move across the screen.
 
-When we moved our player dragon, we took the x and y position and added or substracted values in each `#tick` based upon if any directional input was pressed. Our fireballs will move regardless of any button pressed once they're extruded from our ole dragon's mouth. Because our game is simple and the dragon only faces to the right, all of the fireballs will move to the right. How do we go about that on our X-Y axis? We just increase the `x` position of the fireball each tick. Let's do that and see what happens:
+When we moved our player dragon, we took the x and y position and added or subtracted values in each `#tick` based upon if any directional input was pressed. Our fireballs will move regardless of any button pressed once they're extruded from our ole dragon's mouth. Because our game is simple and the dragon only faces to the right, all of the fireballs will move to the right. How do we go about that on our X-Y axis? We just increase the `x` position of the fireball each tick. Let's do that and see what happens:
 
 ``` ruby
 {{#include code/chapter_03/04_moving_fireballs/app/main.rb:38:48}}
@@ -144,7 +144,7 @@ We'll change the hash we push into `args.state.fireballs` to be a sprite and adj
 {{#include code/chapter_03/06_sprite/app/main.rb:40:56}}
 ```
 
-We adjust the starting place of the fireball sprite to look like it comes out of the dragon's mouth. The sprite is 32 pixels wide by 32 pixes tall, so we set that.
+We adjust the starting place of the fireball sprite to look like it comes out of the dragon's mouth. The sprite is 32 pixels wide by 32 pixels tall, so we set that.
 
 Now that the fireball is a sprite and not a text label, we can push both the player and the array of fireballs into `args.outputs.sprites` in one go. This is more efficient for DragonRuby than doing it separately.
 
