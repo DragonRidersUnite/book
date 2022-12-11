@@ -139,8 +139,6 @@ Whoa! We just refactored that code. It's easier to change (ETC) now, which is a 
 
 You can move your dragon completely off the screen, lost in the great unknown! This isn't ideal. Let's make it so our little buddy can't leave the bounds of the screen.
 
-[TODO: drawing about boundaries]
-
 ``` ruby
 {{#include code/chapter_02/app/main.rb}}
 ```

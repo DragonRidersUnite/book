@@ -58,9 +58,9 @@ The fireballs our dragon spits just fly behind our targets and off the screen in
 
 Collision detection is when one object overlaps with another object in our game. Because we're manufacturing the space the game exists in, there's no physics like we have in real life. We need to simulate that by checking to see if two objects are attempting to exist in the same point and react accordingly.
 
-Our fireball sprite is a 32x32 square, so we want to check in every single game loop whether or not the points of the fireball's square overlapping with any of the points of the targets. If they are overlapping, then we do that _something_.
+Our fireball sprite is a 32x32 square, so we want to check in every single game loop whether or not the points of the fireball's square overlapping with any of the points of the target sprites. If they are overlapping, then we do that _something_.
 
-TODO: graphic of overlapping rects/squares explained
+![diagram showing two rectangles overlapping and not overlapping](./img/c04-rect-overlap.png)
 
 We could employ trigonometry to determine if a given point in one shape overlaps with another, but DragonRuby gives us a helpful method to handle this for us: `args.geometry.intersect_rect? rect_1, rect_2`
 
