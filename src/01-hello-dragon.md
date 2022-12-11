@@ -58,12 +58,7 @@ DRGTK handles the unfun stuff of making games—dealing with low-level APIs like
 Let's take a look at what's in `mygame/app/main.rb`:
 
 ``` ruby
-def tick args
-  args.outputs.labels  << [640, 500, 'Hello World!', 5, 1]
-  args.outputs.labels  << [640, 460, 'Go to docs/docs.html and read it!', 5, 1]
-  args.outputs.labels  << [640, 420, 'Join the Discord! https://discord.dragonruby.org', 5, 1]
-  args.outputs.sprites << [576, 280, 128, 101, 'dragonruby.png']
-end
+{{#include code/chapter_01/01_default/app/main.rb}}
 ```
 
 You can open this file yourself in Visual Studio Code. Go ahead and do that: New Window > Open > [select the folder on your computer with the engine in it]
@@ -73,7 +68,7 @@ Six lines of codes to render text and an image? Not bad! (Trust me, if you did t
 Here's what that code does, line by line:
 
 ``` ruby
-def tick args
+{{#include code/chapter_01/01_default/app/main.rb:1}}
 ```
 
 This `def`ines a method called `tick` and passes in an argument called `args`. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block that allow for code reuse.
@@ -100,9 +95,7 @@ Wait, how'd we get talking about cookies and friends? Okay, back to the code abo
 The next three lines handle outputting text to the screen:
 
 ``` ruby
-args.outputs.labels  << [640, 500, 'Hello World!', 5, 1]
-args.outputs.labels  << [640, 460, 'Go to docs/docs.html and read it!', 5, 1]
-args.outputs.labels  << [640, 420, 'Join the Discord! https://discord.dragonruby.org', 5, 1]
+{{#include code/chapter_01/01_default/app/main.rb:2:4}}
 ```
 
 Your eyes might be melting a little bit. But don't worry, wipe that melted bit of eye away and focus! It's actually pretty intuitive once you get the hang of it.
@@ -136,7 +129,7 @@ Did you see that? The game reloaded your code and changed the text to be "Hello 
 
 
 ``` ruby
-args.outputs.sprites << [576, 280, 128, 101, 'dragonruby.png']
+{{#include code/chapter_01/01_default/app/main.rb:5}}
 ```
 
 `args.outputs.sprites` is like labels, but it's instead a collection for sprites. It renders the `"dragonruby.png"` image at x: 576, y: 280, just like label text, but it also sets the size of the image to display. That's what the `128` and `101` represent in the array. Here's a break down of those elements:
@@ -155,7 +148,7 @@ Dragon sprite created by [Nick Culbertson](https://twitter.com/MobyPixel).
 Finally, the last line:
 
 ``` ruby
-end
+{{#include code/chapter_01/01_default/app/main.rb:6}}
 ```
 
 signifies that the definition of the `tick` method is over. Any code after that isn't part of the `tick` method. That's it for what we get out of the box.
@@ -228,16 +221,7 @@ Whoa! What happened to our greetings? Well, we changed our code and it now alway
 Let's do one final thing in our hand-crafted, artisanal version of rendering text and images. Let's display a sprite. In `mygame/sprites/misc/` there's a file named `dragon-0.png`. It's a pixel art dragon made by Nick Culbertson that's free to use. Pretty neat!
 
 ``` ruby
-def greet friend
-  "Hello #{friend}!"
-end
-
-def tick args
-  args.outputs.labels << [120, 120, greet("Dragon")]
-  args.outputs.labels << [120, 100, greet("Oboe")]
-  # Here's our new line
-  args.outputs.sprites << [120, 280, 100, 80, 'sprites/misc/dragon-0.png']
-end
+{{#include code/chapter_01/02_our_own_hello/app/main.rb}}
 ```
 
 ![screenshot of the Hello Dragon! with pixel dragon displayed](./img/hello-dragon-own.jpg)
