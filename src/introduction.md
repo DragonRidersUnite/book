@@ -124,6 +124,12 @@ This book is open source. That means anyone can view the code that builds it and
 
 If you're stuck and would like some extra assistance, reach out in [the DragonRuby Discord](https://discord.dragonruby.org). We'll get you unstuck!
 
+## How to Read the Book
+
+Each chapter builds upon the last. You'll go displaying an image to a full game by the end of the book. The code that's added and changed is explained in detail, but you can [always find the source code for each chapter on GitHub](https://github.com/DragonRidersUnite/book/tree/main/src/code).
+
+Code alongside the book, but feel free to make adjustments and experiment if you're feeling excited.
+
 ## Get Started
 
 All right, are you ready to make a game? Let's get started!
