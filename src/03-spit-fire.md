@@ -113,9 +113,9 @@ dragon = {
 }
 ```
 
-Values of a hash are then accessed by their keys, so you `dragon.name` returns the string `"Francis"`, `dragon.size` returns the string `"medium"`, and `dragon.age` returns the number `541`. This is much more clear than having to remember the position of these values within an array.
+Values of a hash are then accessed by their keys, so `dragon.name` returns the string `"Francis"`, `dragon.size` returns the string `"medium"`, and `dragon.age` returns the number `541`. This is much more clear than having to remember the position of these values within an array.
 
-Quick note: if you see a hash with key-value pairs that look like this: `{ :name => "Francis" }`, don't fret! That's just an older style in Ruby known as the hash rocket and can be used for hashes with keys that aren't just symbols.
+Quick note: if you see a hash with key-value pairs that look like this: `{ :name => "Francis" }`, don't fret! That's just an older style in Ruby known as the hash rocket.
 
 In general, differentiate between arrays and hashes like this: **hashes are used represent one piece of data with multiple properties** and **arrays are used to collect data (often times hashes) to keep track of and manipulate them**.
 
