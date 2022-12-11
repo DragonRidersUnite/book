@@ -96,7 +96,7 @@ Throughout the book, we'll be building a simple shoot-'em-up where you pilot a d
 
 That's-a-me! If I was a bunch of pixels I guess.
 
-I love Ruby. I've been writing it for over 12 years, and it's such a joy. I also love games. Particularly 2D games. So here we are. ❤️💎 + 🎮 = 📕 How's that for an equation?!
+I love Ruby. I've been writing it for over 12 years, and it's such a joy. I also love games. Particularly 2D games. So here we are. 💎 + ❤️ + 🎮 = 📕 How's that for an equation?!
 
 I don't know, you want me to be serious about why you should listen to me? Oh you skipped this section, okay fine. Wow, did you drop that banana peel there? You trying to take me out already? This early in the book? Well, I'll see you in the next chapter! We'll see who gets the last laugh.
 
@@ -116,7 +116,7 @@ This book is freely accessible so that someone who loves games and wants to try 
 
 You'll learn the foundations of game programming and making games, as well as some more advanced topics. If this book can help even just one person start and finish a game, it's worth every minute I've spent on it. We'll make a game not too dissimilar from _Zaku Space Battle_. Once you finish it, take what you've learned and make it your own!
 
-If you want to, you can [send me a tip](https://buymeacoffee.com/brettchalupa) as a way of saying thank you. It's much appreciated.
+If you want to, you can [buy me a coffee](https://buymeacoffee.com/brettchalupa) as a way of saying thank you. It's much appreciated.
 
 ## Contribute
 
