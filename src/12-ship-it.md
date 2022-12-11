@@ -8,7 +8,7 @@ We'll release _Target Practice_ on [itch.io](https://itch.io/), an open marketpl
 
 ## Prep for Release
 
-While the code of our game is done, we need to specify some info about the game, like its title and our information.
+While the code of our game is done ([view the finished source](https://github.com/DragonRidersUnite/book/tree/main/src/code/chapter_12/01_release)), we need to specify some info about the game, like its title and our information.
 
 First, delete `mygame/high-score.txt`. We don't want our high-score from building the game to get released with the game we build to share.
 
