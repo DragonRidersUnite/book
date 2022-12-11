@@ -171,26 +171,29 @@
 <h2 id="optimizing-our-game"><a class="header" href="#optimizing-our-game">Optimizing Our Game</a></h2>
 <p>It's not very efficient to keep track of and update the position of fireballs that have no chance of ever hitting a target when they've gone off the screen. There could be thousands of fireballs, and sure, maybe our game still runs smoothly while we're testing, but there's a high chance that as our game gets more complex, there the sheer amount of data the game needs to process 60 times every second could get overwhelming and slow things down.</p>
 <p>When making games, you need to be cognizant of performance. There are usually some straightforward fixes that can make a big difference.</p>
-<p>In the case of our game, let's remove fireballs from our <code>args.state.fireballs</code> array when they fly off the screen. This will reduce the amount of processing load our game needs to handle.</p>
+<p>In the case of our game, let's reject fireballs from our <code>args.state.fireballs</code> array when they fly off the screen. This will reduce the amount of processing load our game needs to handle.</p>
 <pre><code class="language-ruby">  args.state.fireballs.each do |fireball|
     fireball.x += args.state.player.speed + 2
 
     if fireball.x &gt; args.grid.w
-      args.state.fireballs.delete(fireball)
+      fireball.dead = true
       next
     end
 
     args.state.targets.each do |target|
       if args.geometry.intersect_rect?(target, fireball)
-        args.state.targets.delete(target)
-        args.state.fireballs.delete(fireball)
+        target.dead = true
+        fireball.dead = true
         args.state.score += 1
         args.state.targets &lt;&lt; spawn_target(args)
       end
     end
   end
+
+  args.state.targets.reject! { |t| t.dead }
+  args.state.fireballs.reject! { |f| f.dead }
 </code></pre>
-<p>When looping through <code>args.state.fireballs</code>, we check to see if the x position of the fireball in the loop is greater than the width of the screen. If it is, then we delete the fireball, just like we do below on collision with a target. Then we call <code>next</code>, which tells the loop we're in to move on to the next fireball in the array and not the rest of the code in this iteration of the loop. Since we've removed the fireball from the game, we don't want to check it for collision.</p>
+<p>When looping through <code>args.state.fireballs</code>, we check to see if the x position of the fireball in the loop is greater than the width of the screen. If it is, then we mark the fireball as <code>dead</code>, just like we do below on collision with a target. Then we call <code>next</code>, which tells the loop we're in to move on to the next fireball in the array and not the rest of the code in this iteration of the loop. Since we've removed the fireball from the game, we don't want to check it for collision.</p>
 <p>Play your game and see that now as the fireballs fly off the screen, the total number of fireballs decreases. They no longer exist forever, flying off across the sky for all eternity, eating up our CPU cycles.</p>
 <p>Feel free to remove the <code>args.outputs.debug</code> lines if you don't want to see them since they've served their purpose and are less useful now.</p>
 <h2 id="summary"><a class="header" href="#summary">Summary</a></h2>

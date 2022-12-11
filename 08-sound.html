@@ -210,8 +210,8 @@ end
 <pre><code class="language-ruby">    args.state.targets.each do |target|
       if args.geometry.intersect_rect?(target, fireball)
         args.outputs.sounds &lt;&lt; &quot;sounds/target.wav&quot;
-        args.state.targets.delete(target)
-        args.state.fireballs.delete(fireball)
+        target.dead = true
+        fireball.dead = true
         args.state.score += 1
         args.state.targets &lt;&lt; spawn_target(args)
       end

@@ -247,25 +247,34 @@ def tick args
 <p>Play the game and hit the some targets. Nothing visually happens (yet), but if you check the console (<kbd>~</kbd>), you'll see that <code>&quot;fireball hit target&quot;</code> was output multiple times.</p>
 <p>With a loop and a method we've implemented collision detection. That wasn't too bad, was it?</p>
 <h2 id="remove-targets-on-collision"><a class="header" href="#remove-targets-on-collision">Remove Targets On Collision</a></h2>
-<p>But... It's not very helpful to output a message to the console when a target is hit. Let's instead remove the target so that it is no longer displayed. We'll need to delete the hit target from the array of targets so that it's no longer checked against.</p>
-<p>Ruby makes that pretty easy. All you do is call the <code>#delete</code> method on an array and pass in the item you want to delete. If you have an array of numbers and call delete, it removes the item from the array:</p>
+<p>But... It's not very helpful to output a message to the console when a target is hit. Let's instead remove the target so that it is no longer displayed. We'll need to remove the hit target from the array of targets so that it's no longer checked against.</p>
+<p>We'll go about this in the following way:</p>
+<ul>
+<li>If a target should be removed, then we'll mark it as <code>dead</code></li>
+<li>After we've checked all of our targets, we'll <code>reject!</code> the dead ones from <code>args.state.targets</code></li>
+</ul>
+<p>Ruby makes that pretty easy. All you do is call the <code>#reject!</code> method on an array and pass in the logic for when an item should be removed. If you have an array of numbers and call reject and the check is true, it removes the item from the array:</p>
 <pre><code class="language-ruby">nums = [3, 4, 5]
-nums.delete(3)
-nums # =&gt; [4, 5]
+nums.reject! { |n| n.even? }
+nums # =&gt; [3, 5]
 </code></pre>
-<p>It works just like you think it would. So in our collision detection code where we call <code>puts</code>, we'll instead just delete the target <em>and</em> the fireball so they both get removed from their respective collections.</p>
+<p>In the code above, <code>n</code> is the argument passed into the block, which represents a given number in the array. Reject loops through each element in the array, checking each one.</p>
+<p>So in our collision detection code where we call <code>puts</code>, we'll instead mark the target and fireball as dead <em>and</em> then reject the dead ones from their collections:</p>
 <pre><code class="language-ruby">  args.state.fireballs.each do |fireball|
     fireball.x += args.state.player.speed + 2
 
     args.state.targets.each do |target|
       if args.geometry.intersect_rect?(target, fireball)
-        args.state.targets.delete(target)
-        args.state.fireballs.delete(fireball)
+        target.dead = true
+        fireball.dead = true
       end
     end
   end
+
+  args.state.targets.reject! { |t| t.dead }
+  args.state.fireballs.reject! { |f| f.dead }
 </code></pre>
-<p>Since the target and fireball that collided are no longer being tracked in <code>args.state</code>, they don't get rendered on the screen and are, for all intents and purposes, gone!</p>
+<p>Since the target and fireball that collided are no longer being tracked in <code>args.state</code>, they don't get rendered on the screen and are, for all intents and purposes, gone! We then <code>#reject!</code> each fireball and target that are <code>dead</code>.</p>
 <p>This almost feels like a game. That's a great feeling. We're getting close to <em>fun</em>.</p>
 <h2 id="spawn-new-targets"><a class="header" href="#spawn-new-targets">Spawn New Targets</a></h2>
 <p>Shooting three targets and having them disappear doesn't make for much fun though. After the three targets are hit, it's just your dragon floating in the sky with not much else to do. We're back to chapter 3! Ugh, chapter 3 was so boring! I can't believe we ever even made anything that boring before. (But remember how cool it was when we got the fireballs working? That was cool! It's funny how games evolve and what it used to be seems so basic compared to where we're at now.)</p>
@@ -306,14 +315,14 @@ end
 
     args.state.targets.each do |target|
       if args.geometry.intersect_rect?(target, fireball)
-        args.state.targets.delete(target)
-        args.state.fireballs.delete(fireball)
+        target.dead = true
+        fireball.dead = true
         args.state.targets &lt;&lt; spawn_target(args)
       end
     end
   end
 </code></pre>
-<p>We loop through the fireballs and move each one, just as before. And then we check to see if it intersects with any of the targets. If they do intersect, we delete both the fireball and the target.</p>
+<p>We loop through the fireballs and move each one, just as before. And then we check to see if it intersects with any of the targets. If they do intersect, we mark both the fireball and the target as being hit.</p>
 <p>The one new line is where we push a new target into <code>args.state.targets</code> from <code>#spawn_target</code>. That'll make a new target appear in a random location whenever we hit another.</p>
 <p>Play the game a bit and see how feels. Is there anything that can be adjusted or improved? What if you adjust the formula for <code>#spawn_target</code>? How does that feel with targets spawning close or further away?</p>
 <h2 id="score-tracking"><a class="header" href="#score-tracking">Score Tracking</a></h2>
@@ -328,9 +337,9 @@ end
 
   if args.inputs.left
 </code></pre>
-<p>In our collision detection loop, when we delete the target and fireball, add <code>1</code> to our score:</p>
-<pre><code class="language-ruby">        args.state.targets.delete(target)
-        args.state.fireballs.delete(fireball)
+<p>In our collision detection loop, when we hit the target and fireball, add <code>1</code> to our score:</p>
+<pre><code class="language-ruby">        target.dead = true
+        fireball.dead = true
         args.state.score += 1
         args.state.targets &lt;&lt; spawn_target(args)
 </code></pre>
