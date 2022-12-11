@@ -23,12 +23,22 @@ Where we lazily set `args.state.player`, we no longer specify the `path` to the 
 
 Then we take the `player_sprite_index` and use that when specifying the `path` of our player sprite by interpolating it into the path to our sprite. Our dragon sprites are named `dragon-0.png`, `dragon-1.png`, and so on. So we take what `#frame_index` gives us and inject it into the path to the image to make that value dynamic.
 
-In Ruby, when you have a string that uses double quotes, `"hi there"`, you can inject Ruby code inside of it using `#{}`. This is really useful. For example: `"2 + 2 = #{2 + 2}"`, that evaluates the mathematical expression and converts the answer (`4`) to a string and displays it.
+In Ruby, when you have a string that uses double quotes, `"hi there"`, you can inject Ruby code inside of it using `#{}`. This is really useful and is known as string interpolation. For example: `"2 + 2 = #{2 + 2}"`, that evaluates the mathematical expression and converts the answer (`4`) to a string and returns `"2 + 2 = 4"`.
 
 ## A Note on Spritesheets
+
+If you've done any game development before, you may be familiar with spritesheets, where each frame of an animation is contained within one image file. When using a spritesheet for animation, instead of changing which image file path is used for the sprite to render, you change which piece of the large spritesheet you render. [The DragonRuby GTK docs have a detailed example on how to do this.](https://bit.ly/drgtk-spritesheet)
 
 ## Extra Credit
 
 - How would you increase the animation speed when the dragon is moving to simulate faster flapping of their wings?
+- Animate the fireball with another frame of animation to make it feel alive
+- Animate the targets in some way
+
+## Summary
+
+When making a game, it's likely that anything that moves will animate, even if it's just a little. It's a valuable concept to understand and implement on your own. Compare the game now to when we started—it's come quite a long way from an immovable sprite with some text!
 
 ## What's Next
+
+We're nearly finished with our game! All that's left is to add a title screen and then publish the game online.
