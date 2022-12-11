@@ -82,7 +82,7 @@ Let's say you wanted to give a friend a cookie 🍪, you'd define a method calle
 
 ``` ruby
 def give_cookie(friend)
-  friend.eat(:cookie)
+  friend.eat("cookie")
 end
 ```
 
