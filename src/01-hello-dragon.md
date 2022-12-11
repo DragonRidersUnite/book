@@ -76,9 +76,9 @@ Here's what that code does, line by line:
 def tick args
 ```
 
-This `def`ines a method called `tick` and passes in an argument called `args`. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block of code that allow for code reuse.
+This `def`ines a method called `tick` and passes in an argument called `args`. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block that allow for code reuse.
 
-Let's say you wanted to give a friend a cookie 🍪, you'd define a method called `give_cookie` and pass in the `friend` as a parameter.
+Let's say you wanted to give a friend a cookie 🍪, you'd define a method called `give_cookie` and pass in the `friend` as a parameter. The friend then has a method called `eat` that we call, passing in a parameter of cookie.
 
 ``` ruby
 def give_cookie(friend)
@@ -95,7 +95,7 @@ give_cookie(francis)
 
 Wait, how'd we get talking about cookies and friends? Okay, back to the code above.
 
-`args` is a bunch of data that gets passed into `tick` whenever it is called. We'll learn more about `args` soon.
+`args` is a bunch of data known as a parameter that gets passed into `tick` whenever it is called. We'll learn more about `args` soon.
 
 The next three lines handle outputting text to the screen:
 
