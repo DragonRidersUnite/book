@@ -294,8 +294,8 @@ end
 <p>Here's what that code does, line by line:</p>
 <pre><code class="language-ruby">def tick args
 </code></pre>
-<p>This <code>def</code>ines a method called <code>tick</code> and passes in an argument called <code>args</code>. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block of code that allow for code reuse.</p>
-<p>Let's say you wanted to give a friend a cookie 🍪, you'd define a method called <code>give_cookie</code> and pass in the <code>friend</code> as a parameter.</p>
+<p>This <code>def</code>ines a method called <code>tick</code> and passes in an argument called <code>args</code>. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block that allow for code reuse.</p>
+<p>Let's say you wanted to give a friend a cookie 🍪, you'd define a method called <code>give_cookie</code> and pass in the <code>friend</code> as a parameter. The friend then has a method called <code>eat</code> that we call, passing in a parameter of cookie.</p>
 <pre><code class="language-ruby">def give_cookie(friend)
   friend.eat(&quot;cookie&quot;)
 end
@@ -305,7 +305,7 @@ end
 give_cookie(francis)
 </code></pre>
 <p>Wait, how'd we get talking about cookies and friends? Okay, back to the code above.</p>
-<p><code>args</code> is a bunch of data that gets passed into <code>tick</code> whenever it is called. We'll learn more about <code>args</code> soon.</p>
+<p><code>args</code> is a bunch of data known as a parameter that gets passed into <code>tick</code> whenever it is called. We'll learn more about <code>args</code> soon.</p>
 <p>The next three lines handle outputting text to the screen:</p>
 <pre><code class="language-ruby">args.outputs.labels  &lt;&lt; [640, 500, 'Hello World!', 5, 1]
 args.outputs.labels  &lt;&lt; [640, 460, 'Go to docs/docs.html and read it!', 5, 1]
@@ -1728,7 +1728,7 @@ end
 <p>Releasing your game is a process that has only gotten easier and easier over time. One of the coolest things about DragonRuby GTK is that you can build your game for the web, Linux, Windows, and MacOS with one command. No matter what device (within reason) your friends have, your game will work on their computer.</p>
 <p>We'll release <em>Target Practice</em> on <a href="https://itch.io/">itch.io</a>, an open marketplace for distributing your game. You can share your games for free on itch or sell them. The html version will even be able to be played in the browser. So go ahead and sign up for an itch account.</p>
 <h2 id="prep-for-release"><a class="header" href="#prep-for-release">Prep for Release</a></h2>
-<p>While the code of our game is done, we need to specify some info about the game, like its title and our information.</p>
+<p>While the code of our game is done (<a href="https://github.com/DragonRidersUnite/book/tree/main/src/code/chapter_12/01_release">view the finished source</a>), we need to specify some info about the game, like its title and our information.</p>
 <p>First, delete <code>mygame/high-score.txt</code>. We don't want our high-score from building the game to get released with the game we build to share.</p>
 <p>In <code>mygame/metadata/</code> you find a file called <code>game_metadata.txt</code>. Open that up and specify the following values:</p>
 <pre><code class="language-ruby">devid=youritchusername

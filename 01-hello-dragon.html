@@ -209,8 +209,8 @@ end
 <p>Here's what that code does, line by line:</p>
 <pre><code class="language-ruby">def tick args
 </code></pre>
-<p>This <code>def</code>ines a method called <code>tick</code> and passes in an argument called <code>args</code>. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block of code that allow for code reuse.</p>
-<p>Let's say you wanted to give a friend a cookie 🍪, you'd define a method called <code>give_cookie</code> and pass in the <code>friend</code> as a parameter.</p>
+<p>This <code>def</code>ines a method called <code>tick</code> and passes in an argument called <code>args</code>. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block that allow for code reuse.</p>
+<p>Let's say you wanted to give a friend a cookie 🍪, you'd define a method called <code>give_cookie</code> and pass in the <code>friend</code> as a parameter. The friend then has a method called <code>eat</code> that we call, passing in a parameter of cookie.</p>
 <pre><code class="language-ruby">def give_cookie(friend)
   friend.eat(&quot;cookie&quot;)
 end
@@ -220,7 +220,7 @@ end
 give_cookie(francis)
 </code></pre>
 <p>Wait, how'd we get talking about cookies and friends? Okay, back to the code above.</p>
-<p><code>args</code> is a bunch of data that gets passed into <code>tick</code> whenever it is called. We'll learn more about <code>args</code> soon.</p>
+<p><code>args</code> is a bunch of data known as a parameter that gets passed into <code>tick</code> whenever it is called. We'll learn more about <code>args</code> soon.</p>
 <p>The next three lines handle outputting text to the screen:</p>
 <pre><code class="language-ruby">args.outputs.labels  &lt;&lt; [640, 500, 'Hello World!', 5, 1]
 args.outputs.labels  &lt;&lt; [640, 460, 'Go to docs/docs.html and read it!', 5, 1]
