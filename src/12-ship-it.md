@@ -24,7 +24,7 @@ How you version your game is up to you, but I generally think about it like this
 
 - The structure is `MAJOR.MINOR`.
 - While your game is actively being developed and isn't done, increase the minor number to the right of the `.` with each release, so `0.1`, `0.2`, and so on. Minor versions can go as high as you want, `0.24` or however many releases you have.
-- When your game is done, increase the major version on the left of the `.` to 1, so it'd be version `1.0`.
+- When your game is done, increase the major version on the left of the `.` to 1, so it'd be version `1.0`. When you increase the major version of a piece of software, you reset the minor version back to 0.
 - As you fix bugs and expand upon it after initial release, increase the number to the right, so `1.1`, `1.2`, and so on.
 - If you ever majorly overhauled your game—rewrote a lot of the code or the systems, you might want to consider bumping the major version to `2.0`.
 
