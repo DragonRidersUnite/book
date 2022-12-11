@@ -218,9 +218,9 @@ give_cookie(francis)
 <p>Wait, how'd we get talking about cookies and friends? Okay, back to the code above.</p>
 <p><code>args</code> is a bunch of data known as a parameter that gets passed into <code>tick</code> whenever it is called. We'll learn more about <code>args</code> soon.</p>
 <p>The next three lines handle outputting text to the screen:</p>
-<pre><code class="language-ruby">args.outputs.labels  &lt;&lt; [640, 500, 'Hello World!', 5, 1]
-args.outputs.labels  &lt;&lt; [640, 460, 'Go to docs/docs.html and read it!', 5, 1]
-args.outputs.labels  &lt;&lt; [640, 420, 'Join the Discord! https://discord.dragonruby.org', 5, 1]
+<pre><code class="language-ruby">  args.outputs.labels  &lt;&lt; [640, 500, 'Hello World!', 5, 1]
+  args.outputs.labels  &lt;&lt; [640, 460, 'Go to docs/docs.html and read it!', 5, 1]
+  args.outputs.labels  &lt;&lt; [640, 420, 'Join the Discord! https://discord.dragonruby.org', 5, 1]
 </code></pre>
 <p>Your eyes might be melting a little bit. But don't worry, wipe that melted bit of eye away and focus! It's actually pretty intuitive once you get the hang of it.</p>
 <p>Remember <code>args</code> from above? That parameter that's passed into <code>tick</code>? Well, you can call methods on it! This allows you to interact with the game engine.</p>
@@ -237,7 +237,7 @@ args.outputs.labels  &lt;&lt; [640, 420, 'Join the Discord! https://discord.drag
 <p>Gosh enough of this rambling, let's adjust some code. Change the text from <code>&quot;Hello World!&quot;</code> to be <code>&quot;Hello Dragon!&quot;</code> and save the file.</p>
 <p><img src="./img/hello-dragon.jpg" alt="screenshot of the Hello Dragon! for DragonRuby GTK" /></p>
 <p>Did you see that? The game reloaded your code and changed the text to be &quot;Hello Dragon!&quot; That was quick, wasn't it? That's one of the best parts of DRGTK—live reloading of your game code in the engine. This allows you to make changes to your game quickly, reducing the time between the cycles of writing your code and testing it.</p>
-<pre><code class="language-ruby">args.outputs.sprites &lt;&lt; [576, 280, 128, 101, 'dragonruby.png']
+<pre><code class="language-ruby">  args.outputs.sprites &lt;&lt; [576, 280, 128, 101, 'dragonruby.png']
 </code></pre>
 <p><code>args.outputs.sprites</code> is like labels, but it's instead a collection for sprites. It renders the <code>&quot;dragonruby.png&quot;</code> image at x: 576, y: 280, just like label text, but it also sets the size of the image to display. That's what the <code>128</code> and <code>101</code> represent in the array. Here's a break down of those elements:</p>
 <pre><code class="language-ruby">#  x,   y,   w,   h,            image
@@ -298,7 +298,6 @@ end
 def tick args
   args.outputs.labels &lt;&lt; [120, 120, greet(&quot;Dragon&quot;)]
   args.outputs.labels &lt;&lt; [120, 100, greet(&quot;Oboe&quot;)]
-  # Here's our new line
   args.outputs.sprites &lt;&lt; [120, 280, 100, 80, 'sprites/misc/dragon-0.png']
 end
 </code></pre>
