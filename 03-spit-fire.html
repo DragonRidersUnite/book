@@ -243,8 +243,8 @@
   age: 541,
 }
 </code></pre>
-<p>Values of a hash are then accessed by their keys, so you <code>dragon.name</code> returns the string <code>&quot;Francis&quot;</code>, <code>dragon.size</code> returns the string <code>&quot;medium&quot;</code>, and <code>dragon.age</code> returns the number <code>541</code>. This is much more clear than having to remember the position of these values within an array.</p>
-<p>Quick note: if you see a hash with key-value pairs that look like this: <code>{ :name =&gt; &quot;Francis&quot; }</code>, don't fret! That's just an older style in Ruby known as the hash rocket and can be used for hashes with keys that aren't just symbols.</p>
+<p>Values of a hash are then accessed by their keys, so <code>dragon.name</code> returns the string <code>&quot;Francis&quot;</code>, <code>dragon.size</code> returns the string <code>&quot;medium&quot;</code>, and <code>dragon.age</code> returns the number <code>541</code>. This is much more clear than having to remember the position of these values within an array.</p>
+<p>Quick note: if you see a hash with key-value pairs that look like this: <code>{ :name =&gt; &quot;Francis&quot; }</code>, don't fret! That's just an older style in Ruby known as the hash rocket.</p>
 <p>In general, differentiate between arrays and hashes like this: <strong>hashes are used represent one piece of data with multiple properties</strong> and <strong>arrays are used to collect data (often times hashes) to keep track of and manipulate them</strong>.</p>
 <p>Below is our entire game translated to use hashes instead of arrays for our rendering:</p>
 <pre><code class="language-ruby">def tick args
