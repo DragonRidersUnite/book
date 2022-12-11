@@ -202,7 +202,7 @@
 </code></pre>
 <p>If it is game over, then we let the player know, display their final score, and tell them how to play again (by pressing the fire button). We make an array of labels which we then push into <code>args.outputs.labels</code> to efficiently render them all.</p>
 <p>If any of our fire keys are pressed, the game is reset with <code>$gtk.reset</code> and the player can play again.</p>
-<p>The <code>return</code> line is <em>really</em> important. It says, return out of the <code>#tick</code> method so that none of the code below runs. We don't want to have the dragon be moveable or for targets to spawn when it's game over. So we eject early and only display the game over screen details.</p>
+<p>The <code>return</code> line is <em>really</em> important. It says, return out of the <code>#tick</code> method so that none of the code below runs. We don't want to have the dragon be movable or for targets to spawn when it's game over. So we eject early and only display the game over screen details.</p>
 <p><img src="./img/c06-game-over.jpg" alt="game over screen showing a score of 11 with text saying 'Fire to restart'" /></p>
 <p>Way at the bottom of <code>#tick</code>, let's display a label with the time remaining:</p>
 <pre><code class="language-ruby">  labels = []
@@ -234,12 +234,12 @@
       $gtk.reset
     end
 </code></pre>
-<p>Beause we keep subtracting from <code>args.state.timer</code>, we can check to see if the current value is less than -30. If it is, then we'll accept input to restart the game.</p>
-<p><code>&amp;&amp;</code> (double ampersand, often read as &quot;and-and&quot;) means that both sides of the expression must be true for the code within the conditional to happen. In our new restart check, we combine AND and OR by saying: if the game timer is less than -30 AND any of our fire keys are down, then we reset the game. When you group together expressions in parentheses, <code>(monday? || tuesday?)</code>, it evaluates them as one express against the other checks. We care about the timer being below a certain amount AND any of the inputs beingpressed.</p>
+<p>Because we keep subtracting from <code>args.state.timer</code>, we can check to see if the current value is less than -30. If it is, then we'll accept input to restart the game.</p>
+<p><code>&amp;&amp;</code> (double ampersand, often read as &quot;and-and&quot;) means that both sides of the expression must be true for the code within the conditional to happen. In our new restart check, we combine AND and OR by saying: if the game timer is less than -30 AND any of our fire keys are down, then we reset the game. When you group together expressions in parentheses, <code>(monday? || tuesday?)</code>, it evaluates them as one express against the other checks. We care about the timer being below a certain amount AND any of the inputs being pressed.</p>
 <p>Combining logic in this way for flow control is very common when making games. <code>&amp;&amp;</code> and <code>||</code> are pretty common operators in most programming languages.</p>
 <h2 id="refactor"><a class="header" href="#refactor">Refactor</a></h2>
 <p>Our main <code>#tick</code> method is getting a bit long in the tooth, being over 100 lines long. We've also duplicated two things: frames per second with the <code>60</code> value and checking for fire input. This is a good opportunity to refactor our code once again to make it easier to work with. Let's break up <code>#tick</code> into a series of smaller methods that we call from within it. Encapsulating our logic into smaller pieces makes it easier to work on those smaller pieces without concerning ourselves with the rest of the code.</p>
-<p>How small should you make your methods? That's up to you. Use your best judgement and do what feels right. Code can change and grow quite organically. Once something feels too big or complex or is duplicated, improve it. Don't over-engineer your game right from the start, otherwise you'll be off in the weeds and not actually making your game fun. On the other hand, if you just neglect your code, you'll make it more difficult to change, thus slowing down the development process. There's a fine line between over-engineering and creating a mess.</p>
+<p>How small should you make your methods? That's up to you. Use your best judgment and do what feels right. Code can change and grow quite organically. Once something feels too big or complex or is duplicated, improve it. Don't over-engineer your game right from the start, otherwise you'll be off in the weeds and not actually making your game fun. On the other hand, if you just neglect your code, you'll make it more difficult to change, thus slowing down the development process. There's a fine line between over-engineering and creating a mess.</p>
 <p>Here's the entire game broken down into some smaller methods to make it easier to work with moving forward:</p>
 <pre><code class="language-ruby">FPS = 60
 
@@ -391,7 +391,7 @@ end
 
 $gtk.reset
 </code></pre>
-<p>Because so much has changed and shifted around, I'll just walkthrough the main changes:</p>
+<p>Because so much has changed and shifted around, I'll just walk through the main changes:</p>
 <ul>
 <li><code>FPS</code> is a constant, which is a special value in Ruby that doesn't change. We assign it to <code>60</code> because our game runs at sixty (f)rames (p)er (s)econd. That value won't change, but it's more helpful in our math code to see <code>FPS</code> rather than <code>60</code> because we now know what that value represents.</li>
 <li><code>#fire_input?</code> checks to see if any of our keys are down for firing a fireball. By using our method, we can easily adjust it without having to change it for both restarting the game and the dragon spitting the fireball.</li>

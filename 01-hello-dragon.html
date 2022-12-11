@@ -220,7 +220,7 @@ end
 give_cookie(francis)
 </code></pre>
 <p>Wait, how'd we get talking about cookies and friends? Okay, back to the code above.</p>
-<p><code>args</code> is a bunch of data that gets passed into <code>tick</code> whenver it is called. We'll learn more about <code>args</code> soon.</p>
+<p><code>args</code> is a bunch of data that gets passed into <code>tick</code> whenever it is called. We'll learn more about <code>args</code> soon.</p>
 <p>The next three lines handle outputting text to the screen:</p>
 <pre><code class="language-ruby">args.outputs.labels  &lt;&lt; [640, 500, 'Hello World!', 5, 1]
 args.outputs.labels  &lt;&lt; [640, 460, 'Go to docs/docs.html and read it!', 5, 1]
@@ -295,7 +295,7 @@ end
 end
 </code></pre>
 <p>Whoa! What happened to our greetings? Well, we changed our code and it now always returns <code>1</code>, which isn't what we want. It's just an example to illustrate how that works. Go ahead and undo that change.</p>
-<p>Let's do one final thing in our hand-crafted, artisinal version of rendering text and images. Let's display a sprite. In <code>mygame/sprites/misc/</code> there's a file named <code>dragon-0.png</code>. It's a pixel art dragon made by Nick Culbertson that's free to use. Pretty neat!</p>
+<p>Let's do one final thing in our hand-crafted, artisanal version of rendering text and images. Let's display a sprite. In <code>mygame/sprites/misc/</code> there's a file named <code>dragon-0.png</code>. It's a pixel art dragon made by Nick Culbertson that's free to use. Pretty neat!</p>
 <pre><code class="language-ruby">def greet friend
   &quot;Hello #{friend}!&quot;
 end

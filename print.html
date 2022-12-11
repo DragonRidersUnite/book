@@ -149,7 +149,7 @@
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <p><img src="./img/cover.jpg" alt="cover of Building Games with DragonRuby, with the subtitle 'A comprehensive guide to shipping cross-platform games with ease' by Brett Chalupa and the Dragon Rider Community." /></p>
 <p>🚧 <em>Building Games with DragonRuby</em> is almost done. Expect a few typos, issues, and incompleteness while it gets settled into v1.0. 🚧</p>
-<p>This book is aimed at new game developers who are interested in learning to code and build games. If you've written code before, especially Ruby, then you'll have a bit of a headstart. But the concepts in this book are beginner friendly. Whether you're new to game dev or just DragonRuby Game Toolkit, you'll have made a finished game by the end of this.</p>
+<p>This book is aimed at new game developers who are interested in learning to code and build games. If you've written code before, especially Ruby, then you'll have a bit of a head start. But the concepts in this book are beginner friendly. Whether you're new to game dev or just DragonRuby Game Toolkit, you'll have made a finished game by the end of this.</p>
 <p>You need no prior experience with programming or game making to follow this book.</p>
 <h2 id="why-learn-how-to-make-games"><a class="header" href="#why-learn-how-to-make-games">Why Learn How to Make Games</a></h2>
 <p>Making games is a total blast. It's challenging but rewarding. They're the sum total of so many creative mediums, <em>plus</em> they're interactive. You'll learn so many different skills by making games:</p>
@@ -305,7 +305,7 @@ end
 give_cookie(francis)
 </code></pre>
 <p>Wait, how'd we get talking about cookies and friends? Okay, back to the code above.</p>
-<p><code>args</code> is a bunch of data that gets passed into <code>tick</code> whenver it is called. We'll learn more about <code>args</code> soon.</p>
+<p><code>args</code> is a bunch of data that gets passed into <code>tick</code> whenever it is called. We'll learn more about <code>args</code> soon.</p>
 <p>The next three lines handle outputting text to the screen:</p>
 <pre><code class="language-ruby">args.outputs.labels  &lt;&lt; [640, 500, 'Hello World!', 5, 1]
 args.outputs.labels  &lt;&lt; [640, 460, 'Go to docs/docs.html and read it!', 5, 1]
@@ -380,7 +380,7 @@ end
 end
 </code></pre>
 <p>Whoa! What happened to our greetings? Well, we changed our code and it now always returns <code>1</code>, which isn't what we want. It's just an example to illustrate how that works. Go ahead and undo that change.</p>
-<p>Let's do one final thing in our hand-crafted, artisinal version of rendering text and images. Let's display a sprite. In <code>mygame/sprites/misc/</code> there's a file named <code>dragon-0.png</code>. It's a pixel art dragon made by Nick Culbertson that's free to use. Pretty neat!</p>
+<p>Let's do one final thing in our hand-crafted, artisanal version of rendering text and images. Let's display a sprite. In <code>mygame/sprites/misc/</code> there's a file named <code>dragon-0.png</code>. It's a pixel art dragon made by Nick Culbertson that's free to use. Pretty neat!</p>
 <pre><code class="language-ruby">def greet friend
   &quot;Hello #{friend}!&quot;
 end
@@ -433,9 +433,9 @@ end
 <pre><code class="language-ruby">puts name
 </code></pre>
 <p>That calls a the <code>puts</code> method and passes our argument <code>name</code> to it. It prints whatever the value is out to the console. If you put that in your game code and press <kbd>~</kbd> to open the console, you'll see it print <code>&quot;Francis&quot;</code> a bunch.</p>
-<p><code>||=</code> in English is &quot;or equals&quot;. That code above, <code>args.state.player_x ||= 120</code> would be read as: assign the property <code>player_x</code> on <code>args.state</code> the numeric value of 120 unless it's alreay assigned a value.</p>
+<p><code>||=</code> in English is &quot;or equals&quot;. That code above, <code>args.state.player_x ||= 120</code> would be read as: assign the property <code>player_x</code> on <code>args.state</code> the numeric value of 120 unless it's already assigned a value.</p>
 <p>Remember how tick is running once every 60 seconds? We don't want to always set <code>args.state.player_x</code> to <code>120</code>. We just want to set it to that initially and then we'll update that value when we press keys on our keyboard or buttons on our gamepad. We haven't done that yet, but that's what's next.</p>
-<p>Wow! That was a lot of explaination for two measly lines of code. But I'm telling ya', they're two really important lines of code when it comes to game programming.</p>
+<p>Wow! That was a lot of explanation for two measly lines of code. But I'm telling ya', they're two really important lines of code when it comes to game programming.</p>
 <p>Then, finally, we change the <code>x</code> and <code>y</code> value for the dragon sprite to be the value stored in <code>args.state</code> so that we can actually make use of that value instead of our hard-coded position before.</p>
 <h2 id="checking-for-input"><a class="header" href="#checking-for-input">Checking for Input</a></h2>
 <p>In <code>tick</code> we'll check to see if a given input is pressed. If it is, we'll change the sprite's x and y position accordingly.</p>
@@ -573,7 +573,7 @@ end
 
   args.outputs.sprites &lt;&lt; [args.state.player_x, args.state.player_y, player_w, player_h, 'sprites/misc/dragon-0.png']
 </code></pre>
-<p>Using <code>puts</code> is a really helpful way to check that our game works as we expect it to. In this case, every tick where the Z key is pressed down, it prints the string &quot;Z key pressed&quot; to the console (open it iwth <kbd>~</kbd>, remember?). Run your game and press the Z key a bunch and then open your console.</p>
+<p>Using <code>puts</code> is a really helpful way to check that our game works as we expect it to. In this case, every tick where the Z key is pressed down, it prints the string &quot;Z key pressed&quot; to the console (open it with <kbd>~</kbd>, remember?). Run your game and press the Z key a bunch and then open your console.</p>
 <img alt="screenshot of DragonRuby console showing Z key pressed 6 times" src="./img/c03-console-puts.jpg" style="max-width: 420px; width: 100%;">
 <h2 id="expanded-control-support"><a class="header" href="#expanded-control-support">Expanded Control Support</a></h2>
 <p>When making a game, it's important to support a variety of input configurations to make the game as accessible as possible. Sure, the keyboard arrow keys and the Z key are sensible defaults. But what if our player wants to use a gamepad controller? Or what if they would prefer to use WASD for movement? From the start of coding player input, let's support as many different inputs as reasonably possible.</p>
@@ -583,7 +583,7 @@ end
 <li>WASD and J</li>
 <li>Gamepad</li>
 </ul>
-<p>DragonRuby GTK is a big help in this department. Our code earily that checks <code>args.inputs.up</code> (down/left/right) already checks for the arrow keys, WASD, and gamepad input. Slick! We don't have to change anything there. But let's go ahead and update our logic check for firing the fireball to check all of the possible inputs.</p>
+<p>DragonRuby GTK is a big help in this department. Our code eerily that checks <code>args.inputs.up</code> (down/left/right) already checks for the arrow keys, WASD, and gamepad input. Slick! We don't have to change anything there. But let's go ahead and update our logic check for firing the fireball to check all of the possible inputs.</p>
 <pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z ||
       args.inputs.keyboard.key_down.j ||
       args.inputs.controller_one.key_down.a
@@ -618,7 +618,7 @@ end
 <p>Wait, where are you going? Why are you muttering &quot;I didn't sign up to read no stinkin' book where you output the word fireball on the screen, I'm here for the real flame, the good stuff...&quot;</p>
 <h2 id="moving-fireballs"><a class="header" href="#moving-fireballs">Moving Fireballs</a></h2>
 <p>Guess what? We're sticking with ole &quot;fireball&quot; for now! It's silly and fun and I haven't found a good fireball sprite to use. We'll get there, we'll get there. But let's first make the fireballs move across the screen.</p>
-<p>When we moved our player dragon, we took the x and y position and added or substracted values in each <code>#tick</code> based upon if any directional input was pressed. Our fireballs will move regardless of any button pressed once they're extruded from our ole dragon's mouth. Because our game is simple and the dragon only faces to the right, all of the fireballs will move to the right. How do we go about that on our X-Y axis? We just increase the <code>x</code> position of the fireball each tick. Let's do that and see what happens:</p>
+<p>When we moved our player dragon, we took the x and y position and added or subtracted values in each <code>#tick</code> based upon if any directional input was pressed. Our fireballs will move regardless of any button pressed once they're extruded from our ole dragon's mouth. Because our game is simple and the dragon only faces to the right, all of the fireballs will move to the right. How do we go about that on our X-Y axis? We just increase the <code>x</code> position of the fireball each tick. Let's do that and see what happens:</p>
 <pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z ||
       args.inputs.keyboard.key_down.j ||
       args.inputs.controller_one.key_down.a
@@ -746,7 +746,7 @@ end
 
   args.outputs.sprites &lt;&lt; [args.state.player, args.state.fireballs]
 </code></pre>
-<p>We adjust the starting place of the fireball sprite to look like it comes out of the dragon's mouth. The sprite is 32 pixels wide by 32 pixes tall, so we set that.</p>
+<p>We adjust the starting place of the fireball sprite to look like it comes out of the dragon's mouth. The sprite is 32 pixels wide by 32 pixels tall, so we set that.</p>
 <p>Now that the fireball is a sprite and not a text label, we can push both the player and the array of fireballs into <code>args.outputs.sprites</code> in one go. This is more efficient for DragonRuby than doing it separately.</p>
 <p><img src="./img/c03-fireball-sprite.jpg" alt="dragon sprite shooting 4 fireballs flying across the screen" /></p>
 <h2 id="whats-next-2"><a class="header" href="#whats-next-2">What's Next</a></h2>
@@ -898,7 +898,7 @@ end
 <p><code>#spawn_target</code> looks a little different now. We no longer pass in the coordinates as arguments because we'll randomly generate the position. We instead pass in <code>args</code> from DragonRuby's <code>#tick</code> so that we can get the width and height of the screen to use to determine boundaries.</p>
 <p>We create a <code>size</code> variable to store the width and height of the sprite to use in our formulas for spawning the target. We don't want to have to type 64 over and over because it loses its meaning and gets difficult to change.</p>
 <p>Then we apply some math. Don't let math scare you away from programming! We'll keep it simple and the toolbox you need is relatively small. Plus, the math will help make our game even better. Games make math fun.</p>
-<p><code>rand</code> is a method that we get from DragonRuby that's available everywhere. <code>rand</code> without any paramter generates a random number between 0 and 1. That's not really useful for us right now, so we can instead pass in a parameter that sets the upper boundary of the random number. <code>rand(100)</code> generates a random number between 0 up to 100 (not including 100).</p>
+<p><code>rand</code> is a method that we get from DragonRuby that's available everywhere. <code>rand</code> without any parameter generates a random number between 0 and 1. That's not really useful for us right now, so we can instead pass in a parameter that sets the upper boundary of the random number. <code>rand(100)</code> generates a random number between 0 up to 100 (not including 100).</p>
 <p>So for the x position of the target, we generate a number random number that's up to two-fifths the size of width of the game and then we add three-fifths of the width to that number so that the targets spawn on the far right side of the screen. We don't want to spawn targets too close to the player, otherwise it'd be too easy.</p>
 <p>For the y position, we generate a random y position based on the height of the game, but we subtract twice the size of the target sprite and then add one of its sizes back to the random number to give the spawn area a gutter. This prevents the target from spawning partially off the screen, which would make it impossible to hit.</p>
 <h3 id="change-initial-three-targets"><a class="header" href="#change-initial-three-targets">Change initial three targets</a></h3>
@@ -950,7 +950,7 @@ end
     size_enum: 4
   }
 </code></pre>
-<p>This approach to displaying a label is different than previous chapters. Instead of using an array to represent the properties of the label, we're now using a hash like we do for sprites (for similar reasons: it's easier to remember and more clear). Setting <code>x</code>, <code>y</code>, and <code>text</code> should be familiar by this point. But <code>size_enum</code> is new. It's a way to specify how large the text is. It takes whatever value we set and adds that much to the default text size. Increase it from <code>4</code> to <code>40</code> or <code>-3</code> and see what you lik ebest.</p>
+<p>This approach to displaying a label is different than previous chapters. Instead of using an array to represent the properties of the label, we're now using a hash like we do for sprites (for similar reasons: it's easier to remember and more clear). Setting <code>x</code>, <code>y</code>, and <code>text</code> should be familiar by this point. But <code>size_enum</code> is new. It's a way to specify how large the text is. It takes whatever value we set and adds that much to the default text size. Increase it from <code>4</code> to <code>40</code> or <code>-3</code> and see what you like best.</p>
 <p><img src="./img/c04-score.jpg" alt="dragon spitting fireballs at three targets on the right side of the screen with the text 'Score: 34' displayed" /></p>
 <h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
 <p>What a chapter! We displayed targets, handled collision detection, spawned our targets randomly, and added score tracking. We've come a long way in this chapter. And added a lot of core concepts that are found in most games. Review the code to make sure you understand it.</p>
@@ -1070,7 +1070,7 @@ end
 </code></pre>
 <p>If it is game over, then we let the player know, display their final score, and tell them how to play again (by pressing the fire button). We make an array of labels which we then push into <code>args.outputs.labels</code> to efficiently render them all.</p>
 <p>If any of our fire keys are pressed, the game is reset with <code>$gtk.reset</code> and the player can play again.</p>
-<p>The <code>return</code> line is <em>really</em> important. It says, return out of the <code>#tick</code> method so that none of the code below runs. We don't want to have the dragon be moveable or for targets to spawn when it's game over. So we eject early and only display the game over screen details.</p>
+<p>The <code>return</code> line is <em>really</em> important. It says, return out of the <code>#tick</code> method so that none of the code below runs. We don't want to have the dragon be movable or for targets to spawn when it's game over. So we eject early and only display the game over screen details.</p>
 <p><img src="./img/c06-game-over.jpg" alt="game over screen showing a score of 11 with text saying 'Fire to restart'" /></p>
 <p>Way at the bottom of <code>#tick</code>, let's display a label with the time remaining:</p>
 <pre><code class="language-ruby">  labels = []
@@ -1102,12 +1102,12 @@ end
       $gtk.reset
     end
 </code></pre>
-<p>Beause we keep subtracting from <code>args.state.timer</code>, we can check to see if the current value is less than -30. If it is, then we'll accept input to restart the game.</p>
-<p><code>&amp;&amp;</code> (double ampersand, often read as &quot;and-and&quot;) means that both sides of the expression must be true for the code within the conditional to happen. In our new restart check, we combine AND and OR by saying: if the game timer is less than -30 AND any of our fire keys are down, then we reset the game. When you group together expressions in parentheses, <code>(monday? || tuesday?)</code>, it evaluates them as one express against the other checks. We care about the timer being below a certain amount AND any of the inputs beingpressed.</p>
+<p>Because we keep subtracting from <code>args.state.timer</code>, we can check to see if the current value is less than -30. If it is, then we'll accept input to restart the game.</p>
+<p><code>&amp;&amp;</code> (double ampersand, often read as &quot;and-and&quot;) means that both sides of the expression must be true for the code within the conditional to happen. In our new restart check, we combine AND and OR by saying: if the game timer is less than -30 AND any of our fire keys are down, then we reset the game. When you group together expressions in parentheses, <code>(monday? || tuesday?)</code>, it evaluates them as one express against the other checks. We care about the timer being below a certain amount AND any of the inputs being pressed.</p>
 <p>Combining logic in this way for flow control is very common when making games. <code>&amp;&amp;</code> and <code>||</code> are pretty common operators in most programming languages.</p>
 <h2 id="refactor"><a class="header" href="#refactor">Refactor</a></h2>
 <p>Our main <code>#tick</code> method is getting a bit long in the tooth, being over 100 lines long. We've also duplicated two things: frames per second with the <code>60</code> value and checking for fire input. This is a good opportunity to refactor our code once again to make it easier to work with. Let's break up <code>#tick</code> into a series of smaller methods that we call from within it. Encapsulating our logic into smaller pieces makes it easier to work on those smaller pieces without concerning ourselves with the rest of the code.</p>
-<p>How small should you make your methods? That's up to you. Use your best judgement and do what feels right. Code can change and grow quite organically. Once something feels too big or complex or is duplicated, improve it. Don't over-engineer your game right from the start, otherwise you'll be off in the weeds and not actually making your game fun. On the other hand, if you just neglect your code, you'll make it more difficult to change, thus slowing down the development process. There's a fine line between over-engineering and creating a mess.</p>
+<p>How small should you make your methods? That's up to you. Use your best judgment and do what feels right. Code can change and grow quite organically. Once something feels too big or complex or is duplicated, improve it. Don't over-engineer your game right from the start, otherwise you'll be off in the weeds and not actually making your game fun. On the other hand, if you just neglect your code, you'll make it more difficult to change, thus slowing down the development process. There's a fine line between over-engineering and creating a mess.</p>
 <p>Here's the entire game broken down into some smaller methods to make it easier to work with moving forward:</p>
 <pre><code class="language-ruby">FPS = 60
 
@@ -1259,7 +1259,7 @@ end
 
 $gtk.reset
 </code></pre>
-<p>Because so much has changed and shifted around, I'll just walkthrough the main changes:</p>
+<p>Because so much has changed and shifted around, I'll just walk through the main changes:</p>
 <ul>
 <li><code>FPS</code> is a constant, which is a special value in Ruby that doesn't change. We assign it to <code>60</code> because our game runs at sixty (f)rames (p)er (s)econd. That value won't change, but it's more helpful in our math code to see <code>FPS</code> rather than <code>60</code> because we now know what that value represents.</li>
 <li><code>#fire_input?</code> checks to see if any of our keys are down for firing a fireball. By using our method, we can easily adjust it without having to change it for both restarting the game and the dragon spitting the fireball.</li>
@@ -1401,7 +1401,7 @@ end
 <p>Now we've got music and sound effects in our game. Isn't it wild how the game feels more fun and polished?</p>
 <h2 id="make-your-own-music--sound-effects"><a class="header" href="#make-your-own-music--sound-effects">Make Your Own Music &amp; Sound Effects</a></h2>
 <p>I use <a href="https://sfxr.me/">jsfxr</a> to create sound effects for games. It's simple and free with a lot of settings to tweak. You can quickly download a WAV file that you can drop into your game. Try making your own sound effects and replacing the ones I've provided. You often won't know if a sound effect sounds <em>right</em> until you drop it in your game. So experiment and see what works best.</p>
-<p>As for making your own music, there are lots of options out there. I use <a href="https://1bitdragon.com/">1BitDragon</a>, a limited (in a good way) tool for making music. <a href="https://lmms.io/">LMMS</a> is a freel, well-loved tool. Garageband on MacOS would get you pretty far too!</p>
+<p>As for making your own music, there are lots of options out there. I use <a href="https://1bitdragon.com/">1BitDragon</a>, a limited (in a good way) tool for making music. <a href="https://lmms.io/">LMMS</a> is a free, well-loved tool. Garageband on MacOS would get you pretty far too!</p>
 <p>There are many ways to convert the sounds you make to various formats, from command-line tools like ffmpeg to desktop apps. <a href="https://convertio.co/">Convertio</a> is a free online service, among many, that you can use as well.</p>
 <p>Making music and sound effects for games is a huge topic that's beyond the scope of this book, but hopefully these tools can help you get started.</p>
 <p>If you do change the sounds in your game, you'll need to restart it to get DragonRuby GTK to refresh them.</p>
@@ -1805,7 +1805,7 @@ icon=metadata/icon.png
 <li>Pineapple for Discord feedback</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ruby-primer"><a class="header" href="#ruby-primer">Ruby Primer</a></h1>
-<p>New to Ruby? Here's a brief walkthrough of the common language features and syntax as a quick reference.</p>
+<p>New to Ruby? Here's a brief walk through of the common language features and syntax as a quick reference.</p>
 <h2 id="core-types"><a class="header" href="#core-types">Core Types</a></h2>
 <p>When working with Ruby, we've got some core data types to work with.</p>
 <p>Strings, numbers, arrays, hashes, and booleans.</p>
@@ -1886,7 +1886,7 @@ end
 <h2 id="start-small"><a class="header" href="#start-small">Start Small</a></h2>
 <p>When you’re just starting out in any creative endeavor, set your sights on small projects that you can realistically finish. It’s easy to want to try to make a big game that’s like your favorites, but if you were starting out with creative writing, you’d start by writing short stories, not an epic novel. Why? Because you don’t have the stamina and skills yet to write a novel or make a huge game. Sure, a select few can work on their first game or novel for years and finish it and have some success. But it’s more likely than not that you’ll abandon your project due to challenges and lost interest.</p>
 <h2 id="what-can-you-cut"><a class="header" href="#what-can-you-cut">What Can You Cut?</a></h2>
-<p>When you have an idea for a game, ask yourself what you can cut from it while still maintaining the core essence of it. Don’t dwell on adding a bunch of complex systems. Focus on the fun and how you can subtract to bring that forward. Arcade games do a great job of making short, replayable, minimal experiences.</p>
+<p>When you have an idea for a game, ask yourself what you can cut from it while still maintaining the core essence of it. Don’t dwell on adding a bunch of complex systems. Focus on the fun and how you can subtract to bring that forward. Arcade games do a great job of making short, repayable, minimal experiences.</p>
 <h2 id="finish-your-games"><a class="header" href="#finish-your-games">Finish Your Games</a></h2>
 <p>When making your small games, finish them! Finishing what you start is so important. Having a bunch of unreleased prototypes isn’t fun for anyone. It’s okay to share works in progress and tiny games. Finish what you make and release it. Shipping games is a muscle and different skill set than building the game. The more practice you get, the better off you’ll be when it comes time to ship.</p>
 <h2 id="release-them-for-free"><a class="header" href="#release-them-for-free">Release Them for Free</a></h2>
@@ -1894,7 +1894,7 @@ end
 <h2 id="dont-worry-about-being-original"><a class="header" href="#dont-worry-about-being-original">Don't Worry About Being Original</a></h2>
 <p>When you’re making your small, free games, don’t worry about being original. That may sound like blasphemy, but the best way to learn is to copy mechanics and systems from your favorite games to learn. You’ll inevitably infuse your own sensibilities into them and make something unique. When we learn an instrument, we play covers of our favorite songs and that’s encouraged. What would it be like to “cover” your favorite game? Originality will come with time when the ideas are flowing and don’t agree with how other games do something.</p>
 <h2 id="do-game-jams"><a class="header" href="#do-game-jams">Do Game Jams</a></h2>
-<p>Game jams are constrainted events where people make games within a certain timeframe, sometimes with specific rules. They're a great way to start and finish a game in a short period of time. You can experiment and take risks and connect with the community of your fellow participants. I can't recommend them enough. Try to do at least one jam a year (or more if your heart desires).</p>
+<p>Game jams are constrained events where people make games within a certain time frame, sometimes with specific rules. They're a great way to start and finish a game in a short period of time. You can experiment and take risks and connect with the community of your fellow participants. I can't recommend them enough. Try to do at least one jam a year (or more if your heart desires).</p>
 <p><a href="https://itch.io/jams">Itch has a directory of jams</a> and <a href="https://ludumdare.com/">Ludum Dare is a long-running jam with many participants</a>.</p>
 <h2 id="share-your-work"><a class="header" href="#share-your-work">Share Your Work</a></h2>
 <p>Share your work. Whether on a YouTube channel, blog, or social network. Post screenshots. Share what you learn. Talk about what worked and what didn’t. Help other game developers. Don’t think about it as marketing, even though it is. Be genuine and share your progress. </p>
@@ -1965,7 +1965,7 @@ end
 <li><a href="https://github.com/git-guides">GitHub's Git Guide</a></li>
 <li><a href="https://git-scm.com/downloads/guis">GUI apps for working with Git</a></li>
 </ul>
-<p>Using version control at first may seem a bit tedious, but it's immensely valuable. Not only can you document why you made a change to help your future self and others, but you can safely experiment without fear of really messing things up. Because you're tracking the changes to your game's source, if you go down a rabbithole that doesn't work out, you can easily undo it. Let's explore some examples of commits and scenarios where it's helpful.</p>
+<p>Using version control at first may seem a bit tedious, but it's immensely valuable. Not only can you document why you made a change to help your future self and others, but you can safely experiment without fear of really messing things up. Because you're tracking the changes to your game's source, if you go down a rabbit hole that doesn't work out, you can easily undo it. Let's explore some examples of commits and scenarios where it's helpful.</p>
 <p>Any time you add a feature, create a commit. This lets you see your game evolve over time. Let's say you added player input with the gamepad. Boom, make a commit! Let's say you improved the enemy AI, commit that. Keep your commits small. Don't make hundreds of lines of unrelated changes and make a big commit that just say &quot;changed some stuff&quot;. You're trying to help yourself but creating a useful log of your game. Here's a look at commits from a little project of mine:</p>
 <pre><code class="language-console">commit 9a74acdbec6971fab76fd81b2d78526ffef2c621
 Date:   Thu Nov 24 07:22:15 2022 -0500
