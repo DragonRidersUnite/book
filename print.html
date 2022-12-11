@@ -1462,13 +1462,19 @@ end
 <p>Where we lazily set <code>args.state.player</code>, we no longer specify the <code>path</code> to the sprite. We'll set that as part of animating the player right below.</p>
 <p><code>#frame_index</code> is a method DragonRuby GTK gives us on integers to keep track of what frame to use when animating. <code>0</code> is when we want to start the animation, which we want to start at the beginning. We have 6 frames total, and we want to display each of them for 8 ticks, repeating forever! Change the <code>hold_for</code> value and see how it affects the animation speed and feel of the game. Pick a rate that feels good for you or just stick with 8.</p>
 <p>Then we take the <code>player_sprite_index</code> and use that when specifying the <code>path</code> of our player sprite by interpolating it into the path to our sprite. Our dragon sprites are named <code>dragon-0.png</code>, <code>dragon-1.png</code>, and so on. So we take what <code>#frame_index</code> gives us and inject it into the path to the image to make that value dynamic.</p>
-<p>In Ruby, when you have a string that uses double quotes, <code>&quot;hi there&quot;</code>, you can inject Ruby code inside of it using <code>#{}</code>. This is really useful. For example: <code>&quot;2 + 2 = #{2 + 2}&quot;</code>, that evaluates the mathematical expression and converts the answer (<code>4</code>) to a string and displays it.</p>
+<p>In Ruby, when you have a string that uses double quotes, <code>&quot;hi there&quot;</code>, you can inject Ruby code inside of it using <code>#{}</code>. This is really useful and is known as string interpolation. For example: <code>&quot;2 + 2 = #{2 + 2}&quot;</code>, that evaluates the mathematical expression and converts the answer (<code>4</code>) to a string and returns <code>&quot;2 + 2 = 4&quot;</code>.</p>
 <h2 id="a-note-on-spritesheets"><a class="header" href="#a-note-on-spritesheets">A Note on Spritesheets</a></h2>
+<p>If you've done any game development before, you may be familiar with spritesheets, where each frame of an animation is contained within one image file. When using a spritesheet for animation, instead of changing which image file path is used for the sprite to render, you change which piece of the large spritesheet you render. <a href="https://bit.ly/drgtk-spritesheet">The DragonRuby GTK docs have a detailed example on how to do this.</a></p>
 <h2 id="extra-credit-5"><a class="header" href="#extra-credit-5">Extra Credit</a></h2>
 <ul>
 <li>How would you increase the animation speed when the dragon is moving to simulate faster flapping of their wings?</li>
+<li>Animate the fireball with another frame of animation to make it feel alive</li>
+<li>Animate the targets in some way</li>
 </ul>
+<h2 id="summary-3"><a class="header" href="#summary-3">Summary</a></h2>
+<p>When making a game, it's likely that anything that moves will animate, even if it's just a little. It's a valuable concept to understand and implement on your own. Compare the game now to when we started—it's come quite a long way from an immovable sprite with some text!</p>
 <h2 id="whats-next-9"><a class="header" href="#whats-next-9">What's Next</a></h2>
+<p>We're nearly finished with our game! All that's left is to add a title screen and then publish the game online.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="outro"><a class="header" href="#outro">Outro</a></h1>
 <p>Thank you so much for reading and going through <em>Building Games with DragonRuby</em>. I hope you continue to use DragonRuby Game Toolkit and make awesome games. <a href="https://discord.dragonruby.org">Jump in the Discord</a>, and share what you've made. The community would love to see it and will happily answer any questions you have.</p>
 <h2 id="make-target-practice-your-own"><a class="header" href="#make-target-practice-your-own">Make <em>Target Practice</em> Your Own</a></h2>
@@ -1730,7 +1736,7 @@ Date:   Wed Nov 23 23:04:46 2022 -0500
 <li>Don't track the engine parent folder</li>
 </ol>
 <p>The downside to this approach is that you need to ensure you keep your specific engine version parent directory available. You could use version control to sync that and then use Git to publish it online as open source code.</p>
-<h2 id="summary-3"><a class="header" href="#summary-3">Summary</a></h2>
+<h2 id="summary-4"><a class="header" href="#summary-4">Summary</a></h2>
 <ul>
 <li>Back up your games! You never know when you might lose your computer.</li>
 <li>Source control, like Git, let's you make changes with confidence.</li>
