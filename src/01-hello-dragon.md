@@ -4,7 +4,7 @@ We'll start by rendering an image and some simple text on the screen. But first,
 
 ## First Steps
 
-1. **Download a code editor:** Since you'll be coding your game, you need a special text editor to let you write the code without any extra formatting that text editors like Microsoft Word add. [Visual Studio Code](https://code.visualstudio.com/) is a great free editor. Download and install it. (Or use your own favorite editor.)
+1. **Download a code editor:** Since you'll be coding your game, you need a special text editor to write the code without any extra formatting that text editors like Microsoft Word add. [Visual Studio Code](https://code.visualstudio.com/) is a great free editor. Download and install it. (Or use your own favorite editor.)
 2. **Get DragonRuby GTK:** You need to get a copy of DragonRuby GTK so you can use the engine. [Buy it on Itch and download the zip file for your operating system.](https://dragonruby.itch.io/dragonruby-gtk/purchase)
 3. **Extract the DRGTK engine zip**: In your computer's file explorer, extract the engine zip file.
 
@@ -20,7 +20,7 @@ Let's go over the key files in the archive you just extracted:
 
 - `dragonruby` — the executable you'll run to launch your game in development mode, you're primary entry into the development flow
 - `dragonruby-publish` — a command-line tool to help you easily build and publish your game online, don't worry about this yet!
-- `samples/` — a folder of example code that you can run if you'd like, or just ignore it for now
+- `samples/` — a folder of example code that you can explore and run if you'd like, or just ignore it for now
 - `docs/` — the DragonRuby Game Toolkit docs for the version you've downloaded, extremely handy if you want to dive deeper than this book
 - `mygame/` 🌟 — as the name implies, this is where the code, graphics, sound, and other assets live for your game; this is the primary folder you'll be working in
     - `app/` — this is where your Ruby code goes
@@ -29,7 +29,7 @@ Let's go over the key files in the archive you just extracted:
     - `fonts/` — where fonts go, duh!
     - `metadata/` — configuration files for your game, we'll do more here later
     - `sounds/` — where music and sound effects go
-    - `sprites/` — where images go that will be rendered in the game; there are already some simple ones to work with by default
+    - `sprites/` — where images go that will be rendered in the game; there are already some basic ones present
 
 Don't worry about the other files yet. Focus on the `mygame/` directory, and, specifically, `mygame/app/main.rb`.
 
@@ -37,7 +37,7 @@ Don't worry about the other files yet. Focus on the `mygame/` directory, and, sp
 
 Launch the `dragonruby` file.
 
-If you're on MacOS, right-click the file and select "Open". You'll need to ensure software from unverified sources can be installed.
+If you're on MacOS, right-click the file and select "Open". You'll need to ensure software from unverified sources can be run.
 
 Here's what gets displayed:
 
@@ -51,7 +51,7 @@ This isn't a game... yet! But it is doing three key things:
 
 And you haven't even written any code yet. Not a bad starting place.
 
-DRGTK handles the unfun stuff of making games—dealing with low-level APIs like graphics, window, and sounds. We can instead focus on making our game.
+DRGTK handles the boring stuff when it comes to making games—dealing with low-level APIs like graphics, window, and sounds. We can instead focus on creating our game instead of, for example, figuring out how to save data in a way that's compartible with Linux, Mac, Windows, Android, iOS, and web.
 
 ## An Overview of the Main Game File
 
@@ -61,9 +61,9 @@ Let's take a look at what's in `mygame/app/main.rb`:
 {{#include code/chapter_01/01_default/app/main.rb}}
 ```
 
-You can open this file yourself in Visual Studio Code. Go ahead and do that: New Window > Open > [select the folder on your computer with the engine in it]
+Open this file yourself in Visual Studio Code. Go ahead and do that: New Window > Open > [select the folder on your computer with the engine in it]
 
-Six lines of codes to render text and an image? Not bad! (Trust me, if you did this all from scratch without an engine, it'd take at least hundreds of lines of code.)
+Six lines of codes to render text and an image? Not bad! (Trust me, if you did this all from scratch without an engine, it'd take hundreds of lines of code.)
 
 Here's what that code does, line by line:
 
@@ -71,7 +71,9 @@ Here's what that code does, line by line:
 {{#include code/chapter_01/01_default/app/main.rb:1}}
 ```
 
-This `def`ines a method called `tick` and passes in an argument called `args`. Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block that allow for code reuse.
+This `def`ines a method called `tick` and passes in an parameter called `args`. `args` is short for arguments and is provided to us by DragonRuby GTK.
+
+Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block that allow for code reuse.
 
 Let's say you wanted to give a friend a cookie 🍪, you'd define a method called `give_cookie` and pass in the `friend` as a parameter. The friend then has a method called `eat` that we call, passing in a parameter of cookie.
 
@@ -88,9 +90,21 @@ francis = Friend.new
 give_cookie(francis)
 ```
 
-Wait, how'd we get talking about cookies and friends? Okay, back to the code above.
+Note: methods in Ruby have optional parenthesis. You can use them or leave them out when defining and calling your methods. These are the same:
 
-`args` is a bunch of data known as a parameter that gets passed into `tick` whenever it is called. We'll learn more about `args` soon.
+``` ruby
+def give_cookie(friend)
+  friend.eat("cookie")
+end
+
+def give_cookie friend
+  friend.eat "cookie"
+end
+```
+
+I'm an agent of chaos and use _both_ styles throughout the book. Gotta keep ya' on your toes!
+
+Wait, how'd we get talking about cookies and friends? Okay, back to the code above.
 
 The next three lines handle outputting text to the screen:
 
@@ -108,9 +122,9 @@ The `<<` is called the shovel operator. It lets you push data into a collection.
 
 And then finally the code within the brackets `[]` is an array of data that represents what we want to display on the screen. It may not be clear exactly what it's doing yet, but it'll become more clear over time.
 
-I think of an array like a stack of CDs. The CDs are in a specific order, but you don't know what a given CD is unless you pull it out at a point in the stack and look at it. In programming, you put data into an array to collect that data and keep track of it.
+I think of arrays like a stack of CDs. The CDs are in a specific order, but you don't know what a given CD is unless you pull one out of the stack and look at it. You have to do the same thing with an array. In programming, you put data into an array to collect that data and keep track of it. If you want to know what's at a specific place in a array, you have to check.
 
-You can see some code in quotes, those are strings. And they're what's being displayed by the game. In order to show the text, though, we need to tell the engine where to place it on the screen. That's what the first two elements of the array do: they specify the x and y position in of the text in the game. Then there's the text we want to render. That's followed by the size. Then finally the alignment (centered in this case).
+You can see some code in quotes, those are strings. And they're what's being displayed by the game. In order to show the text, though, we need to tell the engine where to place it on the screen. That's what the first two elements of the array do: they specify the x and y position in of the text in the game. Then there's the text we want to render. That's followed by the text size. Then finally the alignment (centered in this case).
 
 Here's it broken down:
 
@@ -139,11 +153,7 @@ Did you see that? The game reloaded your code and changed the text to be "Hello 
 [576, 280, 128, 101, 'dragonruby.png']
 ```
 
-Just like with labels, don't worry about memorizing the order here. There are friendlier ways to display them that we'll get to shortly.
-
-But it's an easy enough bit of code for putting an image on the screen.
-
-Dragon sprite created by [Nick Culbertson](https://twitter.com/MobyPixel).
+Just like with labels, don't worry about memorizing the order here. There are friendlier ways to display them that we'll get to shortly. But it's an easy enough bit of code for putting an image on the screen.
 
 Finally, the last line:
 
@@ -155,19 +165,19 @@ signifies that the definition of the `tick` method is over. Any code after that 
 
 ## Screen Coordinates Explained
 
-Let's take a detour down Screen Coordinates Road. The `x` and `y` position are coordinates on the two-dimensional plane of the game window. Remember geometry? I barely do. But this is important, so don't doze off on me yet, we're only in the first chapter still!
+Let's take a detour down Screen Coordinates Road. The `x` and `y` position are coordinates on the two-dimensional plane of the game window. Remember geometry? I barely do. But this is important, so don't doze off on me yet. We're only still in the first chapter!
 
 ![diagram showing x, y axis with 0, 0 being in the bottom left and 1280, 720 being in the upper right](./img/c01-coords.png)
 
-DRGTK games are made up of a window that's 1280x720 pixels large. That's 1280 pixels wide and 720 pixels tall. The rectangle of the game screen is 921600 pixels, that's those two numbers multiplied. Each of those pixels has a coordinate on the plane. It makes it easy to refer to a specific pixel by using its `x` and `y` position.
+DRGTK games are made up of a window that's 1280x720 pixels large. That's 1280 pixels wide and 720 pixels tall. The rectangle of the game screen contains 921600 pixels, that's those two numbers multiplied. Each of those pixels has a coordinate on the plane. It makes it easy to refer to a specific pixel by using its `x` and `y` position.
 
-DRGTK starts 0, 0 in the lower left. So 1280, 720 would be the upper right. **Note:** this varies from most game engines and libraries and tools, but it's intentional to make it easier to think about gravity and the geometric 2D plane that is taught in mathematics.
+DRGTK starts 0, 0 in the lower left. So 1280, 720 would be the upper right. **Note:** this varies from most game engines and libraries and tools, but it's intentional to make it easier to think about gravity and follows the geometric 2D plane that is taught in mathematics.
 
-It's important to keep coordinates in mind, as we'll be using them a lot when making our game. A major aspect of games is moving things on the screen, which we do by changing their coordinates on the plane.
+It's important to keep coordinates in mind, as we'll be using them a lot when making our game. A major aspect of games is moving things on the screen, which we do by changing their coordinates on the screen.
 
 ## Our Own Hello
 
-Back to making the game. Okay, yeah, you changed a string and it changed what was rendered. That's neat. But let's bump it up a notch.
+Back to making the game. Okay, yeah, you changed a string and it changed what was displayed. That's neat. But let's hit reset and do it ourselves.
 
 I want you to delete the code in `mygame/app/main.rb`. Select it all and delete it. Yup, I know, the blank canvas is a challenge. But you need to start writing the code yourself in order to learn and build the muscle memory. So go ahead and type out each line below into your `main.rb`.
 
@@ -218,7 +228,7 @@ end
 
 Whoa! What happened to our greetings? Well, we changed our code and it now always returns `1`, which isn't what we want. It's just an example to illustrate how that works. Go ahead and undo that change.
 
-Let's do one final thing in our hand-crafted, artisanal version of rendering text and images. Let's display a sprite. In `mygame/sprites/misc/` there's a file named `dragon-0.png`. It's a pixel art dragon made by Nick Culbertson that's free to use. Pretty neat!
+Let's wrap up this chapter by displaying a sprite. In `mygame/sprites/misc/` there's a file named `dragon-0.png`. It's a pixel art dragon made by Nick Culbertson that's free to use. Pretty neat. Thanks, Nick!
 
 ``` ruby
 {{#include code/chapter_01/02_our_own_hello/app/main.rb}}
@@ -226,11 +236,11 @@ Let's do one final thing in our hand-crafted, artisanal version of rendering tex
 
 ![screenshot of the Hello Dragon! with pixel dragon displayed](./img/hello-dragon-own.jpg)
 
-That's some pretty fine code for the first chapter. We've got text and an image displaying. We learned about methods too. Don't worry if it's not all making total and complete sense. You'll understand more with time. Remember, be patient.
+That's some pretty fine code for the first chapter. We've got text and an image displaying. We learned about methods too. Don't worry if it's not all making total and complete sense. You'll understand more with time. Remember, be patient with yourself.
 
 ## Game Loop Explained
 
-There's a lot of magic happening where we can just write `def tick` and magically have a game. What's happening here is that DragonRuby Game Toolkit takes the code in `mygame/app/main.rb`, find the tick method, and then runs a loop that calls it 60 times every second until the program closes. This loop is referred to as the Game Loop.
+There's a lot of magic happening where we can just write `def tick` and magically have a game. What's happening here is that DragonRuby Game Toolkit takes the code in `mygame/app/main.rb`, finds the `tick` method, and then runs a loop that calls it 60 times every second until the program closes. This loop is referred to as the Game Loop.
 
 When programming games, any number of things are happening at one time. Enemies are moving, images are being displayed, math is being calculated, input is being handled. The loop runs over and over again, accounting for any changes in the state of the game. This is similar to how screens on devices work—they refresh so many times a second, so fast that it's barely perceptible to the human eye.
 
