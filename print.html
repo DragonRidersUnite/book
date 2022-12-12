@@ -789,7 +789,7 @@ end
 <p>We need to render our target sprites too, so include those in the array we push into <code>args.outputs.sprites</code>:</p>
 <pre><code class="language-ruby">  args.outputs.sprites &lt;&lt; [args.state.player, args.state.fireballs, args.state.targets]
 </code></pre>
-<p>Similar to how we represent the player and fireball sprites, the targets have an and x and y coordinate for position, a width and height, and an image file to represent the sprite. We create three items in our <code>args.state.targets</code> array, which then displays three different targets.</p>
+<p>Similar to how we represent the player and fireball sprites, the targets have an x and y coordinate for position, a width and height, and an image file to represent the sprite. We create three items in our <code>args.state.targets</code> array, which then displays three different targets.</p>
 <p><img src="./img/c04-display-targets.jpg" alt="dragon sprite with three targets rendered to the right" /></p>
 <p>Try changing the <code>x</code> and <code>y</code> positions of our three targets. Weird. They don't change their position...</p>
 <p>If you quit your game and relaunch <code>dragonruby</code>, they will though. Why is that?</p>
@@ -800,9 +800,9 @@ end
 
 $gtk.reset
 </code></pre>
-<p>Now if we change the coordinates of our target, the game reloads our code and they change their position. This is a really awesome aspect of DragonRuby. We can easily adjust and modify the running game without having the rebuild it.</p>
+<p>Now if we change the coordinates of our target, the game reloads our code and they change their position. This is a really awesome aspect of DragonRuby. We can easily adjust and modify the running game without having to restart the engine.</p>
 <h2 id="our-first-method"><a class="header" href="#our-first-method">Our First Method</a></h2>
-<p>There's something that's a bit of a bummer about our target array code. We duplicate a lot of values by having to specify the width, height, and image path. It'd be a bit annoying to have to change it in all those places even though we want them to be the same. Let's introduce our first method. While <code>#tick</code> is called automatically by DragonRuby, we can define our own methods that we call in our game to help organize our code. Methods are great for encapsulating a specific action. In our case, let's define a method that creates a target at a given x and y position.</p>
+<p>There's something that's a bit of a bummer about our target array code. We duplicate a lot of values by having to specify the width, height, and image path. It'd be a bit annoying to have to change it in all those places even though we want them to be the same. Let's introduce a method to make this code better. Methods are great for encapsulating a specific action. In our case, let's define a method that creates a target at a given x and y position.</p>
 <pre><code class="language-ruby">def spawn_target x, y
   {
     x: x,
@@ -829,7 +829,7 @@ def tick args
     spawn_target(1020, 320),
   ]
 </code></pre>
-<p>Within <code>main.rb</code> we can define methods that are able to be called in <code>#tick</code>. Our new <code>spawn_target</code> method takes two parameters, the x and the y position, and then uses those parameters to return a hash representing the new target. In Ruby, method parameters are separated by commas. We pass parameters into methods that we want to have access to within that code. Because the width, height, and image don't change for a given target, those values stay the same and aren't passed in as parameters.</p>
+<p>Within <code>mygame/app/main.rb</code> we can define methods that are able to be called in <code>#tick</code> and our other code. Our new <code>spawn_target</code> method takes two parameters, the x and the y position, and then uses those parameters to return a hash representing the new target. In Ruby, method parameters are separated by commas. We pass parameters into methods that we want to have access to within that code. Because the width, height, and image don't change for a given target, those values stay the same and aren't passed in as parameters.</p>
 <p>Then when we lazily assign <code>args.state.targets ||=</code>, we call the method three times, passing in the coordinates we want the target to spawn at.</p>
 <p><code>#spawn_target</code> is a simple method, but we'll begin to see how we can expand upon the methods we write to make our code easy to understand while it gets more complex.</p>
 <h2 id="collision-detection"><a class="header" href="#collision-detection">Collision Detection</a></h2>
@@ -864,12 +864,12 @@ def tick args
 <li>If a target should be removed, then we'll mark it as <code>dead</code></li>
 <li>After we've checked all of our targets, we'll <code>reject!</code> the dead ones from <code>args.state.targets</code></li>
 </ul>
-<p>Ruby makes that pretty easy. All you do is call the <code>#reject!</code> method on an array and pass in the logic for when an item should be removed. If you have an array of numbers and call reject and the check is true, it removes the item from the array:</p>
+<p>Ruby makes that pretty easy. All you do is call the <code>#reject!</code> method on an array and pass in the logic for when an item should be removed. If you have an array of numbers and call reject on all of the numbers, only the odd ones will remain in the array:</p>
 <pre><code class="language-ruby">nums = [3, 4, 5]
 nums.reject! { |n| n.even? }
 nums # =&gt; [3, 5]
 </code></pre>
-<p>In the code above, <code>n</code> is the argument passed into the block, which represents a given number in the array. Reject loops through each element in the array, checking each one.</p>
+<p>In the code above, <code>n</code> is the argument passed into the block, which represents a given number in the array. <code>#reject!</code> loops through each element in the array, checking each element against the code we've written.</p>
 <p>So in our collision detection code where we call <code>puts</code>, we'll instead mark the target and fireball as dead <em>and</em> then reject the dead ones from their collections:</p>
 <pre><code class="language-ruby">  args.state.fireballs.each do |fireball|
     fireball.x += args.state.player.speed + 2
@@ -889,8 +889,8 @@ nums # =&gt; [3, 5]
 <p>This almost feels like a game. That's a great feeling. We're getting close to <em>fun</em>.</p>
 <h2 id="spawn-new-targets"><a class="header" href="#spawn-new-targets">Spawn New Targets</a></h2>
 <p>Shooting three targets and having them disappear doesn't make for much fun though. After the three targets are hit, it's just your dragon floating in the sky with not much else to do. We're back to chapter 3! Ugh, chapter 3 was so boring! I can't believe we ever even made anything that boring before. (But remember how cool it was when we got the fireballs working? That was cool! It's funny how games evolve and what it used to be seems so basic compared to where we're at now.)</p>
-<p>Remember back in the day, way back when, like a few sections ago, when we introduced <code>#spawn_target</code>? It was helpful then, but now it's going to be even more helpful. We'll call it every time we destroy a target so that a new one spawns. We'll be able to play target practice forever!</p>
-<p>But calling <code>spawn_target</code> with the same x and y over and over isn't a lot of fun. So let's make a few related changes where we'll do the following:</p>
+<p>Remember back in the day, way back when, like a few sections ago, when we introduced <code>#spawn_target</code>? It was helpful then, but now it's going to be even more helpful. We'll call it every time we destroy a target so that a new one spawns. We'll be able to play <em>Target Practice</em> forever!</p>
+<p>But calling <code>#spawn_target</code> with the same x and y over and over isn't a lot of fun. So let's make a few related changes where we'll do the following:</p>
 <ol>
 <li>Determine a random x and y position on the screen to spawn the target</li>
 <li>Remove the x and y for our initial three targets so they get a random position</li>
@@ -912,7 +912,7 @@ end
 <p>We create a <code>size</code> variable to store the width and height of the sprite to use in our formulas for spawning the target. We don't want to have to type 64 over and over because it loses its meaning and gets difficult to change.</p>
 <p>Then we apply some math. Don't let math scare you away from programming! We'll keep it simple and the toolbox you need is relatively small. Plus, the math will help make our game even better. Games make math fun.</p>
 <p><code>rand</code> is a method that we get from DragonRuby that's available everywhere. <code>rand</code> without any parameter generates a random real number between 0 and 1. That's not really useful for us right now, so we can instead pass in a parameter that sets the upper boundary of the random number. <code>rand(100)</code> generates a random integer between 0 up to 100 (not including 100).</p>
-<p>So for the x position of the target, we generate a number random number that's up to two-fifths the size of width of the game and then we add three-fifths of the width to that number so that the targets spawn on the far right side of the screen. We don't want to spawn targets too close to the player, otherwise it'd be too easy.</p>
+<p>So for the x position of the target, we generate a random number that's up to two-fifths the width of the game screen and then we add three-fifths of the width to that number so that the targets spawn on the far right side of the screen. We don't want to spawn targets too close to the player, otherwise our game will be too easy.</p>
 <p>For the y position, we generate a random y position based on the height of the game, but we subtract twice the size of the target sprite and then add one of its sizes back to the random number to give the spawn area a gutter. This prevents the target from spawning partially off the screen, which would make it impossible to hit.</p>
 <h3 id="change-initial-three-targets"><a class="header" href="#change-initial-three-targets">Change initial three targets</a></h3>
 <pre><code class="language-ruby">  args.state.targets ||= [
@@ -964,7 +964,7 @@ end
   }
 </code></pre>
 <p>This approach to displaying a label is different than previous chapters. Instead of using an array to represent the properties of the label, we're now using a hash like we do for sprites (for similar reasons: it's easier to remember and more clear). Setting <code>x</code>, <code>y</code>, and <code>text</code> should be familiar by this point. But <code>size_enum</code> is new. It's a way to specify how large the text is. It takes whatever value we set and adds that much to the default text size. Increase it from <code>4</code> to <code>40</code> or <code>-3</code> and see what you like best.</p>
-<p><img src="./img/c04-score.jpg" alt="dragon spitting fireballs at three targets on the right side of the screen with the text 'Score: 34' displayed" /></p>
+<p><img src="./img/c04-score.jpg" alt="dragon spitting fireballs at three targets on the right side of the screen with the text 'Score: 14' displayed" /></p>
 <h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
 <p>What a chapter! We displayed targets, handled collision detection, spawned our targets randomly, and added score tracking. We've come a long way in this chapter. And added a lot of core concepts that are found in most games. Review the code to make sure you understand it.</p>
 <h2 id="extra-credit-1"><a class="header" href="#extra-credit-1">Extra Credit</a></h2>
@@ -1841,6 +1841,11 @@ address = {
   zip: &quot;12345&quot;,
 }
 hungry = true
+</code></pre>
+<h2 id="comments"><a class="header" href="#comments">Comments</a></h2>
+<p>Write comments in your code by prefixing any line with <code>#</code>.</p>
+<pre><code class="language-ruby"># just a note to my future self,
+# invest in clay!!! it'll be very valuable during the Great Clay War
 </code></pre>
 <h2 id="string-interpolation"><a class="header" href="#string-interpolation">String Interpolation</a></h2>
 <p>Insert a value into a string using <code>#{}</code>:</p>
