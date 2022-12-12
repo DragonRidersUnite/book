@@ -1,6 +1,6 @@
 # Player Movement
 
-In the last chapter, we got a dragon sprite showing up on the screen and some text. Let's build upon that by making it so we can control the dragon with our keyboard and a gamepad. Because guess what? That dragon is now the main character of this game we're building. 🐉 Buckle up, it's dragon riding time.
+In the last chapter, we got a dragon sprite showing up on the screen and some text. Let's build upon that by making it so we can control the dragon with our keyboard and a gamepad. Because guess what? That dragon is now the main character of this game we're building. 🐉 Buckle up, it's dragon flying time.
 
 Simplify `mygame/app/main.rb` to be just this for now:
 
@@ -12,7 +12,7 @@ end
 
 That displays our player dragon and nothing else. Excellent. Let's get this dragon moving!
 
-In order to handle moving the player, we need to keep track of the position across the game loops. This lets us know where the player was last `tick`, check if they should move, and then update the position accordingly.
+In order to handle moving the player, we need to keep track of the position across the game loops. This lets us know where the player was last `tick`, check if they should move, and then update their position accordingly.
 
 Update your `mygame/app/main.rb` to be this:
 
@@ -47,7 +47,7 @@ You could then use that variable like this:
 puts name
 ```
 
-That calls a the `puts` method and passes our argument `name` to it. It prints whatever the value is out to the console. If you put that in your game code and press <kbd>~</kbd> to open the console, you'll see it print `"Francis"` a bunch.
+That calls the `puts` method and passes our variable `name` to it as a parameter. It prints whatever the value is out to the console. If you put that in your `tick` method and press <kbd>~</kbd> to open the console, you'll see it print `"Francis"` a bunch.
 
 `||=` in English is "or equals". That code above, `args.state.player_x ||= 120` would be read as: assign the property `player_x` on `args.state` the numeric value of 120 unless it's already assigned a value.
 
@@ -59,9 +59,9 @@ Then, finally, we change the `x` and `y` value for the dragon sprite to be the v
 
 ## Checking for Input
 
-In `tick` we'll check to see if a given input is pressed. If it is, we'll change the sprite's x and y position accordingly.
+In `#tick` we'll check to see if a given input is pressed. If it is, we'll change the sprite's x and y position accordingly.
 
-Our ole buddy `args` has a little something known as `args.inputs`. This lets us check... inputs! Isn't programming nice? Most of the time the words used in programming make sense. But some of the time, they really don't, and it's a gosh dang nightmare. But let's commit right here, right now to trying to name things in a way that's useful. Okay, you're committed. When you name a method `def thingy`, you'll remember this. And your ears will ring a little bit and your eyes will get just a little dry and you'll remember that you broke this commitment.
+Our ole buddy `args` has a little something known as `args.inputs`. This lets us check... inputs! Isn't programming nice? Most of the time the words used in programming make sense. But some of the time, they really don't, and it's a gosh dang nightmare. Let's commit right here, right now to trying to name things in a way that's useful. Okay, you're committed. When you name a method `def thingy`, you'll remember this. And your ears will ring a little bit and your eyes will get just a little dry and you'll remember that you broke your commitment.
 
 Let's make use of `args.inputs`:
 
@@ -166,7 +166,7 @@ Then we do the same thing for the top and bottom of the screen by checking the y
 ## Extra Credit
 
 - When you move the dragon horizontally and vertically at the same time, the dragon moves twice as fast. How could you make it so the dragon moves at a uniform speed still when that happens?
-- Ruby has an in-built method which ensures that a numeric value is between some bounds, find it and replace our bounds checking code with it.
+- Ruby has a method which ensures that a numeric value is between some bounds, find it and replace our bounds checking code with it.
 
 ## What's Next
 
