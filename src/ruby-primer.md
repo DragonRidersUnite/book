@@ -21,6 +21,15 @@ address = {
 hungry = true
 ```
 
+## Comments
+
+Write comments in your code by prefixing any line with `#`.
+
+``` ruby
+# just a note to my future self,
+# invest in clay!!! it'll be very valuable during the Great Clay War
+```
+
 ## String Interpolation
 
 Insert a value into a string using `#{}`:
