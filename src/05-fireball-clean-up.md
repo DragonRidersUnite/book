@@ -14,7 +14,7 @@ We could shoot thousands of fireballs that don't hit a target and our game is ke
 
 ## Tracking Offscreen Fireballs
 
-DragonRuby gives us `args.outputs.debug`, which allows us to display shapes, labels, sprites, and more only when we're making our game. If we built it for release, the debug outputs wouldn't be displayed. Pretty nifty and really helpful for visually displaying information in each frame of our game.
+DragonRuby gives us `args.outputs.debug`, which allows us to display shapes, labels, sprites, and more only when we're making our game. If we built our game for release, the debug outputs wouldn't be displayed. Pretty nifty and really helpful for visually displaying information in each frame of our game while we're making it.
 
 Add these lines to the bottom of `#tick` after pushing our score text into `args.outputs.labels`:
 
@@ -30,7 +30,7 @@ Spit a bunch of fireballs out and let your game run. You'll see the dozens of fi
 
 ## Optimizing Our Game
 
-It's not very efficient to keep track of and update the position of fireballs that have no chance of ever hitting a target when they've gone off the screen. There could be thousands of fireballs, and sure, maybe our game still runs smoothly while we're testing, but there's a high chance that as our game gets more complex, there the sheer amount of data the game needs to process 60 times every second could get overwhelming and slow things down.
+It's not very efficient to keep track of and update the position of fireballs that have no chance of ever hitting a target when they've gone off the screen. There could be thousands of fireballs, and sure, maybe our game still runs smoothly while we're testing, but there's a high chance that as our game gets more complex, the sheer amount of data the game needs to process 60 times every second could get overwhelming and slow things down.
 
 When making games, you need to be cognizant of performance. There are usually some straightforward fixes that can make a big difference.
 
@@ -42,13 +42,13 @@ In the case of our game, let's reject fireballs from our `args.state.fireballs` 
 
 When looping through `args.state.fireballs`, we check to see if the x position of the fireball in the loop is greater than the width of the screen. If it is, then we mark the fireball as `dead`, just like we do below on collision with a target. Then we call `next`, which tells the loop we're in to move on to the next fireball in the array and not the rest of the code in this iteration of the loop. Since we've removed the fireball from the game, we don't want to check it for collision.
 
-Play your game and see that now as the fireballs fly off the screen, the total number of fireballs decreases. They no longer exist forever, flying off across the sky for all eternity, eating up our CPU cycles.
+Play your game and see that now as the fireballs fly off the screen, the total number of fireballs decreases. They no longer exist forever, flying off across the sky for all eternity, eating up your CPU cycles.
 
 Feel free to remove the `args.outputs.debug` lines if you don't want to see them since they've served their purpose and are less useful now.
 
 ## Summary
 
-There will be many opportunities when working on your games to optimize your code so that it performs better. This was just a taste of what that process can be like. As you get better and better at making games, you'll improve at making them more performant.
+There will be many opportunities when working on your games to optimize your code so that it performs better. This was just a taste of what that process can be like. As you get better at making games, you'll improve at making them more performant.
 
 Don't obsesses over performance too much yet though. Focus on making your game fun to play.
 
