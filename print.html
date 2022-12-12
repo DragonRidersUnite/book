@@ -983,7 +983,7 @@ end
 <p>Whoa.</p>
 <p>We could shoot thousands of fireballs that don't hit a target and our game is keeping track of them and updating their position over time. Let's demonstrate that.</p>
 <h2 id="tracking-offscreen-fireballs"><a class="header" href="#tracking-offscreen-fireballs">Tracking Offscreen Fireballs</a></h2>
-<p>DragonRuby gives us <code>args.outputs.debug</code>, which allows us to display shapes, labels, sprites, and more only when we're making our game. If we built it for release, the debug outputs wouldn't be displayed. Pretty nifty and really helpful for visually displaying information in each frame of our game.</p>
+<p>DragonRuby gives us <code>args.outputs.debug</code>, which allows us to display shapes, labels, sprites, and more only when we're making our game. If we built our game for release, the debug outputs wouldn't be displayed. Pretty nifty and really helpful for visually displaying information in each frame of our game while we're making it.</p>
 <p>Add these lines to the bottom of <code>#tick</code> after pushing our score text into <code>args.outputs.labels</code>:</p>
 <pre><code class="language-ruby">  args.outputs.debug &lt;&lt; {
     x: 40,
@@ -1000,7 +1000,7 @@ end
 <p><img src="./img/c05-debug-text.jpg" alt="debug mode text showing the dragon sprite with a score of 3, 36 fireballs, and an x position of the first fireball at 22,356" /></p>
 <p>Spit a bunch of fireballs out and let your game run. You'll see the dozens of fireballs just keep going on and on forever, their x position steadily increasing.</p>
 <h2 id="optimizing-our-game"><a class="header" href="#optimizing-our-game">Optimizing Our Game</a></h2>
-<p>It's not very efficient to keep track of and update the position of fireballs that have no chance of ever hitting a target when they've gone off the screen. There could be thousands of fireballs, and sure, maybe our game still runs smoothly while we're testing, but there's a high chance that as our game gets more complex, there the sheer amount of data the game needs to process 60 times every second could get overwhelming and slow things down.</p>
+<p>It's not very efficient to keep track of and update the position of fireballs that have no chance of ever hitting a target when they've gone off the screen. There could be thousands of fireballs, and sure, maybe our game still runs smoothly while we're testing, but there's a high chance that as our game gets more complex, the sheer amount of data the game needs to process 60 times every second could get overwhelming and slow things down.</p>
 <p>When making games, you need to be cognizant of performance. There are usually some straightforward fixes that can make a big difference.</p>
 <p>In the case of our game, let's reject fireballs from our <code>args.state.fireballs</code> array when they fly off the screen. This will reduce the amount of processing load our game needs to handle.</p>
 <pre><code class="language-ruby">  args.state.fireballs.each do |fireball|
@@ -1025,16 +1025,16 @@ end
   args.state.fireballs.reject! { |f| f.dead }
 </code></pre>
 <p>When looping through <code>args.state.fireballs</code>, we check to see if the x position of the fireball in the loop is greater than the width of the screen. If it is, then we mark the fireball as <code>dead</code>, just like we do below on collision with a target. Then we call <code>next</code>, which tells the loop we're in to move on to the next fireball in the array and not the rest of the code in this iteration of the loop. Since we've removed the fireball from the game, we don't want to check it for collision.</p>
-<p>Play your game and see that now as the fireballs fly off the screen, the total number of fireballs decreases. They no longer exist forever, flying off across the sky for all eternity, eating up our CPU cycles.</p>
+<p>Play your game and see that now as the fireballs fly off the screen, the total number of fireballs decreases. They no longer exist forever, flying off across the sky for all eternity, eating up your CPU cycles.</p>
 <p>Feel free to remove the <code>args.outputs.debug</code> lines if you don't want to see them since they've served their purpose and are less useful now.</p>
 <h2 id="summary-1"><a class="header" href="#summary-1">Summary</a></h2>
-<p>There will be many opportunities when working on your games to optimize your code so that it performs better. This was just a taste of what that process can be like. As you get better and better at making games, you'll improve at making them more performant.</p>
+<p>There will be many opportunities when working on your games to optimize your code so that it performs better. This was just a taste of what that process can be like. As you get better at making games, you'll improve at making them more performant.</p>
 <p>Don't obsesses over performance too much yet though. Focus on making your game fun to play.</p>
 <h2 id="whats-next-4"><a class="header" href="#whats-next-4">What's Next</a></h2>
 <p>Now that we've cleaned up a small mess we've been making, let's get back to taking our game to the finish line by adding a timer to our game to see how many targets we can hit in 30 seconds.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="time-attack"><a class="header" href="#time-attack">Time Attack</a></h1>
 <p>We've <em>almost</em> got a game. But we need some way for the game to end. A lot of game loops end with the player's character dying, where they respawn or start over again. Other game loops end when the player reaches the end of a level.</p>
-<p>For our simple game, let's add a 30 second timer that counts down. The objective of our game will be to see how many targets can the player hit in that time window. Let's call our game <strong>Target Practice</strong>. Every dragon needs some practice before they head out into battle, right?</p>
+<p>For our simple game, let's add a 30 second timer that counts down. The objective of our game will be to see how many targets the player can hit in that time window. Let's call our game <strong>Target Practice</strong>. Every dragon needs some practice before they head out into battle, right?</p>
 <p>Adding a timer to our game introduces a few new concepts we'll build out in this chapter:</p>
 <ol>
 <li>Keeping track of time and displaying it</li>
@@ -1289,14 +1289,14 @@ $gtk.reset
 <h2 id="whats-next-5"><a class="header" href="#whats-next-5">What's Next</a></h2>
 <p>We've got a working game, but it's a bit... boring. Let's polish our game up by adding high-score tracking, sounds, animations, and more. We've got a working core of a fun game, and now it's time to make it a great experience.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="high-score"><a class="header" href="#high-score">High-Score</a></h1>
-<p>Saving and loading game data is a key piece of functionality when it comes to making games. We may want to keep track of all sorts of important data across play sessions. For <em>Target Practice</em>, let's keep it simple and keep track of the high-score each time a new one is set.</p>
+<p>Saving and loading data is a key piece of functionality when it comes to making games. We may want to keep track of all sorts of important data across play sessions. For <em>Target Practice</em>, let's keep it simple and track the high-score each time a new one is set.</p>
 <h2 id="load--save-data"><a class="header" href="#load--save-data">Load &amp; Save Data</a></h2>
 <p>When the game is over, let's display whether or not a new high-score was achieved. If it is higher than the previous, we'll save that new high-score. Otherwise, we'll display the high-score and encourage the player to try to beat it.</p>
-<p>This will require two parts to working with save data:</p>
-<ul>
+<p>This will require two parts:</p>
+<ol>
 <li>Saving the score when a new high-score is achieved</li>
 <li>Loading the previous high-score to compare the player's score to</li>
-</ul>
+</ol>
 <p>DragonRuby GTK gives us two handy methods to do so:</p>
 <ul>
 <li><code>args.gtk.write_file(&quot;high-score.txt&quot;)</code></li>
@@ -1335,14 +1335,14 @@ def game_over_tick(args)
 <p><img src="./img/c07-low-score.jpg" alt="game over screen showing a score of 1 and a high-score of 4" /></p>
 <p><img src="./img/c07-high-score.jpg" alt="game over screen showing a new high-score of 30" /></p>
 <h2 id="summary-2"><a class="header" href="#summary-2">Summary</a></h2>
-<p>We load and save data relating to how our player has done. While saving one value is likely to be a bit too trivial for most games, the core concepts are pretty similar. You'll write your data to a file, you read that file, and then you do whatever you need to with it.</p>
+<p>We load and save data relating to how our player has done. While saving one value is likely to be a bit too trivial for most games, the core concepts are pretty similar. You'll write your data to a file, read that file, and then do whatever you need to with it.</p>
 <h2 id="extra-credit-2"><a class="header" href="#extra-credit-2">Extra Credit</a></h2>
 <ul>
 <li>How would you save the date and time the high-score was achieved at?</li>
 <li>Displaying one high-score is neat. But what if it showed the last 5 scores in addition to the highest score?</li>
 </ul>
 <h2 id="whats-next-6"><a class="header" href="#whats-next-6">What's Next</a></h2>
-<p>Let's add some music and sound effects to our game. Even just a simple track with a couple sound effects will make a <em>significant</em> difference.</p>
+<p>Let's add some music and sound effects to our game. Even just a simple music track with a few sound effects will make a <em>significant</em> difference.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sound"><a class="header" href="#sound">Sound</a></h1>
 <p>One of the quickest ways to make any game you're building go from feeling flat to having some oomph is to add sound. Whenever any button is pressed, play a sound effect. Play music in the background. If your game has multiple moods, change the music based on the level or part of your game.</p>
 <p>For <em>Target Practice</em>, we'll have three unique sound effects:</p>
@@ -1359,7 +1359,7 @@ def game_over_tick(args)
 <li><a href="./code/chapter_08/01_sound/sounds/game-over.wav">game-over.wav</a></li>
 <li><a href="./code/chapter_08/01_sound/sounds/flight.ogg">flight.ogg</a></li>
 </ul>
-<p>A note on audio file formats: in DragonRuby, sound effects are generally WAV (<code>.wav</code>) files. WAV files are uncompressed, meaning they can be quite large in size, but are high-quality. Because sound effects are so short, the file size is less of a concern. Music files are OGG (<code>.ogg</code>), an open-source format for audio that works across all of the platforms you game can run on. OGG files are compressed, thus smaller in size than WAV files, making them good for music tracks.</p>
+<p>A note on audio file formats: in DragonRuby, sound effects are generally WAV (<code>.wav</code>) files. WAV files are uncompressed, meaning they can be quite large in size, but are high-quality. Because sound effects are so short, the file size is less of a concern. Music files are OGG (<code>.ogg</code>), an open-source format for audio that works across all of the platforms your game can run on. OGG files are compressed, thus smaller in size than WAV files, making them good for music tracks.</p>
 <h2 id="playing-sounds-in-dragonruby-game-toolkit"><a class="header" href="#playing-sounds-in-dragonruby-game-toolkit">Playing Sounds in DragonRuby Game Toolkit</a></h2>
 <p>DragonRuby GTK gives us a really simple way to play a sound in our game. You push a string of the path of the sound into <code>args.outputs.sounds</code> and it plays once:</p>
 <pre><code class="language-ruby">args.outputs.sounds &lt;&lt; &quot;sounds/fireball.wav&quot;
@@ -1373,7 +1373,7 @@ end
 <p>That says when we're on the first tick, play the <code>flight.ogg</code> music track on repeat. We only want to run that code once because we don't want to start it over and over each <code>#tick</code>. The <code>:music</code> key can be any value we want. If you have multiple music tracks in your game, you can use a different key to manage the various tracks.</p>
 <h2 id="add-music--sound-effects-to-our-game"><a class="header" href="#add-music--sound-effects-to-our-game">Add Music &amp; Sound Effects To Our Game</a></h2>
 <p>Let's add the sound effects and music track to the game.</p>
-<p>Let's kick things off by starting the music track on the first tick at the top of <code>#tick</code>:</p>
+<p>We'll kick things off by starting the music track on the first tick at the top of <code>#tick</code>:</p>
 <pre><code class="language-ruby">def tick args
   if args.state.tick_count == 1
     args.audio[:music] = { input: &quot;sounds/flight.ogg&quot;, looping: true }
@@ -1420,23 +1420,23 @@ end
 <p>Now we've got music and sound effects in our game. Isn't it wild how the game feels more fun and polished?</p>
 <h2 id="make-your-own-music--sound-effects"><a class="header" href="#make-your-own-music--sound-effects">Make Your Own Music &amp; Sound Effects</a></h2>
 <p>I use <a href="https://sfxr.me/">jsfxr</a> to create sound effects for games. It's simple and free with a lot of settings to tweak. You can quickly download a WAV file that you can drop into your game. Try making your own sound effects and replacing the ones I've provided. You often won't know if a sound effect sounds <em>right</em> until you drop it in your game. So experiment and see what works best.</p>
-<p>As for making your own music, there are lots of options out there. I use <a href="https://1bitdragon.com/">1BitDragon</a>, a limited (in a good way) tool for making music. <a href="https://lmms.io/">LMMS</a> is a free, well-loved tool. Garageband on MacOS would get you pretty far too!</p>
+<p>As for making your own music, there are lots of options out there. I use <a href="https://1bitdragon.com/">1BitDragon</a>, a limited (in a good way) tool for making music. <a href="https://lmms.io/">LMMS</a> is a free, well-loved tool. Garageband on MacOS will get you pretty far too!</p>
 <p>There are many ways to convert the sounds you make to various formats, from command-line tools like ffmpeg to desktop apps. <a href="https://convertio.co/">Convertio</a> is a free online service, among many, that you can use as well.</p>
 <p>Making music and sound effects for games is a huge topic that's beyond the scope of this book, but hopefully these tools can help you get started.</p>
 <p>If you do change the sounds in your game, you'll need to restart it to get DragonRuby GTK to refresh them.</p>
 <h2 id="extra-credit-3"><a class="header" href="#extra-credit-3">Extra Credit</a></h2>
 <ul>
-<li>Replace the provided sound effects with ones you made</li>
-<li>Make your own music and drop it in</li>
+<li>Replace the provided sound effects with ones you make.</li>
+<li>Make your own music and drop it in.</li>
 <li>It can be a little bit annoying to hear the music over and over while you're making your game, so how would you make it so you can mute the music while working on it? <a href="https://www.dragonriders.community/recipes/music">This resource can help you out.</a></li>
 </ul>
 <h2 id="whats-next-7"><a class="header" href="#whats-next-7">What's Next</a></h2>
-<p>In the next chapter we'll continue to polish our game to prepare it for release by making the background blue and displaying clouds that float by.</p>
+<p>In the next chapter we'll learn about drawing shapes with DragonRuby GTK.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="background"><a class="header" href="#background">Background</a></h1>
 <p>We're eight chapters in and haven't even touched upon a simple and useful piece of functionality that DragonRuby GTK gives us: drawing rectangles! Rectangles are great for backgrounds, text boxes and more. Layer some sprites on top, and you can get pretty fancy.</p>
 <h2 id="blue-sky"><a class="header" href="#blue-sky">Blue Sky</a></h2>
-<p>Up until now, our dragon has been flying around in a gray sky. Let's make the sky blue to start.</p>
-<p>DragonRuby provides <code>args.outputs.solids</code> to easy display filled rectangles.</p>
+<p>Up until now, our dragon has been flying around in a gray sky. Let's make the sky blue by drawing a rectangle behind our sprites and text.</p>
+<p>DragonRuby provides <code>args.outputs.solids</code> to easily display filled rectangles.</p>
 <p>At the top of <code>#tick</code>, below where we start the music, create a solid rectangle that's the size of the screen and placed at 0, 0:</p>
 <pre><code class="language-ruby">def tick args
   if args.state.tick_count == 1
@@ -1453,7 +1453,7 @@ end
     b: 230,
   }
 </code></pre>
-<p>We're familiar with a lot of the shape hash keys for the position and size, but <code>r</code>, <code>g</code>, and <code>b</code> are new. They specify the values for the red, green, and blue color values for the rectangle we're drawing. Their values can be set to anything between 0 and 255, inclusive. Adjust the values to see a different color displayed. The higher the value for a given color, the more it'll be part of the mix. So our color has a blue of 230, meaning blue comes through more than the others. You can also specify <code>a</code>, the alpha value, between 0 and 100, inclusive, to get transparency in our shape.</p>
+<p>We're familiar with a lot of the shape hash keys for the position and size, but <code>r</code>, <code>g</code>, and <code>b</code> are new. They specify the values for the (r)ed, (g)reen, and (b)lue color values for the rectangle we're drawing. Their values can be set to anything between 0 and 255, inclusive. Adjust the values to see a different color displayed. The higher the value for a given color, the more it'll be part of the mix. So our color has a blue of 230, meaning blue comes through more than the others. You can also specify <code>a</code>, the alpha value, between 0 and 100, inclusive, to get transparency in our color.</p>
 <p>Now we've got our dragon flying over a blue sky. That looks quite a bit better.</p>
 <p><img src="./img/c09-blue-sky.jpg" alt="game with dragon and three targets and blue background" /></p>
 <h2 id="extra-credit-4"><a class="header" href="#extra-credit-4">Extra Credit</a></h2>
@@ -1463,13 +1463,12 @@ end
 <li>Draw some more rectangles under the score and timer to make them easier to read.</li>
 </ul>
 <h2 id="whats-next-8"><a class="header" href="#whats-next-8">What's Next</a></h2>
-<p>We've got one more piece of polish to implement—animation! Let's make our dragon flap their wings because they're flying in the sky.</p>
+<p>We've got one more major piece of polish to implement—animation! Let's make our dragon flap their wings because they're flying in the sky.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="animation"><a class="header" href="#animation">Animation</a></h1>
-<p>While the polish we've implemented in our game is making it feel a lot better to play, it feels a bit lifeless. There's a key piece missing that we haven't covered yet. It's animation! Whether it's Sonic tapping his foot when he hasn't moved in a while or his feet moving as he runs, animating our sprites gives our game personality. It makes the game feel alive.</p>
-<p>Have you ever made a flip animation in the bottom corner of a notebook? You draw each frame and then flip through the pages quickly to see it animate. That concept of drawing the frames and each frame subtly changing what's drawn to convey motion is core to 2D animation, whether it's a game, an animated GIF, or a classic Disney film.</p>
-<p>In this chapter we'll make our dragon flap its wings because it's flying through the air.</p>
+<p>While the polish we've implemented in our game is making it feel a lot better to play, it's still a bit lifeless. There's a key piece missing that we haven't covered yet. It's animation! Whether it's Sonic tapping his foot when he hasn't moved in a while or his feet moving as he runs, animating our sprites gives our game personality. It makes the game feel alive.</p>
+<p>Have you ever made a flip animation in the bottom corner of a notebook? You make a different drawing on each page corner and then flip through the pages quickly to see it move. That concept of drawing the frames and each frame subtly changing what's drawn to convey motion is core to 2D animation, whether it's a game, an animated GIF, or a classic Disney film.</p>
 <h2 id="animating-our-dragon"><a class="header" href="#animating-our-dragon">Animating Our Dragon</a></h2>
-<p>In <code>mygame/sprites/misc/</code> there are more dragon images than just <code>dragon-0.png</code>. There are 5 additional frames of the dragon flapping their wings. Perfect! That's just what we need.</p>
+<p>In the <code>mygame/sprites/misc/</code> folder, there are more dragon images than just <code>dragon-0.png</code>. There are 5 additional frames of the dragon flapping their wings. Perfect! That's just what we need.</p>
 <p>The core of how this will work is that each dragon frame will be displayed for some period of time and then we'll switch to the next frame after that time has passed.</p>
 <pre><code class="language-ruby">  args.state.player ||= {
     x: 120,
@@ -1483,9 +1482,8 @@ end
   args.state.player.path = &quot;sprites/misc/dragon-#{player_sprite_index}.png&quot;
 </code></pre>
 <p>Where we lazily set <code>args.state.player</code>, we no longer specify the <code>path</code> to the sprite. We'll set that as part of animating the player right below.</p>
-<p><code>#frame_index</code> is a method DragonRuby GTK gives us on integers to keep track of what frame to use when animating. <code>0</code> is when we want to start the animation, which we want to start at the beginning. We have 6 frames total, and we want to display each of them for 8 ticks, repeating forever! Change the <code>hold_for</code> value and see how it affects the animation speed and feel of the game. Pick a rate that feels good for you or just stick with 8.</p>
-<p>Then we take the <code>player_sprite_index</code> and use that when specifying the <code>path</code> of our player sprite by interpolating it into the path to our sprite. Our dragon sprites are named <code>dragon-0.png</code>, <code>dragon-1.png</code>, and so on. So we take what <code>#frame_index</code> gives us and inject it into the path to the image to make that value dynamic.</p>
-<p>In Ruby, when you have a string that uses double quotes, <code>&quot;hi there&quot;</code>, you can inject Ruby code inside of it using <code>#{}</code>. This is really useful and is known as string interpolation. For example: <code>&quot;2 + 2 = #{2 + 2}&quot;</code>, that evaluates the mathematical expression and converts the answer (<code>4</code>) to a string and returns <code>&quot;2 + 2 = 4&quot;</code>.</p>
+<p><code>#frame_index</code> is a method DragonRuby GTK gives us on integers to keep track of what frame to use when animating. <code>0</code> is when we want to start the animation, which we want to start at the beginning of our game. We have 6 frames in our animation, and we want to display each of them for 8 ticks, repeating forever! Change the <code>hold_for</code> value and see how it affects the animation speed and feel of the game. Pick a rate that feels good for you or just stick with 8.</p>
+<p>Then we take the <code>player_sprite_index</code> and use that when specifying the <code>path</code> of our player sprite by interpolating it into the path to our sprite. Our dragon frames are named <code>dragon-0.png</code>, <code>dragon-1.png</code>, and so on. So we take what <code>#frame_index</code> gives us and inject it into the path to the image to make that value dynamic. Remember string interpolation from Chapter 1? It comes into play all the time when coding.</p>
 <h2 id="a-note-on-spritesheets"><a class="header" href="#a-note-on-spritesheets">A Note on Spritesheets</a></h2>
 <p>If you've done any game development before, you may be familiar with spritesheets, where each frame of an animation is contained within one image file. When using a spritesheet for animation, instead of changing which image file path is used for the sprite to render, you change which piece of the large spritesheet you render. <a href="https://bit.ly/drgtk-spritesheet">The DragonRuby GTK docs have a detailed example on how to do this.</a></p>
 <h2 id="extra-credit-5"><a class="header" href="#extra-credit-5">Extra Credit</a></h2>
@@ -1497,12 +1495,12 @@ end
 <h2 id="summary-3"><a class="header" href="#summary-3">Summary</a></h2>
 <p>When making a game, it's likely that anything that moves will animate, even if it's just a little. It's a valuable concept to understand and implement on your own. Compare the game now to when we started—it's come quite a long way from an immovable sprite with some text!</p>
 <h2 id="whats-next-9"><a class="header" href="#whats-next-9">What's Next</a></h2>
-<p>We're nearly finished with our game! All that's left is to add a title screen and then publish the game online.</p>
+<p>We're nearly finished with our game! All that's left is to add a title screen and then publish the game online so others can play it.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="scenes"><a class="header" href="#scenes">Scenes</a></h1>
-<p>When making a game, there are all sorts of scenes that exist, from the main menu to the actual gameplay to the pause menu. Often these scenes have different interactions than the main game. Instead of moving your character around the world you instead move a cursor up and down menu options. In this chapter we'll refactor our main gameplay and game over state to be a bit easier to manage and then introduce a title scene that's used to start the game.</p>
-<p>The concept of a &quot;scene&quot; isn't specific to DragonRuby Game Toolkit or any given game engine. It's just a generic concept that we're introducing to make our game code easier to work with. In GameMaker they're called &quot;rooms&quot; and in HaxeFlixel they're called &quot;states.&quot; For our purposes, we'll move forward with scenes because they don't conflict with other terms in DragonRuby GTK, and much like a movie scene, it's clear when one ends and when one begins.</p>
+<p>When making a game, there are all sorts of scenes that exist, from the main menu to the actual gameplay to the pause menu. Often these scenes have different interactions than the main game. Instead of moving your character around the world you instead move a cursor up and down menu options. In this chapter we'll refactor our main gameplay and game over state to be a bit easier to work with and then introduce a title scene that's used to start the game.</p>
+<p>The concept of a &quot;scene&quot; isn't specific to DragonRuby Game Toolkit or any given game engine. It's just a generic concept that we're introducing to make our game code easier to work with. Much like a movie scene, it's clear when one ends and when one begins.</p>
+<p>When we introduced the game over functionality, we actually introduced a scene separate from gameplay. Kinda neat! But it wasn't the time to think about them in terms of scenes and reckon with how we add more.</p>
 <h2 id="refactor-1"><a class="header" href="#refactor-1">Refactor</a></h2>
-<p>When we introduced the game over scene, we actually introduced our second scene. Kinda neat! But it wasn't the time to think about them in terms of scenes and reckon with how we add more.</p>
 <p>So we've got two scenes right now: gameplay (where we shoot at targets) and game over (where we display the score and allow the player to restart). Let's refactor the code to put our scenes in different methods and allow the game to switch between them given certain conditions being met.</p>
 <p>Containing our scenes in methods will make it much easier to change one scene without impacting the others. It sets clear boundaries and will make our code easier to maintain.</p>
 <p>We've already got <code>#game_over_tick</code>, so we can make use of that to contain the game over behavior.</p>
@@ -1677,10 +1675,10 @@ end
 <li>Lazily initializing the scene to start with (in our case, <code>&quot;gameplay&quot;</code>)</li>
 <li>Calling the proper scene tick method and passing in <code>args</code></li>
 </ol>
-<p>The third item there is the new part of this chapter. <code>#send</code> is a method in Ruby that allows a method to be called by passing in the name of the method as a parameter. This is really powerful! We use string interpolation to take the value set in <code>args.state.scene</code> and append it with <code>_tick</code>. Our game then calls that method and passes in <code>args</code> as the first parameter to the called method. So if <code>args.state.scene</code> is set to <code>&quot;gameplay&quot;</code>, the <code>#gameplay_tick</code> method gets called. If it's set to <code>&quot;game_over&quot;</code>, then <code>#game_over_tick</code> gets called. If it's set to <code>&quot;credits&quot;</code>, then <code>#credits_tick</code> would get called.</p>
+<p>The third item there is the new part of this chapter. <code>#send</code> is a method in Ruby that allows a method to be called by passing in the name of the method as the first parameter. This is really powerful! We use string interpolation to take the value set in <code>args.state.scene</code> and append it with <code>_tick</code>. Our game then calls that method and passes in <code>args</code> as the first parameter to the called method. So if <code>args.state.scene</code> is set to <code>&quot;gameplay&quot;</code>, the <code>#gameplay_tick</code> method gets called. If it's set to <code>&quot;game_over&quot;</code>, then <code>#game_over_tick</code> gets called. If it's set to <code>&quot;credits&quot;</code>, then <code>#credits_tick</code> would get called.</p>
 <p>The various scene tick methods <em>need</em> to exist in order for changing <code>args.state.scene</code> to work. But that's quite simple to do, we just introduce a new method and set <code>args.state.scene</code> to change between scenes.</p>
 <h2 id="title-scene"><a class="header" href="#title-scene">Title Scene</a></h2>
-<p>When player's launch our game, they get dropped right into the gameplay. This can be a bit jarring, so let's introduce a new scene that displays the title of the game, controls, and let's them press a button to start.</p>
+<p>When players launch our game, they get dropped right into the gameplay. This can be a bit jarring, so let's introduce a new scene that displays the title of the game, controls, and lets them press a button to start.</p>
 <p>In our game code, let's introduce <code>#title_tick</code> that takes <code>args</code> as its only parameter, just like our other <code>*_tick</code> methods for our scenes. In <code>#title_tick</code>, we'll render some labels and look for input to start our game. If the fireball input is pressed, we'll play a sound effect, change the scene, and return early so we can move on to the next scene.</p>
 <pre><code class="language-ruby">def title_tick args
   if fire_input?(args)
@@ -1737,27 +1735,27 @@ end
 <p>When you press the fire button, the game will start. And when you restart after game over, you'll end up back on the title scene.</p>
 <h2 id="extra-credit-6"><a class="header" href="#extra-credit-6">Extra Credit</a></h2>
 <ul>
-<li>Display a label with the current high score in the title scene so players know what to aim for</li>
-<li>Display the dragon sprite in the title scene to give a player a taste of what they can expect</li>
+<li>Display a label with the current high score in the title scene so players know what to aim for.</li>
+<li>Display the dragon sprite in the title scene to give a player a taste of what they can expect.</li>
 <li>How could you make it so that the music doesn't start until gameplay starts? Or play different music during the title scene?</li>
 <li>Restarting the game back on the title scene may not be ideal. How would you change it so that restarting the game automatically goes to the <code>gameplay</code> scene?</li>
-<li>Allow players to pause the game while in the middle of the gameplay scene</li>
+<li>Allow players to pause the game while in the middle of the gameplay scene.</li>
 </ul>
 <h2 id="summary-4"><a class="header" href="#summary-4">Summary</a></h2>
 <p>We've now got three scenes in our game and can easily switch between them. The code for each scene is contained within its own method, making it easier to change a given scene without accidentally changing the others. Adding another scene to our game, like a pause menu, wouldn't be very complicated.</p>
 <h2 id="whats-next-10"><a class="header" href="#whats-next-10">What's Next</a></h2>
-<p>For all intents and purposes our game is done! You can start it, play it, replay it, and we've got a title scene. All that's left to do is release it so that the world (or at the very least our friends) can play it.</p>
+<p>For all intents and purposes our game is done! You can start it, play it, and replay it. All that's left to do is release it so that the world (or at the very least our friends) can play it.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ship-it"><a class="header" href="#ship-it">Ship It!</a></h1>
 <p>So far you've been playing the debug development build of your game within the DragonRuby GTK engine. In order to get it to friends, we'll need to build versions for other players to use. We'll use the <code>dragonruby-publish</code> tool that comes with the engine to do so.</p>
-<p>Releasing your game is a process that has only gotten easier and easier over time. One of the coolest things about DragonRuby GTK is that you can build your game for the web, Linux, Windows, and MacOS with one command. No matter what device (within reason) your friends have, your game will work on their computer.</p>
-<p>We'll release <em>Target Practice</em> on <a href="https://itch.io/">itch.io</a>, an open marketplace for distributing your game. You can share your games for free on itch or sell them. The html version will even be able to be played in the browser. So go ahead and sign up for an itch account.</p>
+<p>Releasing your game is a process that has only gotten easier and easier over time. One of the coolest things about DragonRuby GTK is that you can build your game for the web, Linux, Windows, and MacOS with one command.</p>
+<p>We'll release <em>Target Practice</em> on <a href="https://itch.io/">itch.io</a>, an open marketplace for distributing your game. You can share your games for free on Itch or sell them. The html version will even be able to be played in the browser. So go ahead and sign up for an Itch account.</p>
 <h2 id="prep-for-release"><a class="header" href="#prep-for-release">Prep for Release</a></h2>
 <p>While the code of our game is done (<a href="https://github.com/DragonRidersUnite/book/tree/main/src/code/chapter_12/01_release">view the finished source</a>), we need to specify some info about the game, like its title and our information.</p>
-<p>First, delete <code>mygame/high-score.txt</code>. We don't want our high-score from building the game to get released with the game we build to share. You'll need to make sure you do this every time before building your game. How could you turn the build and publishing process into a script that automatically does this for you?</p>
+<p>First, delete <code>mygame/high-score.txt</code>. We don't want our high-score from building the game to get released with the game version we share publicly. You'll need to make sure you do this every time before building your game. How could you turn the build and publishing process into a script that automatically does this for you?</p>
 <p>In <code>mygame/metadata/</code> you find a file called <code>game_metadata.txt</code>. Open that up and specify the following values:</p>
 <pre><code class="language-ruby">devid=youritchusername
 devtitle=Your Name
-gameid=targetpractice
+gameid=target-practice
 gametitle=Target Practice
 version=0.1
 icon=metadata/icon.png
@@ -1769,28 +1767,29 @@ icon=metadata/icon.png
 <li>While your game is actively being developed and isn't done, increase the minor number to the right of the <code>.</code> with each release, so <code>0.1</code>, <code>0.2</code>, and so on. Minor versions can go as high as you want, <code>0.24</code> or however many releases you have.</li>
 <li>When your game is done, increase the major version on the left of the <code>.</code> to 1, so it'd be version <code>1.0</code>. When you increase the major version of a piece of software, you reset the minor version back to 0.</li>
 <li>As you fix bugs and expand upon it after initial release, increase the number to the right, so <code>1.1</code>, <code>1.2</code>, and so on.</li>
-<li>If you ever majorly overhauled your game—rewrote a lot of the code or the systems, you might want to consider bumping the major version to <code>2.0</code>.</li>
+<li>If you ever majorly overhaul your game, you might want to consider bumping the major version to <code>2.0</code>.</li>
 </ul>
-<p>If your eyes are glazing over at this versioning stuff, don't sweat it. It's something may be more useful to you in time, but it may also not be useful to you at all.</p>
-<p>You'll also see that there's a <code>mygame/metadata/icon.png</code> file. The default DragonRuby logo is fine, but if you ever wanted a custom icon, you could swap that out with your own image. That's what'll be displayed as the application icon when people run your game. </p>
+<p>If your eyes are glazing over at this versioning stuff, don't sweat it. It's something that may be more useful to you in time.</p>
+<p>You'll also see that there's a <code>mygame/metadata/icon.png</code> file. The default DragonRuby logo is fine, but if you ever want a custom icon for your game, just change that file to be your own image. That's what'll be displayed as the application icon when people run your game.</p>
 <h2 id="publish-your-game"><a class="header" href="#publish-your-game">Publish Your Game</a></h2>
-<p>DragonRuby GTK makes it really easy to build your game for the web and the major operating systems and publish it right on itch.</p>
+<p>DragonRuby GTK makes it really easy to build your game for the web and the major operating systems and publish it right on Itch.</p>
 <p>Open a new terminal. If you're using Visual Studio Code, there's an option to do so right within it. Don't be frightened by the terminal, we'll just be running a simple command to build our game for all of our platforms.</p>
 <pre><code class="language-console">./dragonruby-publish --only-package
 </code></pre>
 <p>That command will build your game for all platforms DragonRuby GTK can target. Check out the <code>builds/</code> folder. You'll see all sorts of files that are your game builds.</p>
-<p>Depending on what operating system your computer is using, you can even launch and play the release version of your game. On Linux, open <code>targetpractice-linux-amd64.bin</code>. On MacOS, open <code>targetpractice-mac-0.1/Target Practice.app</code>. On Windows, launch <code>targetpractice-windows-amd64.exe</code>.</p>
-<h2 id="upload-to-itch"><a class="header" href="#upload-to-itch">Upload to itch</a></h2>
-<p>Go to your <a href="https://itch.io/dashboard">itch Dashboard</a> and tap the &quot;Create new project&quot; button.</p>
+<p>Depending on what operating system your computer is using, you can even launch and play the release version of your game. On Linux, open <code>target-practice-linux-amd64.bin</code>. On MacOS, open <code>target-practice-mac-0.1/Target Practice.app</code>. On Windows, launch <code>target-practice-windows-amd64.exe</code>.</p>
+<h2 id="upload-to-itch"><a class="header" href="#upload-to-itch">Upload to Itch</a></h2>
+<p>Go to your <a href="https://itch.io/dashboard">Itch Dashboard</a> and tap the &quot;Create new project&quot; button.</p>
 <p>Fill out the details for your game. Be sure to write a description, add screenshots, and more. If you want your game to be played in the browser, set the type to HTML. But the most important part is that you upload your game.</p>
-<img alt="itch upload screenshot with button to upload files" src="./img/c12-itch-upload.jpg" style="max-width: 380px; width: 100%;" />
-<p>Tap &quot;Upload files&quot; and select the zips of the game for all of the platforms you want to upload it for. For <code>targetpractice-html5.zip</code>, check the &quot;This file will be played in the browser&quot; box, as itch will use that to determine what to make playable. For the other platforms, choose the proper OS for each file. Be sure to set the web embed size to 1280 pixels wide and 720 pixels tall so it renders at the proper size.</p>
-<p>If you make changes to your game, you can upload new versions to itch automatically by running <code>./dragonruby-publish mygame</code> without having to upload them through the web browser.</p>
+<img alt="Itch upload screenshot with button to upload files" src="./img/c12-itch-upload.jpg" style="max-width: 380px; width: 100%;" />
+<p>Tap &quot;Upload files&quot; and select the zips of the game for all of the platforms you want to upload it for. For <code>target-practice-html5.zip</code>, check the &quot;This file will be played in the browser&quot; box, as Itch will use that to determine what to make playable. For the other platforms, choose the proper OS for each file. Be sure to set the web embed size to 1280 pixels wide and 720 pixels tall so it renders at the proper size.</p>
+<p>If you make changes to your game, you can upload new versions to Itch automatically by running <code>./dragonruby-publish mygame</code> without having to upload them through the web browser as long as <code>gameid</code> in <code>game_metadata.txt</code> matches your Itch project slug.</p>
 <p>Save your game on Itch and then view it. You'll see it download and run your game by displaying the splash screen:</p>
 <p><img src="./img/c12-itch-web.jpg" alt="Target Practice splash screen" /></p>
-<p>Your game isn't published yet, and that's a good thing. Only you can see it for now. If you want to share an early build with a friend, you can get a secret URL to send. Or go back to editing your game and set the <strong>Visibility &amp; access</strong> to be public to launch it.</p>
+<p>Your game isn't published <em>yet</em>. Only you can see it for now. If you want to share an early build with a friend, you can get a secret URL to send from the top navigation bar on Itch when viewing your game. Or go back to editing your game and set the <strong>Visibility &amp; access</strong> to be public to launch it.</p>
+<p>When you're happy with your game and ready for the world to play it, make it public!</p>
 <h2 id="you-shipped-a-game"><a class="header" href="#you-shipped-a-game">You Shipped a Game!</a></h2>
-<p>Can you believe it? That's awesome! You've got a game you can share with your friends and keep making more awesome.</p>
+<p>Can you believe it? That's awesome! You've got a game you can share with your friends.</p>
 <p>Congratulations, and nice work on sticking through the book.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="outro"><a class="header" href="#outro">Outro</a></h1>
 <p>Thank you so much for reading and going through <em>Building Games with DragonRuby</em>. I hope you continue to use DragonRuby Game Toolkit and make awesome games. <a href="https://discord.dragonruby.org">Jump in the Discord</a>, and share what you've made. The community would love to see it and will happily answer any questions you have.</p>
@@ -1807,27 +1806,28 @@ icon=metadata/icon.png
 <li>Add a narrative introduction</li>
 </ul>
 <h2 id="say-thanks"><a class="header" href="#say-thanks">Say Thanks</a></h2>
-<p>Say thanks in <a href="https://discord.dragonruby.org">the DragonRuby Discord</a> or on <a href="https://mastodon.gamedev.place/@brettmakesgames">Mastodon</a>. It would mean so much to me know that you've read the book. The website version of this book has no tracking. My success metric isn't number of views. I'll only be able to measure the success of this book through community and connecting. Share what you've made!</p>
+<p>Say thanks in <a href="https://discord.dragonruby.org">the DragonRuby Discord</a> or on <a href="https://mastodon.gamedev.place/@brettmakesgames">Mastodon</a>. It would mean so much to me know that you've read the book. The website version of this book has no analytics tracking. My success metric isn't the number of views this book goods. I'll only be able to measure the success of this book through community and connecting. Share what you've made!</p>
 <p>If you really want to say thanks, <a href="https://www.buymeacoffee.com/brettchalupa">buy me a coffee</a> by sending me a small tip. Financial support means the world and helps me continue to make free resources like <em>Building Games with DragonRuby</em>.</p>
 <h2 id="want-more"><a class="header" href="#want-more">Want More?</a></h2>
 <p>Writing a book about making games is challenging to scope properly because games are so complex. We built a pretty simple game that covered a lot of the core concepts of making games, but there are <em>so</em> many directions a sequel could head in.</p>
-<p>A second edition of the book could deep dive into making a shmup with enemy waves and bosses. Or we could build an entirely different game, like a platformer or a dungeon crawler. I'd also love to write about more advanced programming topics like encapsulating behavior with classes and sharing behavior with modules. It'd be great to over adapting a game for iOS and Android too.</p>
+<p>A second edition of the book could deep dive into making a shmup with enemy waves and bosses. Or we could build an entirely different game, like a platformer or a dungeon crawler. I'd also love to write about more advanced programming topics like encapsulating behavior with classes and sharing behavior with modules. It'd be great to go over adapting our game for iOS and Android too.</p>
 <p>But I <em>need</em> to be sure people want a follow up book where we build a more complex game using DragonRuby Game Toolkit. Let me know if you'd like to see a sequel in <a href="https://discord.dragonruby.org">Discord</a>.</p>
 <h2 id="extra-credit-7"><a class="header" href="#extra-credit-7">Extra Credit</a></h2>
-<p>You'll find bonus chapters after this outro. They're one-off deep dives into specific topics, from the mindset that's required to make games to how to back up your game's source code. Check them out and see what you can learn!</p>
+<p>You'll find bonus chapters after this Outro. They're one-off deep dives into specific topics, from the mindset that's required to make games to how to back up your game's source code. Check them out and see what you can learn!</p>
 <h2 id="gratitude"><a class="header" href="#gratitude">Gratitude</a></h2>
 <p>A big thank you to the DragonRuby community. This book would not have been possible without their support and guidance. </p>
 <p>In particular, in alphabetical order, thank you to:</p>
 <ul>
 <li>Akzidenz for feedback and support</li>
 <li>Amir for encouraging me to write this book &amp; making DragonRuby</li>
+<li>The rest of the DragonRuby core team for making such a great engine</li>
 <li>Levi for nitpicking</li>
 <li><a href="https://twitter.com/MobyPixel">Nick Culbertson</a> for the dragon sprite included with DRGTK</li>
 <li>Owen for corrections</li>
-<li>Pineapple for Discord feedback</li>
+<li>Pineapple for feedback</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ruby-primer"><a class="header" href="#ruby-primer">Ruby Primer</a></h1>
-<p>New to Ruby? Here's a brief walk through of the common language features and syntax as a quick reference.</p>
+<p>New to Ruby? Here's a brief walk through the common language features and syntax as a quick reference.</p>
 <h2 id="core-types"><a class="header" href="#core-types">Core Types</a></h2>
 <p>When working with Ruby, we've got some core data types to work with.</p>
 <p>Strings, numbers, arrays, hashes, and booleans.</p>
@@ -1893,7 +1893,7 @@ end
 <p>Blocks are chunks of Ruby code that yield to the caller. At first you'll use blocks when calling specific methods, like <code>#each</code>, but it can be useful to write your own blocks as well.</p>
 <p><a href="https://www.youtube.com/watch?v=1YjSP-cEzMo">📺 Ruby Blocks Explained</a></p>
 <h2 id="nil"><a class="header" href="#nil">nil</a></h2>
-<p><code>nil</code> in Ruby is known as <code>null</code> in other languages. It's the absence of a value.</p>
+<p><code>nil</code> in Ruby is known as <code>null</code> in other languages. It's the absence of a value. nil is a huge topic and not something gone over in the book explicitly.</p>
 <h2 id="exceptions"><a class="header" href="#exceptions">Exceptions</a></h2>
 <p>When something goes wrong in Ruby, an exception is thrown. You can rescue from exceptions using the <code>rescue</code> keyword:</p>
 <pre><code class="language-ruby">begin
@@ -1913,24 +1913,26 @@ end
 <h2 id="start-small"><a class="header" href="#start-small">Start Small</a></h2>
 <p>When you’re just starting out in any creative endeavor, set your sights on small projects that you can realistically finish. It’s easy to want to try to make a big game that’s like your favorites, but if you were starting out with creative writing, you’d start by writing short stories, not an epic novel. Why? Because you don’t have the stamina and skills yet to write a novel or make a huge game. Sure, a select few can work on their first game or novel for years and finish it and have some success. But it’s more likely than not that you’ll abandon your project due to challenges and lost interest.</p>
 <h2 id="what-can-you-cut"><a class="header" href="#what-can-you-cut">What Can You Cut?</a></h2>
-<p>When you have an idea for a game, ask yourself what you can cut from it while still maintaining the core essence of it. Don’t dwell on adding a bunch of complex systems. Focus on the fun and how you can subtract to bring that forward. Arcade games do a great job of making short, repayable, minimal experiences.</p>
+<p>When you have an idea for a game, ask yourself what you can cut from it while still maintaining the core essence of it. Don’t dwell on adding a bunch of complex systems. Focus on the fun and how you can subtract to bring the fun forward. Arcade games do a great job of making short, repayable, minimal experiences.</p>
 <h2 id="finish-your-games"><a class="header" href="#finish-your-games">Finish Your Games</a></h2>
-<p>When making your small games, finish them! Finishing what you start is so important. Having a bunch of unreleased prototypes isn’t fun for anyone. It’s okay to share works in progress and tiny games. Finish what you make and release it. Shipping games is a muscle and different skill set than building the game. The more practice you get, the better off you’ll be when it comes time to ship.</p>
+<p>When making your small games, finish them! Finishing what you start is so important. Having a bunch of unreleased prototypes isn’t fun for anyone. It’s okay to share works in progress and tiny games. Finish what you make and release it. Shipping games is a muscle and different skillset than building the game. The more practice you get, the better you'll be at finishing your games.</p>
 <h2 id="release-them-for-free"><a class="header" href="#release-them-for-free">Release Them for Free</a></h2>
-<p>Release your games for free for a while. Don’t put the pressure on yourself of making a commercial project when you’re just starting out. Your goal should be to build an audience of fans who enjoy your game. Make that barrier as low as possible by releasing your game for the web and the major operating systems. And release them for free. Would you rather make and release a free game 1000 people play or a paid game that only 5 people play? It’s defeating to release a paid game no one buys. Also, your first games won’t be very good. That’s okay! No one who starts playing the guitar is very good right at the beginning. The only way to get better is to suck at first and keep working at it. Getting your games in people’s hands and getting feedback is much more important than trying to make money. Once you’ve shipped a bunch of small games, you’ll have gained new skills and confidence. You’ll also be grounded in reality and not be fantasizing about selling millions of copies of your idea. Make and release small, humble games.</p>
+<p>Release your games for free for a while. Don’t put the pressure on yourself of making a commercial project when you’re just starting out. Your goal should be to build an audience of fans who enjoy your games. Make that barrier as low as possible by releasing your game for the web and the major operating systems. And release them for free.</p>
+<p>Would you rather make and release a free game 1000 people play or a paid game that only 5 people play? It’s defeating to release a paid game no one buys.</p>
+<p>Also, your first games won’t be very good. That’s okay! No one who starts playing the guitar is very good right at the beginning. The only way to get better is to suck at first and keep working at it. Getting your games in people’s hands and getting feedback is much more important than trying to make money. Once you’ve shipped a bunch of small games, you’ll have gained new skills and confidence. You’ll also be grounded in reality and not fantasizing about selling millions of copies of your idea. Make and release small, humble games for free for a while.</p>
 <h2 id="dont-worry-about-being-original"><a class="header" href="#dont-worry-about-being-original">Don't Worry About Being Original</a></h2>
-<p>When you’re making your small, free games, don’t worry about being original. That may sound like blasphemy, but the best way to learn is to copy mechanics and systems from your favorite games to learn. You’ll inevitably infuse your own sensibilities into them and make something unique. When we learn an instrument, we play covers of our favorite songs and that’s encouraged. What would it be like to “cover” your favorite game? Originality will come with time when the ideas are flowing and don’t agree with how other games do something.</p>
+<p>When you’re making your small, free games, don’t worry about being original. That may sound like blasphemy, but the best way to learn is to copy mechanics and systems from your favorite games to learn. You’ll inevitably infuse your own sensibilities into them and make something unique. When we learn an instrument, we play covers of our favorite songs and that’s encouraged. What would it be like to “cover” your favorite game? Originality will come with time when the ideas are flowing and you don't agree with how other games do something. You'll naturally want to do something different!</p>
 <h2 id="do-game-jams"><a class="header" href="#do-game-jams">Do Game Jams</a></h2>
 <p>Game jams are constrained events where people make games within a certain time frame, sometimes with specific rules. They're a great way to start and finish a game in a short period of time. You can experiment and take risks and connect with the community of your fellow participants. I can't recommend them enough. Try to do at least one jam a year (or more if your heart desires).</p>
-<p><a href="https://itch.io/jams">Itch has a directory of jams</a> and <a href="https://ludumdare.com/">Ludum Dare is a long-running jam with many participants</a>.</p>
+<p><a href="https://itch.io/jams">Itch has a directory of jams</a> and <a href="https://ludumdare.com/">Ludum Dare</a> is a well known jam that happens multiple times every year with many participants.</p>
 <h2 id="share-your-work"><a class="header" href="#share-your-work">Share Your Work</a></h2>
 <p>Share your work. Whether on a YouTube channel, blog, or social network. Post screenshots. Share what you learn. Talk about what worked and what didn’t. Help other game developers. Don’t think about it as marketing, even though it is. Be genuine and share your progress. </p>
 <h2 id="study-what-you-play"><a class="header" href="#study-what-you-play">Study What You Play</a></h2>
 <p>If you’re interested in making games, it’s likely you enjoy playing them. When you’re playing games, think about how they work. From the systems to the menu design to how the UI is structured. What do you like? What can’t you stand? How would you make something similar? Take notes and intentionally think about the games you’re playing. Incorporate the aspects you love into the games you make and discard what you can stand.</p>
 <h2 id="find-a-community"><a class="header" href="#find-a-community">Find a Community</a></h2>
-<p>Find a community of developers making similar caliber games. Whether it’s a Discord or in-person meet up group, surround yourself with people making games who have similar goals to you. Support and push each other. Play each others’ games and learn from one another. You may even find collaborators among the community with difference strengths that you can leverage to make an even better game. </p>
+<p>Find a community of developers making similar caliber games. Whether it’s a Discord or in-person meet-up group, surround yourself with people making games who have similar goals to you. Support and push each other. Play each other’s games and learn from one another. You may even find collaborators among the community with different strengths that you complement to make an even better game.</p>
 <h2 id="pace-yourself"><a class="header" href="#pace-yourself">Pace Yourself</a></h2>
-<p>It’s important to take breaks. Pace yourself! If you love games and are enjoying making them, think about what it'd be like to make games for the next 40 years of your life instead of just the next 4 months. What would you do differently to sustain yourself?</p>
+<p>It's important to take breaks. Pace yourself! If you love games and are enjoying making them, think about what it'd be like to make games for the next 40 years of your life instead of just the next 4 months. What would you do differently to sustain yourself?</p>
 <p>Being a game developer requires determination and passion, but it also requires a lot of self-care. ❤️</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dragonruby-game-toolkit-resources"><a class="header" href="#dragonruby-game-toolkit-resources">DragonRuby Game Toolkit Resources</a></h1>
 <p>What follows is a directory of useful resources for continuing your journey with DragonRuby Game Toolkit.</p>
@@ -1940,6 +1942,8 @@ end
 <li><a href="https://discord.dragonruby.org">Community Discord</a></li>
 <li><a href="https://www.dragonriders.community/recipes">Dragon Riders Community Recipes</a> — solutions to common needs when building games with DragonRuby GTK</li>
 <li><a href="https://www.dragonriders.community/awesome-dragonruby/">Awesome DragonRuby</a> — community-curated list of resources</li>
+<li><a href="https://github.com/DragonRidersUnite/scale">Scale</a> — a starter game template I made</li>
+<li><a href="https://dragonridersunite.itch.io/dragon-os">DragonOS</a> — an interactive showcase of DragnRuby GTK demos</li>
 <li><a href="https://dragonrubydispatch.com/">DragonRuby Newsletter</a></li>
 <li><a href="https://dev.to/presidentbeef/api-levels-in-dragonruby-game-toolkit-4jb4">Justin Collins (a.k.a. presidentbeef)'s DragonRuby blog series</a></li>
 </ul>
@@ -1981,7 +1985,7 @@ end
 <div style="break-before: page; page-break-before: always;"></div><h1 id="source-control"><a class="header" href="#source-control">Source Control</a></h1>
 <p>When working on any piece of software, whether it's a video game or an app to track how many dogs you pet in a given day, it's extremely important to keep track of the changes to your code and keep it backed up in a secure location.</p>
 <p>Imagine this scenario: you work on your game for three months. It's amazing. It's your X-Files Dating Sim. You've painstakingly drawn all of the characters, written the scenario, coded up all the interactions. Then one day your computer gets stolen by a giant crow! I don't trust those crows, I never have. Suddenly your game is gone, poof. All that hard work just sitting on a hard-drive barely being protected by the shell of your laptop from the aggressive pecks of the entire local union of crows.</p>
-<p>You'd just have to start over, from scratch. That is if you aren't too bummed out about losing the entire game. Crow theft--it's the number one reason to back up your game's source code.</p>
+<p>You'd just have to start over, from scratch. That is if you aren't too bummed out about losing the entire game. Crow theft—it's the number one reason to back up your game's source code.</p>
 <h2 id="back-up-your-game"><a class="header" href="#back-up-your-game">Back Up Your Game</a></h2>
 <p>You could use a cloud service like Dropbox to back it up to the ✨cloud✨. That's better than nothing. Then when you get a new computer because, you know, the crows stole your other one, you'll be good to go. Your game will be backed up. Heck, Dropbox does it automatically. That's pretty nifty.</p>
 <h2 id="using-git"><a class="header" href="#using-git">Using Git</a></h2>

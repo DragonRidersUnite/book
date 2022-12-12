@@ -146,15 +146,15 @@
                     <main>
                         <h1 id="ship-it"><a class="header" href="#ship-it">Ship It!</a></h1>
 <p>So far you've been playing the debug development build of your game within the DragonRuby GTK engine. In order to get it to friends, we'll need to build versions for other players to use. We'll use the <code>dragonruby-publish</code> tool that comes with the engine to do so.</p>
-<p>Releasing your game is a process that has only gotten easier and easier over time. One of the coolest things about DragonRuby GTK is that you can build your game for the web, Linux, Windows, and MacOS with one command. No matter what device (within reason) your friends have, your game will work on their computer.</p>
-<p>We'll release <em>Target Practice</em> on <a href="https://itch.io/">itch.io</a>, an open marketplace for distributing your game. You can share your games for free on itch or sell them. The html version will even be able to be played in the browser. So go ahead and sign up for an itch account.</p>
+<p>Releasing your game is a process that has only gotten easier and easier over time. One of the coolest things about DragonRuby GTK is that you can build your game for the web, Linux, Windows, and MacOS with one command.</p>
+<p>We'll release <em>Target Practice</em> on <a href="https://itch.io/">itch.io</a>, an open marketplace for distributing your game. You can share your games for free on Itch or sell them. The html version will even be able to be played in the browser. So go ahead and sign up for an Itch account.</p>
 <h2 id="prep-for-release"><a class="header" href="#prep-for-release">Prep for Release</a></h2>
 <p>While the code of our game is done (<a href="https://github.com/DragonRidersUnite/book/tree/main/src/code/chapter_12/01_release">view the finished source</a>), we need to specify some info about the game, like its title and our information.</p>
-<p>First, delete <code>mygame/high-score.txt</code>. We don't want our high-score from building the game to get released with the game we build to share. You'll need to make sure you do this every time before building your game. How could you turn the build and publishing process into a script that automatically does this for you?</p>
+<p>First, delete <code>mygame/high-score.txt</code>. We don't want our high-score from building the game to get released with the game version we share publicly. You'll need to make sure you do this every time before building your game. How could you turn the build and publishing process into a script that automatically does this for you?</p>
 <p>In <code>mygame/metadata/</code> you find a file called <code>game_metadata.txt</code>. Open that up and specify the following values:</p>
 <pre><code class="language-ruby">devid=youritchusername
 devtitle=Your Name
-gameid=targetpractice
+gameid=target-practice
 gametitle=Target Practice
 version=0.1
 icon=metadata/icon.png
@@ -166,28 +166,29 @@ icon=metadata/icon.png
 <li>While your game is actively being developed and isn't done, increase the minor number to the right of the <code>.</code> with each release, so <code>0.1</code>, <code>0.2</code>, and so on. Minor versions can go as high as you want, <code>0.24</code> or however many releases you have.</li>
 <li>When your game is done, increase the major version on the left of the <code>.</code> to 1, so it'd be version <code>1.0</code>. When you increase the major version of a piece of software, you reset the minor version back to 0.</li>
 <li>As you fix bugs and expand upon it after initial release, increase the number to the right, so <code>1.1</code>, <code>1.2</code>, and so on.</li>
-<li>If you ever majorly overhauled your game—rewrote a lot of the code or the systems, you might want to consider bumping the major version to <code>2.0</code>.</li>
+<li>If you ever majorly overhaul your game, you might want to consider bumping the major version to <code>2.0</code>.</li>
 </ul>
-<p>If your eyes are glazing over at this versioning stuff, don't sweat it. It's something may be more useful to you in time, but it may also not be useful to you at all.</p>
-<p>You'll also see that there's a <code>mygame/metadata/icon.png</code> file. The default DragonRuby logo is fine, but if you ever wanted a custom icon, you could swap that out with your own image. That's what'll be displayed as the application icon when people run your game. </p>
+<p>If your eyes are glazing over at this versioning stuff, don't sweat it. It's something that may be more useful to you in time.</p>
+<p>You'll also see that there's a <code>mygame/metadata/icon.png</code> file. The default DragonRuby logo is fine, but if you ever want a custom icon for your game, just change that file to be your own image. That's what'll be displayed as the application icon when people run your game.</p>
 <h2 id="publish-your-game"><a class="header" href="#publish-your-game">Publish Your Game</a></h2>
-<p>DragonRuby GTK makes it really easy to build your game for the web and the major operating systems and publish it right on itch.</p>
+<p>DragonRuby GTK makes it really easy to build your game for the web and the major operating systems and publish it right on Itch.</p>
 <p>Open a new terminal. If you're using Visual Studio Code, there's an option to do so right within it. Don't be frightened by the terminal, we'll just be running a simple command to build our game for all of our platforms.</p>
 <pre><code class="language-console">./dragonruby-publish --only-package
 </code></pre>
 <p>That command will build your game for all platforms DragonRuby GTK can target. Check out the <code>builds/</code> folder. You'll see all sorts of files that are your game builds.</p>
-<p>Depending on what operating system your computer is using, you can even launch and play the release version of your game. On Linux, open <code>targetpractice-linux-amd64.bin</code>. On MacOS, open <code>targetpractice-mac-0.1/Target Practice.app</code>. On Windows, launch <code>targetpractice-windows-amd64.exe</code>.</p>
-<h2 id="upload-to-itch"><a class="header" href="#upload-to-itch">Upload to itch</a></h2>
-<p>Go to your <a href="https://itch.io/dashboard">itch Dashboard</a> and tap the &quot;Create new project&quot; button.</p>
+<p>Depending on what operating system your computer is using, you can even launch and play the release version of your game. On Linux, open <code>target-practice-linux-amd64.bin</code>. On MacOS, open <code>target-practice-mac-0.1/Target Practice.app</code>. On Windows, launch <code>target-practice-windows-amd64.exe</code>.</p>
+<h2 id="upload-to-itch"><a class="header" href="#upload-to-itch">Upload to Itch</a></h2>
+<p>Go to your <a href="https://itch.io/dashboard">Itch Dashboard</a> and tap the &quot;Create new project&quot; button.</p>
 <p>Fill out the details for your game. Be sure to write a description, add screenshots, and more. If you want your game to be played in the browser, set the type to HTML. But the most important part is that you upload your game.</p>
-<img alt="itch upload screenshot with button to upload files" src="./img/c12-itch-upload.jpg" style="max-width: 380px; width: 100%;" />
-<p>Tap &quot;Upload files&quot; and select the zips of the game for all of the platforms you want to upload it for. For <code>targetpractice-html5.zip</code>, check the &quot;This file will be played in the browser&quot; box, as itch will use that to determine what to make playable. For the other platforms, choose the proper OS for each file. Be sure to set the web embed size to 1280 pixels wide and 720 pixels tall so it renders at the proper size.</p>
-<p>If you make changes to your game, you can upload new versions to itch automatically by running <code>./dragonruby-publish mygame</code> without having to upload them through the web browser.</p>
+<img alt="Itch upload screenshot with button to upload files" src="./img/c12-itch-upload.jpg" style="max-width: 380px; width: 100%;" />
+<p>Tap &quot;Upload files&quot; and select the zips of the game for all of the platforms you want to upload it for. For <code>target-practice-html5.zip</code>, check the &quot;This file will be played in the browser&quot; box, as Itch will use that to determine what to make playable. For the other platforms, choose the proper OS for each file. Be sure to set the web embed size to 1280 pixels wide and 720 pixels tall so it renders at the proper size.</p>
+<p>If you make changes to your game, you can upload new versions to Itch automatically by running <code>./dragonruby-publish mygame</code> without having to upload them through the web browser as long as <code>gameid</code> in <code>game_metadata.txt</code> matches your Itch project slug.</p>
 <p>Save your game on Itch and then view it. You'll see it download and run your game by displaying the splash screen:</p>
 <p><img src="./img/c12-itch-web.jpg" alt="Target Practice splash screen" /></p>
-<p>Your game isn't published yet, and that's a good thing. Only you can see it for now. If you want to share an early build with a friend, you can get a secret URL to send. Or go back to editing your game and set the <strong>Visibility &amp; access</strong> to be public to launch it.</p>
+<p>Your game isn't published <em>yet</em>. Only you can see it for now. If you want to share an early build with a friend, you can get a secret URL to send from the top navigation bar on Itch when viewing your game. Or go back to editing your game and set the <strong>Visibility &amp; access</strong> to be public to launch it.</p>
+<p>When you're happy with your game and ready for the world to play it, make it public!</p>
 <h2 id="you-shipped-a-game"><a class="header" href="#you-shipped-a-game">You Shipped a Game!</a></h2>
-<p>Can you believe it? That's awesome! You've got a game you can share with your friends and keep making more awesome.</p>
+<p>Can you believe it? That's awesome! You've got a game you can share with your friends.</p>
 <p>Congratulations, and nice work on sticking through the book.</p>
 
                     </main>

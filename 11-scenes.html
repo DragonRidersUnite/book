@@ -145,10 +145,10 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="scenes"><a class="header" href="#scenes">Scenes</a></h1>
-<p>When making a game, there are all sorts of scenes that exist, from the main menu to the actual gameplay to the pause menu. Often these scenes have different interactions than the main game. Instead of moving your character around the world you instead move a cursor up and down menu options. In this chapter we'll refactor our main gameplay and game over state to be a bit easier to manage and then introduce a title scene that's used to start the game.</p>
-<p>The concept of a &quot;scene&quot; isn't specific to DragonRuby Game Toolkit or any given game engine. It's just a generic concept that we're introducing to make our game code easier to work with. In GameMaker they're called &quot;rooms&quot; and in HaxeFlixel they're called &quot;states.&quot; For our purposes, we'll move forward with scenes because they don't conflict with other terms in DragonRuby GTK, and much like a movie scene, it's clear when one ends and when one begins.</p>
+<p>When making a game, there are all sorts of scenes that exist, from the main menu to the actual gameplay to the pause menu. Often these scenes have different interactions than the main game. Instead of moving your character around the world you instead move a cursor up and down menu options. In this chapter we'll refactor our main gameplay and game over state to be a bit easier to work with and then introduce a title scene that's used to start the game.</p>
+<p>The concept of a &quot;scene&quot; isn't specific to DragonRuby Game Toolkit or any given game engine. It's just a generic concept that we're introducing to make our game code easier to work with. Much like a movie scene, it's clear when one ends and when one begins.</p>
+<p>When we introduced the game over functionality, we actually introduced a scene separate from gameplay. Kinda neat! But it wasn't the time to think about them in terms of scenes and reckon with how we add more.</p>
 <h2 id="refactor"><a class="header" href="#refactor">Refactor</a></h2>
-<p>When we introduced the game over scene, we actually introduced our second scene. Kinda neat! But it wasn't the time to think about them in terms of scenes and reckon with how we add more.</p>
 <p>So we've got two scenes right now: gameplay (where we shoot at targets) and game over (where we display the score and allow the player to restart). Let's refactor the code to put our scenes in different methods and allow the game to switch between them given certain conditions being met.</p>
 <p>Containing our scenes in methods will make it much easier to change one scene without impacting the others. It sets clear boundaries and will make our code easier to maintain.</p>
 <p>We've already got <code>#game_over_tick</code>, so we can make use of that to contain the game over behavior.</p>
@@ -323,10 +323,10 @@ end
 <li>Lazily initializing the scene to start with (in our case, <code>&quot;gameplay&quot;</code>)</li>
 <li>Calling the proper scene tick method and passing in <code>args</code></li>
 </ol>
-<p>The third item there is the new part of this chapter. <code>#send</code> is a method in Ruby that allows a method to be called by passing in the name of the method as a parameter. This is really powerful! We use string interpolation to take the value set in <code>args.state.scene</code> and append it with <code>_tick</code>. Our game then calls that method and passes in <code>args</code> as the first parameter to the called method. So if <code>args.state.scene</code> is set to <code>&quot;gameplay&quot;</code>, the <code>#gameplay_tick</code> method gets called. If it's set to <code>&quot;game_over&quot;</code>, then <code>#game_over_tick</code> gets called. If it's set to <code>&quot;credits&quot;</code>, then <code>#credits_tick</code> would get called.</p>
+<p>The third item there is the new part of this chapter. <code>#send</code> is a method in Ruby that allows a method to be called by passing in the name of the method as the first parameter. This is really powerful! We use string interpolation to take the value set in <code>args.state.scene</code> and append it with <code>_tick</code>. Our game then calls that method and passes in <code>args</code> as the first parameter to the called method. So if <code>args.state.scene</code> is set to <code>&quot;gameplay&quot;</code>, the <code>#gameplay_tick</code> method gets called. If it's set to <code>&quot;game_over&quot;</code>, then <code>#game_over_tick</code> gets called. If it's set to <code>&quot;credits&quot;</code>, then <code>#credits_tick</code> would get called.</p>
 <p>The various scene tick methods <em>need</em> to exist in order for changing <code>args.state.scene</code> to work. But that's quite simple to do, we just introduce a new method and set <code>args.state.scene</code> to change between scenes.</p>
 <h2 id="title-scene"><a class="header" href="#title-scene">Title Scene</a></h2>
-<p>When player's launch our game, they get dropped right into the gameplay. This can be a bit jarring, so let's introduce a new scene that displays the title of the game, controls, and let's them press a button to start.</p>
+<p>When players launch our game, they get dropped right into the gameplay. This can be a bit jarring, so let's introduce a new scene that displays the title of the game, controls, and lets them press a button to start.</p>
 <p>In our game code, let's introduce <code>#title_tick</code> that takes <code>args</code> as its only parameter, just like our other <code>*_tick</code> methods for our scenes. In <code>#title_tick</code>, we'll render some labels and look for input to start our game. If the fireball input is pressed, we'll play a sound effect, change the scene, and return early so we can move on to the next scene.</p>
 <pre><code class="language-ruby">def title_tick args
   if fire_input?(args)
@@ -383,16 +383,16 @@ end
 <p>When you press the fire button, the game will start. And when you restart after game over, you'll end up back on the title scene.</p>
 <h2 id="extra-credit"><a class="header" href="#extra-credit">Extra Credit</a></h2>
 <ul>
-<li>Display a label with the current high score in the title scene so players know what to aim for</li>
-<li>Display the dragon sprite in the title scene to give a player a taste of what they can expect</li>
+<li>Display a label with the current high score in the title scene so players know what to aim for.</li>
+<li>Display the dragon sprite in the title scene to give a player a taste of what they can expect.</li>
 <li>How could you make it so that the music doesn't start until gameplay starts? Or play different music during the title scene?</li>
 <li>Restarting the game back on the title scene may not be ideal. How would you change it so that restarting the game automatically goes to the <code>gameplay</code> scene?</li>
-<li>Allow players to pause the game while in the middle of the gameplay scene</li>
+<li>Allow players to pause the game while in the middle of the gameplay scene.</li>
 </ul>
 <h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
 <p>We've now got three scenes in our game and can easily switch between them. The code for each scene is contained within its own method, making it easier to change a given scene without accidentally changing the others. Adding another scene to our game, like a pause menu, wouldn't be very complicated.</p>
 <h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
-<p>For all intents and purposes our game is done! You can start it, play it, replay it, and we've got a title scene. All that's left to do is release it so that the world (or at the very least our friends) can play it.</p>
+<p>For all intents and purposes our game is done! You can start it, play it, and replay it. All that's left to do is release it so that the world (or at the very least our friends) can play it.</p>
 
                     </main>
 
