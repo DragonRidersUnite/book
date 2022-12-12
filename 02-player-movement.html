@@ -145,14 +145,14 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="player-movement"><a class="header" href="#player-movement">Player Movement</a></h1>
-<p>In the last chapter, we got a dragon sprite showing up on the screen and some text. Let's build upon that by making it so we can control the dragon with our keyboard and a gamepad. Because guess what? That dragon is now the main character of this game we're building. 🐉 Buckle up, it's dragon riding time.</p>
+<p>In the last chapter, we got a dragon sprite showing up on the screen and some text. Let's build upon that by making it so we can control the dragon with our keyboard and a gamepad. Because guess what? That dragon is now the main character of this game we're building. 🐉 Buckle up, it's dragon flying time.</p>
 <p>Simplify <code>mygame/app/main.rb</code> to be just this for now:</p>
 <pre><code class="language-ruby">def tick args
   args.outputs.sprites &lt;&lt; [120, 280, 100, 80, 'sprites/misc/dragon-0.png']
 end
 </code></pre>
 <p>That displays our player dragon and nothing else. Excellent. Let's get this dragon moving!</p>
-<p>In order to handle moving the player, we need to keep track of the position across the game loops. This lets us know where the player was last <code>tick</code>, check if they should move, and then update the position accordingly.</p>
+<p>In order to handle moving the player, we need to keep track of the position across the game loops. This lets us know where the player was last <code>tick</code>, check if they should move, and then update their position accordingly.</p>
 <p>Update your <code>mygame/app/main.rb</code> to be this:</p>
 <pre><code class="language-ruby">def tick args
   args.state.player_x ||= 120
@@ -174,14 +174,14 @@ end
 <p>You could then use that variable like this:</p>
 <pre><code class="language-ruby">puts name
 </code></pre>
-<p>That calls a the <code>puts</code> method and passes our argument <code>name</code> to it. It prints whatever the value is out to the console. If you put that in your game code and press <kbd>~</kbd> to open the console, you'll see it print <code>&quot;Francis&quot;</code> a bunch.</p>
+<p>That calls the <code>puts</code> method and passes our variable <code>name</code> to it as a parameter. It prints whatever the value is out to the console. If you put that in your <code>tick</code> method and press <kbd>~</kbd> to open the console, you'll see it print <code>&quot;Francis&quot;</code> a bunch.</p>
 <p><code>||=</code> in English is &quot;or equals&quot;. That code above, <code>args.state.player_x ||= 120</code> would be read as: assign the property <code>player_x</code> on <code>args.state</code> the numeric value of 120 unless it's already assigned a value.</p>
 <p>Remember how tick is running once every 60 seconds? We don't want to always set <code>args.state.player_x</code> to <code>120</code>. We just want to set it to that initially and then we'll update that value when we press keys on our keyboard or buttons on our gamepad. We haven't done that yet, but that's what's next.</p>
 <p>Wow! That was a lot of explanation for two measly lines of code. But I'm telling ya', they're two really important lines of code when it comes to game programming.</p>
 <p>Then, finally, we change the <code>x</code> and <code>y</code> value for the dragon sprite to be the value stored in <code>args.state</code> so that we can actually make use of that value instead of our hard-coded position before.</p>
 <h2 id="checking-for-input"><a class="header" href="#checking-for-input">Checking for Input</a></h2>
-<p>In <code>tick</code> we'll check to see if a given input is pressed. If it is, we'll change the sprite's x and y position accordingly.</p>
-<p>Our ole buddy <code>args</code> has a little something known as <code>args.inputs</code>. This lets us check... inputs! Isn't programming nice? Most of the time the words used in programming make sense. But some of the time, they really don't, and it's a gosh dang nightmare. But let's commit right here, right now to trying to name things in a way that's useful. Okay, you're committed. When you name a method <code>def thingy</code>, you'll remember this. And your ears will ring a little bit and your eyes will get just a little dry and you'll remember that you broke this commitment.</p>
+<p>In <code>#tick</code> we'll check to see if a given input is pressed. If it is, we'll change the sprite's x and y position accordingly.</p>
+<p>Our ole buddy <code>args</code> has a little something known as <code>args.inputs</code>. This lets us check... inputs! Isn't programming nice? Most of the time the words used in programming make sense. But some of the time, they really don't, and it's a gosh dang nightmare. Let's commit right here, right now to trying to name things in a way that's useful. Okay, you're committed. When you name a method <code>def thingy</code>, you'll remember this. And your ears will ring a little bit and your eyes will get just a little dry and you'll remember that you broke your commitment.</p>
 <p>Let's make use of <code>args.inputs</code>:</p>
 <pre><code class="language-ruby">def tick args
   args.state.player_x ||= 120
@@ -299,7 +299,7 @@ end
 <h2 id="extra-credit"><a class="header" href="#extra-credit">Extra Credit</a></h2>
 <ul>
 <li>When you move the dragon horizontally and vertically at the same time, the dragon moves twice as fast. How could you make it so the dragon moves at a uniform speed still when that happens?</li>
-<li>Ruby has an in-built method which ensures that a numeric value is between some bounds, find it and replace our bounds checking code with it.</li>
+<li>Ruby has a method which ensures that a numeric value is between some bounds, find it and replace our bounds checking code with it.</li>
 </ul>
 <h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
 <p>In the next chapter we'll make our dragon spit fireballs when we press a key or button. Watch out!</p>
