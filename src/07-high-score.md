@@ -1,15 +1,15 @@
 # High-Score
 
-Saving and loading game data is a key piece of functionality when it comes to making games. We may want to keep track of all sorts of important data across play sessions. For _Target Practice_, let's keep it simple and keep track of the high-score each time a new one is set.
+Saving and loading data is a key piece of functionality when it comes to making games. We may want to keep track of all sorts of important data across play sessions. For _Target Practice_, let's keep it simple and track the high-score each time a new one is set.
 
 ## Load & Save Data
 
 When the game is over, let's display whether or not a new high-score was achieved. If it is higher than the previous, we'll save that new high-score. Otherwise, we'll display the high-score and encourage the player to try to beat it.
 
-This will require two parts to working with save data:
+This will require two parts:
 
-- Saving the score when a new high-score is achieved
-- Loading the previous high-score to compare the player's score to
+1. Saving the score when a new high-score is achieved
+2. Loading the previous high-score to compare the player's score to
 
 DragonRuby GTK gives us two handy methods to do so:
 
@@ -40,7 +40,7 @@ When we're constructing our `labels` to render, we add a condition that checks i
 
 ## Summary
 
-We load and save data relating to how our player has done. While saving one value is likely to be a bit too trivial for most games, the core concepts are pretty similar. You'll write your data to a file, you read that file, and then you do whatever you need to with it.
+We load and save data relating to how our player has done. While saving one value is likely to be a bit too trivial for most games, the core concepts are pretty similar. You'll write your data to a file, read that file, and then do whatever you need to with it.
 
 ## Extra Credit
 
@@ -49,4 +49,4 @@ We load and save data relating to how our player has done. While saving one valu
 
 ## What's Next
 
-Let's add some music and sound effects to our game. Even just a simple track with a couple sound effects will make a _significant_ difference.
+Let's add some music and sound effects to our game. Even just a simple music track with a few sound effects will make a _significant_ difference.

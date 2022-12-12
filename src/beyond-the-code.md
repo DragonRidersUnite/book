@@ -10,25 +10,29 @@ When you’re just starting out in any creative endeavor, set your sights on sma
 
 ## What Can You Cut?
 
-When you have an idea for a game, ask yourself what you can cut from it while still maintaining the core essence of it. Don’t dwell on adding a bunch of complex systems. Focus on the fun and how you can subtract to bring that forward. Arcade games do a great job of making short, repayable, minimal experiences.
+When you have an idea for a game, ask yourself what you can cut from it while still maintaining the core essence of it. Don’t dwell on adding a bunch of complex systems. Focus on the fun and how you can subtract to bring the fun forward. Arcade games do a great job of making short, repayable, minimal experiences.
 
 ## Finish Your Games
 
-When making your small games, finish them! Finishing what you start is so important. Having a bunch of unreleased prototypes isn’t fun for anyone. It’s okay to share works in progress and tiny games. Finish what you make and release it. Shipping games is a muscle and different skill set than building the game. The more practice you get, the better off you’ll be when it comes time to ship.
+When making your small games, finish them! Finishing what you start is so important. Having a bunch of unreleased prototypes isn’t fun for anyone. It’s okay to share works in progress and tiny games. Finish what you make and release it. Shipping games is a muscle and different skillset than building the game. The more practice you get, the better you'll be at finishing your games.
 
 ## Release Them for Free
 
-Release your games for free for a while. Don’t put the pressure on yourself of making a commercial project when you’re just starting out. Your goal should be to build an audience of fans who enjoy your game. Make that barrier as low as possible by releasing your game for the web and the major operating systems. And release them for free. Would you rather make and release a free game 1000 people play or a paid game that only 5 people play? It’s defeating to release a paid game no one buys. Also, your first games won’t be very good. That’s okay! No one who starts playing the guitar is very good right at the beginning. The only way to get better is to suck at first and keep working at it. Getting your games in people’s hands and getting feedback is much more important than trying to make money. Once you’ve shipped a bunch of small games, you’ll have gained new skills and confidence. You’ll also be grounded in reality and not be fantasizing about selling millions of copies of your idea. Make and release small, humble games.
+Release your games for free for a while. Don’t put the pressure on yourself of making a commercial project when you’re just starting out. Your goal should be to build an audience of fans who enjoy your games. Make that barrier as low as possible by releasing your game for the web and the major operating systems. And release them for free.
+
+Would you rather make and release a free game 1000 people play or a paid game that only 5 people play? It’s defeating to release a paid game no one buys.
+
+Also, your first games won’t be very good. That’s okay! No one who starts playing the guitar is very good right at the beginning. The only way to get better is to suck at first and keep working at it. Getting your games in people’s hands and getting feedback is much more important than trying to make money. Once you’ve shipped a bunch of small games, you’ll have gained new skills and confidence. You’ll also be grounded in reality and not fantasizing about selling millions of copies of your idea. Make and release small, humble games for free for a while.
 
 ## Don't Worry About Being Original
 
-When you’re making your small, free games, don’t worry about being original. That may sound like blasphemy, but the best way to learn is to copy mechanics and systems from your favorite games to learn. You’ll inevitably infuse your own sensibilities into them and make something unique. When we learn an instrument, we play covers of our favorite songs and that’s encouraged. What would it be like to “cover” your favorite game? Originality will come with time when the ideas are flowing and don’t agree with how other games do something.
+When you’re making your small, free games, don’t worry about being original. That may sound like blasphemy, but the best way to learn is to copy mechanics and systems from your favorite games to learn. You’ll inevitably infuse your own sensibilities into them and make something unique. When we learn an instrument, we play covers of our favorite songs and that’s encouraged. What would it be like to “cover” your favorite game? Originality will come with time when the ideas are flowing and you don't agree with how other games do something. You'll naturally want to do something different!
 
 ## Do Game Jams
 
 Game jams are constrained events where people make games within a certain time frame, sometimes with specific rules. They're a great way to start and finish a game in a short period of time. You can experiment and take risks and connect with the community of your fellow participants. I can't recommend them enough. Try to do at least one jam a year (or more if your heart desires).
 
-[Itch has a directory of jams](https://itch.io/jams) and [Ludum Dare is a long-running jam with many participants](https://ludumdare.com/).
+[Itch has a directory of jams](https://itch.io/jams) and [Ludum Dare](https://ludumdare.com/) is a well known jam that happens multiple times every year with many participants.
 
 ## Share Your Work
 
@@ -41,10 +45,10 @@ If you’re interested in making games, it’s likely you enjoy playing them. Wh
 
 ## Find a Community
 
-Find a community of developers making similar caliber games. Whether it’s a Discord or in-person meet up group, surround yourself with people making games who have similar goals to you. Support and push each other. Play each others’ games and learn from one another. You may even find collaborators among the community with difference strengths that you can leverage to make an even better game. 
+Find a community of developers making similar caliber games. Whether it’s a Discord or in-person meet-up group, surround yourself with people making games who have similar goals to you. Support and push each other. Play each other’s games and learn from one another. You may even find collaborators among the community with different strengths that you complement to make an even better game.
 
 ## Pace Yourself
 
-It’s important to take breaks. Pace yourself! If you love games and are enjoying making them, think about what it'd be like to make games for the next 40 years of your life instead of just the next 4 months. What would you do differently to sustain yourself?
+It's important to take breaks. Pace yourself! If you love games and are enjoying making them, think about what it'd be like to make games for the next 40 years of your life instead of just the next 4 months. What would you do differently to sustain yourself?
 
 Being a game developer requires determination and passion, but it also requires a lot of self-care. ❤️

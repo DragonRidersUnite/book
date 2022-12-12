@@ -4,7 +4,7 @@ When working on any piece of software, whether it's a video game or an app to tr
 
 Imagine this scenario: you work on your game for three months. It's amazing. It's your X-Files Dating Sim. You've painstakingly drawn all of the characters, written the scenario, coded up all the interactions. Then one day your computer gets stolen by a giant crow! I don't trust those crows, I never have. Suddenly your game is gone, poof. All that hard work just sitting on a hard-drive barely being protected by the shell of your laptop from the aggressive pecks of the entire local union of crows.
 
-You'd just have to start over, from scratch. That is if you aren't too bummed out about losing the entire game. Crow theft--it's the number one reason to back up your game's source code.
+You'd just have to start over, from scratch. That is if you aren't too bummed out about losing the entire game. Crow theft—it's the number one reason to back up your game's source code.
 
 ## Back Up Your Game
 

@@ -2,7 +2,7 @@
 
 We've _almost_ got a game. But we need some way for the game to end. A lot of game loops end with the player's character dying, where they respawn or start over again. Other game loops end when the player reaches the end of a level.
 
-For our simple game, let's add a 30 second timer that counts down. The objective of our game will be to see how many targets can the player hit in that time window. Let's call our game **Target Practice**. Every dragon needs some practice before they head out into battle, right?
+For our simple game, let's add a 30 second timer that counts down. The objective of our game will be to see how many targets the player can hit in that time window. Let's call our game **Target Practice**. Every dragon needs some practice before they head out into battle, right?
 
 Adding a timer to our game introduces a few new concepts we'll build out in this chapter:
 
@@ -80,7 +80,6 @@ Because so much has changed and shifted around, I'll just walk through the main 
 - `#fire_input?` checks to see if any of our keys are down for firing a fireball. By using our method, we can easily adjust it without having to change it for both restarting the game and the dragon spitting the fireball.
 - `#handle_player_movement` does just what it describes. That code has a lot of checks but we haven't changed much, so let's put it in a method to get it out of the way.
 - `#game_over_tick` is our own special method for when it's game over that gets called from our main `#tick`. It makes it easier to refer to and change what happens when our game is over.
-
 
 I hear you over there screaming, "You expect me to rewrite the entire game line-by-line?!?! I quit!" It's okay to copy and paste what's provided above into your game. If you've made some adjustments, make them again. This refactored code is going to be the foundation for the rest of the book.
 

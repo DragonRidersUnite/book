@@ -1,6 +1,6 @@
 devid=youritchusername
 devtitle=Your Name
-gameid=targetpractice
+gameid=target-practice
 gametitle=Target Practice
 version=0.1
 icon=metadata/icon.png

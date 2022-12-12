@@ -1,6 +1,6 @@
 # Ruby Primer
 
-New to Ruby? Here's a brief walk through of the common language features and syntax as a quick reference.
+New to Ruby? Here's a brief walk through the common language features and syntax as a quick reference.
 
 ## Core Types
 
@@ -106,7 +106,7 @@ Blocks are chunks of Ruby code that yield to the caller. At first you'll use blo
 
 ## nil
 
-`nil` in Ruby is known as `null` in other languages. It's the absence of a value.
+`nil` in Ruby is known as `null` in other languages. It's the absence of a value. nil is a huge topic and not something gone over in the book explicitly.
 
 ## Exceptions
 
