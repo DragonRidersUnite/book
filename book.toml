@@ -8,6 +8,3 @@ description = "A free book about making 2D games with DragonRuby Game Toolkit."
 
 [output.html]
 git-repository-url = "https://github.com/DragonRidersUnite/book"
-
-[output.html.print]
-enable = false
