@@ -130,6 +130,8 @@ Each chapter builds upon the last. You'll go from displaying a single image to m
 
 Code alongside the book, but feel free to make adjustments and experiment if you're feeling excited.
 
+Prefer an offline version? [You can find a PDF and HTML version for download on the Itch page.](https://dragonridersunite.itch.io/dragonruby-book)
+
 ## Get Started
 
 All right, are you ready to make a game? Let's get started!
