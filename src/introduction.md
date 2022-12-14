@@ -106,7 +106,7 @@ When I was 16, I took a computer science class in high school. It was my first e
 
 That class was foundational in the course my life would take in the 14 years since. At age 16 I was an emo kid who loved video games and anime. Imagine a swoopy haired teen in their bedroom listening to Bright Eyes while playing _Final Fantasy XII_. That was me.
 
-So naturally, for my final project in that high school computer science class I made a game. You pilot a Moltres from Pokemon who shots fire balls at Zaku mechs from Gundam that fly across the screen. If you get hit by an enemy, it's game over. If you defeat all of the enemies, you win. This game was lovingly titled _Zaku Space Battle_.
+So naturally, for my final project in that high school computer science class I made a game. You pilot a Moltres from Pokemon who shoots fireballs at Zaku mechs from Gundam that fly across the screen. If you get hit by an enemy, it's game over. If you defeat all of the enemies, you win. This game was lovingly titled _Zaku Space Battle_.
 
 ![screenshot of Zaku Space Battle showing the Moltres sprite, Zaku sprites, fire ball, and space background](./img/zaku-space-battle.jpg)
 
@@ -120,7 +120,7 @@ If you want to, you can [buy me a coffee](https://buymeacoffee.com/brettchalupa)
 
 ## Contribute
 
-This book is open source. That means anyone can view the code that builds it and contribute toward making better. Did you find something that doesn't work, contains a typo, or lacks clarity? [Submit an issue or contribute on GitHub.](https://github.com/DragonRidersUnite/book) It's easy, and you can do it right from your browser. Thanks in advance!
+This book is open source. That means anyone can view the code that builds it and contribute toward making it better. Did you find something that doesn't work, contains a typo, or lacks clarity? [Submit an issue or contribute on GitHub.](https://github.com/DragonRidersUnite/book) It's easy, and you can do it right from your browser. Thanks in advance!
 
 If you're stuck and would like some extra assistance, reach out in [the DragonRuby Discord](https://discord.dragonruby.org). We'll get you unstuck!
 
