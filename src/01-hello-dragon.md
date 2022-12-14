@@ -18,7 +18,7 @@ When you download DragonRuby Game Toolkit, it contains everything you need to bu
 
 Let's go over the key files in the archive you just extracted:
 
-- `dragonruby` — the executable you'll run to launch your game in development mode, you're primary entry into the development flow
+- `dragonruby` — the executable you'll run to launch your game in development mode, your primary entry into the development flow
 - `dragonruby-publish` — a command-line tool to help you easily build and publish your game online, don't worry about this yet!
 - `samples/` — a folder of example code that you can explore and run if you'd like, or just ignore it for now
 - `docs/` — the DragonRuby Game Toolkit docs for the version you've downloaded, extremely handy if you want to dive deeper than this book
@@ -51,7 +51,7 @@ This isn't a game... yet! But it is doing three key things:
 
 And you haven't even written any code yet. Not a bad starting place.
 
-DRGTK handles the boring stuff when it comes to making games—dealing with low-level APIs like graphics, window, and sounds. We can instead focus on creating our game instead of, for example, figuring out how to save data in a way that's compartible with Linux, Mac, Windows, Android, iOS, and web.
+DRGTK handles the boring stuff when it comes to making games — dealing with low-level APIs like graphics, window, and sounds. We can instead focus on creating our game instead of, for example, figuring out how to save data in a way that's compatible with Linux, Mac, Windows, Android, iOS, and web.
 
 ## An Overview of the Main Game File
 
@@ -71,7 +71,7 @@ Here's what that code does, line by line:
 {{#include code/chapter_01/01_default/app/main.rb:1}}
 ```
 
-This `def`ines a method called `tick` and passes in an parameter called `args`. `args` is short for arguments and is provided to us by DragonRuby GTK.
+This `def`ines a method called `tick` and passes in a parameter called `args`. `args` is short for arguments and is provided to us by DragonRuby GTK.
 
 Methods are reusable pieces of code that you can call to do something over and over again. Think of methods like verbs; they're actions. Methods are a foundational building block that allow for code reuse.
 
@@ -90,7 +90,7 @@ francis = Friend.new
 give_cookie(francis)
 ```
 
-Note: methods in Ruby have optional parenthesis. You can use them or leave them out when defining and calling your methods. These are the same:
+Note: methods in Ruby have optional parentheses. You can use them or leave them out when defining and calling your methods. These are the same:
 
 ``` ruby
 def give_cookie(friend)
@@ -124,7 +124,7 @@ And then finally the code within the brackets `[]` is an array of data that repr
 
 I think of arrays like a stack of CDs. The CDs are in a specific order, but you don't know what a given CD is unless you pull one out of the stack and look at it. You have to do the same thing with an array. In programming, you put data into an array to collect that data and keep track of it. If you want to know what's at a specific place in a array, you have to check.
 
-You can see some code in quotes, those are strings. And they're what's being displayed by the game. In order to show the text, though, we need to tell the engine where to place it on the screen. That's what the first two elements of the array do: they specify the x and y position in of the text in the game. Then there's the text we want to render. That's followed by the text size. Then finally the alignment (centered in this case).
+You can see some code in quotes, those are strings. And they're what's being displayed by the game. In order to show the text, though, we need to tell the engine where to place it on the screen. That's what the first two elements of the array do: they specify the x and y position of the text in the game. Then there's the text we want to render. That's followed by the text size. Then finally the alignment (centered in this case).
 
 Here's it broken down:
 
@@ -133,7 +133,7 @@ Here's it broken down:
 [640, 500, 'Hello World!',    5,         1]
 ```
 
-Don't worry about memorizing what the positional elements of the array mean. This is just a quick way to render text. We'll start using a more friendly approach soon enough. The sample game does this three times, thus rendering three difference pieces of text. The `y` coordinate is different for each, stacking them on top of each other vertically instead of overlapping one another.
+Don't worry about memorizing what the positional elements of the array mean. This is just a quick way to render text. We'll start using a more friendly approach soon enough. The sample game does this three times, thus rendering three different pieces of text. The `y` coordinate is different for each, stacking them on top of each other vertically instead of overlapping one another.
 
 Gosh enough of this rambling, let's adjust some code. Change the text from `"Hello World!"` to be `"Hello Dragon!"` and save the file.
 
