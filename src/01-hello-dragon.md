@@ -10,11 +10,11 @@ We'll start by rendering an image and some simple text on the screen. But first,
 
 You're ready to work on your game. Let's get to it!
 
-**ProTip:** don't delete the zip file! You can unzip it again when you start working on your next game. It's helpful to keep it around.
+**ProTip:** don't delete the zip file! You can unzip it again when the times comes to start working on your next game. It's helpful to keep it around.
 
 ## What's in the Engine Zip
 
-When you download the DragonRuby Game Toolkit, it contains everything you need to build your game. There are no external dependencies to install or monkey with. You just use the provided files and start making your game.
+When you download DragonRuby Game Toolkit, it contains everything you need to build your game. There are no external dependencies to install or monkey with. You just use the provided files and start making your game.
 
 Let's go over the key files in the archive you just extracted:
 
@@ -51,7 +51,7 @@ This isn't a game... yet! But it is doing three key things:
 
 And you haven't even written any code yet. Not a bad starting place.
 
-DRGTK handles the boring stuff when it comes to making games—dealing with low-level APIs like graphics, sounds and the game window. We can instead focus on creating our game instead of, for example, figuring out how to save data in a way that's compartible with Linux, Mac, Windows, Android, iOS, and web.
+DRGTK handles the boring stuff when it comes to making games—dealing with low-level APIs like graphics, sound, and the game window. We can instead focus on creating our game instead of, for example, figuring out how to save data in a way that's compartible with Linux, Mac, Windows, Android, iOS, and web.
 
 ## An Overview of the Main Game File
 
@@ -146,7 +146,7 @@ Did you see that? The game reloaded your code and changed the text to "Hello Dra
 {{#include code/chapter_01/01_default/app/main.rb:5}}
 ```
 
-`args.outputs.sprites` is like `args.outputs.labels`, but instead of holding labels it's a collection of sprites. It renders the `"dragonruby.png"` image at x: 576, y: 280, just like label text, and it also sets the size of the image to display. That's what the `128` and `101` represent in the array. Here's a breakdown of those elements:
+`args.outputs.sprites` is like `args.outputs.labels`, but instead of holding labels, it's a collection of sprites. It renders the `"dragonruby.png"` image at x: 576, y: 280, just like label text, and it also sets the size of the image to display. That's what the `128` and `101` represent in the array. Here's a breakdown of those elements:
 
 ``` ruby
 #  x,   y,   w,   h,            image
@@ -165,7 +165,7 @@ signifies that the definition of the `tick` method is over. Any code after that 
 
 ## Screen Coordinates Explained
 
-Let's take a detour down Screen Coordinates Road. The `x` and `y` positions are coordinates on the two-dimensional plane of the game window. Remember geometry? I barely do. But this is important, so don't doze off on me yet. We're only still in the first chapter!
+Let's take a detour down Screen Coordinates Road. The `x` and `y` values are coordinates on the two-dimensional plane of the game window. Remember geometry? I barely do. But this is important, so don't doze off on me yet. We're only still in the first chapter!
 
 ![diagram showing x, y axis with 0, 0 being in the bottom left and 1280, 720 being in the upper right](./img/c01-coords.png)
 
@@ -179,7 +179,7 @@ It's important to keep coordinates in mind, as we'll be using them a lot when ma
 
 Back to making the game. Okay, yeah, you changed a string and it changed what was displayed. That's neat. But let's hit reset and do it ourselves.
 
-I want you to delete the code in `mygame/app/main.rb`. Select it all and delete it. Yup, I know, the blank canvas is a challenge. But you need to start writing the code yourself in order to learn and build your mental muscle memory. So go ahead and type out each line below into your `main.rb`.
+I want you to delete the code in `mygame/app/main.rb`. Select it all and delete it. Yup, I know, the blank canvas is a challenge. But you need to start writing the code yourself in order to learn. So go ahead and type out each line below into your `main.rb`.
 
 ``` ruby
 def tick args
@@ -240,7 +240,7 @@ That's some pretty fine code for the first chapter. We've got text and an image 
 
 ## Game Loop Explained
 
-There's a lot of magic happening if we can just write `def tick` and magically have a game. What's happening is that DragonRuby Game Toolkit takes the code in `mygame/app/main.rb`, finds the `tick` method, and then runs a loop that calls it 60 times every second until the program closes. This loop is referred to as the Game Loop.
+There's a lot of magic that comes from DragonRuby Game Toolkit, where we can just write `def tick` and magically have a game. What's happening is that DragonRuby Game Toolkit takes the code in `mygame/app/main.rb`, finds the `tick` method, and then runs a loop that calls it 60 times every second until the program closes. This loop is referred to as the Game Loop.
 
 When programming games, any number of things are happening at one time. Enemies are moving, images are being displayed, math is being calculated, input is being handled, etc. The loop runs over and over again, accounting for any changes in the state of the game. This is similar to how screens on devices work—they refresh so many times a second, so fast that it's barely perceptible to the human eye.
 
