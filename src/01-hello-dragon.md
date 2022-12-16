@@ -124,7 +124,7 @@ And then finally the code within the brackets `[]` is an array of data that repr
 
 I think of arrays like a stack of CDs. The CDs are in a specific order, but you don't know what a given CD is unless you pull one out of the stack and look at it. You have to do the same thing with an array. In programming, you put data into an array to collect that data and keep track of it. If you want to know what's at a specific place in an array, you have to check.
 
-You can see some code in quotes, those are strings. And they're what's being displayed by the game. In order to show the text, though, we need to tell the engine where to place it on the screen. That's what the first two elements of the array do: they specify the x and y position of the text in the game. Then there's the text we want to render. That's followed by the text size. Then finally the alignment (centered in this case).
+You can see some code in quotes, those are strings. And they're what's being displayed by the game. In order to show the text, though, we need to tell the engine where to place it on the screen. That's what the first two elements of the array do: they specify the `x` and `y` position of the text in the game. Then there's the text we want to render. That's followed by the text size. Then finally the alignment (centered in this case).
 
 Here's it broken down:
 
