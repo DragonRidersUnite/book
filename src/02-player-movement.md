@@ -12,7 +12,7 @@ end
 
 That displays our player dragon and nothing else. Excellent. Let's get this dragon moving!
 
-In order to handle moving the player, we need to keep track of the position across the game loops. This lets us know where the player was last `tick`, check if they should move, and then update their position accordingly.
+In order to handle moving the player, we need to keep track of the position across the game loops. This lets us know where the player was last tick, check if they should move, and then update their position accordingly.
 
 Update your `mygame/app/main.rb` to be this:
 
