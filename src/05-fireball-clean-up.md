@@ -50,7 +50,7 @@ Feel free to remove the `args.outputs.debug` lines if you don't want to see them
 
 There will be many opportunities when working on your games to optimize your code so that it performs better. This was just a taste of what that process can be like. As you get better at making games, you'll improve at making them more performant.
 
-Don't obsesses over performance too much yet though. Focus on making your game fun to play.
+Don't obsess over performance too much yet though. Focus on making your game fun to play.
 
 ## What's Next
 
