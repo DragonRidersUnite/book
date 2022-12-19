@@ -19,7 +19,7 @@ We'll start by introducing `args.state.timer` that will be used to keep track of
 {{#include code/chapter_06/01_time_attack/app/main.rb:25:28}}
 ```
 
-We lazily set it to `30 * 60`. We want the game to last thirty seconds and our `#tick` method runs sixty times every second, so we multiple them together to get the total number of ticks our timer will run for. We'll then subtract one from `args.state.timer` every `#tick` so that it decreases as we play our game.
+We lazily set it to `30 * 60`. We want the game to last thirty seconds and our `#tick` method runs sixty times every second, so we multiply them together to get the total number of ticks our timer will run for. We'll then subtract one from `args.state.timer` every `#tick` so that it decreases as we play our game.
 
 Right below decreasing our `args.state.timer` by one, we check to see if the timer is less than zero. If it is, that means game over.
 
@@ -28,7 +28,7 @@ Right below decreasing our `args.state.timer` by one, we check to see if the tim
 ```
 If it is game over, then we let the player know, display their final score, and tell them how to play again (by pressing the fire button). We make an array of labels which we then push into `args.outputs.labels` to efficiently render them all.
 
-If any of our fire keys are pressed, the game is reset with `$gtk.reset` and the player can play again.
+If any of our fire keys are pressed, the game is reset with `$gtk.reset`, and the player can play again.
 
 The `return` line is _really_ important. It says, return out of the `#tick` method so that none of the code below runs. We don't want to have the dragon be movable or for targets to spawn when it's game over. So we eject early and only display the game over screen details.
 
@@ -40,9 +40,9 @@ Way at the bottom of `#tick`, let's display a label with the time remaining:
 {{#include code/chapter_06/01_time_attack/app/main.rb:124:138}}
 ```
 
-We use the same pattern of creating a `labels` array, pushing in the player's score and the time remaining. In order to get the time remaining, we divide it by 60 and round. We do the opposite of what we did when we set the total time in ticks.
+We use the same pattern of creating a `labels` array, pushing in the player's score and the time, in ticks, remaining. In order to display the time remaining as seconds, we divide it by 60 and round. We do the opposite of what we did when we set the total time in ticks.
 
-The `alignment_enum` let's us specify that we want the text to be right aligned instead of the default left alignment. This let's us nicely position our timer in the upper right corner of the game.
+The `alignment_enum` lets us specify that we want the text to be right-aligned instead of the default left alignment. This let's us nicely position our timer in the upper right corner of the game.
 
 ![gameplay with Time Left reading 10 seconds](./img/c06-timer.jpg)
 
@@ -58,7 +58,7 @@ If you happen to press the fire button right when the timer runs out, you may re
 
 Because we keep subtracting from `args.state.timer`, we can check to see if the current value is less than -30. If it is, then we'll accept input to restart the game.
 
-`&&` (double ampersand, often read as "and-and") means that both sides of the expression must be true for the code within the conditional to happen. In our new restart check, we combine AND and OR by saying: if the game timer is less than -30 AND any of our fire keys are down, then we reset the game. When you group together expressions in parentheses, `(monday? || tuesday?)`, it evaluates them as one express against the other checks. We care about the timer being below a certain amount AND any of the inputs being pressed.
+`&&` (double ampersand, often read as "and-and") means that both sides of the expression must be true for the code within the conditional to happen. In our new restart check, we combine AND and OR by saying: if the game timer is less than -30 AND any of our fire keys are down, then we reset the game. When you group together expressions in parentheses, `(monday? || tuesday?)`, it evaluates them as one expression against the other checks. We care about the timer being below a certain amount AND any of the inputs being pressed.
 
 Combining logic in this way for flow control is very common when making games. `&&` and `||` are pretty common operators in most programming languages.
 
@@ -66,7 +66,7 @@ Combining logic in this way for flow control is very common when making games. `
 
 Our main `#tick` method is getting a bit long in the tooth, being over 100 lines long. We've also duplicated two things: frames per second with the `60` value and checking for fire input. This is a good opportunity to refactor our code once again to make it easier to work with. Let's break up `#tick` into a series of smaller methods that we call from within it. Encapsulating our logic into smaller pieces makes it easier to work on those smaller pieces without concerning ourselves with the rest of the code.
 
-How small should you make your methods? That's up to you. Use your best judgment and do what feels right. Code can change and grow quite organically. Once something feels too big or complex or is duplicated, improve it. Don't over-engineer your game right from the start, otherwise you'll be off in the weeds and not actually making your game fun. On the other hand, if you just neglect your code, you'll make it more difficult to change, thus slowing down the development process. There's a fine line between over-engineering and creating a mess.
+How small should you make your methods? That's up to you. Use your best judgment and do what feels right. Code can change and grow quite organically. Once something feels too big or complex or is duplicated, improve it. Don't over-engineer your game right from the start, otherwise, you'll be off in the weeds and not actually making your game fun. On the other hand, if you just neglect your code, you'll make it more difficult to change, thus slowing down the development process. There's a fine line between over-engineering and creating a mess.
 
 Here's the entire game broken down into some smaller methods to make it easier to work with moving forward:
 
