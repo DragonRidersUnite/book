@@ -116,7 +116,7 @@ This book is freely accessible so that someone who loves games and wants to try 
 
 You'll learn the foundations of game programming and making games, as well as some more advanced topics. If this book can help even just one person start and finish a game, it's worth every minute I've spent on it. We'll make a game not too dissimilar from _Zaku Space Battle_. Once you finish it, take what you've learned and make it your own!
 
-If you want to, you can [buy me a coffee](https://buymeacoffee.com/brettchalupa) as a way of saying thank you. It's much appreciated.
+If you want to, you can [buy me a coffee](https://buymeacoffee.com/brettchalupa) or [subscribe to my newsletter](https://buttondown.email/brettchalupa) as a way of saying thank you. It's much appreciated.
 
 ## Contribute
 
