@@ -1,6 +1,6 @@
 # Ruby Primer
 
-New to Ruby? Here's a brief walk through the common language features and syntax as a quick reference.
+New to Ruby? No worries! Here's a brief walk through the common language features and syntax as a quick reference.
 
 ## Core Types
 
