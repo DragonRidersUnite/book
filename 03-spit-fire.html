@@ -168,7 +168,7 @@
 <p>We learned about <code>||=</code> earlier, and that's a combination of two separate operators in Ruby. <code>||</code> represents &quot;or&quot; and <code>=</code> says to assign a value. If the value on the left doesn't have a value, assign it the value on the right. We can make use of the &quot;or&quot; (<code>||</code>) operator independently of the assignment operator (<code>=</code>) to control the logic within our game.</p>
 <p>The code above says: if the <kbd>Z</kbd> key is down OR the <kbd>J</kbd> key is down OR the A button on the gamepad is pressed, then output the string to the console.</p>
 <p>You can combine <code>||</code> on one line (<code>if monday || tuesday || wednesday</code>), but it can be helpful to break long lines to make our code easier to read.</p>
-<p>Outputting info to the console isn't that helpful for the player, but can you begin to imagine how we'll use that check to instead spit a fireball.</p>
+<p>Outputting info to the console isn't that helpful for the player, but can you begin to imagine how we'll use that check to instead spit a fireball?</p>
 <h2 id="displaying-fireballs"><a class="header" href="#displaying-fireballs">Displaying Fireballs</a></h2>
 <p>We want to display a fireball on the screen when the action key is pressed. We've got most of the code, all we need to do is change <code>puts</code> to instead display the fireball.</p>
 <p>At the top of <code>#tick</code> (<code>#name</code> is Ruby shorthand for &quot;the <code>name</code> method&quot;), assign an empty array to <code>args.state.fireballs</code> if nothing has been assigned yet. This will let us keep track of fireballs across the game loop to do all sorts of things with them (display them, move them, collide them with other objects):</p>
@@ -214,10 +214,10 @@
 </ol>
 <p>Move your dragon around, spit some fire, and bask in the glory of a word moving so smoothly across the screen that it almost looks like a... fireball!</p>
 <p>Try changing around <code>speed + 2</code> to make the fireballs move faster or slower and see how that feels. Adjusting speed values can really change the vibe of your game and is important in tuning it to feel just right.</p>
-<p>There are a lot of important concepts in those three newly added lines of code. In Ruby, when there's an array of data, we can loop through <strong>each</strong> item and modify their properties. Games are composed of huge collections of things: enemies, fireballs, menu options, player inventory. Arrays (and just collections in general) aren't anything to be afraid of, and soon enough, you'll be naturally thinking of your game data in terms of arrays.</p>
-<p>Looping through an array of data in each <code>#tick</code> and then doing <em>something</em> is the stuff games are made of! Here are some ways this can be applied in all sorts of games: enemy behavior, checking for collision, animating. As our game (and any game you make) gets more complex, looping through collections of data becomes more and more common.</p>
+<p>There are a lot of important concepts in those three newly added lines of code. In Ruby, when there's an array of data, we can loop through <strong>each</strong> item and modify their properties. Games are composed of huge collections of things: enemies, fireballs, menu options, player inventory, etc. Arrays (and just collections in general) aren't anything to be afraid of, and soon enough, you'll be naturally thinking of your game data in terms of arrays.</p>
+<p>Looping through an array of data in each <code>#tick</code> and then doing <em>something</em> is the stuff games are made of! Here are some ways this can be applied in all sorts of games: enemy behavior, checking for collision, and animating. As our game (and any game you make) gets more complex, looping through collections of data becomes more and more common.</p>
 <h2 id="switching-to-hashes"><a class="header" href="#switching-to-hashes">Switching to Hashes</a></h2>
-<p>So far throughout the book we've been using arrays to represent the entities in our game, whether it be the player's dragon sprite or our fireball text that gets displayed. Remember <code>[args.state.player_x, args.state.player_y, 'fireball']</code>? Arrays are wonderful and important, but they aren't so great for representing structured data because it's difficult to remember what each piece of data in the array's positions represents. Remembering that <code>fireball[2]</code> is the text value and not the y value is tricky. Luckily, DragonRuby has a more verbose and clear data structure we can use for managing our data. It's called a hash! Much like arrays, hashes are extremely useful.</p>
+<p>So far throughout the book, we've been using arrays to represent the entities in our game, whether it be the player's dragon sprite or our fireball text that gets displayed. Remember <code>[args.state.player_x, args.state.player_y, 'fireball']</code>? Arrays are wonderful and important, but they aren't so great for representing structured data because it's difficult to remember what each piece of data in the array's positions represents. Remembering that <code>fireball[2]</code> is the text value and not the y value is tricky. Luckily, DragonRuby has a more verbose and clear data structure we can use for managing our data. It's called a hash! Much like arrays, hashes are extremely useful.</p>
 <p>Let's look at what the text example above would be like as a hash:</p>
 <pre><code class="language-ruby">{
   x: args.state.player_x,
@@ -232,9 +232,9 @@
   age: 541,
 }
 </code></pre>
-<p>Values of a hash are then accessed by their keys, so <code>dragon.name</code> returns the string <code>&quot;Francis&quot;</code>, <code>dragon.size</code> returns the string <code>&quot;medium&quot;</code>, and <code>dragon.age</code> returns the number <code>541</code>. This is much more clear than having to remember the position of these values within an array.</p>
-<p>Quick note: if you see a hash with key-value pairs that look like this: <code>{ :name =&gt; &quot;Francis&quot; }</code>, don't fret! That's just an another style in Ruby known as the hash rocket.</p>
-<p>In general, differentiate between arrays and hashes like this: <strong>hashes are used represent one piece of data with multiple properties</strong> and <strong>arrays are used to collect data (often times hashes) to keep track of and manipulate them</strong>.</p>
+<p>Values of a hash are then accessed by their keys, so <code>dragon.name</code> returns the string <code>&quot;Francis&quot;</code>, <code>dragon.size</code> returns the string <code>&quot;medium&quot;</code>, and <code>dragon.age</code> returns the number <code>541</code>. This is much clearer than having to remember the position of these values within an array.</p>
+<p>Quick note: if you see a hash with key-value pairs that look like this: <code>{ :name =&gt; &quot;Francis&quot; }</code>, don't fret! That's just another style in Ruby known as the hash rocket.</p>
+<p>In general, differentiate between arrays and hashes like this: <strong>hashes are used to represent one piece of data with multiple properties</strong> and <strong>arrays are used to collect data (oftentimes hashes) to keep track of and manipulate them</strong>.</p>
 <p>Below is our entire game translated to use hashes instead of arrays for our rendering:</p>
 <pre><code class="language-ruby">def tick args
   args.state.player ||= {
@@ -293,7 +293,7 @@
   args.outputs.sprites &lt;&lt; args.state.player
 end
 </code></pre>
-<p>It may not seem like much has changed, but there are two key changes that make this worthwhile:</p>
+<p>It may not seem like much has changed, but two key changes make this worthwhile:</p>
 <ol>
 <li><code>fireball.x += args.state.player.speed + 2</code> — it is much clearer when we move the fireball that we're adding to its <code>x</code> position AND using the player's speed</li>
 <li><code>args.outputs.sprites &lt;&lt; args.state.player</code> — because we're keeping track of our player in <code>args.state.player</code> and it has the data DragonRuby needs to render it, we can just push it into <code>args.outputs.sprites</code> and not construct the array that we used to use</li>

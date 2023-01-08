@@ -145,7 +145,7 @@
 end
 </code></pre>
 <p>That displays our player dragon and nothing else. Excellent. Let's get this dragon moving!</p>
-<p>In order to handle moving the player, we need to keep track of the position across the game loops. This lets us know where the player was last <code>tick</code>, check if they should move, and then update their position accordingly.</p>
+<p>In order to handle moving the player, we need to keep track of the position across the game loops. This lets us know where the player was last tick, check if they should move, and then update their position accordingly.</p>
 <p>Update your <code>mygame/app/main.rb</code> to be this:</p>
 <pre><code class="language-ruby">def tick args
   args.state.player_x ||= 120
