@@ -217,7 +217,7 @@ The `"Hello #{friend}!"` code does what's called string interpolation. It takes 
 
 Methods in Ruby return a value. Return values can then be used by the caller for whatever purposes are needed. In the example above, the return value is the string we built. Ruby returns the vaue of the last line of the method definition automatically. But you can explicitly return early with `return`, which can be useful if you want to end the execution of a method early.
 
-Go ahead and change the `#greet` method to:
+Go ahead and change the `greet` method to:
 
 ``` ruby
 def greet friend

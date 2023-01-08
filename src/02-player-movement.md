@@ -59,7 +59,7 @@ Then, finally, we change the `x` and `y` value for the dragon sprite to be the v
 
 ## Checking for Input
 
-In `#tick` we'll check to see if a given input is pressed. If it is, we'll change the sprite's x and y position accordingly.
+In `#tick` (`#name` is Ruby shorthand for "the `name` method") we'll check to see if a given input is pressed. If it is, we'll change the sprite's x and y position accordingly.
 
 Our ole buddy `args` has a little something known as `args.inputs`. This lets us check... inputs! Isn't programming nice? Most of the time the words used in programming make sense. But some of the time, they really don't, and it's a gosh dang nightmare. Let's commit right here, right now to trying to name things in a way that's useful. Okay, you're committed. When you name a method `def thingy`, you'll remember this. And your ears will ring a little bit and your eyes will get just a little dry and you'll remember that you broke your commitment.
 

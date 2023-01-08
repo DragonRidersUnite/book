@@ -6,7 +6,7 @@ Our next mission is to make our dragon spit fire because that's just what they d
 
 In the last chapter, we used `args.inputs` to check for player input from the four main directions. If those inputs are pressed, then we move the dragon. Now let's check to see if the <kbd>Z</kbd> key is pressed to know when to have our dragon spit a fireball.
 
-To check if a key was pressed, we can use `args.inputs.keyboard.key_down` and then whatever key we want to check. So in our case, we'll check `args.inputs.keyboard.key_down.z`. In our `#tick` method, right above where we render the dragon sprite, let's check for that input:
+To check if a key was pressed, we can use `args.inputs.keyboard.key_down` and then whatever key we want to check. So in our case, we'll check `args.inputs.keyboard.key_down.z`. In `#tick`, right above where we render the dragon sprite, let's check for that input:
 
 ``` ruby
 {{#include code/chapter_03/01_input/app/main.rb:36:40}}
@@ -44,7 +44,7 @@ Outputting info to the console isn't that helpful for the player, but can you be
 
 We want to display a fireball on the screen when the action key is pressed. We've got most of the code, all we need to do is change `puts` to instead display the fireball.
 
-At the top of `#tick` (`#name` is Ruby shorthand for "the `name` method"), assign an empty array to `args.state.fireballs` if nothing has been assigned yet. This will let us keep track of fireballs across the game loop to do all sorts of things with them (display them, move them, collide them with other objects):
+At the top of `#tick`, assign an empty array to `args.state.fireballs` if nothing has been assigned yet. This will let us keep track of fireballs across the game loop to do all sorts of things with them (display them, move them, collide them with other objects):
 
 ``` ruby
 {{#include code/chapter_03/03_displaying_fireballs/app/main.rb:1:4}}
