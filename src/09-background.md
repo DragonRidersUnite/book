@@ -14,7 +14,7 @@ At the top of `#tick`, below where we start the music, create a solid rectangle 
 {{#include code/chapter_09/01_blue_sky/app/main.rb:102:115}}
 ```
 
-We're familiar with a lot of the shape hash keys for the position and size, but `r`, `g`, and `b` are new. They specify the values for the (r)ed, (g)reen, and (b)lue color values for the rectangle we're drawing. Their values can be set to anything between 0 and 255, inclusive. Adjust the values to see a different color displayed. The higher the value for a given color, the more it'll be part of the mix. So our color has a blue of 230, meaning blue comes through more than the others. You can also specify `a`, the alpha value, between 0 and 100, inclusive, to get transparency in our color.
+We're familiar with a lot of the shape hash keys for the position and size, but `r`, `g`, and `b` are new. They specify the values for the (r)ed, (g)reen, and (b)lue color values for the rectangle we're drawing. Their values can be set to anything between 0 and 255, inclusive. Adjust the values to see a different color displayed. The higher the value for a given color, the more it'll be part of the mix. So our color has a blue of 230, meaning blue comes through more than the others. You can also specify `a`, the alpha value, between 0 and 255, inclusive, to get transparency in our color.
 
 Now we've got our dragon flying over a blue sky. That looks quite a bit better.
 
