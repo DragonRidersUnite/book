@@ -33,4 +33,12 @@ Clone this book repository into a DragonRuby GTK engine directory and run the sa
 
 ## Publishing
 
+How to make a release:
+
+1. Merge the `main` branch into `offline`
+2. Generate a new PDF via printing in Firefox and turning off the header and footer
+3. Generate an HTML version of the book and zip it up
+4. Create zips and upload on itch.io
+5. Create tags and releases for offline branch and the main branch
+
 The 3D cover file is generated with https://diybookcovers.com/
