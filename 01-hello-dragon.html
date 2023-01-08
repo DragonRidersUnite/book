@@ -284,7 +284,7 @@ end
 <p>The new code refactors (changes the implementation of the code without changing the behavior) the original so that we can easily change the greeting in one place instead of many. This is a bit of a trivial example, but it shows how we can write our own methods in DRGTK to make our code better. Reusing code is fundamental for the rest of this book.</p>
 <p>The <code>&quot;Hello #{friend}!&quot;</code> code does what's called string interpolation. It takes whatever <code>friend</code> is, hopefully a name as a string, and inserts it. It's pretty similar to this code: <code>&quot;Hello &quot; + friend + &quot;!&quot;</code>, but quite a bit friendlier to use. The <code>#{}</code> tells Ruby to run any Ruby code within those curly braces.</p>
 <p>Methods in Ruby return a value. Return values can then be used by the caller for whatever purposes are needed. In the example above, the return value is the string we built. Ruby returns the vaue of the last line of the method definition automatically. But you can explicitly return early with <code>return</code>, which can be useful if you want to end the execution of a method early.</p>
-<p>Go ahead and change the <code>#greet</code> method to:</p>
+<p>Go ahead and change the <code>greet</code> method to:</p>
 <pre><code class="language-ruby">def greet friend
   &quot;Hello #{friend}!&quot;
   1
