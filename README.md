@@ -1,7 +1,5 @@
 # Building Games with DragonRuby
 
-🚧 A work in progress! Expect typos, issues, and incompleteness. 🚧
-
 An open source book that walks you through how to build games with [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game).
 
 [Play the game you'll be building, right in the browser.](https://dragonridersunite.itch.io/dragonruby-book)
@@ -18,8 +16,8 @@ When the code is pushed to the `main` branch on GitHub, an action runs that depl
 
 ## Key Versions
 
-- DragonRuby Game Toolkit: v3.24
-- mdbook: v0.4.21
+- DragonRuby Game Toolkit: v3.24, v4.0
+- mdbook: v0.4.22
 
 ## Running Samples
 

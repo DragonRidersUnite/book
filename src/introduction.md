@@ -6,6 +6,14 @@ This book is aimed at new game developers who are interested in learning to code
 
 You need no prior experience with programming or game making to follow this book.
 
+Here are some kind things people have said about the book:
+
+> Reading _Building Games with DragonRuby_ book was a breath of fresh air to me.
+
+> This is nuts! Great work with the book.
+
+> Thanks for the book, I really enjoyed the writing style!
+
 ## Why Learn How to Make Games
 
 Making games is a total blast. It's challenging but rewarding. They're the sum total of many creative mediums, _plus_ they're interactive. You'll learn so many different skills by making games:
@@ -70,7 +78,7 @@ Start by making small games that you can finish in a couple of days. Make a lot 
 
 What's shipping? Isn't that when you want Mulder and Scully to kiss? No! Get your head out of the gutter you alien-loving freak. (I want to believe! 🛸) Shipping is when you 1. finish your game and 2. release it for people to play it.
 
-So here's your mindset, boiled down: make a small game and ship it for free, then make another small game and ship it for free. Before long, you'll be building a visual novel where Mulder and Scully kiss and be swimming in a pool of cryptocoins! But seriously, what that mindset will do is help you grow as a developer, build a fanbase, and get your shipping muscle primed and ready for making a better game each time.
+So here's your mindset, boiled down: make a small game and ship it for free, then make another small game and ship it for free. Before long, you'll be building a visual novel where Mulder and Scully kiss. Now, imagine yourself swimming in a pool of cryptocoins! But seriously, what that iterative mindset will do is help you grow as a developer, build a fanbase, and get your shipping muscle primed and ready for making a better game each time.
 
 ## What We'll Be Making
 
@@ -106,7 +114,7 @@ When I was 16, I took a computer science class in high school. It was my first e
 
 That class was foundational in the course my life would take in the 14 years since. At age 16 I was an emo kid who loved video games and anime. Imagine a swoopy haired teen in their bedroom listening to Bright Eyes while playing _Final Fantasy XII_. That was me.
 
-So naturally, for my final project in that high school computer science class I made a game. You pilot a Moltres from Pokemon who shots fire balls at Zaku mechs from Gundam that fly across the screen. If you get hit by an enemy, it's game over. If you defeat all of the enemies, you win. This game was lovingly titled _Zaku Space Battle_.
+So naturally, for my final project in that high school computer science class I made a game. You pilot a Moltres from Pokemon who shoots fireballs at Zaku mechs from Gundam that fly across the screen. If you get hit by an enemy, it's game over. If you defeat all of the enemies, you win. This game was lovingly titled _Zaku Space Battle_.
 
 ![screenshot of Zaku Space Battle showing the Moltres sprite, Zaku sprites, fire ball, and space background](./img/zaku-space-battle.jpg)
 
@@ -116,11 +124,11 @@ This book is freely accessible so that someone who loves games and wants to try 
 
 You'll learn the foundations of game programming and making games, as well as some more advanced topics. If this book can help even just one person start and finish a game, it's worth every minute I've spent on it. We'll make a game not too dissimilar from _Zaku Space Battle_. Once you finish it, take what you've learned and make it your own!
 
-If you want to, you can [buy me a coffee](https://buymeacoffee.com/brettchalupa) as a way of saying thank you. It's much appreciated.
+If you want to, you can [buy me a coffee](https://buymeacoffee.com/brettchalupa) or [subscribe to my newsletter](https://buttondown.email/brettchalupa) as a way of saying thank you. It's much appreciated.
 
 ## Contribute
 
-This book is open source. That means anyone can view the code that builds it and contribute toward making better. Did you find something that doesn't work, contains a typo, or lacks clarity? [Submit an issue or contribute on GitHub.](https://github.com/DragonRidersUnite/book) It's easy, and you can do it right from your browser. Thanks in advance!
+This book is open source. That means anyone can view the code that builds it and contribute toward making it better. Did you find something that doesn't work, contains a typo, or lacks clarity? [Submit an issue or contribute on GitHub.](https://github.com/DragonRidersUnite/book) It's easy, and you can do it right from your browser. Thanks in advance!
 
 If you're stuck and would like some extra assistance, reach out in [the DragonRuby Discord](https://discord.dragonruby.org). We'll get you unstuck!
 

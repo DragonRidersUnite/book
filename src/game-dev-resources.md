@@ -4,17 +4,20 @@ While this book covers the technical aspects of programming games with Ruby, the
 
 ## Tools
 
-Tools for making games that I recommend. Centered around on 2D games, like the book is.
+Recommended tools for making games.
 
 ### Audio
 
 - [jsfxr](https://sfxr.me/) — generate sound effects
+- [ChipTone](https://sfbgames.itch.io/chiptone) — another sound effect tool
 - [Audacity](https://www.audacityteam.org/) — audio editor
 - [1BitDragon](https://1bitdragon.com/) — intuitive music creation software
+- [LMMS](https://lmms.io/) — music creation tool
 
 ### Graphics
 
 - [Aseprite](https://www.aseprite.org/) — pixel art tool
+- [Piskel](https://www.piskelapp.com/) — free browser pixel tool
 - [Krita](https://krita.org/en/) — digital painting tool
 
 ## Assets
@@ -39,4 +42,5 @@ A selection of the best videos about making games:
 
 - ["Juice it or lose it" presentation](https://www.youtube.com/watch?v=Fy0aCDmgnxg) — how to polish games
 - ["The art of screenshake" presentation](https://www.youtube.com/watch?v=AJdEqssNZ-U) — step-by-step guide on making a game feel good to play
+- ["Game a Week: Teaching Students to Prototype" presentation](https://www.youtube.com/watch?v=9O9Q8OVWrFA&list=PLT0BvNof1jZKXdGj7pT8pxakQVFUPO9GA&index=6&t=9s) — two college instructors talk about their courses where students make a game a week
 
