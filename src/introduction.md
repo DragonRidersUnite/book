@@ -6,6 +6,14 @@ This book is aimed at new game developers who are interested in learning to code
 
 You need no prior experience with programming or game making to follow this book.
 
+Here are some kind things people have said about the book:
+
+> Reading _Building Games with DragonRuby_ book was a breath of fresh air to me.
+
+> This is nuts! Great work with the book.
+
+> Thanks for the book, I really enjoyed the writing style!
+
 ## Why Learn How to Make Games
 
 Making games is a total blast. It's challenging but rewarding. They're the sum total of many creative mediums, _plus_ they're interactive. You'll learn so many different skills by making games:
