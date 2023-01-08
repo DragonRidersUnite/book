@@ -171,7 +171,7 @@
 <p>We need to render our target sprites too, so include those in the array we push into <code>args.outputs.sprites</code>:</p>
 <pre><code class="language-ruby">  args.outputs.sprites &lt;&lt; [args.state.player, args.state.fireballs, args.state.targets]
 </code></pre>
-<p>Similar to how we represent the player and fireball sprites, the targets have an x and y coordinate for position, a width and height, and an image file to represent the sprite. We create three items in our <code>args.state.targets</code> array, which then displays three different targets.</p>
+<p>Similar to how we represent the player and fireball sprites, the targets have x and y coordinates for position, width and height for size, and an image file to represent the sprite. We create three items in our <code>args.state.targets</code> array, which then displays three different targets.</p>
 <p><img src="./img/c04-display-targets.jpg" alt="dragon sprite with three targets rendered to the right" /></p>
 <p>Try changing the <code>x</code> and <code>y</code> positions of our three targets. Weird. They don't change their position...</p>
 <p>If you quit your game and relaunch <code>dragonruby</code>, they will though. Why is that?</p>
@@ -215,8 +215,8 @@ def tick args
 <p>Then when we lazily assign <code>args.state.targets ||=</code>, we call the method three times, passing in the coordinates we want the target to spawn at.</p>
 <p><code>#spawn_target</code> is a simple method, but we'll begin to see how we can expand upon the methods we write to make our code easy to understand while it gets more complex.</p>
 <h2 id="collision-detection"><a class="header" href="#collision-detection">Collision Detection</a></h2>
-<p>The fireballs our dragon spits just fly behind our targets and off the screen into infinity. Let's make it so that if a fireball hits a target, <em>something</em> happens. Eventually we'll want to play a sound, remove the target, and even play an animation. But humble beginnings, humble beginnings.</p>
-<p>Collision detection is when one object overlaps with another object in our game. Because we're manufacturing the space the game exists in, there's no physics like we have in real life. We need to simulate that by checking to see if two objects are attempting to exist in the same point and react accordingly.</p>
+<p>The fireballs our dragon spits just fly behind our targets and off the screen into infinity. Let's make it so that if a fireball hits a target, <em>something</em> happens. Eventually, we'll want to play a sound, remove the target, and even play an animation. But humble beginnings, humble beginnings.</p>
+<p>Collision detection is when one object overlaps with another object in our game. Because we're manufacturing the space the game exists in, there's no physics like we have in real life. We need to simulate that by checking to see if two objects are attempting to exist at the same point and react accordingly.</p>
 <p>Our fireball sprite is a 32x32 square, so we want to check in every single game loop whether or not the points of the fireball's square overlapping with any of the points of the target sprites. If they are overlapping, then we do that <em>something</em>.</p>
 <p><img src="./img/c04-rect-overlap.png" alt="diagram showing two rectangles overlapping and not overlapping" /></p>
 <p>We could employ trigonometry to determine if a given point in one shape overlaps with another, but DragonRuby gives us a helpful method to handle this for us: <code>args.geometry.intersect_rect? rect_1, rect_2</code></p>
@@ -237,8 +237,8 @@ def tick args
     end
   end
 </code></pre>
-<p>Play the game and hit the some targets. Nothing visually happens (yet), but if you check the console (<kbd>~</kbd>), you'll see that <code>&quot;fireball hit target&quot;</code> was output multiple times.</p>
-<p>With a loop and a method we've implemented collision detection. That wasn't too bad, was it?</p>
+<p>Play the game and hit some targets. Nothing visually happens (yet), but if you check the console (<kbd>~</kbd>), you'll see that <code>&quot;fireball hit target&quot;</code> was output multiple times.</p>
+<p>With a loop and a method, we've implemented collision detection. That wasn't too bad, was it?</p>
 <h2 id="remove-targets-on-collision"><a class="header" href="#remove-targets-on-collision">Remove Targets On Collision</a></h2>
 <p>But... It's not very helpful to output a message to the console when a target is hit. Let's instead remove the target so that it is no longer displayed. We'll need to remove the hit target from the array of targets so that it's no longer checked against.</p>
 <p>We'll go about this in the following way:</p>
@@ -267,10 +267,10 @@ nums # =&gt; [3, 5]
   args.state.targets.reject! { |t| t.dead }
   args.state.fireballs.reject! { |f| f.dead }
 </code></pre>
-<p>Since the target and fireball that collided are no longer being tracked in <code>args.state</code>, they don't get rendered on the screen and are, for all intents and purposes, gone! We then <code>#reject!</code> each fireball and target that are <code>dead</code>.</p>
+<p>Since the target and fireball that collided are no longer being tracked in <code>args.state</code>, they don't get rendered on the screen and are, for all intents and purposes, gone! We then <code>#reject!</code> each fireball and target that is <code>dead</code>.</p>
 <p>This almost feels like a game. That's a great feeling. We're getting close to <em>fun</em>.</p>
 <h2 id="spawn-new-targets"><a class="header" href="#spawn-new-targets">Spawn New Targets</a></h2>
-<p>Shooting three targets and having them disappear doesn't make for much fun though. After the three targets are hit, it's just your dragon floating in the sky with not much else to do. We're back to chapter 3! Ugh, chapter 3 was so boring! I can't believe we ever even made anything that boring before. (But remember how cool it was when we got the fireballs working? That was cool! It's funny how games evolve and what it used to be seems so basic compared to where we're at now.)</p>
+<p>Shooting three targets and having them disappear doesn't make for much fun though. After the three targets are hit, it's just your dragon floating in the sky with not much else to do. We're back to chapter 3! Ugh, chapter 3 was so boring! I can't believe we ever even made anything that boring before. (But remember how cool it was when we got the fireballs working? That was cool! It's funny how a game evolves and what it used to be, seems so basic compared to where we're at now.)</p>
 <p>Remember back in the day, way back when, like a few sections ago, when we introduced <code>#spawn_target</code>? It was helpful then, but now it's going to be even more helpful. We'll call it every time we destroy a target so that a new one spawns. We'll be able to play <em>Target Practice</em> forever!</p>
 <p>But calling <code>#spawn_target</code> with the same x and y over and over isn't a lot of fun. So let's make a few related changes where we'll do the following:</p>
 <ol>
@@ -293,10 +293,10 @@ end
 <p><code>#spawn_target</code> looks a little different now. We no longer pass in the coordinates as arguments because we'll randomly generate the position. We instead pass in <code>args</code> from DragonRuby's <code>#tick</code> so that we can get the width and height of the screen to use to determine boundaries.</p>
 <p>We create a <code>size</code> variable to store the width and height of the sprite to use in our formulas for spawning the target. We don't want to have to type 64 over and over because it loses its meaning and gets difficult to change.</p>
 <p>Then we apply some math. Don't let math scare you away from programming! We'll keep it simple and the toolbox you need is relatively small. Plus, the math will help make our game even better. Games make math fun.</p>
-<p><code>rand</code> is a method that we get from DragonRuby that's available everywhere. <code>rand</code> without any parameter generates a random real number between 0 and 1. That's not really useful for us right now, so we can instead pass in a parameter that sets the upper boundary of the random number. <code>rand(100)</code> generates a random integer between 0 up to 100 (not including 100).</p>
+<p><code>rand</code> is a method that we get from DragonRuby that's available everywhere. <code>rand</code> without any parameter generates a random real number between 0 and 1. That's not really useful for us right now, so we can instead pass in a parameter that sets the upper boundary of the random number. <code>rand(100)</code> generates a random integer from 0 up to 100 (not including 100).</p>
 <p>So for the x position of the target, we generate a random number that's up to two-fifths the width of the game screen and then we add three-fifths of the width to that number so that the targets spawn on the far right side of the screen. We don't want to spawn targets too close to the player, otherwise our game will be too easy.</p>
 <p>For the y position, we generate a random y position based on the height of the game, but we subtract twice the size of the target sprite and then add one of its sizes back to the random number to give the spawn area a gutter. This prevents the target from spawning partially off the screen, which would make it impossible to hit.</p>
-<h3 id="change-initial-three-targets"><a class="header" href="#change-initial-three-targets">Change initial three targets</a></h3>
+<h3 id="change-the-initial-three-targets"><a class="header" href="#change-the-initial-three-targets">Change the initial three targets</a></h3>
 <pre><code class="language-ruby">  args.state.targets ||= [
     spawn_target(args), spawn_target(args), spawn_target(args)
   ]
