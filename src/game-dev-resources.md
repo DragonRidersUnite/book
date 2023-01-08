@@ -17,8 +17,10 @@ Recommended tools for making games.
 ### Graphics
 
 - [Aseprite](https://www.aseprite.org/) — pixel art tool
-- [Piskel](https://www.piskelapp.com/) — free browser pixel tool
+- [GIMP](https://www.gimp.org/) — open source image editor
+- [Inkscape](https://inkscape.org/) — open source vector editor
 - [Krita](https://krita.org/en/) — digital painting tool
+- [Piskel](https://www.piskelapp.com/) — free browser pixel tool
 
 ## Assets
 
