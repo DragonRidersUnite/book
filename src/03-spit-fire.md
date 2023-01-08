@@ -58,7 +58,7 @@ Then where we check for the action input, push a fireball into the `arg.state.fi
 
 All we have to do is render our fireballs by pushing them into the `args.outputs.labels` collection. DragonRuby is smart enough to know that if we push an array into any `args.outputs` collection it'll flatten it and display them correctly. Thanks, DragonRuby!
 
-We use arrays to represent various data in our game like labels and sprites, but we can create our own arrays to keep track of the data in our game. Arrays are a great way to collect data that we then use throughout our game. In this case, we're maintaining a collection of fireballs.
+We've been using arrays to represent the fields for different data in our game like labels and sprites, but arrays have other uses too. Arrays are a great way to keep track of information we need in a list. The array we've created in the code above tracks our fireballs.
 
 Play your game and see what happens! Fireballs everywhere. Wait! You're not impressed by those fireballs? I'd be pretty frightened if the word "fireball" was flying at me.
 
