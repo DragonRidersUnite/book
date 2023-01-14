@@ -22,7 +22,7 @@ Say thanks in [the DragonRuby Discord](https://discord.dragonruby.org) or on [Ma
 
 If you really want to show your appreciation, [buy me a coffee](https://www.buymeacoffee.com/brettchalupa) by sending me a small tip. Financial support means the world and helps me continue to make free resources like _Building Games with DragonRuby_.
 
-Want to know when I finish a new book, game, or creative project? [Subscribe to my mailing list.](https://buttondown.email/brettchalupa) I only send out updates when I finish a proiject or have something significant to share.
+Want to know when I finish a new book, game, or creative project? [Subscribe to my mailing list.](https://buttondown.email/brettchalupa) I only send out occasional updates about my projects.
 
 ## Want More?
 
