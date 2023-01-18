@@ -1,10 +1,10 @@
 # Scenes
 
-When making a game, there are all sorts of scenes that exist, from the main menu to the actual gameplay to the pause menu. Often these scenes have different interactions than the main game. Instead of moving your character around the world you instead move a cursor up and down menu options. In this chapter we'll refactor our main gameplay and game over state to be a bit easier to work with and then introduce a title scene that's used to start the game.
+When making a game, there are all sorts of scenes that exist, from the main menu to the actual gameplay to the pause menu. Often these scenes have different interactions than the main game. Instead of moving your character around the world you instead move a cursor up and down menu options. In this chapter, we'll refactor our main gameplay and game over state to be a bit easier to work with and then introduce a title scene that's used to start the game.
 
 The concept of a "scene" isn't specific to DragonRuby Game Toolkit or any given game engine. It's just a generic concept that we're introducing to make our game code easier to work with. Much like a movie scene, it's clear when one ends and when one begins.
 
-When we introduced the game over functionality, we actually introduced a scene separate from gameplay. Kinda neat! But it wasn't the time to think about them in terms of scenes and reckon with how we add more.
+When we introduced the game over functionality, we introduced a scene separate from gameplay. Kinda neat! But it wasn't the time to think about them in terms of scenes and reckon with how we add more.
 
 ## Refactor
 
@@ -28,7 +28,7 @@ Not much of the code changes, but we do shuffle things around a bit. None of the
 args.state.timer -= 1
 ```
 
-We need to continue to subtract from the timer in each tick since we rely upon it for when we accept input to restart the game.
+We need to continue to subtract from the timer in each tick since we rely upon it when we accept input to restart the game.
 
 We introduce `#gameplay_tick` which contains all of our logic for when we're actually playing the game. We set the background to the blue solid rectangle and initialize our player and animate the sprite. That's all the same.
 
@@ -66,9 +66,9 @@ Then in `#tick` lazily initialize `args.state.scene` to now be `"title"`:
 
 Now when you start the game, the title scene will be displayed:
 
-![black text on gray background that reads 'Target Practice' with instructions on how to play](./img/c11-title.jpg)
+![black text on a gray background that reads 'Target Practice' with instructions on how to play](./img/c11-title.jpg)
 
-When you press the fire button, the game will start. And when you restart after game over, you'll end up back on the title scene.
+When you press the fire button, the game will start. And when you restart after the game is over, you'll end up back on the title scene.
 
 ## Extra Credit
 
@@ -84,4 +84,4 @@ We've now got three scenes in our game and can easily switch between them. The c
 
 ## What's Next
 
-For all intents and purposes our game is done! You can start it, play it, and replay it. All that's left to do is release it so that the world (or at the very least our friends) can play it.
+For all intents and purposes, our game is done! You can start it, play it, and replay it. All that's left to do is release it so that the world (or at the very least our friends) can play it.
