@@ -2,15 +2,15 @@
 
 So far you've been playing the debug development build of your game within the DragonRuby GTK engine. In order to get it to friends, we'll need to build versions for other players to use. We'll use the `dragonruby-publish` tool that comes with the engine to do so.
 
-Releasing your game is a process that has only gotten easier and easier over time. One of the coolest things about DragonRuby GTK is that you can build your game for the web, Linux, Windows, and MacOS with one command.
+Releasing your game is a process that has only gotten easier and easier over time. One of the coolest things about DragonRuby GTK is that you can build your game for the web, Linux, Windows, and macOS with one command.
 
-We'll release _Target Practice_ on [itch.io](https://itch.io/), an open marketplace for distributing your game. You can share your games for free on Itch or sell them. The html version will even be able to be played in the browser. So go ahead and sign up for an Itch account.
+We'll release _Target Practice_ on [itch.io](https://itch.io/), an open marketplace for distributing your game. You can share your games for free on Itch or sell them. The HTML version will even be able to be played in the browser. So go ahead and sign up for an Itch account.
 
 ## Prep for Release
 
 While the code of our game is done ([view the finished source](https://github.com/DragonRidersUnite/book/tree/main/src/code/chapter_12/01_release)), we need to specify some info about the game, like its title and our information.
 
-First, delete `mygame/high-score.txt`. We don't want our high-score from building the game to get released with the game version we share publicly. You'll need to make sure you do this every time before building your game. How could you turn the build and publishing process into a script that automatically does this for you?
+First, delete `mygame/high-score.txt`. We don't want our high score from building the game to get released with the game version we share publicly. You'll need to make sure you do this every time before building your game. How could you turn the build and publishing process into a script that automatically does this for you?
 
 In `mygame/metadata/` you find a file called `game_metadata.txt`. Open that up and specify the following values:
 
@@ -25,7 +25,7 @@ How you version your game is up to you, but I generally think about it like this
 - The structure is `MAJOR.MINOR`.
 - While your game is actively being developed and isn't done, increase the minor number to the right of the `.` with each release, so `0.1`, `0.2`, and so on. Minor versions can go as high as you want, `0.24` or however many releases you have.
 - When your game is done, increase the major version on the left of the `.` to 1, so it'd be version `1.0`. When you increase the major version of a piece of software, you reset the minor version back to 0.
-- As you fix bugs and expand upon it after initial release, increase the number to the right, so `1.1`, `1.2`, and so on.
+- As you fix bugs and expand upon it after the initial release, increase the number to the right, so `1.1`, `1.2`, and so on.
 - If you ever majorly overhaul your game, you might want to consider bumping the major version to `2.0`.
 
 If your eyes are glazing over at this versioning stuff, don't sweat it. It's something that may be more useful to you in time.
@@ -44,7 +44,7 @@ Open a new terminal. If you're using Visual Studio Code, there's an option to do
 
 That command will build your game for all platforms DragonRuby GTK can target. Check out the `builds/` folder. You'll see all sorts of files that are your game builds.
 
-Depending on what operating system your computer is using, you can even launch and play the release version of your game. On Linux, open `target-practice-linux-amd64.bin`. On MacOS, open `target-practice-mac-0.1/Target Practice.app`. On Windows, launch `target-practice-windows-amd64.exe`.
+Depending on what operating system your computer is using, you can even launch and play the released version of your game. On Linux, open `target-practice-linux-amd64.bin`. On macOS, open `target-practice-mac-0.1/Target Practice.app`. On Windows, launch `target-practice-windows-amd64.exe`.
 
 ## Upload to Itch
 
