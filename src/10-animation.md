@@ -6,7 +6,7 @@ Have you ever made a flip animation in the bottom corner of a notebook? You make
 
 ## Animating Our Dragon
 
-In the `mygame/sprites/misc/` folder, there are more dragon images than just `dragon-0.png`. There are 5 additional frames of the dragon flapping their wings. Perfect! That's just what we need.
+In the `mygame/sprites/misc/` folder, there are more dragon images than just `dragon-0.png`. There are 5 additional frames of the dragon flapping its wings. Perfect! That's just what we need.
 
 The core of how this will work is that each dragon frame will be displayed for some period of time and then we'll switch to the next frame after that time has passed.
 
@@ -19,11 +19,11 @@ Where we lazily set `args.state.player`, we no longer specify the `path` to the 
 
 `#frame_index` is a method DragonRuby GTK gives us on integers to keep track of what frame to use when animating. `0` is when we want to start the animation, which we want to start at the beginning of our game. We have 6 frames in our animation, and we want to display each of them for 8 ticks, repeating forever! Change the `hold_for` value and see how it affects the animation speed and feel of the game. Pick a rate that feels good for you or just stick with 8.
 
-Then we take the `player_sprite_index` and use that when specifying the `path` of our player sprite by interpolating it into the path to our sprite. Our dragon frames are named `dragon-0.png`, `dragon-1.png`, and so on. So we take what `#frame_index` gives us and inject it into the path to the image to make that value dynamic. Remember string interpolation from Chapter 1? It comes into play all the time when coding.
+Then we take the `player_sprite_index` and use that when specifying the `path` of our player sprite by interpolating it into the path to our sprite. Our dragon frames are named `dragon-0.png`, `dragon-1.png`, and so on. So we take what `#frame_index` gives us and inject it into the path to the image, making that value dynamic. Remember string interpolation from Chapter 1? It comes into play all the time when coding.
 
 ## A Note on Spritesheets
 
-If you've done any game development before, you may be familiar with spritesheets, where each frame of an animation is contained within one image file. When using a spritesheet for animation, instead of changing which image file path is used for the sprite to render, you change which piece of the large spritesheet you render. [The DragonRuby GTK docs have a detailed example on how to do this.](https://bit.ly/drgtk-spritesheet)
+If you've done any game development before, you may be familiar with spritesheets, where each frame of an animation is contained within one image file. When using a spritesheet for animation, instead of changing which image file path is used for the sprite to render, you change which piece of the large spritesheet you render. [The DragonRuby GTK docs have a detailed example of how to do this.](https://bit.ly/drgtk-spritesheet)
 
 ## Extra Credit
 
