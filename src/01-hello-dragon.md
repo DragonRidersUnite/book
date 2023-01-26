@@ -10,7 +10,7 @@ We'll start by rendering an image and some simple text on the screen. But first,
 
 You're ready to work on your game. Let's get to it!
 
-**ProTip:** don't delete the zip file! You can unzip it again when the times comes to start working on your next game. It's helpful to keep it around.
+**ProTip:** don't delete the zip file! You can unzip it again when the time comes to start working on your next game. It's helpful to keep it around.
 
 ## What's in the Engine Zip
 
@@ -51,7 +51,7 @@ This isn't a game... yet! But it is doing three key things:
 
 And you haven't even written any code yet. Not a bad starting place.
 
-DRGTK handles the boring stuff when it comes to making games—dealing with low-level APIs like graphics, sound, and the game window. We can instead focus on creating our game instead of, for example, figuring out how to save data in a way that's compartible with Linux, Mac, Windows, Android, iOS, and web.
+DRGTK handles the boring stuff when it comes to making games—dealing with low-level APIs like graphics, sound, and the game window. We can instead focus on creating our game instead of, for example, figuring out how to save data in a way that's compatible with Linux, Mac, Windows, Android, iOS, and the web.
 
 ## An Overview of the Main Game File
 
@@ -171,7 +171,7 @@ Let's take a detour down Screen Coordinates Road. The `x` and `y` values are coo
 
 DRGTK games are made up of a window that's 1280x720 pixels in size. That's 1280 pixels wide and 720 pixels tall. The rectangle of the game screen contains 921600 pixels, that's those two numbers multiplied. Each of those pixels has a coordinate on the plane. It makes it easy to refer to a specific pixel by using its `x` and `y` position.
 
-DRGTK starts 0, 0 in the lower left. So 1280, 720 would be the upper right. **Note:** this varies from most game engines, libraries, and tools, but it's intentional to make it easier to think about gravity and follows the geometric 2D plane that is taught in mathematics.
+DRGTK starts 0, 0 in the lower left. So 1280, 720 would be the upper right. **Note:** This varies from most game engines, libraries, and tools, but it's intentional to make it easier to think about gravity and follows the geometric 2D plane that is taught in mathematics.
 
 It's important to keep coordinates in mind, as we'll be using them a lot when making our game. A major aspect of games is moving things around on the screen, which we do by changing their coordinates.
 
@@ -215,7 +215,7 @@ The new code refactors (changes the implementation of the code without changing 
 
 The `"Hello #{friend}!"` code does what's called string interpolation. It takes whatever `friend` is, hopefully a name as a string, and inserts it. It's pretty similar to this code: `"Hello " + friend + "!"`, but quite a bit friendlier to use. The `#{}` tells Ruby to run any Ruby code within those curly braces.
 
-Methods in Ruby return a value. Return values can then be used by the caller for whatever purposes are needed. In the example above, the return value is the string we built. Ruby returns the vaue of the last line of the method definition automatically. But you can explicitly return early with `return`, which can be useful if you want to end the execution of a method early.
+Methods in Ruby return a value. Return values can then be used by the caller for whatever purposes are needed. In the example above, the return value is the string we built. Ruby returns the value of the last line of the method definition automatically. But you can explicitly return early with `return`, which can be useful if you want to end the execution of a method early.
 
 Go ahead and change the `greet` method to:
 
