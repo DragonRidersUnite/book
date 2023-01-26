@@ -158,7 +158,7 @@ end
 <li><code>args.state</code></li>
 <li><code>||=</code></li>
 </ul>
-<p>Let's start with <code>args.state</code>. It's basically a blob that can be anything you want it to be, a bit like Kirby. Feed it <code>player_x</code> and it keeps track of it. Whatever you feed the <code>args.state</code>, it'll be accessible in future ticks. Keeping track of game state across ticks is important! It's part of the game loop. If we don't know where the player last was, how can we calculate where they should move to? We need to keep track of it in someplace. <code>args.state</code> is a fine place to start.</p>
+<p>Let's start with <code>args.state</code>. It's basically a blob that can be anything you want it to be, a bit like Kirby. Feed it <code>player_x</code> and it keeps track of it. Whatever you feed the <code>args.state</code>, it'll be accessible in future ticks. Keeping track of the game state across ticks is important! It's part of the game loop. If we don't know where the player last was, how can we calculate where they should move to? We need to keep track of it in someplace. <code>args.state</code> is a fine place to start.</p>
 <p>You can define anything on <code>args.state</code>, so it's up to you to use useful names. You could make <code>args.state.bleh</code> and set it to your favorite color, <code>args.state.bleh = &quot;blue&quot;</code> or your age, <code>args.state.age = 30</code>. Much like Kirby, <code>args.state</code> doesn't care what you feed it. It's just hungry for your data.</p>
 <p>In this case, we're feeding it <code>||= 120</code>. What the heck is <code>||=</code>? Well... Maybe we need to start with <code>=</code>. You might read that as &quot;equals&quot; but it's actually the assignment operator. It means: set the thing on the left to the value on the right. It's a core programming concept. It's useful for assigning data to properties that we want to keep track of.</p>
 <pre><code class="language-ruby">name = &quot;Francis&quot;
@@ -170,7 +170,7 @@ end
 <p>That calls the <code>puts</code> method and passes our variable <code>name</code> to it as a parameter. It prints whatever the value is out to the console. If you put that in your <code>tick</code> method and press <kbd>~</kbd> to open the console, you'll see it print <code>&quot;Francis&quot;</code> a bunch.</p>
 <p><code>||=</code> in English is &quot;or equals&quot;. That code above, <code>args.state.player_x ||= 120</code> would be read as: assign the property <code>player_x</code> on <code>args.state</code> the numeric value of 120 unless it's already assigned a value.</p>
 <p>Remember how tick is running once every 60 seconds? We don't want to always set <code>args.state.player_x</code> to <code>120</code>. We just want to set it to that initially and then we'll update that value when we press keys on our keyboard or buttons on our gamepad. We haven't done that yet, but that's what's next.</p>
-<p>Wow! That was a lot of explanation for two measly lines of code. But I'm telling ya', they're two really important lines of code when it comes to game programming.</p>
+<p>Wow! That was a lot of explanation for two measly lines of code. But I'm telling ya, they're two really important lines of code when it comes to game programming.</p>
 <p>Then, finally, we change the <code>x</code> and <code>y</code> value for the dragon sprite to be the value stored in <code>args.state</code> so that we can actually make use of that value instead of our hard-coded position before.</p>
 <h2 id="checking-for-input"><a class="header" href="#checking-for-input">Checking for Input</a></h2>
 <p>In <code>#tick</code> (<code>#name</code> is Ruby shorthand for &quot;the <code>name</code> method&quot;) we'll check to see if a given input is pressed. If it is, we'll change the sprite's x and y position accordingly.</p>
@@ -202,7 +202,7 @@ elsif args.inputs.right
   args.state.player_x += 10
 end
 </code></pre>
-<p>This section checks for horizontal movement. If the left input is pressed, reduce the player's x position by 10 pixels. <code>-=</code> means, subtract the value on the right from the value on the left. It's the same as <code>args.state.player_x = args.state.player_x - 10</code>, but it's much more concise. We increase <code>player_x</code> to move right, decrease it to move left.</p>
+<p>This section checks for horizontal movement. If the left input is pressed, reduce the player's x position by 10 pixels. <code>-=</code> means, subtract the value on the right from the value on the left. It's the same as <code>args.state.player_x = args.state.player_x - 10</code>, but it's much more concise. We increase <code>player_x</code> to move right and decrease it to move left.</p>
 <p><code>if</code> and <code>elsif</code> are conditional checks. The code only runs if the value is true (more specifically, truthy, but let's not worry about that yet).</p>
 <pre><code class="language-ruby">if args.inputs.up
   args.state.player_y += 10
@@ -210,7 +210,7 @@ elsif args.inputs.down
   args.state.player_y -= 10
 end
 </code></pre>
-<p>Then we check for vertical movement. We add to <code>player_y</code> to move up, decrease it to move down.</p>
+<p>Then we check for vertical movement. We add to <code>player_y</code> to move up and decrease it to move down.</p>
 <p>What if we wanted our dragon to move faster though? We could change those four instances of <code>10</code> to be <code>12</code> and see how that feels, sure. But that's annoying to update it all over. Let's make use of a variable! We'll call it <code>speed</code>:</p>
 <pre><code class="language-ruby">def tick args
   args.state.player_x ||= 120
@@ -275,7 +275,7 @@ end
 </code></pre>
 <p>Our dragon won't leave the screen. Woot woot! We've got some serious code here! Look at that logic. Here's what changed:</p>
 <p>We moved the width and height of the player into variables so that they're easier to reference and reuse. Boom. We need those to do some math on the boundaries too. There's a general programming idea out there known as Don't Repeat Yourself (DRY). As soon as you have a piece of code, especially a number, that represents a value and is used multiple times, put it in a variable. This makes its intent clear as to what it represents and makes it easier to change. Win-win.</p>
-<p>Here's the good stuff. We check the boundary for the x axis:</p>
+<p>Here's the good stuff. We check the boundary for the x-axis:</p>
 <pre><code class="language-ruby">  if args.state.player_x +  player_w &gt; args.grid.w
     args.state.player_x = args.grid.w - player_w
   end
@@ -285,17 +285,17 @@ end
   end
 </code></pre>
 <p>We check the right side of the screen: if the current player's x position plus their width is greater than <code>args.grid.w</code>, then we set the x position to the width of the screen (<code>args.grid.w</code>) minus the width of the sprite. For example, if we move the sprite so it has the x position of 1284, 4 pixels past the right edge of the screen, we override that change and set it to 1280 minus the player's width.</p>
-<p>It's so important that this happens after checking for input. You don't want to change <code>args.state.player_x</code> after this check, otherwise the boundary won't be enforced. Order matters with the code we write within <code>tick</code>.</p>
+<p>It's so important that this happens after checking for input. You don't want to change <code>args.state.player_x</code> after this check, otherwise, the boundary won't be enforced. Order matters with the code we write within <code>tick</code>.</p>
 <p><code>args.grid.w</code> is the width of the screen. It's always 1280, but we don't want to have that magic number in our code. So we use <code>args.grid.w</code>.</p>
-<p>Next we check the left side of the screen: if the player's x is less than 0, then we set it to zero. That's a bit similar to the right side, just simpler.</p>
+<p>Next, we check the left side of the screen: if the player's x is less than 0, then we set it to zero. That's a bit similar to the right side, just simpler.</p>
 <p>Then we do the same thing for the top and bottom of the screen by checking the y position.</p>
 <h2 id="extra-credit"><a class="header" href="#extra-credit">Extra Credit</a></h2>
 <ul>
-<li>When you move the dragon horizontally and vertically at the same time, the dragon moves twice as fast. How could you make it so the dragon moves at a uniform speed still when that happens?</li>
-<li>Ruby has a method which ensures that a numeric value is between some bounds, find it and replace our bounds checking code with it.</li>
+<li>When you move the dragon horizontally and vertically at the same time, the dragon moves twice as fast. How could you make it so the dragon still moves at a uniform speed when that happens?</li>
+<li>Ruby has a method which ensures that a numeric value is between some bounds, find it and replace our bounds-checking code with it.</li>
 </ul>
 <h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
-<p>In the next chapter we'll make our dragon spit fireballs when we press a key or button. Watch out!</p>
+<p>In the next chapter, we'll make our dragon spit fireballs when we press a key or button. Watch out!</p>
 
                     </main>
 

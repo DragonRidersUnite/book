@@ -139,7 +139,7 @@
                     <main>
                         <h1 id="time-attack"><a class="header" href="#time-attack">Time Attack</a></h1>
 <p>We've <em>almost</em> got a game. But we need some way for the game to end. A lot of game loops end with the player's character dying, where they respawn or start over again. Other game loops end when the player reaches the end of a level.</p>
-<p>For our simple game, let's add a 30 second timer that counts down. The objective of our game will be to see how many targets the player can hit in that time window. Let's call our game <strong>Target Practice</strong>. Every dragon needs some practice before they head out into battle, right?</p>
+<p>For our simple game, let's add a 30-second timer that counts down. The objective of our game will be to see how many targets the player can hit in that time window. Let's call our game <strong>Target Practice</strong>. Every dragon needs some practice before they head out into battle, right?</p>
 <p>Adding a timer to our game introduces a few new concepts we'll build out in this chapter:</p>
 <ol>
 <li>Keeping track of time and displaying it</li>
@@ -211,7 +211,7 @@
   args.outputs.labels &lt;&lt; labels
 </code></pre>
 <p>We use the same pattern of creating a <code>labels</code> array, pushing in the player's score and the time, in ticks, remaining. In order to display the time remaining as seconds, we divide it by 60 and round. We do the opposite of what we did when we set the total time in ticks.</p>
-<p>The <code>alignment_enum</code> lets us specify that we want the text to be right-aligned instead of the default left alignment. This let's us nicely position our timer in the upper right corner of the game.</p>
+<p>The <code>alignment_enum</code> lets us specify that we want the text to be right-aligned instead of the default left alignment. This lets us nicely position our timer in the upper right corner of the game.</p>
 <p><img src="./img/c06-timer.jpg" alt="gameplay with Time Left reading 10 seconds" /></p>
 <p>We've got ourselves a game that we can start, finish, and replay. Isn't that pretty awesome?</p>
 <h2 id="restart-grace-period"><a class="header" href="#restart-grace-period">Restart Grace Period</a></h2>
