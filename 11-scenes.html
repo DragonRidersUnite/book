@@ -138,9 +138,9 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="scenes"><a class="header" href="#scenes">Scenes</a></h1>
-<p>When making a game, there are all sorts of scenes that exist, from the main menu to the actual gameplay to the pause menu. Often these scenes have different interactions than the main game. Instead of moving your character around the world you instead move a cursor up and down menu options. In this chapter we'll refactor our main gameplay and game over state to be a bit easier to work with and then introduce a title scene that's used to start the game.</p>
+<p>When making a game, there are all sorts of scenes that exist, from the main menu to the actual gameplay to the pause menu. Often these scenes have different interactions than the main game. Instead of moving your character around the world you instead move a cursor up and down menu options. In this chapter, we'll refactor our main gameplay and game over state to be a bit easier to work with and then introduce a title scene that's used to start the game.</p>
 <p>The concept of a &quot;scene&quot; isn't specific to DragonRuby Game Toolkit or any given game engine. It's just a generic concept that we're introducing to make our game code easier to work with. Much like a movie scene, it's clear when one ends and when one begins.</p>
-<p>When we introduced the game over functionality, we actually introduced a scene separate from gameplay. Kinda neat! But it wasn't the time to think about them in terms of scenes and reckon with how we add more.</p>
+<p>When we introduced the game over functionality, we introduced a scene separate from gameplay. Kinda neat! But it wasn't the time to think about them in terms of scenes and reckon with how we add more.</p>
 <h2 id="refactor"><a class="header" href="#refactor">Refactor</a></h2>
 <p>So we've got two scenes right now: gameplay (where we shoot at targets) and game over (where we display the score and allow the player to restart). Let's refactor the code to put our scenes in different methods and allow the game to switch between them given certain conditions being met.</p>
 <p>Containing our scenes in methods will make it much easier to change one scene without impacting the others. It sets clear boundaries and will make our code easier to maintain.</p>
@@ -306,7 +306,7 @@ end
 <p><code>#game_over_tick</code> is the same except for the addition of:</p>
 <pre><code class="language-ruby">args.state.timer -= 1
 </code></pre>
-<p>We need to continue to subtract from the timer in each tick since we rely upon it for when we accept input to restart the game.</p>
+<p>We need to continue to subtract from the timer in each tick since we rely upon it when we accept input to restart the game.</p>
 <p>We introduce <code>#gameplay_tick</code> which contains all of our logic for when we're actually playing the game. We set the background to the blue solid rectangle and initialize our player and animate the sprite. That's all the same.</p>
 <p>But when the timer is <code>0</code>, after we pause the music and play the game over sound, we set <code>args.state.scene</code> to <code>&quot;game_over&quot;</code> and return early. This effectively changes the scene.</p>
 <p>We continue to handle input and display the gameplay sprites and labels in <code>#gameplay_tick</code>.</p>
@@ -372,8 +372,8 @@ end
 end
 </code></pre>
 <p>Now when you start the game, the title scene will be displayed:</p>
-<p><img src="./img/c11-title.jpg" alt="black text on gray background that reads 'Target Practice' with instructions on how to play" /></p>
-<p>When you press the fire button, the game will start. And when you restart after game over, you'll end up back on the title scene.</p>
+<p><img src="./img/c11-title.jpg" alt="black text on a gray background that reads 'Target Practice' with instructions on how to play" /></p>
+<p>When you press the fire button, the game will start. And when you restart after the game is over, you'll end up back on the title scene.</p>
 <h2 id="extra-credit"><a class="header" href="#extra-credit">Extra Credit</a></h2>
 <ul>
 <li>Display a label with the current high score in the title scene so players know what to aim for.</li>
@@ -385,7 +385,7 @@ end
 <h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
 <p>We've now got three scenes in our game and can easily switch between them. The code for each scene is contained within its own method, making it easier to change a given scene without accidentally changing the others. Adding another scene to our game, like a pause menu, wouldn't be very complicated.</p>
 <h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
-<p>For all intents and purposes our game is done! You can start it, play it, and replay it. All that's left to do is release it so that the world (or at the very least our friends) can play it.</p>
+<p>For all intents and purposes, our game is done! You can start it, play it, and replay it. All that's left to do is release it so that the world (or at the very least our friends) can play it.</p>
 
                     </main>
 
