@@ -29,7 +29,7 @@ There are a couple of new things here:
 - `args.state`
 - `||=`
 
-Let's start with `args.state`. It's basically a blob that can be anything you want it to be, a bit like Kirby. Feed it `player_x` and it keeps track of it. Whatever you feed the `args.state`, it'll be accessible in future ticks. Keeping track of game state across ticks is important! It's part of the game loop. If we don't know where the player last was, how can we calculate where they should move to? We need to keep track of it in someplace. `args.state` is a fine place to start.
+Let's start with `args.state`. It's basically a blob that can be anything you want it to be, a bit like Kirby. Feed it `player_x` and it keeps track of it. Whatever you feed the `args.state`, it'll be accessible in future ticks. Keeping track of the game state across ticks is important! It's part of the game loop. If we don't know where the player last was, how can we calculate where they should move to? We need to keep track of it in someplace. `args.state` is a fine place to start.
 
 You can define anything on `args.state`, so it's up to you to use useful names. You could make `args.state.bleh` and set it to your favorite color, `args.state.bleh = "blue"` or your age, `args.state.age = 30`. Much like Kirby, `args.state` doesn't care what you feed it. It's just hungry for your data.
 
@@ -53,7 +53,7 @@ That calls the `puts` method and passes our variable `name` to it as a parameter
 
 Remember how tick is running once every 60 seconds? We don't want to always set `args.state.player_x` to `120`. We just want to set it to that initially and then we'll update that value when we press keys on our keyboard or buttons on our gamepad. We haven't done that yet, but that's what's next.
 
-Wow! That was a lot of explanation for two measly lines of code. But I'm telling ya', they're two really important lines of code when it comes to game programming.
+Wow! That was a lot of explanation for two measly lines of code. But I'm telling ya, they're two really important lines of code when it comes to game programming.
 
 Then, finally, we change the `x` and `y` value for the dragon sprite to be the value stored in `args.state` so that we can actually make use of that value instead of our hard-coded position before.
 
@@ -96,7 +96,7 @@ elsif args.inputs.right
 end
 ```
 
-This section checks for horizontal movement. If the left input is pressed, reduce the player's x position by 10 pixels. `-=` means, subtract the value on the right from the value on the left. It's the same as `args.state.player_x = args.state.player_x - 10`, but it's much more concise. We increase `player_x` to move right, decrease it to move left.
+This section checks for horizontal movement. If the left input is pressed, reduce the player's x position by 10 pixels. `-=` means, subtract the value on the right from the value on the left. It's the same as `args.state.player_x = args.state.player_x - 10`, but it's much more concise. We increase `player_x` to move right and decrease it to move left.
 
 `if` and `elsif` are conditional checks. The code only runs if the value is true (more specifically, truthy, but let's not worry about that yet).
 
@@ -107,7 +107,7 @@ elsif args.inputs.down
   args.state.player_y -= 10
 end
 ```
-Then we check for vertical movement. We add to `player_y` to move up, decrease it to move down.
+Then we check for vertical movement. We add to `player_y` to move up and decrease it to move down.
 
 What if we wanted our dragon to move faster though? We could change those four instances of `10` to be `12` and see how that feels, sure. But that's annoying to update it all over. Let's make use of a variable! We'll call it `speed`:
 
@@ -147,7 +147,7 @@ Our dragon won't leave the screen. Woot woot! We've got some serious code here! 
 
 We moved the width and height of the player into variables so that they're easier to reference and reuse. Boom. We need those to do some math on the boundaries too. There's a general programming idea out there known as Don't Repeat Yourself (DRY). As soon as you have a piece of code, especially a number, that represents a value and is used multiple times, put it in a variable. This makes its intent clear as to what it represents and makes it easier to change. Win-win.
 
-Here's the good stuff. We check the boundary for the x axis:
+Here's the good stuff. We check the boundary for the x-axis:
 
 ``` ruby
 {{#include code/chapter_02/app/main.rb:20:26}}
@@ -155,19 +155,19 @@ Here's the good stuff. We check the boundary for the x axis:
 
 We check the right side of the screen: if the current player's x position plus their width is greater than `args.grid.w`, then we set the x position to the width of the screen (`args.grid.w`) minus the width of the sprite. For example, if we move the sprite so it has the x position of 1284, 4 pixels past the right edge of the screen, we override that change and set it to 1280 minus the player's width.
 
-It's so important that this happens after checking for input. You don't want to change `args.state.player_x` after this check, otherwise the boundary won't be enforced. Order matters with the code we write within `tick`.
+It's so important that this happens after checking for input. You don't want to change `args.state.player_x` after this check, otherwise, the boundary won't be enforced. Order matters with the code we write within `tick`.
 
 `args.grid.w` is the width of the screen. It's always 1280, but we don't want to have that magic number in our code. So we use `args.grid.w`.
 
-Next we check the left side of the screen: if the player's x is less than 0, then we set it to zero. That's a bit similar to the right side, just simpler.
+Next, we check the left side of the screen: if the player's x is less than 0, then we set it to zero. That's a bit similar to the right side, just simpler.
 
 Then we do the same thing for the top and bottom of the screen by checking the y position.
 
 ## Extra Credit
 
-- When you move the dragon horizontally and vertically at the same time, the dragon moves twice as fast. How could you make it so the dragon moves at a uniform speed still when that happens?
-- Ruby has a method which ensures that a numeric value is between some bounds, find it and replace our bounds checking code with it.
+- When you move the dragon horizontally and vertically at the same time, the dragon moves twice as fast. How could you make it so the dragon still moves at a uniform speed when that happens?
+- Ruby has a method which ensures that a numeric value is between some bounds, find it and replace our bounds-checking code with it.
 
 ## What's Next
 
-In the next chapter we'll make our dragon spit fireballs when we press a key or button. Watch out!
+In the next chapter, we'll make our dragon spit fireballs when we press a key or button. Watch out!
