@@ -16,7 +16,7 @@ When the code is pushed to the `main` branch on GitHub, an action runs that depl
 
 ## Key Versions
 
-- DragonRuby Game Toolkit: v3.24, v4.0
+- DragonRuby Game Toolkit: v3.x, v4.x
 - mdBook: v0.4.22
 
 ## Running Samples
