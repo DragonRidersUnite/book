@@ -10,11 +10,11 @@ When you’re just starting out in any creative endeavor, set your sights on sma
 
 ## What Can You Cut?
 
-When you have an idea for a game, ask yourself what you can cut from it while still maintaining the core essence of it. Don’t dwell on adding a bunch of complex systems. Focus on the fun and how you can subtract to bring the fun forward. Arcade games do a great job of making short, repayable, minimal experiences.
+When you have an idea for a game, ask yourself what you can cut from it while still maintaining its core essence. Don’t dwell on adding a bunch of complex systems. Focus on the fun and how you can subtract to bring the fun forward. Arcade games do a great job of making short, repayable, minimal experiences.
 
 ## Finish Your Games
 
-When making your small games, finish them! Finishing what you start is so important. Having a bunch of unreleased prototypes isn’t fun for anyone. It’s okay to share works in progress and tiny games. Finish what you make and release it. Shipping games is a muscle and different skillset than building the game. The more practice you get, the better you'll be at finishing your games.
+When making your small games, finish them! Finishing what you start is so important. Having a bunch of unreleased prototypes isn’t fun for anyone. It’s okay to share works in progress and tiny games. Finish what you make and release it. Shipping games is a muscle and a different skill set than building the game. The more practice you get, the better you'll be at finishing your games.
 
 ## Release Them for Free
 
@@ -32,7 +32,7 @@ When you’re making your small, free games, don’t worry about being original.
 
 Game jams are constrained events where people make games within a certain time frame, sometimes with specific rules. They're a great way to start and finish a game in a short period of time. You can experiment and take risks and connect with the community of your fellow participants. I can't recommend them enough. Try to do at least one jam a year (or more if your heart desires).
 
-[Itch has a directory of jams](https://itch.io/jams) and [Ludum Dare](https://ludumdare.com/) is a well known jam that happens multiple times every year with many participants.
+[Itch has a directory of jams](https://itch.io/jams) and [Ludum Dare](https://ludumdare.com/) is a well-known jam that happens multiple times every year with many participants.
 
 ## Share Your Work
 
