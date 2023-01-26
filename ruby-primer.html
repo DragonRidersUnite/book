@@ -193,7 +193,7 @@ end
   num1 + num2
 end
 </code></pre>
-<p>Ruby implicitly returns the last expression in method and by default returns <code>nil</code> if there's no expression.</p>
+<p>Ruby implicitly returns the last expression in a method and by default returns <code>nil</code> if there's no expression.</p>
 <p>You can explicitly return a value with <code>return</code>:</p>
 <pre><code class="language-ruby">def add(num1, num2)
   return num1 + num2
@@ -201,12 +201,12 @@ end
 </code></pre>
 <p>Explicit returns are mostly used when you want to exit a method early.</p>
 <h2 id="blocks"><a class="header" href="#blocks">Blocks</a></h2>
-<p>Blocks are chunks of Ruby code that yield to the caller. At first you'll use blocks when calling specific methods, like <code>#each</code>, but it can be useful to write your own blocks as well.</p>
+<p>Blocks are chunks of Ruby code that yield to the caller. At first, you'll use blocks when calling specific methods, like <code>#each</code>, but it can be useful to write your own blocks as well.</p>
 <p><a href="https://www.youtube.com/watch?v=1YjSP-cEzMo">📺 Ruby Blocks Explained</a></p>
 <h2 id="nil"><a class="header" href="#nil">nil</a></h2>
-<p><code>nil</code> in Ruby is known as <code>null</code> in other languages. It's the absence of a value. nil is a huge topic and not something gone over in the book explicitly.</p>
+<p><code>nil</code> in Ruby is known as <code>null</code> in other languages. It's the absence of a value. nil is a huge topic and not something gone over in this book explicitly.</p>
 <h2 id="exceptions"><a class="header" href="#exceptions">Exceptions</a></h2>
-<p>When something goes wrong in Ruby, an exception is thrown. You can rescue from exceptions using the <code>rescue</code> keyword:</p>
+<p>When something goes wrong in Ruby, an exception is thrown. You can get rescued from exceptions using the <code>rescue</code> keyword:</p>
 <pre><code class="language-ruby">begin
   # do_some_things
 rescue SomeError =&gt; e
