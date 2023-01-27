@@ -90,11 +90,11 @@ A benefit to this is that if a new version of DRGTK is released, I can create a 
 
 ## A Note on Open Source DragonRuby Game Toolkit Games
 
-You may have heard of the term open source software (OSS). It's when people write code and release available to the public to see and use under varying license terms. Code is released as open source for a variety of reasons, from helping people learn, to collaborating with anyone. It allows people to contribute and help fix things. This book is even [open source](https://github.com/DragonRidersUnite/book)!
+You may have heard of the term open-source software (OSS). It's when people write code and release available to the public to see and use under varying license terms. Code is released as open-source for a variety of reasons, from helping people learn, to collaborating with anyone. It allows people to contribute and help fix things. This book is even [open-source](https://github.com/DragonRidersUnite/book)!
 
 The DragonRuby Game Toolkit is not open-source software, which means that you can't distribute the engine publicly on a source control host, but you can publish the code you've written since it's your code. This is a bit of a nuanced situation with DRGTK because of how projects work.
 
-I recommended checking the entire folder of the engine and your game into source control in the previous section. But if you want to open source your game, I'd do it a little differently. And it helps to know this from the start of your project, but it's okay if you do it later down the line.
+I recommended checking the entire folder of the engine and your game into source control in the previous section. But if you want to open source your game, I'd do it a little differently. It helps to know this from the start of your project, but it's okay if you do it later down the line.
 
 If you want to open source your game, follow these steps:
 
@@ -103,7 +103,7 @@ If you want to open source your game, follow these steps:
 3. Initialize your Git repository there with `git init`
 4. Don't track the engine parent folder
 
-The downside to this approach is that you need to ensure you keep your specific engine version parent directory available. You could use version control to sync that and then use Git to publish it online as open-source code.
+The slighty downside to this approach is that you need to ensure you keep your specific engine version parent directory available and any customizations you make in the engine folder won't be tracked.
 
 ## Summary
 
