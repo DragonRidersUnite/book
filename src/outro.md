@@ -32,7 +32,7 @@ A second edition of the book could deep dive into making a shmup with enemy wave
 
 But I _need_ to be sure people want a follow-up book where we build a more complex game using DragonRuby Game Toolkit. Let me know if you'd like to see a sequel in [Discord](https://discord.dragonruby.org).
 
-In the meantime, read through my [advanced tutorials](https://www.dragonriders.community/recipes) online.
+In the meantime, read through my [advanced tutorials](https://www.dragonriders.community/recipes) online and [check out the DragonRuby Zine](https://www.dragonriders.community/zine).
 
 ## Extra Credit
 
