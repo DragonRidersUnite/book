@@ -51,4 +51,4 @@ In particular, in alphabetical order, thank you to:
 - [Nick Culbertson](https://twitter.com/MobyPixel) for the dragon sprite included with DRGTK
 - Owen for corrections
 - Pineapple for feedback
-- Vlevo for thoughtful edits
+- Vlevo for thorough and thoughtful edits
