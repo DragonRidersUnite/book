@@ -4,7 +4,7 @@ So far you've been playing the debug development build of your game within the D
 
 Releasing your game is a process that has only gotten easier and easier over time. One of the coolest things about DragonRuby GTK is that you can build your game for the web, Linux, Windows, and macOS with one command.
 
-We'll release _Target Practice_ on [itch.io](https://itch.io/), an open marketplace for distributing your game. You can share your games for free on Itch or sell them. The HTML version will even be able to be played in the browser. So go ahead and sign up for an Itch account.
+We'll release _Target Practice_ on [itch.io](https://itch.io/), an open marketplace for distributing your game. You can share your games for free on itch.io or sell them. The HTML version will even be able to be played in the browser. So go ahead and sign up for an itch.io account.
 
 ## Prep for Release
 
@@ -34,7 +34,7 @@ You'll also see that there's a `mygame/metadata/icon.png` file. The default Drag
 
 ## Publish Your Game
 
-DragonRuby GTK makes it really easy to build your game for the web and the major operating systems and publish it right on Itch.
+DragonRuby GTK makes it really easy to build your game for the web and the major operating systems and publish it right on itch.io.
 
 Open a new terminal. If you're using Visual Studio Code, there's an option to do so right within it. Don't be frightened by the terminal, we'll just be running a simple command to build our game for all of our platforms.
 
@@ -46,25 +46,25 @@ That command will build your game for all platforms DragonRuby GTK can target. C
 
 Depending on what operating system your computer is using, you can even launch and play the released version of your game. On Linux, open `target-practice-linux-amd64.bin`. On macOS, open `target-practice-mac-0.1/Target Practice.app`. On Windows, launch `target-practice-windows-amd64.exe`.
 
-## Upload to Itch
+## Upload to itch.io
 
-Go to your [Itch Dashboard](https://itch.io/dashboard) and tap the "Create new project" button.
+Go to your [itch.io Dashboard](https://itch.io/dashboard) and tap the "Create new project" button.
 
 Fill out the details for your game. Be sure to write a description, add screenshots, and more. If you want your game to be played in the browser, set the type to HTML. But the most important part is that you upload your game.
 
-<img alt="Itch upload screenshot with button to upload files" src="./img/c12-itch-upload.jpg" style="max-width: 380px; width: 100%;" />
+<img alt="itch.io upload screenshot with button to upload files" src="./img/c12-itch-upload.jpg" style="max-width: 380px; width: 100%;" />
 
-Tap "Upload files" and select the zips of the game for all of the platforms you want to upload it for. For `target-practice-html5.zip`, check the "This file will be played in the browser" box, as Itch will use that to determine what to make playable. For the other platforms, choose the proper OS for each file. Be sure to set the web embed size to 1280 pixels wide and 720 pixels tall so it renders at the proper size.
+Tap "Upload files" and select the zips of the game for all of the platforms you want to upload it for. For `target-practice-html5.zip`, check the "This file will be played in the browser" box, as itch.io will use that to determine what to make playable. For the other platforms, choose the proper OS for each file. Be sure to set the web embed size to 1280 pixels wide and 720 pixels tall so it renders at the proper size.
 
-If you make changes to your game, you can upload new versions to Itch automatically by running `./dragonruby-publish mygame` without having to upload them through the web browser as long as `gameid` in `game_metadata.txt` matches your Itch project slug.
+If you make changes to your game, you can upload new versions to itch.io automatically by running `./dragonruby-publish mygame` without having to upload them through the web browser as long as `gameid` in `game_metadata.txt` matches your itch.io project slug.
 
-Save your game on Itch and then view it. You'll see it download and run your game by displaying the splash screen:
+Save your game on itch.io and then view it. You'll see it download and run your game by displaying the splash screen:
 
 ![Target Practice splash screen](./img/c12-itch-web.jpg)
 
-Your game isn't published _yet_. Only you can see it for now. If you want to share an early build with a friend, you can get a secret URL to send from the top navigation bar on Itch when viewing your game. Or go back to editing your game and set the **Visibility & access** to be public to launch it.
+Your game isn't published _yet_. Only you can see it for now. If you want to share an early build with a friend, you can get a secret URL to send from the top navigation bar on itch.io when viewing your game.
 
-When you're happy with your game and ready for the world to play it, make it public!
+When you're happy with your game and ready for the world to play it, launch it by editing your game page on itch.io and setting the **Visibility & access** to be public!
 
 ## You Shipped a Game!
 
