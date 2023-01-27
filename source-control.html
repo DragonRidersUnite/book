@@ -206,9 +206,9 @@ Date:   Wed Nov 23 23:04:46 2022 -0500
 <p>When I work on my DRGTK games, I check the entire project, including the engine, into source control. This lets me easily clone and run the project without needing to set anything up. Because the engine binary (<code>./dragonruby</code>) is so small, it's no problem at all. I'll often clean out the sample code and sprites if I'm not going to use them.</p>
 <p>A benefit to this is that if a new version of DRGTK is released, I can create a commit for that and easily roll it back if anything breaks. Phew!</p>
 <h2 id="a-note-on-open-source-dragonruby-game-toolkit-games"><a class="header" href="#a-note-on-open-source-dragonruby-game-toolkit-games">A Note on Open Source DragonRuby Game Toolkit Games</a></h2>
-<p>You may have heard of the term open source software (OSS). It's when people write code and release available to the public to see and use under varying license terms. Code is released as open source for a variety of reasons, from helping people learn, to collaborating with anyone. It allows people to contribute and help fix things. This book is even <a href="https://github.com/DragonRidersUnite/book">open source</a>!</p>
+<p>You may have heard of the term open-source software (OSS). It's when people write code and release available to the public to see and use under varying license terms. Code is released as open-source for a variety of reasons, from helping people learn, to collaborating with anyone. It allows people to contribute and help fix things. This book is even <a href="https://github.com/DragonRidersUnite/book">open-source</a>!</p>
 <p>The DragonRuby Game Toolkit is not open-source software, which means that you can't distribute the engine publicly on a source control host, but you can publish the code you've written since it's your code. This is a bit of a nuanced situation with DRGTK because of how projects work.</p>
-<p>I recommended checking the entire folder of the engine and your game into source control in the previous section. But if you want to open source your game, I'd do it a little differently. And it helps to know this from the start of your project, but it's okay if you do it later down the line.</p>
+<p>I recommended checking the entire folder of the engine and your game into source control in the previous section. But if you want to open source your game, I'd do it a little differently. It helps to know this from the start of your project, but it's okay if you do it later down the line.</p>
 <p>If you want to open source your game, follow these steps:</p>
 <ol>
 <li>Unzip the engine</li>
@@ -216,7 +216,7 @@ Date:   Wed Nov 23 23:04:46 2022 -0500
 <li>Initialize your Git repository there with <code>git init</code></li>
 <li>Don't track the engine parent folder</li>
 </ol>
-<p>The downside to this approach is that you need to ensure you keep your specific engine version parent directory available. You could use version control to sync that and then use Git to publish it online as open-source code.</p>
+<p>The slighty downside to this approach is that you need to ensure you keep your specific engine version parent directory available and any customizations you make in the engine folder won't be tracked.</p>
 <h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
 <ul>
 <li>Back up your games! You never know when you might lose your computer.</li>
