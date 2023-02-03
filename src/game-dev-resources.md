@@ -28,6 +28,7 @@ Making a game by yourself can seem like a lot when you need to design the game, 
 
 - [OpenGameArt.org](https://opengameart.org/)
 - [Assets on Itch](https://itch.io/game-assets)
+- [Kenney](https://kenney.nl/)
 
 ## Books
 
