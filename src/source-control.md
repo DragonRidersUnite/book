@@ -103,7 +103,7 @@ If you want to open source your game, follow these steps:
 3. Initialize your Git repository there with `git init`
 4. Don't track the engine parent folder
 
-The slighty downside to this approach is that you need to ensure you keep your specific engine version parent directory available and any customizations you make in the engine folder won't be tracked.
+The slight downside to this approach is that any customizations you make in the engine folder won't be tracked in Git.
 
 ## Summary
 
