@@ -58,7 +58,7 @@ That's a legit question. Here are my reasons why:
 - It makes use of Ruby, which is a wonderfully productive programming language.
 - It doesn't force you to use a specific editor or tooling.
 - It's lightweight to run the engine, which means you can make games on any computer, even a Raspberry Pi.
-- It has live-reload and no compile times, which means when you change your game code, it automatically refreshes in the running engine. This is honestly so amazing. You wouldn't know how incredible this is unless you've used other game engines that require you compile your game with each change.
+- It has live reload and no compile times, which means when you change your game code, it automatically refreshes in the running engine. This is honestly so amazing. You wouldn't know how incredible this is unless you've used other game engines that require you to compile your game with each change.
 
 I'm going to be honest, DRGTK might not be for you. If you want to make 3D games, look elsewhere. Although, if you're new to game development, I wouldn't recommend starting with a 3D game. If you're absolutely not willing to try coding, look elsewhere.
 
@@ -124,7 +124,7 @@ This book is freely accessible so that someone who loves games and wants to try 
 
 You'll learn the foundations of game programming and making games, as well as some more advanced topics. If this book can help even just one person start and finish a game, it's worth every minute I've spent on it. We'll make a game not too dissimilar from _Zaku Space Battle_. Once you finish it, take what you've learned and make it your own!
 
-If you want to, you can [buy me a coffee](https://buymeacoffee.com/brettchalupa) or [subscribe to my newsletter](https://buttondown.email/brettchalupa) as a way of saying thank you. It's much appreciated.
+If you want to, you can [buy me a coffee](https://buymeacoffee.com/brettchalupa) or [subscribe to my newsletter](https://www.brettchalupa.com/newsletter) as a way of saying thank you. It's much appreciated.
 
 ## Contribute
 

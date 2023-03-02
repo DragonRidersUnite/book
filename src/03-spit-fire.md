@@ -58,7 +58,7 @@ Then where we check for the action input, push a fireball into the `arg.state.fi
 
 All we have to do is render our fireballs by pushing them into the `args.outputs.labels` collection. DragonRuby is smart enough to know that if we push an array into any `args.outputs` collection it'll flatten it and display them correctly. Thanks, DragonRuby!
 
-We've been using arrays to represent the fields for different data in our game like labels and sprites, but arrays have other uses too. Arrays are a great way to keep track of information we need in a list. The array we've created in the code above tracks our fireballs.
+We've been using arrays to represent the fields for different data in our game like labels and sprites, but arrays have other uses too. Arrays are a great way to keep track of information that we need in a list. The array we've created in the code above tracks our fireballs.
 
 Play your game and see what happens! Fireballs everywhere. Wait! You're not impressed by those fireballs? I'd be pretty frightened if the word "fireball" was flying at me.
 
@@ -70,7 +70,7 @@ Wait, where are you going? Why are you muttering "I didn't sign up to read no st
 
 Guess what? We're sticking with ole "fireball" for now! It's silly and fun and I haven't found a good fireball sprite to use. We'll get there, we'll get there. But let's first make the fireballs move across the screen.
 
-When we moved our player dragon, we took the x and y position and added or subtracted values in each `#tick` based upon if any directional input was pressed. Our fireballs will move regardless of any button pressed once they're extruded from our dragon's mouth. Because our game is simple and the dragon only faces to the right, all of the fireballs will move to the right. How do we go about that on our X-Y axis? We just increase the `x` position of the fireball each tick. Let's do that and see what happens:
+When we moved our player dragon, we took the x and y position and added or subtracted values in each `#tick` based on if any directional input was pressed. Our fireballs will move regardless of any button pressed once they're extruded from our dragon's mouth. Because our game is simple and the dragon only faces to the right, all of the fireballs will move to the right. How do we go about that on our X-Y axis? We just increase the `x` position of the fireball each tick. Let's do that and see what happens:
 
 ``` ruby
 {{#include code/chapter_03/04_moving_fireballs/app/main.rb:38:48}}
@@ -136,7 +136,9 @@ With that refactor done, let's display a sprite for our fireball and call it a c
 
 Download the fireball sprite below and put it in `mygame/sprites/fireball.png`:
 
-![fireball sprite](./code/chapter_03/06_sprite/sprites/fireball.png)
+![fireball sprite](https://book.dragonriders.community/code/chapter_03/06_sprite/sprites/fireball.png)
+
+[Download sprite](https://book.dragonriders.community/code/chapter_03/06_sprite/sprites/fireball.png)
 
 I just made that! It's not half bad, right?
 

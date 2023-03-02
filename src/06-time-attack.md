@@ -2,7 +2,7 @@
 
 We've _almost_ got a game. But we need some way for the game to end. A lot of game loops end with the player's character dying, where they respawn or start over again. Other game loops end when the player reaches the end of a level.
 
-For our simple game, let's add a 30 second timer that counts down. The objective of our game will be to see how many targets the player can hit in that time window. Let's call our game **Target Practice**. Every dragon needs some practice before they head out into battle, right?
+For our simple game, let's add a 30-second timer that counts down. The objective of our game will be to see how many targets the player can hit in that time window. Let's call our game **Target Practice**. Every dragon needs some practice before they head out into battle, right?
 
 Adding a timer to our game introduces a few new concepts we'll build out in this chapter:
 
@@ -42,7 +42,7 @@ Way at the bottom of `#tick`, let's display a label with the time remaining:
 
 We use the same pattern of creating a `labels` array, pushing in the player's score and the time, in ticks, remaining. In order to display the time remaining as seconds, we divide it by 60 and round. We do the opposite of what we did when we set the total time in ticks.
 
-The `alignment_enum` lets us specify that we want the text to be right-aligned instead of the default left alignment. This let's us nicely position our timer in the upper right corner of the game.
+The `alignment_enum` lets us specify that we want the text to be right-aligned instead of the default left alignment. This lets us nicely position our timer in the upper right corner of the game.
 
 ![gameplay with Time Left reading 10 seconds](./img/c06-timer.jpg)
 

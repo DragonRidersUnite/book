@@ -1,6 +1,6 @@
 # Building Games with DragonRuby
 
-An open source book that walks you through how to build games with [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game).
+An open-source book that walks you through how to build games with [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game).
 
 [Play the game you'll be building, right in the browser.](https://dragonridersunite.itch.io/dragonruby-book)
 
@@ -16,8 +16,8 @@ When the code is pushed to the `main` branch on GitHub, an action runs that depl
 
 ## Key Versions
 
-- DragonRuby Game Toolkit: v3.24, v4.0
-- mdbook: v0.4.22
+- DragonRuby Game Toolkit: v3.x, v4.x
+- mdBook: v0.4.22
 
 ## Running Samples
 
@@ -32,5 +32,13 @@ Clone this book repository into a DragonRuby GTK engine directory and run the sa
 ```
 
 ## Publishing
+
+How to make a release:
+
+1. Merge the `main` branch into `offline`
+2. Generate a new PDF via printing in Firefox, turning off the header and footer
+3. Generate an HTML version of the book and zip it up
+4. Create zips and upload them on itch.io
+5. Create tags and releases for the offline branch and the main branch
 
 The 3D cover file is generated with https://diybookcovers.com/

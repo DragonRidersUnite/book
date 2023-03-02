@@ -2,7 +2,7 @@
 
 When working on any piece of software, whether it's a video game or an app to track how many dogs you pet in a given day, it's extremely important to keep track of the changes to your code and keep it backed up in a secure location.
 
-Imagine this scenario: you work on your game for three months. It's amazing. It's your X-Files Dating Sim. You've painstakingly drawn all of the characters, written the scenario, coded up all the interactions. Then one day your computer gets stolen by a giant crow! I don't trust those crows, I never have. Suddenly your game is gone, poof. All that hard work just sitting on a hard-drive barely being protected by the shell of your laptop from the aggressive pecks of the entire local union of crows.
+Imagine this scenario: you work on your game for three months. It's amazing. It's your X-Files Dating Sim. You've painstakingly drawn all of the characters, written the scenario, and coded up all the interactions. Then one day your computer gets stolen by a giant crow! I don't trust those crows, I never have. Suddenly your game is gone, poof. All that hard work just sitting on a hard drive barely being protected by the shell of your laptop from the aggressive pecks of an entire murder of crows.
 
 You'd just have to start over, from scratch. That is if you aren't too bummed out about losing the entire game. Crow theft—it's the number one reason to back up your game's source code.
 
@@ -12,7 +12,7 @@ You could use a cloud service like Dropbox to back it up to the ✨cloud✨. Tha
 
 ## Using Git
 
-I'd like to advocate for using source control (a.k.a. version control) to keep track of the changes to your game. It's like a more advanced form of using a cloud storage provider. The primary source control tool is called [Git](https://git-scm.com/). Git lets you track your changes by creating commits--references of what changed and why since the last time you made a commit.
+I'd like to advocate for using source control (a.k.a. version control) to keep track of the changes to your game. It's like a more advanced form of using a cloud storage provider. The primary source control tool is called [Git](https://git-scm.com/). Git lets you track your changes by creating commits--references to what changed and why since the last time you made a commit.
 
 The basics of Git are beyond the scope of this book, but there are some helpful resources out there:
 
@@ -22,7 +22,7 @@ The basics of Git are beyond the scope of this book, but there are some helpful 
 
 Using version control at first may seem a bit tedious, but it's immensely valuable. Not only can you document why you made a change to help your future self and others, but you can safely experiment without fear of really messing things up. Because you're tracking the changes to your game's source, if you go down a rabbit hole that doesn't work out, you can easily undo it. Let's explore some examples of commits and scenarios where it's helpful.
 
-Any time you add a feature, create a commit. This lets you see your game evolve over time. Let's say you added player input with the gamepad. Boom, make a commit! Let's say you improved the enemy AI, commit that. Keep your commits small. Don't make hundreds of lines of unrelated changes and make a big commit that just say "changed some stuff". You're trying to help yourself but creating a useful log of your game. Here's a look at commits from a little project of mine:
+Any time you add a feature, create a commit. This lets you see your game evolve over time. Let's say you added player input with the gamepad. Boom, make a commit! Let's say you improved the enemy AI, commit that. Keep your commits small. Don't make hundreds of lines of unrelated changes and make a big commit that just says "changed some stuff". You're trying to help yourself by creating a useful log of your game. Here's a look at commits from a little project of mine:
 
 
 ``` console
@@ -71,7 +71,7 @@ Start the flow again!
 
 ## Source Code Hosts
 
-When you use Git on your computer for your project, you're creating a log of changes that exists in your computer. You'll want to push your Git repository up to a host so that it's backed up. There are many free hosts out there, allowing you to create private or public repositories of your code. 
+When you use Git on your computer for your project, you're creating a log of changes that exists on your computer. You'll want to push your Git repository up to a host so that it's backed up. There are many free hosts out there, allowing you to create private or public repositories of your code. 
 
 Some popular ones are:
 
@@ -86,27 +86,27 @@ In the flow of development above, step 6 is: push the code to the remote host. T
 
 When I work on my DRGTK games, I check the entire project, including the engine, into source control. This lets me easily clone and run the project without needing to set anything up. Because the engine binary (`./dragonruby`) is so small, it's no problem at all. I'll often clean out the sample code and sprites if I'm not going to use them.
 
-A benefit to this is that if a new version of DRGTK is released, I can create its own commit for that and easily rollback if anything breaks. Phew!
+A benefit to this is that if a new version of DRGTK is released, I can create a commit for that and easily roll it back if anything breaks. Phew!
 
 ## A Note on Open Source DragonRuby Game Toolkit Games
 
-You may have heard of the term open source software (OSS). It's when people write code and release available to the public to see and use under varying license terms. Code is released as open source for a variety of reasons, from helping people learn to collaborating with anyone. It allows people to contribute and help fix things. This book is even [open source](https://github.com/DragonRidersUnite/book)!
+You may have heard of the term open-source software (OSS). It's when people write code and release available to the public to see and use under varying license terms. Code is released as open-source for a variety of reasons, from helping people learn, to collaborating with anyone. It allows people to contribute and help fix things. This book is even [open-source](https://github.com/DragonRidersUnite/book)!
 
-The DragonRuby Game Toolkit is not open source software, which means that you can't distribute the engine publicly on a source control host, but you can publish the code you've written, since it's your code. This is a bit a nuanced situation with DRGTK because of how projects work.
+The DragonRuby Game Toolkit is not open-source software, which means that you can't distribute the engine publicly on a source control host, but you can publish the code you've written since it's your code. This is a bit of a nuanced situation with DRGTK because of how projects work.
 
-I recommended checking the entire folder of the engine and your game into source control in the previous section. But if you want to open source your game, I'd do it a little differently. And it helps to know this from the start of your project, but it's okay if you do it later down the line.
+I recommended checking the entire folder of the engine and your game into source control in the previous section. But if you want to open source your game, I'd do it a little differently. It helps to know this from the start of your project, but it's okay if you do it later down the line.
 
-If you want to open source you game, follow these steps:
+If you want to open source your game, follow these steps:
 
 1. Unzip the engine
 2. Change into the `mygame` directory
 3. Initialize your Git repository there with `git init`
 4. Don't track the engine parent folder
 
-The downside to this approach is that you need to ensure you keep your specific engine version parent directory available. You could use version control to sync that and then use Git to publish it online as open source code.
+The slight downside to this approach is that any customizations you make in the engine folder won't be tracked in Git.
 
 ## Summary
 
 - Back up your games! You never know when you might lose your computer.
-- Source control, like Git, let's you make changes with confidence.
+- Source control, like Git, lets you make changes with confidence.
 - Push your code regularly to a source control host so that it's backed up.

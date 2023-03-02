@@ -4,20 +4,20 @@ One of the quickest ways to make any game you're building go from feeling flat t
 
 For _Target Practice_, we'll have three unique sound effects:
 
-1. When the fireball is spit by the dragon
+1. When the fireball is spit out by the dragon
 2. When the fireball hits a target
 3. When the game ends
 
-We'll also add in a music track that plays in the background.
+We'll also add a music track that plays in the background.
 
 Download the following files and put them in the `mygame/sounds/` folder:
 
-- [fireball.wav](./code/chapter_08/01_sound/sounds/fireball.wav)
-- [target.wav](./code/chapter_08/01_sound/sounds/target.wav)
-- [game-over.wav](./code/chapter_08/01_sound/sounds/game-over.wav)
-- [flight.ogg](./code/chapter_08/01_sound/sounds/flight.ogg)
+- [fireball.wav](https://book.dragonriders.community/code/chapter_08/01_sound/sounds/fireball.wav)
+- [target.wav](https://book.dragonriders.community/code/chapter_08/01_sound/sounds/target.wav)
+- [game-over.wav](https://book.dragonriders.community/code/chapter_08/01_sound/sounds/game-over.wav)
+- [flight.ogg](https://book.dragonriders.community/code/chapter_08/01_sound/sounds/flight.ogg)
 
-A note on audio file formats: in DragonRuby, sound effects are generally WAV (`.wav`) files. WAV files are uncompressed, meaning they can be quite large in size, but are high-quality. Because sound effects are so short, the file size is less of a concern. Music files are OGG (`.ogg`), an open-source format for audio that works across all of the platforms your game can run on. OGG files are compressed, thus smaller in size than WAV files, making them good for music tracks.
+A note on audio file formats: in DragonRuby, sound effects are generally WAV (`.wav`) files. WAV files are uncompressed, meaning they can be quite large in size but are high-quality. Because sound effects are so short, the file size is less of a concern. Music files are OGG (`.ogg`), an open-source format for audio that works across all of the platforms your game can run on. OGG files are compressed, thus smaller in size than WAV files, making them good for music tracks.
 
 ## Playing Sounds in DragonRuby Game Toolkit
 
@@ -29,7 +29,7 @@ args.outputs.sounds << "sounds/fireball.wav"
 
 Easy enough!
 
-Playing music is a little more complex, but still pretty simple. You set a value on the `args.audio` hash that lets you manage the audio track across the game loop. You can check the current progress, whether or not it's paused, and more. That looks like:
+Playing music is a little more complex, but still pretty simple. You set a value on the `args.audio` hash that lets you manage the audio track across the game loop. You can check the current progress, whether or not it's paused, and more. That looks like this:
 
 ``` ruby
 if args.state.tick_count == 1
@@ -41,7 +41,7 @@ That says when we're on the first tick, play the `flight.ogg` music track on rep
 
 ## Add Music & Sound Effects To Our Game
 
-Let's add the sound effects and music track to the game.
+Let's add sound effects and a music track to the game.
 
 We'll kick things off by starting the music track on the first tick at the top of `#tick`:
 
@@ -80,7 +80,7 @@ As for making your own music, there are lots of options out there. I use [1BitDr
 
 There are many ways to convert the sounds you make to various formats, from command-line tools like ffmpeg to desktop apps. [Convertio](https://convertio.co/) is a free online service, among many, that you can use as well.
 
-Making music and sound effects for games is a huge topic that's beyond the scope of this book, but hopefully these tools can help you get started.
+Making music and sound effects for games is a huge topic that's beyond the scope of this book, but hopefully, these tools can help you get started.
 
 If you do change the sounds in your game, you'll need to restart it to get DragonRuby GTK to refresh them.
 
@@ -92,4 +92,4 @@ If you do change the sounds in your game, you'll need to restart it to get Drago
 
 ## What's Next
 
-In the next chapter we'll learn about drawing shapes with DragonRuby GTK.
+In the next chapter, we'll learn about drawing shapes with DragonRuby GTK.

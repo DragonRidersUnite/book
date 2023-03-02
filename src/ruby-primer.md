@@ -86,7 +86,7 @@ def add(num1, num2)
 end
 ```
 
-Ruby implicitly returns the last expression in method and by default returns `nil` if there's no expression.
+Ruby implicitly returns the last expression in a method and by default returns `nil` if there's no expression.
 
 You can explicitly return a value with `return`:
 
@@ -100,17 +100,17 @@ Explicit returns are mostly used when you want to exit a method early.
 
 ## Blocks
 
-Blocks are chunks of Ruby code that yield to the caller. At first you'll use blocks when calling specific methods, like `#each`, but it can be useful to write your own blocks as well.
+Blocks are chunks of Ruby code that yield to the caller. At first, you'll use blocks when calling specific methods, like `#each`, but it can be useful to write your own blocks as well.
 
 [📺 Ruby Blocks Explained](https://www.youtube.com/watch?v=1YjSP-cEzMo)
 
 ## nil
 
-`nil` in Ruby is known as `null` in other languages. It's the absence of a value. nil is a huge topic and not something gone over in the book explicitly.
+`nil` in Ruby is known as `null` in other languages. It's the absence of a value. nil is a huge topic and not something gone over in this book explicitly.
 
 ## Exceptions
 
-When something goes wrong in Ruby, an exception is thrown. You can rescue from exceptions using the `rescue` keyword:
+When something goes wrong in Ruby, an exception is thrown. You can get rescued from exceptions using the `rescue` keyword:
 
 ``` ruby
 begin
