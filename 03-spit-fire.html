@@ -301,7 +301,8 @@ end
 <h2 id="displaying-a-sprite"><a class="header" href="#displaying-a-sprite">Displaying a Sprite</a></h2>
 <p>With that refactor done, let's display a sprite for our fireball and call it a chapter.</p>
 <p>Download the fireball sprite below and put it in <code>mygame/sprites/fireball.png</code>:</p>
-<p><img src="./code/chapter_03/06_sprite/sprites/fireball.png" alt="fireball sprite" /></p>
+<p><img src="https://book.dragonriders.community/code/chapter_03/06_sprite/sprites/fireball.png" alt="fireball sprite" /></p>
+<p><a href="https://book.dragonriders.community/code/chapter_03/06_sprite/sprites/fireball.png">Download sprite</a></p>
 <p>I just made that! It's not half bad, right?</p>
 <p>We'll change the hash we push into <code>args.state.fireballs</code> to be a sprite and adjust how we render that collection. Nothing too major. Here are the changes near the bottom of <code>#tick</code> that you'll need to make:</p>
 <pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z ||
