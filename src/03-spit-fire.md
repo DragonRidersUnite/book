@@ -136,7 +136,9 @@ With that refactor done, let's display a sprite for our fireball and call it a c
 
 Download the fireball sprite below and put it in `mygame/sprites/fireball.png`:
 
-![fireball sprite](./code/chapter_03/06_sprite/sprites/fireball.png)
+![fireball sprite](https://book.dragonriders.community/code/chapter_03/06_sprite/sprites/fireball.png)
+
+[Download sprite](https://book.dragonriders.community/code/chapter_03/06_sprite/sprites/fireball.png)
 
 I just made that! It's not half bad, right?
 

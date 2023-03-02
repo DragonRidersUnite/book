@@ -12,10 +12,10 @@ We'll also add a music track that plays in the background.
 
 Download the following files and put them in the `mygame/sounds/` folder:
 
-- [fireball.wav](./code/chapter_08/01_sound/sounds/fireball.wav)
-- [target.wav](./code/chapter_08/01_sound/sounds/target.wav)
-- [game-over.wav](./code/chapter_08/01_sound/sounds/game-over.wav)
-- [flight.ogg](./code/chapter_08/01_sound/sounds/flight.ogg)
+- [fireball.wav](https://book.dragonriders.community/code/chapter_08/01_sound/sounds/fireball.wav)
+- [target.wav](https://book.dragonriders.community/code/chapter_08/01_sound/sounds/target.wav)
+- [game-over.wav](https://book.dragonriders.community/code/chapter_08/01_sound/sounds/game-over.wav)
+- [flight.ogg](https://book.dragonriders.community/code/chapter_08/01_sound/sounds/flight.ogg)
 
 A note on audio file formats: in DragonRuby, sound effects are generally WAV (`.wav`) files. WAV files are uncompressed, meaning they can be quite large in size but are high-quality. Because sound effects are so short, the file size is less of a concern. Music files are OGG (`.ogg`), an open-source format for audio that works across all of the platforms your game can run on. OGG files are compressed, thus smaller in size than WAV files, making them good for music tracks.
 
