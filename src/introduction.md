@@ -54,7 +54,7 @@ That's a legit question. Here are my reasons why:
 
 - It's focused on 2D games, so there are no competing interests in how the tooling works. It means what you need to know is pretty simple and easy to remember.
 - It makes it _so_ simple to distribute games for all modern platforms, from desktop computers to the web to mobile devices to consoles. It's truly cross-platform and _just works_, which is amazing.
-- It's fast a heck, which is important for making quality games.
+- It's fast as heck, which is important for making quality games.
 - It makes use of Ruby, which is a wonderfully productive programming language.
 - It doesn't force you to use a specific editor or tooling.
 - It's lightweight to run the engine, which means you can make games on any computer, even a Raspberry Pi.
