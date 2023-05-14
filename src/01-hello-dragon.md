@@ -47,7 +47,7 @@ This isn't a game... yet! But it is doing three key things:
 
 1. Launching an app window
 2. Rendering text
-3. Displaying an image
+3. Displaying and rotating an image
 
 And you haven't even written any code yet. Not a bad starting place.
 
