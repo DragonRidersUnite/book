@@ -180,21 +180,33 @@
 <ol>
 <li>Launching an app window</li>
 <li>Rendering text</li>
-<li>Displaying an image</li>
+<li>Displaying and rotating an image</li>
 </ol>
 <p>And you haven't even written any code yet. Not a bad starting place.</p>
 <p>DRGTK handles the boring stuff when it comes to making games—dealing with low-level APIs like graphics, sound, and the game window. We can instead focus on creating our game instead of, for example, figuring out how to save data in a way that's compatible with Linux, Mac, Windows, Android, iOS, and the web.</p>
 <h2 id="an-overview-of-the-main-game-file"><a class="header" href="#an-overview-of-the-main-game-file">An Overview of the Main Game File</a></h2>
 <p>Let's take a look at what's in <code>mygame/app/main.rb</code>:</p>
 <pre><code class="language-ruby">def tick args
-  args.outputs.labels  &lt;&lt; [640, 500, 'Hello World!', 5, 1]
-  args.outputs.labels  &lt;&lt; [640, 460, 'Go to docs/docs.html and read it!', 5, 1]
-  args.outputs.labels  &lt;&lt; [640, 420, 'Join the Discord! https://discord.dragonruby.org', 5, 1]
-  args.outputs.sprites &lt;&lt; [576, 280, 128, 101, 'dragonruby.png']
+  args.outputs.labels  &lt;&lt; [640, 540, 'Hello World!', 5, 1]
+  args.outputs.labels  &lt;&lt; [640, 500, 'Docs located at ./docs/docs.html and 100+ samples located under ./samples', 5, 1]
+  args.outputs.labels  &lt;&lt; [640, 460, 'Join the Discord server! https://discord.dragonruby.org', 5, 1]
+
+  args.outputs.sprites &lt;&lt; { x: 576,
+                            y: 280,
+                            w: 128,
+                            h: 101,
+                            path: 'dragonruby.png',
+                            angle: args.state.tick_count }
+
+  args.outputs.labels  &lt;&lt; { x: 640,
+                            y: 60,
+                            text: './mygame/app/main.rb',
+                            size_enum: 5,
+                            alignment_enum: 1 }
 end
 </code></pre>
 <p>Open this file yourself in Visual Studio Code. Go ahead and do that: New Window &gt; Open &gt; [select the folder on your computer with the engine in it]</p>
-<p>Six lines of code to render text and an image? Not bad! (Trust me, if you did this all from scratch without an engine, it'd take hundreds of lines of code.)</p>
+<p>Seven lines of code to render text and an image? Not bad! (Trust me, if you did this all from scratch without an engine, it'd take hundreds of lines of code.)</p>
 <p>Here's what that code does, line by line:</p>
 <pre><code class="language-ruby">def tick args
 </code></pre>
@@ -221,9 +233,9 @@ end
 <p>I'm an agent of chaos and use <em>both</em> styles throughout the book. Gotta keep ya' on your toes!</p>
 <p>Wait, how'd we get talking about cookies and friends? Okay, back to the code above.</p>
 <p>The next three lines handle outputting text to the screen:</p>
-<pre><code class="language-ruby">  args.outputs.labels  &lt;&lt; [640, 500, 'Hello World!', 5, 1]
-  args.outputs.labels  &lt;&lt; [640, 460, 'Go to docs/docs.html and read it!', 5, 1]
-  args.outputs.labels  &lt;&lt; [640, 420, 'Join the Discord! https://discord.dragonruby.org', 5, 1]
+<pre><code class="language-ruby">  args.outputs.labels  &lt;&lt; [640, 540, 'Hello World!', 5, 1]
+  args.outputs.labels  &lt;&lt; [640, 500, 'Docs located at ./docs/docs.html and 100+ samples located under ./samples', 5, 1]
+  args.outputs.labels  &lt;&lt; [640, 460, 'Join the Discord server! https://discord.dragonruby.org', 5, 1]
 </code></pre>
 <p>Your eyes might be melting a little bit. But don't worry, wipe that melted bit of eye away and focus! It's pretty intuitive once you get the hang of it.</p>
 <p>Remember <code>args</code> from above? The parameter that's passed into <code>tick</code>? Well, you can call methods on it! This allows you to interact with the game engine.</p>
@@ -240,13 +252,22 @@ end
 <p>Gosh enough of this rambling, let's adjust some code. Change the text from <code>&quot;Hello World!&quot;</code> to <code>&quot;Hello Dragon!&quot;</code> and save the file.</p>
 <p><img src="./img/hello-dragon.jpg" alt="screenshot of the Hello Dragon! for DragonRuby GTK" /></p>
 <p>Did you see that? The game reloaded your code and changed the text to &quot;Hello Dragon!&quot; That was quick, wasn't it? That's one of the best parts of DRGTK—live reloading of your game code in the engine. This allows you to make changes to your game quickly, reducing the time between the cycles of writing your code and testing it.</p>
-<pre><code class="language-ruby">  args.outputs.sprites &lt;&lt; [576, 280, 128, 101, 'dragonruby.png']
+<pre><code class="language-ruby">  args.outputs.sprites &lt;&lt; { x: 576,
+                            y: 280,
+                            w: 128,
+                            h: 101,
+                            path: 'dragonruby.png',
+                            angle: args.state.tick_count }
 </code></pre>
-<p><code>args.outputs.sprites</code> is like <code>args.outputs.labels</code>, but instead of holding labels, it's a collection of sprites. It renders the <code>&quot;dragonruby.png&quot;</code> image at x: 576, y: 280, just like label text, and it also sets the size of the image to display. That's what the <code>128</code> and <code>101</code> represent in the array. Here's a breakdown of those elements:</p>
-<pre><code class="language-ruby">#  x,   y,   w,   h,            image
-[576, 280, 128, 101, 'dragonruby.png']
+<p><code>args.outputs.sprites</code> is like <code>args.outputs.labels</code>, but instead of holding labels, it's a collection of sprites. It renders the <code>&quot;dragonruby.png&quot;</code> image at <code>x: 576</code>, <code>y: 280</code>, just like label text, and it also sets the size of the image to display. That's what the <code>w: 128</code> and <code>h: 101</code> represent. Finally, it rotates the image passing <code>args.state.tick_count</code> to <code>angle</code>. Don't worry about <code>tick_count</code> for now. Just know that we need to keep updating <code>angle</code> so that we can see the image rotating, and <code>tick_count</code> is convenient as it keeps incrementing for us.</p>
+<p>You will notice that instead of an array we are passing a hash as a set of keys and values. This is another, friendlier way to define a sprite. It allows us to specify each key and its value to render a sprite. It means we no longer have to rely on the ordinal positioning of an array. Regardless of whether we are using an array or a hash, this is an easy enough bit of code for putting an image on the screen and rotating it.</p>
+<p>The next line is just another label that displays the path of the main file of our game, relative to the DRGTK folder:</p>
+<pre><code class="language-ruby">  args.outputs.labels  &lt;&lt; { x: 640,
+                            y: 60,
+                            text: './mygame/app/main.rb',
+                            size_enum: 5,
+                            alignment_enum: 1 }
 </code></pre>
-<p>Just like with labels, don't worry about memorizing the order here. There are friendlier ways to use them that we'll get to shortly. But it's an easy enough bit of code for putting an image on the screen.</p>
 <p>Finally, the last line:</p>
 <pre><code class="language-ruby">end
 </code></pre>
