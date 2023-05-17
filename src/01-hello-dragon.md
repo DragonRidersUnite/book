@@ -47,7 +47,7 @@ This isn't a game... yet! But it is doing three key things:
 
 1. Launching an app window
 2. Rendering text
-3. Displaying an image
+3. Displaying and rotating an image
 
 And you haven't even written any code yet. Not a bad starting place.
 
@@ -63,7 +63,7 @@ Let's take a look at what's in `mygame/app/main.rb`:
 
 Open this file yourself in Visual Studio Code. Go ahead and do that: New Window > Open > [select the folder on your computer with the engine in it]
 
-Six lines of code to render text and an image? Not bad! (Trust me, if you did this all from scratch without an engine, it'd take hundreds of lines of code.)
+Seven lines of code to render text and an image? Not bad! (Trust me, if you did this all from scratch without an engine, it'd take hundreds of lines of code.)
 
 Here's what that code does, line by line:
 
@@ -143,22 +143,23 @@ Did you see that? The game reloaded your code and changed the text to "Hello Dra
 
 
 ``` ruby
-{{#include code/chapter_01/01_default/app/main.rb:5}}
+{{#include code/chapter_01/01_default/app/main.rb:6:11}}
 ```
 
-`args.outputs.sprites` is like `args.outputs.labels`, but instead of holding labels, it's a collection of sprites. It renders the `"dragonruby.png"` image at x: 576, y: 280, just like label text, and it also sets the size of the image to display. That's what the `128` and `101` represent in the array. Here's a breakdown of those elements:
+`args.outputs.sprites` is like `args.outputs.labels`, but instead of holding labels, it's a collection of sprites. It renders the `"dragonruby.png"` image at `x: 576`, `y: 280`, just like label text, and it also sets the size of the image to display. That's what the `w: 128` and `h: 101` represent. Finally, it rotates the image passing `args.state.tick_count` to `angle`. Don't worry about `tick_count` for now. Just know that we need to keep updating `angle` so that we can see the image rotating, and `tick_count` is convenient as it keeps incrementing for us.
+
+You will notice that instead of an array we are passing a hash as a set of keys and values. This is another, friendlier way to define a sprite. It allows us to specify each key and its value to render a sprite. It means we no longer have to rely on the ordinal positioning of an array. Regardless of whether we are using an array or a hash, this is an easy enough bit of code for putting an image on the screen and rotating it.
+
+The next line is just another label that displays the path of the main file of our game, relative to the DRGTK folder:
 
 ``` ruby
-#  x,   y,   w,   h,            image
-[576, 280, 128, 101, 'dragonruby.png']
+{{#include code/chapter_01/01_default/app/main.rb:13:17}}
 ```
-
-Just like with labels, don't worry about memorizing the order here. There are friendlier ways to use them that we'll get to shortly. But it's an easy enough bit of code for putting an image on the screen.
 
 Finally, the last line:
 
 ``` ruby
-{{#include code/chapter_01/01_default/app/main.rb:6}}
+{{#include code/chapter_01/01_default/app/main.rb:18}}
 ```
 
 signifies that the definition of the `tick` method is over. Any code after that isn't part of the `tick` method. That's it for what we get out of the box.
