@@ -52,7 +52,7 @@ We'll kick things off by starting the music track on the first tick at the top o
 If you've got the files in the right place and start your game, you'll hear the music play.
 
 
-Above our check for whether or not the game is over, when the timer is 0, let's play `game-over.ogg` and pause the music:
+Above our check for whether or not the game is over, when the timer is 0, let's play `game-over.wav` and pause the music:
 
 ``` ruby
 {{#include code/chapter_08/01_sound/app/main.rb:122:132}}
