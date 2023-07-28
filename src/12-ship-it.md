@@ -54,7 +54,7 @@ Fill out the details for your game. Be sure to write a description, add screensh
 
 <img alt="itch.io upload screenshot with button to upload files" src="./img/c12-itch-upload.jpg" style="max-width: 380px; width: 100%;" />
 
-Tap "Upload files" and select the zips of the game for all of the platforms you want to upload it for. For `target-practice-html5.zip`, check the "This file will be played in the browser" box, as itch.io will use that to determine what to make playable. For the other platforms, choose the proper OS for each file. Be sure to set the web embed size to 1280 pixels wide and 720 pixels tall so it renders at the proper size.
+Tap "Upload files" and select the zips of the game for all of the platforms you want to upload it for. For `target-practice-html5.zip`, check the "This file will be played in the browser" box, as itch.io will use that to determine what to make playable. For the other platforms, choose the proper OS for each file. Be sure to set the web embed size to 1280 pixels wide and 720 pixels tall so it renders at the proper size. Enable `Frame options -> SharedArrayBuffer support`, DragonRuby html5 games require this to run in the browser.
 
 If you make changes to your game, you can upload new versions to itch.io automatically by running `./dragonruby-publish mygame` without having to upload them through the web browser as long as `gameid` in `game_metadata.txt` matches your itch.io project slug.
 
