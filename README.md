@@ -1,6 +1,6 @@
 # Building Games with DragonRuby
 
-An open-source book that walks you through how to build games with [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game).
+An open-source book by Brett Chalup and the Dragon Rider Community that walks you through how to build games with [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game).
 
 [Play the game you'll be building, right in the browser.](https://dragonridersunite.itch.io/dragonruby-book)
 
@@ -16,7 +16,7 @@ When the code is pushed to the `main` branch on GitHub, an action runs that depl
 
 ## Key Versions
 
-- DragonRuby Game Toolkit: v3.x, v4.x
+- DragonRuby Game Toolkit: v3.x, v4.x, v5.x
 - mdBook: v0.4.22
 
 ## Running Samples
