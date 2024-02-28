@@ -89,7 +89,7 @@ We'll go about this in the following way:
 - If a target should be removed, then we'll mark it as `dead`
 - After we've checked all of our targets, we'll `reject!` the dead ones from `args.state.targets`
 
-Ruby makes that pretty easy. All you do is call the `#reject!` method on an array and pass in the logic for when an item should be removed. If you have an array of numbers and call reject on all of the numbers, only the odd ones will remain in the array:
+Ruby makes that pretty easy. All you do is call the `#reject!` method on an array and pass in the logic for when an item should be removed. If you have an array of numbers and call reject on all of the even numbers, only the odd ones will remain in the array:
 
 ``` ruby
 nums = [3, 4, 5]
