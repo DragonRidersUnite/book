@@ -246,7 +246,7 @@ def tick args
 <li>If a target should be removed, then we'll mark it as <code>dead</code></li>
 <li>After we've checked all of our targets, we'll <code>reject!</code> the dead ones from <code>args.state.targets</code></li>
 </ul>
-<p>Ruby makes that pretty easy. All you do is call the <code>#reject!</code> method on an array and pass in the logic for when an item should be removed. If you have an array of numbers and call reject on all of the numbers, only the odd ones will remain in the array:</p>
+<p>Ruby makes that pretty easy. All you do is call the <code>#reject!</code> method on an array and pass in the logic for when an item should be removed. If you have an array of numbers and call reject on all of the even numbers, only the odd ones will remain in the array:</p>
 <pre><code class="language-ruby">nums = [3, 4, 5]
 nums.reject! { |n| n.even? }
 nums # =&gt; [3, 5]
