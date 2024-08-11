@@ -51,7 +51,7 @@ That calls the `puts` method and passes our variable `name` to it as a parameter
 
 `||=` in English is "or equals". That code above, `args.state.player_x ||= 120` would be read as: assign the property `player_x` on `args.state` the numeric value of 120 unless it's already assigned a value.
 
-Remember how tick is running once every 60 seconds? We don't want to always set `args.state.player_x` to `120`. We just want to set it to that initially and then we'll update that value when we press keys on our keyboard or buttons on our gamepad. We haven't done that yet, but that's what's next.
+Remember how tick is running 60 times every second? We don't want to always set `args.state.player_x` to `120`. We just want to set it to that initially and then we'll update that value when we press keys on our keyboard or buttons on our gamepad. We haven't done that yet, but that's what's next.
 
 Wow! That was a lot of explanation for two measly lines of code. But I'm telling ya, they're two really important lines of code when it comes to game programming.
 
