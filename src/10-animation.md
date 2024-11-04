@@ -23,7 +23,7 @@ Then we take the `player_sprite_index` and use that when specifying the `path` o
 
 ## A Note on Spritesheets
 
-If you've done any game development before, you may be familiar with spritesheets, where each frame of an animation is contained within one image file. When using a spritesheet for animation, instead of changing which image file path is used for the sprite to render, you change which piece of the large spritesheet you render. [The DragonRuby GTK docs have a detailed example of how to do this.](http://docs.dragonruby.org/#----animation-using-sprite-sheet---main-rb)
+If you've done any game development before, you may be familiar with spritesheets, where each frame of an animation is contained within one image file. When using a spritesheet for animation, instead of changing which image file path is used for the sprite to render, you change which piece of the large spritesheet you render. [The DragonRuby GTK docs have a detailed example of how to do this.](https://docs.dragonruby.org/#/samples/rendering-sprites?id=animation-using-sprite-sheet-mainrb)
 
 ## Extra Credit
 
