@@ -36,7 +36,7 @@ I love reading books about making games. It's a great way to take a break from t
 
 - [Spelunky by Derek Yu](https://bossfightbooks.com/products/spelunky-by-derek-yu) — deep-dive into the game development process by the creator of the game himself
 - [How to Make a Video Game All By Yourself](https://www.valadria.com/how-to-make-a-video-game-all-by-yourself/) — an excellent book on being a solo game dev
-- [Code the Classics](https://wireframe.raspberrypi.com/books/code-the-classics1) — a free book covering how to make classic games in PyGame, but if you instead used DragonRuby GTK?
+- [Code the Classics](https://magpi.raspberrypi.com/books/code-the-classics1) — a free book covering how to make classic games in PyGame, but if you instead used DragonRuby GTK?
 - [Indie Games: From Dream to Delivery](https://www.amazon.com/Indie-Games-Delivery-Don-Daglow/dp/0996781552) — a book of questions and essays to get your brain churning about your game for when you're further along
 
 ## Videos
