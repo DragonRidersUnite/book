@@ -11,3 +11,6 @@ git-repository-url = "https://github.com/DragonRidersUnite/book"
 
 [output.html.print]
 enable = false
+
+[output.epub]
+cover = "design/drgtk-book-cover-v3.png"
