@@ -1,6 +1,6 @@
 [book]
 authors = ["Jorge Dominguez"]
-language = "es"
+language = "es-ES"
 multilingual = true
 src = "src"
 title = "Creando juegos con DragonRuby"
