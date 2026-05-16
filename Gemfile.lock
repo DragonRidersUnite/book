@@ -7,9 +7,10 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  arm64-darwin-24
 
 DEPENDENCIES
   sitemap_generator (~> 6.3)
 
 BUNDLED WITH
-   2.3.23
+   2.7.2
