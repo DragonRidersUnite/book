@@ -1,10 +1,9 @@
 [book]
 authors = ["Brett Chalupa", "Dragon Rider Community"]
 language = "en"
-multilingual = false
 src = "src"
 title = "Building Games with DragonRuby"
-description = "A free book about making 2D games with DragonRuby Game Toolkit."
+description = "A beginner-friendly guide to programming 2D games with DragonRuby Game Toolkit."
 
 [output.html]
 git-repository-url = "https://github.com/DragonRidersUnite/book"

@@ -49,10 +49,10 @@ end
 
 HIGH_SCORE_FILE = "high-score.txt"
 def game_over_tick(args)
-  args.state.high_score ||= args.gtk.read_file(HIGH_SCORE_FILE).to_i
+  args.state.high_score ||= DR.read_file(HIGH_SCORE_FILE).to_i
 
   if !args.state.saved_high_score && args.state.score > args.state.high_score
-    args.gtk.write_file(HIGH_SCORE_FILE, args.state.score.to_s)
+    DR.write_file(HIGH_SCORE_FILE, args.state.score.to_s)
     args.state.saved_high_score = true
   end
 
@@ -61,13 +61,13 @@ def game_over_tick(args)
     x: 40,
     y: args.grid.h - 40,
     text: "Game Over!",
-    size_enum: 10,
+    size_px: 42,
   }
   labels << {
     x: 40,
     y: args.grid.h - 90,
     text: "Score: #{args.state.score}",
-    size_enum: 4,
+    size_px: 30,
   }
 
   if args.state.score > args.state.high_score
@@ -75,14 +75,14 @@ def game_over_tick(args)
       x: 260,
       y: args.grid.h - 90,
       text: "New high-score!",
-      size_enum: 3,
+      size_px: 28,
     }
   else
     labels << {
       x: 260,
       y: args.grid.h - 90,
       text: "Score to beat: #{args.state.high_score}",
-      size_enum: 3,
+      size_px: 28,
     }
   end
 
@@ -90,17 +90,17 @@ def game_over_tick(args)
     x: 40,
     y: args.grid.h - 132,
     text: "Fire to restart",
-    size_enum: 2,
+    size_px: 26,
   }
   args.outputs.labels << labels
 
   if args.state.timer < -30 && fire_input?(args)
-    $gtk.reset
+    DR.reset
   end
 end
 
 def tick args
-  if args.state.tick_count == 1
+  if Kernel.tick_count == 1
     args.audio[:music] = { input: "sounds/flight.ogg", looping: true }
   end
 
@@ -183,16 +183,16 @@ def tick args
     x: 40,
     y: args.grid.h - 40,
     text: "Score: #{args.state.score}",
-    size_enum: 4,
+    size_px: 30,
   }
   labels << {
     x: args.grid.w - 40,
     y: args.grid.h - 40,
     text: "Time Left: #{(args.state.timer / FPS).round}",
-    size_enum: 2,
-    alignment_enum: 2,
+    size_px: 26,
+    anchor_x: 1,
   }
   args.outputs.labels << labels
 end
 
-$gtk.reset
+DR.reset

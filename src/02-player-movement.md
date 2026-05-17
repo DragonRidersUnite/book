@@ -6,7 +6,7 @@ Simplify `mygame/app/main.rb` to be just this for now:
 
 ``` ruby
 def tick args
-  args.outputs.sprites << [120, 280, 100, 80, 'sprites/misc/dragon-0.png']
+  args.outputs.sprites << { x: 120, y: 280, w: 100, h: 80, path: 'sprites/misc/dragon-0.png' }
 end
 ```
 
@@ -20,7 +20,13 @@ Update your `mygame/app/main.rb` to be this:
 def tick args
   args.state.player_x ||= 120
   args.state.player_y ||= 280
-  args.outputs.sprites << [args.state.player_x, args.state.player_y, 100, 80, 'sprites/misc/dragon-0.png']
+  args.outputs.sprites << {
+    x: args.state.player_x,
+    y: args.state.player_y,
+    w: 100,
+    h: 80,
+    path: 'sprites/misc/dragon-0.png',
+  }
 end
 ```
 
@@ -82,11 +88,17 @@ def tick args
     args.state.player_y -= 10
   end
 
-  args.outputs.sprites << [args.state.player_x, args.state.player_y, 100, 80, 'sprites/misc/dragon-0.png']
+  args.outputs.sprites << {
+    x: args.state.player_x,
+    y: args.state.player_y,
+    w: 100,
+    h: 80,
+    path: 'sprites/misc/dragon-0.png',
+  }
 end
 ```
 
-You can now control the dragon with WASD, the arrow keys, or your controller. Pretty neat! It's almost fun. All it took was 10 lines of code. Let's break them down.
+You can now control the dragon with WASD, the arrow keys, or your controller. Pretty neat! It's almost fun. Let's break it down.
 
 ``` ruby
 if args.inputs.left
@@ -129,7 +141,13 @@ def tick args
     args.state.player_y -= speed
   end
 
-  args.outputs.sprites << [args.state.player_x, args.state.player_y, 100, 80, 'sprites/misc/dragon-0.png']
+  args.outputs.sprites << {
+    x: args.state.player_x,
+    y: args.state.player_y,
+    w: 100,
+    h: 80,
+    path: 'sprites/misc/dragon-0.png',
+  }
 end
 ```
 

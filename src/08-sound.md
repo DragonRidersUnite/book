@@ -32,7 +32,7 @@ Easy enough!
 Playing music is a little more complex, but still pretty simple. You set a value on the `args.audio` hash that lets you manage the audio track across the game loop. You can check the current progress, whether or not it's paused, and more. That looks like this:
 
 ``` ruby
-if args.state.tick_count == 1
+if Kernel.tick_count == 1
   args.audio[:music] = { input: "sounds/flight.ogg", looping: true }
 end
 ```

@@ -90,7 +90,7 @@ def tick args
     x: 40,
     y: args.grid.h - 40,
     text: "Score: #{args.state.score}",
-    size_enum: 4
+    size_px: 30
   }
 
   args.outputs.debug << {
@@ -105,4 +105,4 @@ def tick args
   }.label!
 end
 
-$gtk.reset
+DR.reset

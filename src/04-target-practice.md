@@ -30,7 +30,7 @@ If you quit your game and relaunch `dragonruby`, they will though. Why is that?
 
 Well, when DragonRuby loads our game code, if any value is set in `args.state` via `||=`, it won't reassign the new value because that value is already set. `args.state.targets` already has three targets in it, so when our code is reloaded, it doesn't know to discard our old targets.
 
-Let's instruct DragonRuby to reset our state when the game runs by adding the special `$gtk.reset` after the `end` of `#tick`:
+Let's instruct DragonRuby to reset our state when the game runs by adding the special `DR.reset` after the `end` of `#tick`. (`DR` is short for DragonRuby; it gives us access to engine-level functions like `reset`.)
 
 ``` ruby
 {{#include code/chapter_04/01_display_targets/app/main.rb:79:82}}
@@ -184,7 +184,7 @@ Finally, display our score as a label in the upper-left area of the screen:
 {{#include code/chapter_04/06_score_tracking/app/main.rb:83:89}}
 ```
 
-This approach to displaying a label is different than previous chapters. Instead of using an array to represent the properties of the label, we're now using a hash like we do for sprites (for similar reasons: it's easier to remember and more clear). Setting `x`, `y`, and `text` should be familiar by this point. But `size_enum` is new. It's a way to specify how large the text is. It takes whatever value we set and adds that much to the default text size. Increase it from `4` to `40` or `-3` and see what you like best.
+Setting `x`, `y`, and `text` on a label hash should be familiar by this point. But `size_px` is new. It's a way to specify how large the text is, in pixels. The default DragonRuby label is `22` pixels tall, so passing `30` makes it noticeably bigger. Try bumping it up to `60` or down to `14` and see what you like best.
 
 ![dragon spitting fireballs at three targets on the right side of the screen with the text 'Score: 14' displayed](./img/c04-score.jpg)
 

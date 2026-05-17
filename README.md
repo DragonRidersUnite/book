@@ -1,6 +1,8 @@
 # Building Games with DragonRuby
 
-An open-source book by Brett Chalupa and the Dragon Rider Community that walks you through how to build games with [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game).
+An open-source book by Brett Chalupa and the Dragon Rider Community that walks
+you through how to build games with
+[DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game).
 
 [Play the game you'll be building, right in the browser.](https://dragonridersunite.itch.io/dragonruby-book)
 
@@ -8,26 +10,40 @@ An open-source book by Brett Chalupa and the Dragon Rider Community that walks y
 
 ## Developing
 
-The book is authored and published with [mdBook](https://rust-lang.github.io/mdBook/guide/installation.html). Follow the installation instructions to get the `mdbook` binary installed.
+The book is authored and published with
+[mdBook](https://rust-lang.github.io/mdBook/guide/installation.html). Follow the
+installation instructions to get the `mdbook` binary installed.
 
 Run `mdbook serve` to boot up the web server that handles compiling everything.
 
-When the code is pushed to the `main` branch on GitHub, an action runs that deploys it to the `gh-pages` branch.
+When the code is pushed to the `main` branch on GitHub, an action runs that
+deploys it to the `gh-pages` branch.
+
+Download DragonRuby GTK for your platform, unzip it, and then clone the
+repository inside of the new folder:
+
+```
+cd dragonruby
+git clone git@github.com:DragonRidersUnite/book.git
+```
 
 ## Key Versions
 
-- DragonRuby Game Toolkit: v3.x, v4.x, v5.x
-- mdBook: v0.4.22
+- DragonRuby Game Toolkit: v7.x; might work for previous versions
+- mdBook: v0.5.x
 
 ## Running Samples
 
-The repository contains complete games for each separate code sample to ensure the code works and runs.
+The repository contains complete games for each separate code sample to ensure
+the code works and runs.
 
-Code samples live in `src/code` and then are organized by chapter and then sections within a chapter.
+Code samples live in `src/code` and then are organized by chapter and then
+sections within a chapter.
 
-Clone this book repository into a DragonRuby GTK engine directory and run the samples with:
+Clone this book repository into a DragonRuby GTK engine directory and run the
+samples with:
 
-``` console
+```console
 ./dragonruby book/src/code/chapter_03/01_input
 ```
 

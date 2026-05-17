@@ -6,6 +6,36 @@ The concept of a "scene" isn't specific to DragonRuby Game Toolkit or any given 
 
 When we introduced the game over functionality, we introduced a scene separate from gameplay. Kinda neat! But it wasn't the time to think about them in terms of scenes and reckon with how we add more.
 
+Before we get into scenes, though, there's one structural change we should apply.
+
+## Wrapping It in `module Main`
+
+You may have noticed when you opened the default `main.rb` back in Chapter 1 that everything was wrapped in `module Main ... end`. We dropped that wrapper in our earlier chapters to keep the code small while we were learning. Now that we have a real game, let's bring our code in line with what DragonRuby's docs and sample apps use.
+
+The change is mechanical: indent everything in `mygame/app/main.rb` two spaces, then wrap it in a `module Main` block. The trailing `DR.reset` stays at the top level (we want it to run when the file is loaded, not when `tick` is called):
+
+``` ruby
+module Main
+  FPS = 60
+
+  def spawn_target(args)
+    # ...
+  end
+
+  # ...all the other methods, indented...
+
+  def tick args
+    # ...
+  end
+end
+
+DR.reset
+```
+
+That's it. `module Main` is a Ruby module, a namespace that groups related code together. DragonRuby looks for a module called `Main` and calls its `tick` method 60 times a second, just like before. Wrapping our methods inside it keeps them from spilling into Ruby's global scope, which is a healthier habit as your projects grow.
+
+From this point on, the code samples in the rest of the book are shown with the `module Main` wrapper applied. The chapter 11 and 12 sample files (`code/chapter_11/01_refactor`, `code/chapter_11/02_title`, `code/chapter_12/01_release`) all use this form.
+
 ## Refactor
 
 So we've got two scenes right now: gameplay (where we shoot at targets) and game over (where we display the score and allow the player to restart). Let's refactor the code to put our scenes in different methods and allow the game to switch between them given certain conditions being met.
@@ -19,7 +49,7 @@ Let's introduce a `#gameplay_tick` method that will contain the logic for our ga
 Not much of the code changes, but we do shuffle things around a bit. None of the methods above `#game_over_tick` change, so they're excluded:
 
 ``` ruby
-{{#include code/chapter_11/01_refactor/app/main.rb:50:204}}
+{{#include code/chapter_11/01_refactor/app/main.rb:51:205}}
 ```
 
 `#game_over_tick` is the same except for the addition of:
@@ -53,7 +83,7 @@ When players launch our game, they get dropped right into the gameplay. This can
 In our game code, let's introduce `#title_tick` that takes `args` as its only parameter, just like our other `*_tick` methods for our scenes. In `#title_tick`, we'll render some labels and look for input to start our game. If the fireball input is pressed, we'll play a sound effect, change the scene, and return early so we can move on to the next scene.
 
 ``` ruby
-{{#include code/chapter_11/02_title/app/main.rb:196:232}}
+{{#include code/chapter_11/02_title/app/main.rb:197:233}}
 ```
 
 Replace `YOU` with your name since you made it. It's important to take credit for your work.
@@ -61,7 +91,7 @@ Replace `YOU` with your name since you made it. It's important to take credit fo
 Then in `#tick` lazily initialize `args.state.scene` to now be `"title"`:
 
 ``` ruby
-{{#include code/chapter_11/02_title/app/main.rb:234:242}}
+{{#include code/chapter_11/02_title/app/main.rb:235:243}}
 ```
 
 Now when you start the game, the title scene will be displayed:

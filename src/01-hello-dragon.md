@@ -23,13 +23,13 @@ Let's go over the key files in the archive you just extracted:
 - `samples/` — a folder of example code that you can explore and run if you'd like, or just ignore for now
 - `docs/` — the DragonRuby Game Toolkit docs for the version you've downloaded, extremely handy if you want to dive deeper than this book
 - `mygame/` 🌟 — as the name implies, this is where the code, graphics, sound, and other assets live for your game; this is the primary folder you'll be working in
-    - `app/` — this is where your Ruby code goes
-      - `main.rb` — this is the main file for your game code, don't worry about the other two yet
-    - `data/` — where you can put any data for your game, like level editor files
-    - `fonts/` — where fonts go, duh!
-    - `metadata/` — configuration files for your game, we'll do more here later
-    - `sounds/` — where music and sound effects go
-    - `sprites/` — where images go that will be rendered in the game; there are already some basic ones present
+  - `app/` — this is where your Ruby code goes
+    - `main.rb` — this is the main file for your game code, don't worry about the other one yet
+  - `data/` — where you can put any data for your game, like level editor files
+  - `fonts/` — where fonts go, duh!
+  - `metadata/` — configuration files for your game, we'll do more here later
+  - `sounds/` — where music and sound effects go
+  - `sprites/` — where images go that will be rendered in the game; there are already some basic ones present
 
 Don't worry about the other files yet. Focus on the `mygame/` directory, and, specifically, `mygame/app/main.rb`.
 
@@ -55,20 +55,26 @@ DRGTK handles the boring stuff when it comes to making games—dealing with low-
 
 ## An Overview of the Main Game File
 
-Let's take a look at what's in `mygame/app/main.rb`:
+Let's take a look at what's in `mygame/app/main.rb`. There's a fair amount of code in there, so don't panic. We'll go through it in chunks.
 
-``` ruby
+```ruby
 {{#include code/chapter_01/01_default/app/main.rb}}
 ```
 
 Open this file yourself in Visual Studio Code. Go ahead and do that: New Window > Open > [select the folder on your computer with the engine in it]
 
-Seven lines of code to render text and an image? Not bad! (Trust me, if you did this all from scratch without an engine, it'd take hundreds of lines of code.)
+Here's the very first line:
 
-Here's what that code does, line by line:
-
-``` ruby
+```ruby
 {{#include code/chapter_01/01_default/app/main.rb:1}}
+```
+
+That's a Ruby `module` named `Main`. Don't worry about modules yet. DragonRuby looks for a module called `Main` to find the entry point of your game. For now, treat that line (and the matching `end` at the bottom of the file) as boilerplate. We'll cover modules properly later in the book.
+
+Inside the module is this:
+
+```ruby
+{{#include code/chapter_01/01_default/app/main.rb:2}}
 ```
 
 This `def`ines a method called `tick` and passes in a parameter called `args`. `args` is short for arguments and is provided to us by DragonRuby GTK.
@@ -77,7 +83,7 @@ Methods are reusable pieces of code that you can call to do something over and o
 
 Let's say you wanted to give a friend a cookie 🍪, you'd define a method called `give_cookie` and pass in the `friend` as a parameter. The friend then has a method called `eat` that we call, passing in a parameter of cookie.
 
-``` ruby
+```ruby
 def give_cookie(friend)
   friend.eat("cookie")
 end
@@ -85,14 +91,14 @@ end
 
 You'd then call that method like:
 
-``` ruby
+```ruby
 francis = Friend.new
 give_cookie(francis)
 ```
 
 Note: methods in Ruby have optional parentheses. You can use them or leave them out when defining and calling your methods. These are the same:
 
-``` ruby
+```ruby
 def give_cookie(friend)
   friend.eat("cookie")
 end
@@ -106,10 +112,10 @@ I'm an agent of chaos and use _both_ styles throughout the book. Gotta keep ya' 
 
 Wait, how'd we get talking about cookies and friends? Okay, back to the code above.
 
-The next three lines handle outputting text to the screen:
+The next chunk handles outputting text to the screen:
 
-``` ruby
-{{#include code/chapter_01/01_default/app/main.rb:2:4}}
+```ruby
+{{#include code/chapter_01/01_default/app/main.rb:8:13}}
 ```
 
 Your eyes might be melting a little bit. But don't worry, wipe that melted bit of eye away and focus! It's pretty intuitive once you get the hang of it.
@@ -120,49 +126,27 @@ Remember `args` from above? The parameter that's passed into `tick`? Well, you c
 
 The `<<` is called the shovel operator. It lets you push data into a collection. `labels` is the collection we're shoveling data into because we want to render some text.
 
-And then finally the code within the brackets `[]` is an array of data that represents what we want to display on the screen. It may not be clear exactly what it's doing yet, but it'll become more clear over time.
+And then the code within the curly braces `{}` is a hash, a collection of named values. Each key (the bit before the `:`) describes what its value means. So `x: 640` says "put this label at an x position of 640." `y: 600` is the vertical position. `text:` is the actual text to display. `size_px:` is the font size in pixels. And `anchor_x:` / `anchor_y:` control which point on the label gets placed at `(x, y)`. `0.5` means "center it," `0` means "left edge / bottom edge," `1` means "right edge / top edge."
 
-I think of arrays like a stack of CDs. The CDs are in a specific order, but you don't know what a given CD is unless you pull one out of the stack and look at it. You have to do the same thing with an array. In programming, you put data into an array to collect that data and keep track of it. If you want to know what's at a specific place in an array, you have to check.
-
-You can see some code in quotes, those are strings. And they're what's being displayed by the game. In order to show the text, though, we need to tell the engine where to place it on the screen. That's what the first two elements of the array do: they specify the `x` and `y` position of the text in the game. Then there's the text we want to render. That's followed by the text size. Then finally the alignment (centered in this case).
-
-Here's it broken down:
-
-``` ruby
-#  x,   y,           text, size, alignment
-[640, 500, 'Hello World!',    5,         1]
-```
-
-Don't worry about memorizing what the positional elements of the array mean. This is just a quick way to render text. We'll start using a more friendly approach soon enough. The sample game does this three times, thus rendering three different pieces of text. The `y` coordinate is different for each, stacking them on top of each other vertically instead of overlapping one another.
+Don't worry about memorizing every key. We'll use them over and over and they'll become second nature.
 
 Gosh enough of this rambling, let's adjust some code. Change the text from `"Hello World!"` to `"Hello Dragon!"` and save the file.
 
-![screenshot of the Hello Dragon! for DragonRuby GTK](./img/hello-dragon.jpg)
-
 Did you see that? The game reloaded your code and changed the text to "Hello Dragon!" That was quick, wasn't it? That's one of the best parts of DRGTK—live reloading of your game code in the engine. This allows you to make changes to your game quickly, reducing the time between the cycles of writing your code and testing it.
 
+Further down in the file is the chunk that draws the spinning logo:
 
-``` ruby
-{{#include code/chapter_01/01_default/app/main.rb:6:11}}
+```ruby
+{{#include code/chapter_01/01_default/app/main.rb:43:48}}
 ```
 
-`args.outputs.sprites` is like `args.outputs.labels`, but instead of holding labels, it's a collection of sprites. It renders the `"dragonruby.png"` image at `x: 576`, `y: 280`, just like label text, and it also sets the size of the image to display. That's what the `w: 128` and `h: 101` represent. Finally, it rotates the image passing `args.state.tick_count` to `angle`. Don't worry about `tick_count` for now. Just know that we need to keep updating `angle` so that we can see the image rotating, and `tick_count` is convenient as it keeps incrementing for us.
+`args.outputs.sprites` is like `args.outputs.labels`, but instead of holding labels, it's a collection of sprites. It renders the `"dragonruby.png"` image at the `x` and `y` stored in `args.state.logo_rect`, sized `w` by `h`, and rotates it by passing `Kernel.tick_count` to `angle`. Don't worry about `tick_count` for now. Just know that DragonRuby provides it for us, it keeps incrementing as the game runs, and feeding it to `angle` is a quick way to make the image spin.
 
-You will notice that instead of an array we are passing a hash as a set of keys and values. This is another, friendlier way to define a sprite. It allows us to specify each key and its value to render a sprite. It means we no longer have to rely on the ordinal positioning of an array. Regardless of whether we are using an array or a hash, this is an easy enough bit of code for putting an image on the screen and rotating it.
+The `args.state` you see used here is a place DragonRuby gives us to stash our own data. The `||=` near the top of the file says "set `logo_rect` to this hash only if it isn't already set", so the rect gets initialized on the first frame and then is just read on every frame after.
 
-The next line is just another label that displays the path of the main file of our game, relative to the DRGTK folder:
+The chunk at the bottom uses `args.inputs.keyboard` to move that rect around when the arrow keys are pressed. We'll get to player input in the next chapter, so don't sweat the details yet.
 
-``` ruby
-{{#include code/chapter_01/01_default/app/main.rb:13:17}}
-```
-
-Finally, the last line:
-
-``` ruby
-{{#include code/chapter_01/01_default/app/main.rb:18}}
-```
-
-signifies that the definition of the `tick` method is over. Any code after that isn't part of the `tick` method. That's it for what we get out of the box.
+That's it for what we get out of the box.
 
 ## Screen Coordinates Explained
 
@@ -182,33 +166,33 @@ Back to making the game. Okay, yeah, you changed a string and it changed what wa
 
 I want you to delete the code in `mygame/app/main.rb`. Select it all and delete it. Yup, I know, the blank canvas is a challenge. But you need to start writing the code yourself in order to learn. So go ahead and type out each line below into your `main.rb`.
 
-``` ruby
+```ruby
 def tick args
-  args.outputs.labels << [120, 120, "Hello Dragon!"]
+  args.outputs.labels << { x: 120, y: 120, text: "Hello Dragon!" }
 end
 ```
 
-You know what that does, right? Well, you saw it automatically reload in your game, so of course, you do!
+You know what that does, right? Well, you saw it automatically reload in your game, so of course, you do! Note that we dropped the `module Main` wrapper for now. DragonRuby is happy to find your `tick` method at the top level, and it keeps the example tiny while we're learning the basics.
 
 Let's greet our friend Oboe too.
 
-``` ruby
+```ruby
 def tick args
-  args.outputs.labels << [120, 120, "Hello Dragon!"]
-  args.outputs.labels << [120, 100, "Hello Oboe!"]
+  args.outputs.labels << { x: 120, y: 120, text: "Hello Dragon!" }
+  args.outputs.labels << { x: 120, y: 100, text: "Hello Oboe!" }
 end
 ```
 
 Wow, so many friends we're saying hello to! The thing is... that code is a bit... duplicative. Let's write our own method to clean that up:
 
-``` ruby
+```ruby
 def greet friend
   "Hello #{friend}!"
 end
 
 def tick args
-  args.outputs.labels << [120, 120, greet("Dragon")]
-  args.outputs.labels << [120, 100, greet("Oboe")]
+  args.outputs.labels << { x: 120, y: 120, text: greet("Dragon") }
+  args.outputs.labels << { x: 120, y: 100, text: greet("Oboe") }
 end
 ```
 
@@ -220,7 +204,7 @@ Methods in Ruby return a value. Return values can then be used by the caller for
 
 Go ahead and change the `greet` method to:
 
-``` ruby
+```ruby
 def greet friend
   "Hello #{friend}!"
   1
@@ -231,7 +215,7 @@ Whoa! What happened to our greetings? Well, we changed our code and it now alway
 
 Let's wrap up this chapter by displaying a sprite. In `mygame/sprites/misc/` there's a file named `dragon-0.png`. It's a pixel art dragon made by Nick Culbertson that's free to use. Pretty neat. Thanks, Nick!
 
-``` ruby
+```ruby
 {{#include code/chapter_01/02_our_own_hello/app/main.rb}}
 ```
 
