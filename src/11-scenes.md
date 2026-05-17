@@ -68,7 +68,7 @@ We continue to handle input and display the gameplay sprites and labels in `#gam
 
 Then, finally, `#tick` has been drastically simplified. It no longer needs to be responsible for so much. It can instead just handle three things:
 
-1. starting the music for the game
+1. Starting the music for the game
 2. Lazily initializing the scene to start with (in our case, `"gameplay"`)
 3. Calling the proper scene tick method and passing in `args`
 

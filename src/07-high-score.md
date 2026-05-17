@@ -16,7 +16,7 @@ DragonRuby GTK gives us two handy methods to do so:
 - `DR.write_file("high-score.txt")`
 - `DR.read_file("high-score.txt")`
 
-Save data, especially for our game, can be as simple as a text file on the computer. While this may allow for save tampering, that's not something we're too worried about for our game. The foundations of writing our data to a file and loading it apply no matter how complex our game data persistent needs get.
+Save data, especially for our game, can be as simple as a text file on the computer. While this may allow for save tampering, that's not something we're too worried about for our game. The foundations of writing our data to a file and loading it apply no matter how complex our game's data persistence needs get.
 
 We'll be working exclusively in `#game_over_tick`:
 
