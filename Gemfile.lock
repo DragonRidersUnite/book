@@ -8,6 +8,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-24
+  x86_64-linux
 
 DEPENDENCIES
   sitemap_generator (~> 6.3)
