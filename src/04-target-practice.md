@@ -58,7 +58,7 @@ The fireballs our dragon spits just fly behind our targets and off the screen in
 
 Collision detection is when one object overlaps with another object in our game. Because we're manufacturing the space the game exists in, there's no physics like we have in real life. We need to simulate that by checking to see if two objects are attempting to exist at the same point and react accordingly.
 
-Our fireball sprite is a 32x32 square, so we want to check in every single game loop whether or not the points of the fireball's square overlapping with any of the points of the target sprites. If they are overlapping, then we do that _something_.
+Our fireball sprite is a 32x32 square, so we want to check in every single game loop whether or not the points of the fireball's square are overlapping with any of the points of the target sprites. If they are overlapping, then we do that _something_.
 
 ![diagram showing two rectangles overlapping and not overlapping](./img/c04-rect-overlap.png)
 
@@ -158,7 +158,7 @@ We loop through the fireballs and move each one, just as before. And then we che
 
 The one new line is where we push a new target into `args.state.targets` from `#spawn_target`. That'll make a new target appear in a random location whenever we hit another.
 
-Play the game a bit and see how feels. Is there anything that can be adjusted or improved? What if you adjust the formula for `#spawn_target`? How does that feel with targets spawning close or further away?
+Play the game a bit and see how it feels. Is there anything that can be adjusted or improved? What if you adjust the formula for `#spawn_target`? How does that feel with targets spawning close or further away?
 
 ## Score Tracking
 
