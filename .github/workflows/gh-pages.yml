@@ -28,7 +28,7 @@ jobs:
           ruby-version: "3.3"
           bundler-cache: true
 
-      - run: ./bin/sitemap.rb
+      - run: bundle exec ./bin/sitemap.rb
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
