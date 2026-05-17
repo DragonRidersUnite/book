@@ -1,46 +1,67 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Spit Fire - Building Games with DragonRuby</title>
+
+
         <!-- Custom HTML head -->
-<meta property="og:title" content="Spit Fire | Building Games with DragonRuby">
-<meta property="og:type" content="book" />
-<meta property="og:image" content="https://book.dragonriders.community/img/cover.jpg" />
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image:alt" content="Cover with red dragon icon and white background, which reads 'Building Games with DragonRuby: a comprehensive guide to shipping cross-platform guides with ease by Brett Chalupa and the Dragon Riders community'">
+        <meta property="og:title" content="Spit Fire | Building Games with DragonRuby">
+        <meta property="og:type" content="book" />
+        <meta property="og:image" content="https://book.dragonriders.community/img/cover.jpg" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image:alt" content="Cover with red dragon icon and white background, which reads 'Building Games with DragonRuby: a comprehensive guide to shipping cross-platform guides with ease by Brett Chalupa and the Dragon Riders community'">
+        
 
-        <meta name="description" content="A free book about making 2D games with DragonRuby Game Toolkit.">
+        <meta name="description" content="A beginner-friendly guide to programming 2D games with DragonRuby Game Toolkit.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="shortcut icon" href="favicon-35ae41f5.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-a061f35c.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6c9e0c65.js"></script>
     </head>
     <body>
-        <!-- Provide site root to javascript -->
-        <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -54,56 +75,69 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('no-js')
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            html.classList.add("js");
         </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="01-hello-dragon.html"><strong aria-hidden="true">1.</strong> Hello Dragon!</a></li><li class="chapter-item expanded "><a href="02-player-movement.html"><strong aria-hidden="true">2.</strong> Player Movement</a></li><li class="chapter-item expanded "><a href="03-spit-fire.html" class="active"><strong aria-hidden="true">3.</strong> Spit Fire</a></li><li class="chapter-item expanded "><a href="04-target-practice.html"><strong aria-hidden="true">4.</strong> Target Practice</a></li><li class="chapter-item expanded "><a href="05-fireball-clean-up.html"><strong aria-hidden="true">5.</strong> Fireball Clean Up</a></li><li class="chapter-item expanded "><a href="06-time-attack.html"><strong aria-hidden="true">6.</strong> Time Attack</a></li><li class="chapter-item expanded "><a href="07-high-score.html"><strong aria-hidden="true">7.</strong> High-Score</a></li><li class="chapter-item expanded "><a href="08-sound.html"><strong aria-hidden="true">8.</strong> Sound</a></li><li class="chapter-item expanded "><a href="09-background.html"><strong aria-hidden="true">9.</strong> Background</a></li><li class="chapter-item expanded "><a href="10-animation.html"><strong aria-hidden="true">10.</strong> Animation</a></li><li class="chapter-item expanded "><a href="11-scenes.html"><strong aria-hidden="true">11.</strong> Scenes</a></li><li class="chapter-item expanded "><a href="12-ship-it.html"><strong aria-hidden="true">12.</strong> Ship It!</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="outro.html">Outro</a></li><li class="chapter-item expanded affix "><a href="ruby-primer.html">Ruby Primer</a></li><li class="chapter-item expanded affix "><a href="beyond-the-code.html">Beyond the Code</a></li><li class="chapter-item expanded affix "><a href="dragonruby-resources.html">DragonRuby Resources</a></li><li class="chapter-item expanded affix "><a href="game-dev-resources.html">Game Dev Resources</a></li><li class="chapter-item expanded affix "><a href="source-control.html">Source Control</a></li></ol>
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -111,131 +145,134 @@
 
                     <div class="right-buttons">
                         <a href="https://github.com/DragonRidersUnite/book" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
                         </a>
+
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="spit-fire"><a class="header" href="#spit-fire">Spit Fire</a></h1>
-<p>Our next mission is to make our dragon spit fire because that's just what they do. We'll piece this whole thing into a game soon enough. But let's keep focusing on simple mechanics and the code for right now.</p>
+<p>Our next mission is to make our dragon spit fire because that’s just what they do. We’ll piece this whole thing into a game soon enough. But let’s keep focusing on simple mechanics and the code for right now.</p>
 <h2 id="fire-on-input"><a class="header" href="#fire-on-input">Fire on Input</a></h2>
-<p>In the last chapter, we used <code>args.inputs</code> to check for player input from the four main directions. If those inputs are pressed, then we move the dragon. Now let's check to see if the <kbd>Z</kbd> key is pressed to know when to have our dragon spit a fireball.</p>
-<p>To check if a key was pressed, we can use <code>args.inputs.keyboard.key_down</code> and then whatever key we want to check. So in our case, we'll check <code>args.inputs.keyboard.key_down.z</code>. In <code>#tick</code>, right above where we render the dragon sprite, let's check for that input:</p>
+<p>In the last chapter, we used <code>args.inputs</code> to check for player input from the four main directions. If those inputs are pressed, then we move the dragon. Now let’s check to see if the <kbd>Z</kbd> key is pressed to know when to have our dragon spit a fireball.</p>
+<p>To check if a key was pressed, we can use <code>args.inputs.keyboard.key_down</code> and then whatever key we want to check. So in our case, we’ll check <code>args.inputs.keyboard.key_down.z</code>. In <code>#tick</code>, right above where we render the dragon sprite, let’s check for that input:</p>
 <pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z
-    puts &quot;Z key pressed&quot;
+    puts "Z key pressed"
   end
-
-  args.outputs.sprites &lt;&lt; [args.state.player_x, args.state.player_y, player_w, player_h, 'sprites/misc/dragon-0.png']
 </code></pre>
-<p>Using <code>puts</code> is a really helpful way to check that our game works as we expect it to. In this case, every tick where the <kbd>Z</kbd> key is pressed down, it prints the string &quot;Z key pressed&quot; to the console (open it with <kbd>~</kbd>, remember?). Run your game and press the <kbd>Z</kbd> key a bunch and then open your console.</p>
+<p>Using <code>puts</code> is a really helpful way to check that our game works as we expect it to. In this case, every tick where the <kbd>Z</kbd> key is pressed down, it prints the string “Z key pressed” to the console (open it with <kbd>~</kbd>, remember?). Run your game and press the <kbd>Z</kbd> key a bunch and then open your console.</p>
 <img alt="screenshot of DragonRuby console showing Z key pressed 6 times" src="./img/c03-console-puts.jpg" style="max-width: 420px; width: 100%;">
 <h2 id="expanded-control-support"><a class="header" href="#expanded-control-support">Expanded Control Support</a></h2>
-<p>When making a game, it's important to support a variety of input configurations to make the game as accessible as possible. Sure, the keyboard arrow keys and the <kbd>Z</kbd> key are sensible defaults. But what if our player wants to use a gamepad controller? Or what if they would prefer to use WASD for movement? From the start of coding player input, let's support as many different inputs as reasonably possible.</p>
-<p>In our case, we'll support three configurations:</p>
+<p>When making a game, it’s important to support a variety of input configurations to make the game as accessible as possible. Sure, the keyboard arrow keys and the <kbd>Z</kbd> key are sensible defaults. But what if our player wants to use a gamepad controller? Or what if they would prefer to use WASD for movement? From the start of coding player input, let’s support as many different inputs as reasonably possible.</p>
+<p>In our case, we’ll support three configurations:</p>
 <ul>
 <li>Arrow keys and <kbd>Z</kbd></li>
 <li>WASD and <kbd>J</kbd></li>
 <li>Gamepad</li>
 </ul>
-<p>DragonRuby GTK is a big help in this department. Our code earlier that checks <code>args.inputs.up</code> (down/left/right) already checks for the arrow keys, WASD, and gamepad input. Slick! We don't have to change anything there. But let's go ahead and update our logic check for firing the fireball to check all of the possible inputs.</p>
+<p>DragonRuby GTK is a big help in this department. Our code earlier that checks <code>args.inputs.up</code> (down/left/right) already checks for the arrow keys, WASD, and gamepad input. Slick! We don’t have to change anything there. But let’s go ahead and update our logic check for firing the fireball to check all of the possible inputs.</p>
 <pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z ||
       args.inputs.keyboard.key_down.j ||
       args.inputs.controller_one.key_down.a
-    puts &quot;Spit fireball!&quot;
+    puts "Spit fireball!"
   end
 </code></pre>
-<p>We learned about <code>||=</code> earlier, and that's a combination of two separate operators in Ruby. <code>||</code> represents &quot;or&quot; and <code>=</code> says to assign a value. If the value on the left doesn't have a value, assign it the value on the right. We can make use of the &quot;or&quot; (<code>||</code>) operator independently of the assignment operator (<code>=</code>) to control the logic within our game.</p>
+<p>We learned about <code>||=</code> earlier, and that’s a combination of two separate operators in Ruby. <code>||</code> represents “or” and <code>=</code> says to assign a value. If the value on the left doesn’t have a value, assign it the value on the right. We can make use of the “or” (<code>||</code>) operator independently of the assignment operator (<code>=</code>) to control the logic within our game.</p>
 <p>The code above says: if the <kbd>Z</kbd> key is down OR the <kbd>J</kbd> key is down OR the A button on the gamepad is pressed, then output the string to the console.</p>
 <p>You can combine <code>||</code> on one line (<code>if monday || tuesday || wednesday</code>), but it can be helpful to break long lines to make our code easier to read.</p>
-<p>Outputting info to the console isn't that helpful for the player, but can you begin to imagine how we'll use that check to instead spit a fireball?</p>
+<p>Outputting info to the console isn’t that helpful for the player, but can you begin to imagine how we’ll use that check to instead spit a fireball?</p>
 <h2 id="displaying-fireballs"><a class="header" href="#displaying-fireballs">Displaying Fireballs</a></h2>
-<p>We want to display a fireball on the screen when the action key is pressed. We've got most of the code, all we need to do is change <code>puts</code> to instead display the fireball.</p>
+<p>We want to display a fireball on the screen when the action key is pressed. We’ve got most of the code, all we need to do is change <code>puts</code> to instead display the fireball.</p>
 <p>At the top of <code>#tick</code>, assign an empty array to <code>args.state.fireballs</code> if nothing has been assigned yet. This will let us keep track of fireballs across the game loop to do all sorts of things with them (display them, move them, collide them with other objects):</p>
 <pre><code class="language-ruby">def tick args
   args.state.player_x ||= 120
   args.state.player_y ||= 280
   args.state.fireballs ||= []
 </code></pre>
-<p>Then where we check for the action input, push a fireball into the <code>arg.state.fireballs</code> array based on the current player's x and y position:</p>
+<p>Then where we check for the action input, push a fireball hash into the <code>args.state.fireballs</code> array based on the current player’s x and y position:</p>
 <pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z ||
       args.inputs.keyboard.key_down.j ||
       args.inputs.controller_one.key_down.a
-    args.state.fireballs &lt;&lt; [args.state.player_x, args.state.player_y, 'fireball']
+    args.state.fireballs &lt;&lt; {
+      x: args.state.player_x,
+      y: args.state.player_y,
+      text: 'fireball',
+    }
   end
-
-  args.outputs.labels &lt;&lt; args.state.fireballs
-
 </code></pre>
-<p>All we have to do is render our fireballs by pushing them into the <code>args.outputs.labels</code> collection. DragonRuby is smart enough to know that if we push an array into any <code>args.outputs</code> collection it'll flatten it and display them correctly. Thanks, DragonRuby!</p>
-<p>We've been using arrays to represent the fields for different data in our game like labels and sprites, but arrays have other uses too. Arrays are a great way to keep track of information that we need in a list. The array we've created in the code above tracks our fireballs.</p>
-<p>Play your game and see what happens! Fireballs everywhere. Wait! You're not impressed by those fireballs? I'd be pretty frightened if the word &quot;fireball&quot; was flying at me.</p>
-<p><img src="./img/c03-fireball-display.jpg" alt="screenshot of the game showing the word 'fireball' throughout with the dragon flying around" /></p>
-<p>Wait, where are you going? Why are you muttering &quot;I didn't sign up to read no stinkin' book where you output the word 'fireball' on the screen, I'm here for the real flame, the good stuff...&quot;</p>
+<p>Each fireball is a hash with <code>x</code>, <code>y</code>, and <code>text</code> keys, exactly the shape DragonRuby needs to render a label. All we have to do is render our fireballs by pushing them into the <code>args.outputs.labels</code> collection. DragonRuby is smart enough to know that if we push an array into any <code>args.outputs</code> collection it’ll flatten it and display them correctly. Thanks, DragonRuby!</p>
+<p>We’ve been using hashes to represent things like the player sprite and now our fireball labels; each one is a single piece of data with named properties. Arrays, on the other hand, are great for keeping a list of things. We use both: an array of fireball hashes lets us track many fireballs and act on each one.</p>
+<p>Play your game and see what happens! Fireballs everywhere. Wait! You’re not impressed by those fireballs? I’d be pretty frightened if the word “fireball” was flying at me.</p>
+<p><img src="./img/c03-fireball-display.jpg" alt="screenshot of the game showing the word ‘fireball’ throughout with the dragon flying around"></p>
+<p>Wait, where are you going? Why are you muttering “I didn’t sign up to read no stinkin’ book where you output the word ‘fireball’ on the screen, I’m here for the real flame, the good stuff…”</p>
 <h2 id="moving-fireballs"><a class="header" href="#moving-fireballs">Moving Fireballs</a></h2>
-<p>Guess what? We're sticking with ole &quot;fireball&quot; for now! It's silly and fun and I haven't found a good fireball sprite to use. We'll get there, we'll get there. But let's first make the fireballs move across the screen.</p>
-<p>When we moved our player dragon, we took the x and y position and added or subtracted values in each <code>#tick</code> based on if any directional input was pressed. Our fireballs will move regardless of any button pressed once they're extruded from our dragon's mouth. Because our game is simple and the dragon only faces to the right, all of the fireballs will move to the right. How do we go about that on our X-Y axis? We just increase the <code>x</code> position of the fireball each tick. Let's do that and see what happens:</p>
+<p>Guess what? We’re sticking with ole “fireball” for now! It’s silly and fun and I haven’t found a good fireball sprite to use. We’ll get there, we’ll get there. But let’s first make the fireballs move across the screen.</p>
+<p>When we moved our player dragon, we took the x and y position and added or subtracted values in each <code>#tick</code> based on if any directional input was pressed. Our fireballs will move regardless of any button pressed once they’re extruded from our dragon’s mouth. Because our game is simple and the dragon only faces to the right, all of the fireballs will move to the right. How do we go about that on our X-Y axis? We just increase the <code>x</code> position of the fireball each tick. Let’s do that and see what happens:</p>
 <pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z ||
       args.inputs.keyboard.key_down.j ||
       args.inputs.controller_one.key_down.a
-    args.state.fireballs &lt;&lt; [args.state.player_x, args.state.player_y, 'fireball']
+    args.state.fireballs &lt;&lt; {
+      x: args.state.player_x,
+      y: args.state.player_y,
+      text: 'fireball',
+    }
   end
 
   args.state.fireballs.each do |fireball|
-    fireball[0] += speed + 2
+    fireball.x += speed + 2
   end
-
-  args.outputs.labels &lt;&lt; args.state.fireballs
 </code></pre>
 <p>Right between where we add a new fireball to <code>args.state.fireballs</code> and we display them using <code>args.outputs.labels</code>, our new code does this:</p>
 <ol>
 <li>Loops through the array of <code>args.state.fireballs</code></li>
-<li>For each fireball, updates the array value at the <code>0</code> index, which is the x position of the fireball, to be the dragon's speed plus 2 (because we want the fireball to move faster than the dragon).</li>
+<li>For each fireball, updates its <code>x</code> to be its current <code>x</code> plus the dragon’s speed plus 2 (because we want the fireball to move faster than the dragon).</li>
 </ol>
-<p>Move your dragon around, spit some fire, and bask in the glory of a word moving so smoothly across the screen that it almost looks like a... fireball!</p>
+<p>Move your dragon around, spit some fire, and bask in the glory of a word moving so smoothly across the screen that it almost looks like a… fireball!</p>
 <p>Try changing around <code>speed + 2</code> to make the fireballs move faster or slower and see how that feels. Adjusting speed values can really change the vibe of your game and is important in tuning it to feel just right.</p>
-<p>There are a lot of important concepts in those three newly added lines of code. In Ruby, when there's an array of data, we can loop through <strong>each</strong> item and modify their properties. Games are composed of huge collections of things: enemies, fireballs, menu options, player inventory, etc. Arrays (and just collections in general) aren't anything to be afraid of, and soon enough, you'll be naturally thinking of your game data in terms of arrays.</p>
+<p>There are a lot of important concepts in those three newly added lines of code. In Ruby, when there’s an array of data, we can loop through <strong>each</strong> item and modify their properties. Games are composed of huge collections of things: enemies, fireballs, menu options, player inventory, etc. Arrays (and just collections in general) aren’t anything to be afraid of, and soon enough, you’ll be naturally thinking of your game data in terms of arrays.</p>
 <p>Looping through an array of data in each <code>#tick</code> and then doing <em>something</em> is the stuff games are made of! Here are some ways this can be applied in all sorts of games: enemy behavior, checking for collision, and animating. As our game (and any game you make) gets more complex, looping through collections of data becomes more and more common.</p>
-<h2 id="switching-to-hashes"><a class="header" href="#switching-to-hashes">Switching to Hashes</a></h2>
-<p>So far throughout the book, we've been using arrays to represent the entities in our game, whether it be the player's dragon sprite or our fireball text that gets displayed. Remember <code>[args.state.player_x, args.state.player_y, 'fireball']</code>? Arrays are wonderful and important, but they aren't so great for representing structured data because it's difficult to remember what each piece of data in the array's positions represents. Remembering that <code>fireball[2]</code> is the text value and not the y value is tricky. Luckily, DragonRuby has a more verbose and clear data structure we can use for managing our data. It's called a hash! Much like arrays, hashes are extremely useful.</p>
-<p>Let's look at what the text example above would be like as a hash:</p>
-<pre><code class="language-ruby">{
-  x: args.state.player_x,
-  y: args.state.player_y,
-  text: &quot;fireball&quot;,
-}
-</code></pre>
-<p>Hashes are expressed through curly braces <code>{}</code> and contain <code>key: value</code> pairs separated by commas. The values of a hash can be anything, from numbers to strings to whatever your heart desires. Let's say we wanted to build our own hash to represent a dragon and put it in the <code>dragon</code> variable:</p>
+<h2 id="a-closer-look-at-hashes"><a class="header" href="#a-closer-look-at-hashes">A Closer Look at Hashes</a></h2>
+<p>We’ve been using hashes a lot already: every sprite and label we render is a hash. Let’s take a moment to look at them more carefully because they’re going to be everywhere in this book.</p>
+<p>Hashes are expressed through curly braces <code>{}</code> and contain <code>key: value</code> pairs separated by commas. The values of a hash can be anything, from numbers to strings to whatever your heart desires. Let’s say we wanted to build our own hash to represent a dragon and put it in the <code>dragon</code> variable:</p>
 <pre><code class="language-ruby">dragon = {
-  name: &quot;Francis&quot;,
-  size: &quot;medium&quot;,
+  name: "Francis",
+  size: "medium",
   age: 541,
 }
 </code></pre>
-<p>Values of a hash are then accessed by their keys, so <code>dragon.name</code> returns the string <code>&quot;Francis&quot;</code>, <code>dragon.size</code> returns the string <code>&quot;medium&quot;</code>, and <code>dragon.age</code> returns the number <code>541</code>. This is much clearer than having to remember the position of these values within an array.</p>
-<p>Quick note: if you see a hash with key-value pairs that look like this: <code>{ :name =&gt; &quot;Francis&quot; }</code>, don't fret! That's just another style in Ruby known as the hash rocket.</p>
+<p>Values of a hash are then accessed by their keys, so <code>dragon.name</code> returns the string <code>"Francis"</code>, <code>dragon.size</code> returns the string <code>"medium"</code>, and <code>dragon.age</code> returns the number <code>541</code>. Nice and clear: each property has a name that says what it is.</p>
+<p>Quick note: if you see a hash with key-value pairs that look like this: <code>{ :name =&gt; "Francis" }</code>, don’t fret! That’s just another style in Ruby known as the hash rocket.</p>
 <p>In general, differentiate between arrays and hashes like this: <strong>hashes are used to represent one piece of data with multiple properties</strong> and <strong>arrays are used to collect data (oftentimes hashes) to keep track of and manipulate them</strong>.</p>
-<p>Below is our entire game translated to use hashes instead of arrays for our rendering:</p>
+<h2 id="refactoring-the-player-into-a-hash"><a class="header" href="#refactoring-the-player-into-a-hash">Refactoring the Player into a Hash</a></h2>
+<p>Right now our player’s position and size are spread across a bunch of separate values: <code>args.state.player_x</code>, <code>args.state.player_y</code>, the <code>speed</code> variable, the <code>player_w</code> and <code>player_h</code> variables, and the path to the sprite hard-coded down in the render line. That’s a lot of pieces representing one thing.</p>
+<p>Let’s bring all of that together by putting the player into a single hash on <code>args.state</code>:</p>
 <pre><code class="language-ruby">def tick args
   args.state.player ||= {
     x: 120,
@@ -293,18 +330,19 @@
   args.outputs.sprites &lt;&lt; args.state.player
 end
 </code></pre>
-<p>It may not seem like much has changed, but two key changes make this worthwhile:</p>
+<p>A few key wins from this refactor:</p>
 <ol>
-<li><code>fireball.x += args.state.player.speed + 2</code> — it is much clearer when we move the fireball that we're adding to its <code>x</code> position AND using the player's speed</li>
-<li><code>args.outputs.sprites &lt;&lt; args.state.player</code> — because we're keeping track of our player in <code>args.state.player</code> and it has the data DragonRuby needs to render it, we can just push it into <code>args.outputs.sprites</code> and not construct the array that we used to use</li>
+<li><code>args.state.player</code> is now the one place where the player lives: position, size, speed, sprite path, all together.</li>
+<li><code>args.outputs.sprites &lt;&lt; args.state.player</code>: because the hash already has the keys DragonRuby needs (<code>x</code>, <code>y</code>, <code>w</code>, <code>h</code>, <code>path</code>), we can just push the player hash straight into <code>args.outputs.sprites</code>. No need to spell out the keys again at render time.</li>
+<li>The bounds-checking and input code reads <code>args.state.player.x</code>, <code>args.state.player.speed</code>, etc., which is much clearer than the loose scalar variables.</li>
 </ol>
 <h2 id="displaying-a-sprite"><a class="header" href="#displaying-a-sprite">Displaying a Sprite</a></h2>
-<p>With that refactor done, let's display a sprite for our fireball and call it a chapter.</p>
+<p>With that refactor done, let’s display a sprite for our fireball and call it a chapter.</p>
 <p>Download the fireball sprite below and put it in <code>mygame/sprites/fireball.png</code>:</p>
-<p><img src="https://book.dragonriders.community/code/chapter_03/06_sprite/sprites/fireball.png" alt="fireball sprite" /></p>
+<p><img src="https://book.dragonriders.community/code/chapter_03/06_sprite/sprites/fireball.png" alt="fireball sprite"></p>
 <p><a href="https://book.dragonriders.community/code/chapter_03/06_sprite/sprites/fireball.png">Download sprite</a></p>
-<p>I just made that! It's not half bad, right?</p>
-<p>We'll change the hash we push into <code>args.state.fireballs</code> to be a sprite and adjust how we render that collection. Nothing too major. Here are the changes near the bottom of <code>#tick</code> that you'll need to make:</p>
+<p>I just made that! It’s not half bad, right?</p>
+<p>We’ll change the hash we push into <code>args.state.fireballs</code> to be a sprite and adjust how we render that collection. Nothing too major. Here are the changes near the bottom of <code>#tick</code> that you’ll need to make:</p>
 <pre><code class="language-ruby">  if args.inputs.keyboard.key_down.z ||
       args.inputs.keyboard.key_down.j ||
       args.inputs.controller_one.key_down.a
@@ -323,22 +361,24 @@ end
 
   args.outputs.sprites &lt;&lt; [args.state.player, args.state.fireballs]
 </code></pre>
-<p>We adjust the starting place of the fireball sprite to look like it comes out of the dragon's mouth. The sprite is 32 pixels wide by 32 pixels tall, so we set that.</p>
+<p>We adjust the starting place of the fireball sprite to look like it comes out of the dragon’s mouth. The sprite is 32 pixels wide by 32 pixels tall, so we set that.</p>
 <p>Now that the fireball is a sprite and not a text label, we can push both the player and the array of fireballs into <code>args.outputs.sprites</code> in one go. This is more efficient for DragonRuby than doing it separately.</p>
-<p><img src="./img/c03-fireball-sprite.jpg" alt="dragon sprite shooting 4 fireballs flying across the screen" /></p>
-<h2 id="whats-next"><a class="header" href="#whats-next">What's Next</a></h2>
-<p>We're so close to having a game, so close! We just need something to spit fireballs at, right? In the next chapter, we'll display some floating targets that get destroyed when a fireball hits one.</p>
+<p><img src="./img/c03-fireball-sprite.jpg" alt="dragon sprite shooting 4 fireballs flying across the screen"></p>
+<h2 id="whats-next"><a class="header" href="#whats-next">What’s Next</a></h2>
+<p>We’re so close to having a game, so close! We just need something to spit fireballs at, right? In the next chapter, we’ll display some floating targets that get destroyed when a fireball hits one.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="02-player-movement.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
-                            <a rel="next" href="04-target-practice.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+
+                            <a rel="next prefetch" href="04-target-practice.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
@@ -346,25 +386,41 @@ end
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="02-player-movement.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
-                    <a rel="next" href="04-target-practice.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+
+                    <a rel="next prefetch" href="04-target-practice.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
         <script>
             window.playground_copyable = true;
         </script>
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
+
+
+
+    </div>
     </body>
 </html>

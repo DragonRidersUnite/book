@@ -38,14 +38,24 @@ def tick args
   if args.inputs.keyboard.key_down.z ||
       args.inputs.keyboard.key_down.j ||
       args.inputs.controller_one.key_down.a
-    args.state.fireballs << [args.state.player_x, args.state.player_y, 'fireball']
+    args.state.fireballs << {
+      x: args.state.player_x,
+      y: args.state.player_y,
+      text: 'fireball',
+    }
   end
 
   args.state.fireballs.each do |fireball|
-    fireball[0] += speed + 2
+    fireball.x += speed + 2
   end
 
   args.outputs.labels << args.state.fireballs
 
-  args.outputs.sprites << [args.state.player_x, args.state.player_y, player_w, player_h, 'sprites/misc/dragon-0.png']
+  args.outputs.sprites << {
+    x: args.state.player_x,
+    y: args.state.player_y,
+    w: player_w,
+    h: player_h,
+    path: 'sprites/misc/dragon-0.png',
+  }
 end

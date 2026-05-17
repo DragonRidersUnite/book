@@ -33,19 +33,19 @@ def tick args
       x: 40,
       y: args.grid.h - 40,
       text: "Game Over!",
-      size_enum: 10,
+      size_px: 42,
     }
     labels << {
       x: 40,
       y: args.grid.h - 90,
       text: "Score: #{args.state.score}",
-      size_enum: 4,
+      size_px: 30,
     }
     labels << {
       x: 40,
       y: args.grid.h - 132,
       text: "Fire to restart",
-      size_enum: 2,
+      size_px: 26,
     }
     args.outputs.labels << labels
 
@@ -53,7 +53,7 @@ def tick args
         (args.inputs.keyboard.key_down.z ||
         args.inputs.keyboard.key_down.j ||
         args.inputs.controller_one.key_down.a)
-      $gtk.reset
+      DR.reset
     end
 
     return
@@ -127,16 +127,16 @@ def tick args
     x: 40,
     y: args.grid.h - 40,
     text: "Score: #{args.state.score}",
-    size_enum: 4,
+    size_px: 30,
   }
   labels << {
     x: args.grid.w - 40,
     y: args.grid.h - 40,
     text: "Time Left: #{(args.state.timer / 60).round}",
-    size_enum: 2,
-    alignment_enum: 2,
+    size_px: 26,
+    anchor_x: 1,
   }
   args.outputs.labels << labels
 end
 
-$gtk.reset
+DR.reset

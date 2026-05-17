@@ -71,4 +71,4 @@ def tick args
   args.outputs.sprites << [args.state.player, args.state.fireballs, args.state.targets]
 end
 
-$gtk.reset
+DR.reset
