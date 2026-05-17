@@ -8,11 +8,11 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1
@@ -22,15 +22,13 @@ jobs:
 
       - run: mdbook build
 
-      - uses: actions/checkout@v3
       - name: Set up Ruby
-        uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.1"
-      - name: Install dependencies
-        run: bundle install
+          ruby-version: "3.3"
+          bundler-cache: true
 
-      - run: ./bin/sitemap.rb
+      - run: bundle exec ./bin/sitemap.rb
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
