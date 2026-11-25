@@ -6,8 +6,6 @@ you through how to build games with
 
 [Play the game you'll be building, right in the browser.](https://dragonridersunite.itch.io/dragonruby-book)
 
-[Support the creation and expansion of this book.](https://buymeacoffee.com/brettchalupa)
-
 ## Developing
 
 The book is authored and published with
