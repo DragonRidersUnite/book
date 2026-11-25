@@ -37,5 +37,11 @@ def tick args
     puts "Z key pressed"
   end
 
-  args.outputs.sprites << [args.state.player_x, args.state.player_y, player_w, player_h, 'sprites/misc/dragon-0.png']
+  args.outputs.sprites << {
+    x: args.state.player_x,
+    y: args.state.player_y,
+    w: player_w,
+    h: player_h,
+    path: 'sprites/misc/dragon-0.png',
+  }
 end

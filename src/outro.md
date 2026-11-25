@@ -16,14 +16,6 @@ Here are some ideas for what you could do to put your personal stamp on it:
 - Make it so the dragon can fly around a level instead of staying in one screen
 - Add a narrative introduction
 
-## Say Thanks
-
-Say thanks in [the DragonRuby Discord](https://discord.dragonruby.org) or on [Mastodon](https://mastodon.gamedev.place/@brettmakesgames). It would mean so much to me to know that you've read the book. The website version of this book has no analytics tracking. My success metric isn't the number of views this book goods. I'll only be able to measure the success of this book through community and connecting. Share what you've made!
-
-If you really want to show your appreciation, [buy me a coffee](https://www.buymeacoffee.com/brettchalupa) by sending me a small tip. Financial support means the world and helps me continue to make free resources like _Building Games with DragonRuby_.
-
-Want to know when I finish a new book, game, or creative project? [Subscribe to my mailing list.](https://buttondown.email/brettchalupa) I only send out occasional updates about my projects.
-
 ## Want More?
 
 Writing a book about making games is challenging to scope properly because games are so complex. We built a pretty simple game that covered a lot of the core concepts of making games, but there are _so_ many directions a sequel could head in.
@@ -40,7 +32,7 @@ You'll find bonus chapters after this Outro. They're one-off deep dives into spe
 
 ## Gratitude
 
-A big thank you to the DragonRuby community. This book would not have been possible without their support and guidance. 
+A big thank you to the DragonRuby community. This book would not have been possible without their support and guidance.
 
 In particular, in alphabetical order, thank you to:
 

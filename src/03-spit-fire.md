@@ -9,7 +9,7 @@ In the last chapter, we used `args.inputs` to check for player input from the fo
 To check if a key was pressed, we can use `args.inputs.keyboard.key_down` and then whatever key we want to check. So in our case, we'll check `args.inputs.keyboard.key_down.z`. In `#tick`, right above where we render the dragon sprite, let's check for that input:
 
 ``` ruby
-{{#include code/chapter_03/01_input/app/main.rb:36:40}}
+{{#include code/chapter_03/01_input/app/main.rb:36:38}}
 ```
 
 Using `puts` is a really helpful way to check that our game works as we expect it to. In this case, every tick where the <kbd>Z</kbd> key is pressed down, it prints the string "Z key pressed" to the console (open it with <kbd>~</kbd>, remember?). Run your game and press the <kbd>Z</kbd> key a bunch and then open your console.
@@ -50,15 +50,15 @@ At the top of `#tick`, assign an empty array to `args.state.fireballs` if nothin
 {{#include code/chapter_03/03_displaying_fireballs/app/main.rb:1:4}}
 ```
 
-Then where we check for the action input, push a fireball into the `arg.state.fireballs` array based on the current player's x and y position:
+Then where we check for the action input, push a fireball hash into the `args.state.fireballs` array based on the current player's x and y position:
 
 ``` ruby
-{{#include code/chapter_03/03_displaying_fireballs/app/main.rb:38:45}}
+{{#include code/chapter_03/03_displaying_fireballs/app/main.rb:38:46}}
 ```
 
-All we have to do is render our fireballs by pushing them into the `args.outputs.labels` collection. DragonRuby is smart enough to know that if we push an array into any `args.outputs` collection it'll flatten it and display them correctly. Thanks, DragonRuby!
+Each fireball is a hash with `x`, `y`, and `text` keys, exactly the shape DragonRuby needs to render a label. All we have to do is render our fireballs by pushing them into the `args.outputs.labels` collection. DragonRuby is smart enough to know that if we push an array into any `args.outputs` collection it'll flatten it and display them correctly. Thanks, DragonRuby!
 
-We've been using arrays to represent the fields for different data in our game like labels and sprites, but arrays have other uses too. Arrays are a great way to keep track of information that we need in a list. The array we've created in the code above tracks our fireballs.
+We've been using hashes to represent things like the player sprite and now our fireball labels; each one is a single piece of data with named properties. Arrays, on the other hand, are great for keeping a list of things. We use both: an array of fireball hashes lets us track many fireballs and act on each one.
 
 Play your game and see what happens! Fireballs everywhere. Wait! You're not impressed by those fireballs? I'd be pretty frightened if the word "fireball" was flying at me.
 
@@ -73,13 +73,13 @@ Guess what? We're sticking with ole "fireball" for now! It's silly and fun and I
 When we moved our player dragon, we took the x and y position and added or subtracted values in each `#tick` based on if any directional input was pressed. Our fireballs will move regardless of any button pressed once they're extruded from our dragon's mouth. Because our game is simple and the dragon only faces to the right, all of the fireballs will move to the right. How do we go about that on our X-Y axis? We just increase the `x` position of the fireball each tick. Let's do that and see what happens:
 
 ``` ruby
-{{#include code/chapter_03/04_moving_fireballs/app/main.rb:38:48}}
+{{#include code/chapter_03/04_moving_fireballs/app/main.rb:38:50}}
 ```
 
 Right between where we add a new fireball to `args.state.fireballs` and we display them using `args.outputs.labels`, our new code does this:
 
 1. Loops through the array of `args.state.fireballs`
-2. For each fireball, updates the array value at the `0` index, which is the x position of the fireball, to be the dragon's speed plus 2 (because we want the fireball to move faster than the dragon).
+2. For each fireball, updates its `x` to be its current `x` plus the dragon's speed plus 2 (because we want the fireball to move faster than the dragon).
 
 Move your dragon around, spit some fire, and bask in the glory of a word moving so smoothly across the screen that it almost looks like a... fireball!
 
@@ -89,19 +89,9 @@ There are a lot of important concepts in those three newly added lines of code. 
 
 Looping through an array of data in each `#tick` and then doing _something_ is the stuff games are made of! Here are some ways this can be applied in all sorts of games: enemy behavior, checking for collision, and animating. As our game (and any game you make) gets more complex, looping through collections of data becomes more and more common.
 
-## Switching to Hashes
+## A Closer Look at Hashes
 
-So far throughout the book, we've been using arrays to represent the entities in our game, whether it be the player's dragon sprite or our fireball text that gets displayed. Remember `[args.state.player_x, args.state.player_y, 'fireball']`? Arrays are wonderful and important, but they aren't so great for representing structured data because it's difficult to remember what each piece of data in the array's positions represents. Remembering that `fireball[2]` is the text value and not the y value is tricky. Luckily, DragonRuby has a more verbose and clear data structure we can use for managing our data. It's called a hash! Much like arrays, hashes are extremely useful.
-
-Let's look at what the text example above would be like as a hash:
-
-``` ruby
-{
-  x: args.state.player_x,
-  y: args.state.player_y,
-  text: "fireball",
-}
-```
+We've been using hashes a lot already: every sprite and label we render is a hash. Let's take a moment to look at them more carefully because they're going to be everywhere in this book.
 
 Hashes are expressed through curly braces `{}` and contain `key: value` pairs separated by commas. The values of a hash can be anything, from numbers to strings to whatever your heart desires. Let's say we wanted to build our own hash to represent a dragon and put it in the `dragon` variable:
 
@@ -113,22 +103,27 @@ dragon = {
 }
 ```
 
-Values of a hash are then accessed by their keys, so `dragon.name` returns the string `"Francis"`, `dragon.size` returns the string `"medium"`, and `dragon.age` returns the number `541`. This is much clearer than having to remember the position of these values within an array.
+Values of a hash are then accessed by their keys, so `dragon.name` returns the string `"Francis"`, `dragon.size` returns the string `"medium"`, and `dragon.age` returns the number `541`. Nice and clear: each property has a name that says what it is.
 
 Quick note: if you see a hash with key-value pairs that look like this: `{ :name => "Francis" }`, don't fret! That's just another style in Ruby known as the hash rocket.
 
 In general, differentiate between arrays and hashes like this: **hashes are used to represent one piece of data with multiple properties** and **arrays are used to collect data (oftentimes hashes) to keep track of and manipulate them**.
 
-Below is our entire game translated to use hashes instead of arrays for our rendering:
+## Refactoring the Player into a Hash
+
+Right now our player's position and size are spread across a bunch of separate values: `args.state.player_x`, `args.state.player_y`, the `speed` variable, the `player_w` and `player_h` variables, and the path to the sprite hard-coded down in the render line. That's a lot of pieces representing one thing.
+
+Let's bring all of that together by putting the player into a single hash on `args.state`:
 
 ``` ruby
 {{#include code/chapter_03/05_switching_to_hashes/app/main.rb}}
 ```
 
-It may not seem like much has changed, but two key changes make this worthwhile:
+A few key wins from this refactor:
 
-1. `fireball.x += args.state.player.speed + 2` — it is much clearer when we move the fireball that we're adding to its `x` position AND using the player's speed
-2. `args.outputs.sprites << args.state.player` — because we're keeping track of our player in `args.state.player` and it has the data DragonRuby needs to render it, we can just push it into `args.outputs.sprites` and not construct the array that we used to use
+1. `args.state.player` is now the one place where the player lives: position, size, speed, sprite path, all together.
+2. `args.outputs.sprites << args.state.player`: because the hash already has the keys DragonRuby needs (`x`, `y`, `w`, `h`, `path`), we can just push the player hash straight into `args.outputs.sprites`. No need to spell out the keys again at render time.
+3. The bounds-checking and input code reads `args.state.player.x`, `args.state.player.speed`, etc., which is much clearer than the loose scalar variables.
 
 ## Displaying a Sprite
 

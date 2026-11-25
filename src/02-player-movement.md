@@ -6,7 +6,7 @@ Simplify `mygame/app/main.rb` to be just this for now:
 
 ``` ruby
 def tick args
-  args.outputs.sprites << [120, 280, 100, 80, 'sprites/misc/dragon-0.png']
+  args.outputs.sprites << { x: 120, y: 280, w: 100, h: 80, path: 'sprites/misc/dragon-0.png' }
 end
 ```
 
@@ -20,7 +20,13 @@ Update your `mygame/app/main.rb` to be this:
 def tick args
   args.state.player_x ||= 120
   args.state.player_y ||= 280
-  args.outputs.sprites << [args.state.player_x, args.state.player_y, 100, 80, 'sprites/misc/dragon-0.png']
+  args.outputs.sprites << {
+    x: args.state.player_x,
+    y: args.state.player_y,
+    w: 100,
+    h: 80,
+    path: 'sprites/misc/dragon-0.png',
+  }
 end
 ```
 
@@ -29,7 +35,7 @@ There are a couple of new things here:
 - `args.state`
 - `||=`
 
-Let's start with `args.state`. It's basically a blob that can be anything you want it to be, a bit like Kirby. Feed it `player_x` and it keeps track of it. Whatever you feed the `args.state`, it'll be accessible in future ticks. Keeping track of the game state across ticks is important! It's part of the game loop. If we don't know where the player last was, how can we calculate where they should move to? We need to keep track of it in someplace. `args.state` is a fine place to start.
+Let's start with `args.state`. It's basically a blob that can be anything you want it to be, a bit like Kirby. Feed it `player_x` and it keeps track of it. Whatever you feed the `args.state`, it'll be accessible in future ticks. Keeping track of the game state across ticks is important! It's part of the game loop. If we don't know where the player last was, how can we calculate where they should move to? We need to keep track of it somewhere. `args.state` is a fine place to start.
 
 You can define anything on `args.state`, so it's up to you to use useful names. You could make `args.state.bleh` and set it to your favorite color, `args.state.bleh = "blue"` or your age, `args.state.age = 30`. Much like Kirby, `args.state` doesn't care what you feed it. It's just hungry for your data.
 
@@ -51,7 +57,7 @@ That calls the `puts` method and passes our variable `name` to it as a parameter
 
 `||=` in English is "or equals". That code above, `args.state.player_x ||= 120` would be read as: assign the property `player_x` on `args.state` the numeric value of 120 unless it's already assigned a value.
 
-Remember how tick is running once every 60 seconds? We don't want to always set `args.state.player_x` to `120`. We just want to set it to that initially and then we'll update that value when we press keys on our keyboard or buttons on our gamepad. We haven't done that yet, but that's what's next.
+Remember how tick is running 60 times every second? We don't want to always set `args.state.player_x` to `120`. We just want to set it to that initially and then we'll update that value when we press keys on our keyboard or buttons on our gamepad. We haven't done that yet, but that's what's next.
 
 Wow! That was a lot of explanation for two measly lines of code. But I'm telling ya, they're two really important lines of code when it comes to game programming.
 
@@ -82,11 +88,17 @@ def tick args
     args.state.player_y -= 10
   end
 
-  args.outputs.sprites << [args.state.player_x, args.state.player_y, 100, 80, 'sprites/misc/dragon-0.png']
+  args.outputs.sprites << {
+    x: args.state.player_x,
+    y: args.state.player_y,
+    w: 100,
+    h: 80,
+    path: 'sprites/misc/dragon-0.png',
+  }
 end
 ```
 
-You can now control the dragon with WASD, the arrow keys, or your controller. Pretty neat! It's almost fun. All it took was 10 lines of code. Let's break them down.
+You can now control the dragon with WASD, the arrow keys, or your controller. Pretty neat! It's almost fun. Let's break it down.
 
 ``` ruby
 if args.inputs.left
@@ -129,7 +141,13 @@ def tick args
     args.state.player_y -= speed
   end
 
-  args.outputs.sprites << [args.state.player_x, args.state.player_y, 100, 80, 'sprites/misc/dragon-0.png']
+  args.outputs.sprites << {
+    x: args.state.player_x,
+    y: args.state.player_y,
+    w: 100,
+    h: 80,
+    path: 'sprites/misc/dragon-0.png',
+  }
 end
 ```
 

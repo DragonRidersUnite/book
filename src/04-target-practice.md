@@ -30,7 +30,7 @@ If you quit your game and relaunch `dragonruby`, they will though. Why is that?
 
 Well, when DragonRuby loads our game code, if any value is set in `args.state` via `||=`, it won't reassign the new value because that value is already set. `args.state.targets` already has three targets in it, so when our code is reloaded, it doesn't know to discard our old targets.
 
-Let's instruct DragonRuby to reset our state when the game runs by adding the special `$gtk.reset` after the `end` of `#tick`:
+Let's instruct DragonRuby to reset our state when the game runs by adding the special `DR.reset` after the `end` of `#tick`. (`DR` is short for DragonRuby; it gives us access to engine-level functions like `reset`.)
 
 ``` ruby
 {{#include code/chapter_04/01_display_targets/app/main.rb:79:82}}
@@ -58,7 +58,7 @@ The fireballs our dragon spits just fly behind our targets and off the screen in
 
 Collision detection is when one object overlaps with another object in our game. Because we're manufacturing the space the game exists in, there's no physics like we have in real life. We need to simulate that by checking to see if two objects are attempting to exist at the same point and react accordingly.
 
-Our fireball sprite is a 32x32 square, so we want to check in every single game loop whether or not the points of the fireball's square overlapping with any of the points of the target sprites. If they are overlapping, then we do that _something_.
+Our fireball sprite is a 32x32 square, so we want to check in every single game loop whether or not the points of the fireball's square are overlapping with any of the points of the target sprites. If they are overlapping, then we do that _something_.
 
 ![diagram showing two rectangles overlapping and not overlapping](./img/c04-rect-overlap.png)
 
@@ -89,7 +89,7 @@ We'll go about this in the following way:
 - If a target should be removed, then we'll mark it as `dead`
 - After we've checked all of our targets, we'll `reject!` the dead ones from `args.state.targets`
 
-Ruby makes that pretty easy. All you do is call the `#reject!` method on an array and pass in the logic for when an item should be removed. If you have an array of numbers and call reject on all of the numbers, only the odd ones will remain in the array:
+Ruby makes that pretty easy. All you do is call the `#reject!` method on an array and pass in the logic for when an item should be removed. If you have an array of numbers and call reject on all of the even numbers, only the odd ones will remain in the array:
 
 ``` ruby
 nums = [3, 4, 5]
@@ -158,7 +158,7 @@ We loop through the fireballs and move each one, just as before. And then we che
 
 The one new line is where we push a new target into `args.state.targets` from `#spawn_target`. That'll make a new target appear in a random location whenever we hit another.
 
-Play the game a bit and see how feels. Is there anything that can be adjusted or improved? What if you adjust the formula for `#spawn_target`? How does that feel with targets spawning close or further away?
+Play the game a bit and see how it feels. Is there anything that can be adjusted or improved? What if you adjust the formula for `#spawn_target`? How does that feel with targets spawning close or further away?
 
 ## Score Tracking
 
@@ -184,7 +184,7 @@ Finally, display our score as a label in the upper-left area of the screen:
 {{#include code/chapter_04/06_score_tracking/app/main.rb:83:89}}
 ```
 
-This approach to displaying a label is different than previous chapters. Instead of using an array to represent the properties of the label, we're now using a hash like we do for sprites (for similar reasons: it's easier to remember and more clear). Setting `x`, `y`, and `text` should be familiar by this point. But `size_enum` is new. It's a way to specify how large the text is. It takes whatever value we set and adds that much to the default text size. Increase it from `4` to `40` or `-3` and see what you like best.
+Setting `x`, `y`, and `text` on a label hash should be familiar by this point. But `size_px` is new. It's a way to specify how large the text is, in pixels. The default DragonRuby label is `22` pixels tall, so passing `30` makes it noticeably bigger. Try bumping it up to `60` or down to `14` and see what you like best.
 
 ![dragon spitting fireballs at three targets on the right side of the screen with the text 'Score: 14' displayed](./img/c04-score.jpg)
 

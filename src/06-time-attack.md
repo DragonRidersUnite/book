@@ -28,7 +28,7 @@ Right below decreasing our `args.state.timer` by one, we check to see if the tim
 ```
 If it is game over, then we let the player know, display their final score, and tell them how to play again (by pressing the fire button). We make an array of labels which we then push into `args.outputs.labels` to efficiently render them all.
 
-If any of our fire keys are pressed, the game is reset with `$gtk.reset`, and the player can play again.
+If any of our fire keys are pressed, the game is reset with `DR.reset`, and the player can play again.
 
 The `return` line is _really_ important. It says, return out of the `#tick` method so that none of the code below runs. We don't want to have the dragon be movable or for targets to spawn when it's game over. So we eject early and only display the game over screen details.
 
@@ -42,7 +42,7 @@ Way at the bottom of `#tick`, let's display a label with the time remaining:
 
 We use the same pattern of creating a `labels` array, pushing in the player's score and the time, in ticks, remaining. In order to display the time remaining as seconds, we divide it by 60 and round. We do the opposite of what we did when we set the total time in ticks.
 
-The `alignment_enum` lets us specify that we want the text to be right-aligned instead of the default left alignment. This lets us nicely position our timer in the upper right corner of the game.
+The `anchor_x: 1` lets us specify that we want the text to be right-aligned (anchored at the right edge of the label) instead of the default left alignment. This lets us nicely position our timer in the upper right corner of the game.
 
 ![gameplay with Time Left reading 10 seconds](./img/c06-timer.jpg)
 

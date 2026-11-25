@@ -54,7 +54,7 @@ That's a legit question. Here are my reasons why:
 
 - It's focused on 2D games, so there are no competing interests in how the tooling works. It means what you need to know is pretty simple and easy to remember.
 - It makes it _so_ simple to distribute games for all modern platforms, from desktop computers to the web to mobile devices to consoles. It's truly cross-platform and _just works_, which is amazing.
-- It's fast a heck, which is important for making quality games.
+- It's fast as heck, which is important for making quality games.
 - It makes use of Ruby, which is a wonderfully productive programming language.
 - It doesn't force you to use a specific editor or tooling.
 - It's lightweight to run the engine, which means you can make games on any computer, even a Raspberry Pi.
@@ -123,8 +123,6 @@ In order to make that game, I followed a free online tutorial that laid out the 
 This book is freely accessible so that someone who loves games and wants to try making them can do so. Free programming resources have truly shaped my life and career. So this book is my way of giving back and trying to help other developers.
 
 You'll learn the foundations of game programming and making games, as well as some more advanced topics. If this book can help even just one person start and finish a game, it's worth every minute I've spent on it. We'll make a game not too dissimilar from _Zaku Space Battle_. Once you finish it, take what you've learned and make it your own!
-
-If you want to, you can [buy me a coffee](https://buymeacoffee.com/brettchalupa) or [subscribe to my newsletter](https://www.brettchalupa.com/newsletter) as a way of saying thank you. It's much appreciated.
 
 ## Contribute
 
